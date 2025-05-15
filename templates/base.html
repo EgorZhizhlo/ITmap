@@ -23,11 +23,8 @@
     </div>
   </nav>
 
-  <div class="container text-center">
-    <div class="semi-circle">
-      <h1>{% block title %}{% endblock title %}</h1>
-    </div>
-  </div>
+  {% block title %}{% endblock title %}
+
   <div class="roadmap-hero">
       <!-- Добавлен класс visible, чтобы изображения отображались -->
       {% block hero %}
@@ -44,7 +41,7 @@
   </footer>
 
   <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content rounded-3 shadow">
         <div class="modal-header">
           <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>

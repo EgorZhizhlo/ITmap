@@ -143,29 +143,7 @@
       }
     }
 
-    .arrow-top-left {
-      top: 0;
-      left: 0;
-      background-image: url("arrow-top-left.png");
-    }
-
-    .arrow-top-right {
-      top: 0;
-      right: 0;
-      background-image: url("arrow-top-right.png");
-    }
-
-    .arrow-bottom-left {
-      bottom: 0;
-      left: 0;
-      background-image: url("arrow-bottom-left.png");
-    }
-
-    .arrow-bottom-right {
-      bottom: 0;
-      right: 0;
-      background-image: url("arrow-bottom-right.png");
-    }
+  
 
     /* Заголовок и описание */
     .site-title {
