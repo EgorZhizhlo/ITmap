@@ -161,4 +161,55 @@
 
   </div>
 
+  <script>
+    // Функция переключения избранного
+    function toggleFavorite(event, el) {
+      event.stopPropagation();
+      event.preventDefault();
+      el.classList.toggle('active');
+      el.textContent = el.classList.contains('active') ? '★' : '☆';
+    }
+    // Intersection Observer для анимаций
+    const observerOpts = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          if (e.target.classList.contains('site-title') ||
+            e.target.classList.contains('site-description')) {
+            e.target.classList.add('hero-animated');
+          } else if (e.target.classList.contains('roadmap-card')) {
+            const delay = e.target.dataset.index * 100;
+            setTimeout(() => {
+              e.target.style.opacity = 1;
+              e.target.style.transform = 'translateY(0)';
+            }, delay);
+          } else {
+            e.target.style.opacity = 1;
+            e.target.style.transform = 'translateY(0)';
+          }
+          observer.unobserve(e.target);
+        }
+      });
+    }, observerOpts);
+    // Запустить наблюдение
+    observer.observe(document.querySelector('.site-title'));
+    observer.observe(document.querySelector('.site-description'));
+    document.querySelectorAll('.roadmap-card').forEach((card, idx) => {
+      card.dataset.index = idx;
+      observer.observe(card);
+    });
+    observer.observe(document.querySelector('.staircase-container'));
+    document.querySelectorAll('.section-header h3').forEach(h3 => observer.observe(h3));
+    // Показать боковые изображения и добавить клик-анимацию
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.side-fixed').forEach(img => {
+        img.classList.add('visible');
+        img.addEventListener('click', () => {
+          img.classList.remove('rotating');
+          setTimeout(() => img.classList.add('rotating'), 10);
+        });
+      });
+    });
+  </script>
+
   {% endblock content %}
