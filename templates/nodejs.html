@@ -1,0 +1,473 @@
+{% extends 'base.html' %}
+{% block title %}
+<div class="container text-center">
+  <div class="semi-circle">
+    <h1>Node.js</h1>
+  </div>
+</div>
+{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/nodejs.css"/>
+
+
+    <main id="infographic" class="d-flex flex-column align-items-center py-5">
+        <!-- Секция Основа -->
+        <section class="step one text-danger">
+            <div class="circle">
+                <h2>Основа</h2>
+            </div>
+            <article data-step="1">
+                <header class="d-flex align-items-center bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Node.js — это кроссплатформенная среда выполнения JavaScript с открытым исходным кодом. Это популярный инструмент практически для любого проекта! Node.js использует движок JavaScript V8, ядро Google Chrome, за пределами браузера. Это позволяет Node.js работать очень быстро. Приложение Node.js работает в одном процессе, не создавая новый поток для каждого запроса.
+
+                    В стандартной библиотеке Node.js есть набор асинхронных примитивов ввода-вывода, которые предотвращают блокировку кода JavaScript. Как правило, библиотеки в Node.js написаны с использованием неблокирующих парадигм, что делает блокировку скорее исключением, чем нормой.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что такое React?</h6>
+                </header>
+            </article>
+            <article data-step="2">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Изначально Node.js был написан Райаном Далем в 2009 году, примерно через тринадцать лет после появления первой серверной среды JavaScript — Netscape LiveWire Pro Web. Первоначальная версия поддерживала только Linux и macOS X. Разработкой и поддержкой занимался Даль, а позже — компания Joyent.
+                        ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">История</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Модули
+ -->
+        <section class="step two text-warning">
+            <div class="circle">
+                <h2>Модули
+                </h2>
+            </div>
+            <article data-step="3">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="ESM (модули ECMAScript) — это стандартизированная модульная система в JavaScript, которая обеспечивает организованное, удобное в обслуживании и многократно используемое структурирование кода. Она использует операторы импорта и экспорта для включения и совместного использования функций, объектов или примитивов между файлами. ESM поддерживает статический анализ, что позволяет лучше оптимизировать код и инструменты, и всегда работает в строгом режиме, чтобы уменьшить количество распространённых проблем с JavaScript. Node.js полностью поддерживает ESM, который можно использовать с расширениями .mjs или настроить в файле package.json для файлов .js, что упрощает написание модульных и эффективных приложений на JavaScript.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ESM
+                    </h6>
+                </header>
+            </article>
+            <article data-step="4">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="CommonJS и ES (EcmaScript) — это модульные системы, используемые в Node. CommonJS — это модульная система по умолчанию. Однако недавно в NodeJS была добавлена новая модульная система — модули ES. Модули CommonJS используют оператор require() для импорта модулей и module.exports для экспорта модулей, в то время как для ES используются импорт и экспорт.
+                        ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">CommonJS против ESM</h6>
+                </header>
+            </article>
+            <article data-step="5">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Проп (сокращение от «свойства») и состояние — это обычные объекты JavaScript. Хотя и то, и другое содержит информацию, которая влияет на вывод компонента, они отличаются одним важным аспектом: проп передаётся компоненту (аналогично параметрам функции), а состоянием управляет компонент (аналогично переменным, объявленным внутри функции).
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Props против State</h6>
+                </header>
+            </article>
+            <article data-step="6">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Модули — это набор кодов JavaScript в отдельном логическом файле, который можно использовать во внешних приложениях в соответствии с их функциональностью. В Node.js есть два способа создания модулей: с помощью CommonJS или ESM.
+                        ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Пользовательские модули
+                    </h6>
+                </header>
+            </article>
+            <article data-step="7">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В React есть мощная модель композиции, и рекомендуется использовать композицию вместо наследования для повторного использования кода между компонентами.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Композиция против наследования
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция npm -->
+        <section class="step three text-success">
+            <div class="circle">
+                <h2>npm</h2>
+            </div>
+            <article data-step="8">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="npm is the standard package manager for Node.js.
+
+                        It is two things: first and foremost, it is an online repository for the publishing of open-source Node.js projects; second, it is a command-line utility for interacting with said repository that aids in package installation, version management, and dependency management. A plethora of Node.js libraries and applications are published on npm, and many more are added every day">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Что это?</h6>
+                </header>
+            </article>
+            <article data-step="9">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Семантическое управление версиями — это стандарт управления версиями программного обеспечения, который широко используется в экосистеме npm. Он обеспечивает понятный и последовательный способ информирования пользователей об изменениях в программном пакете.
+
+                    Формат версии
+                    Семантический номер версии состоит из трех частей, разделенных точками:
+                    
+                    ОСНОВНОЙ: увеличивается при несовместимых изменениях API.
+                    МИНОР: увеличивается при добавлении новых функций с обратной совместимостью.
+                    ИСПРАВЛЕНИЕ: увеличивается при исправлении ошибок, не влияющих на API.
+                    Пример: 1.2.3
+                    1 - это основная версия.
+                    2 - это второстепенная версия.
+                    3 - это версия патча.                    
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Семантическое управление
+                    </h6>
+                </header>
+            </article>
+            <article data-step="10">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="npx — это очень мощная команда, которая появилась в npm начиная с версии 5.2, выпущенной в июле 2017 года. Если вы не хотите устанавливать npm, вы можете установить npx как отдельный пакет. npx позволяет запускать код, созданный с помощью Node.js и опубликованный в реестре npm, без необходимости устанавливать сам пакет. Это особенно полезно для тестирования новых инструментов, выполнения разовых команд или использования пакетов в общих средах, где нежелательны глобальные установки. npx загружает пакет на лету, запускает нужную команду, а затем удаляет временную установку. Это позволяет сократить количество зависимостей вашего проекта и избежать конфликтов версий.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">npx</h6>
+                </header>
+            </article>
+            <article data-step="11">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="NodeJS и NPM поддерживают два способа установки зависимостей/пакетов: локальный и глобальный. Этот способ в основном используется при добавлении пакета или зависимости в рамках конкретного проекта, над которым вы работаете. Пакет будет установлен (вместе со своими зависимостями) в папке node_modulesпод вашим проектом. Кроме того, в файле package.json будет добавлена новая строка для установленной зависимости под заголовком dependencies. На этом этапе вы можете начать использовать пакет в коде NodeJS, импортировав его. В отличие от локальной установки, вы можете установить пакеты и зависимости глобально. Это позволит установить их по системному пути, и эти пакеты будут доступны для любой программы, которая работает на этом конкретном компьютере. Этот метод часто используется для установки инструментов командной строки (например, даже npm программа является глобально установленным пакетом npm).
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Глобальная установка
+                    </h6>
+                </header>
+            </article>
+            <article data-step="12">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Локально установленные пакеты доступны только в том проекте, в котором они установлены, в то время как глобально установленные пакеты можно использовать где угодно, не устанавливая их в проект. Другой вариант использования глобальных пакетов — при работе с инструментами командной строки.
+          
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Локальная установка
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Хуки -->
+        <section class="step four text-success">
+            <div class="circle">
+                <h2>Типы ошибок</h2>
+            </div>
+            <article data-step="13">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Node.js генерирует системные ошибки, когда в среде выполнения возникают исключения. Обычно это происходит, когда приложение нарушает ограничения операционной системы. Например, системная ошибка возникает, если приложение пытается прочитать несуществующий файл.
+
+                    Ниже представлены системные ошибки часто встречаются при написании программы Node.js :
+                    
+                    EACCES - В разрешении отказано
+                    EADDRINUSE - Адрес , который уже используется
+                    ECONNRESET - Сброс соединения одноранговым узлом
+                    EEXIST - Файл существует
+                    EISDIR - это каталог
+                    EMFILE - Слишком много открытых файлов в системе
+                    ENOENT - Нет такого файла или каталога
+                    ENOTDIR - Не каталог
+                    ENOTEMPTY - Каталог не пустой
+                    ENOTFOUND - ошибка поиска DNS
+                    EPERM - Операция не разрешена
+                    EPIPE - Сломанная Труба
+                    ETIMEDOUT - Время ожидания операции истекло
+                      
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Системные ошибки
+                    </h6>
+                </header>
+            </article>
+            <article data-step="14">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Пользовательские ошибки можно создавать, расширяя базовый объект Error, встроенный класс ошибок. При создании ошибок таким образом необходимо передавать строку с сообщением, описывающим ошибку. Доступ к этому сообщению можно получить через свойство message объекта. Объект Error также содержит имя и свойство stack, которые указывают на имя ошибки и точку в коде, в которой она возникает.
+                    
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ошибки, указанные пользователем
+                    </h6>
+                </header>
+            </article>
+            <article data-step="15">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="AssertionError в Node.js — это ошибка, которая возникает, когда модуль assert определяет, что заданное выражение не является истинным. Модуль assert — это встроенный модуль Node.js, который предоставляет простой набор тестов утверждений, которые можно использовать для проверки поведения вашего кода.
+          ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ошибки в утверждениях
+                    </h6>
+                </header>
+            </article>
+            <article data-step="16">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Ошибки JavaScript используются для информирования разработчиков о различных проблемах в выполняемом скрипте. Эти проблемы могут быть синтаксическими ошибками, когда разработчик/программист использовал неправильный синтаксис, или возникать из-за неправильного ввода данных пользователем или по другим причинам.
+
+                        В JavaScript есть шесть типов ошибок, которые могут возникнуть во время выполнения скрипта:
+                        
+                        Ошибка оценки
+                        Ошибка диапазона
+                        Ошибка ссылки
+                        Синтаксическая ошибка
+                        Ошибка типа
+                        Ошибка URIError">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ошибки Javascript
+                    </h6>
+                </header>
+            </article>
+            <article data-step="17">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Если ошибка JavaScript не обрабатывается должным образом, генерируется исключение uncaughtException. Это означает, что программист допустил ошибку, и к таким ошибкам следует относиться с особым вниманием.
+
+                    Правильное использование uncaughtException заключается в синхронной очистке выделенных ресурсов (например, файловых дескрипторов, дескрипторов и т. д.) перед завершением процесса. Возобновлять нормальную работу после uncaughtException небезопасно, так как система может быть повреждена. Лучше всего позволить приложению завершить работу, зарегистрировать ошибку, а затем автоматически перезапустить процесс с помощью nodemon или pm2.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Неперехваченные Исключения
+                    </h6>
+                </header>
+            </article>
+            <article data-step="18">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Ошибки всегда нужно обрабатывать. Если вы используете синхронное программирование, вы можете использовать try catch. Но это не сработает, если вы работаете асинхронно! Асинхронные ошибки будут обрабатываться только внутри функции обратного вызова!
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ошибки асинхронности
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Операторы сравнения  -->
+        <section class="step five text-success">
+            <div class="circle">
+                <h2>Асинхронное програм-ние
+                </h2>
+            </div>
+            <article data-step="19">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Асинхронный код означает, что события могут происходить независимо от основного потока программы. Асинхронные функции в JavaScript обрабатываются в фоновом режиме, не блокируя другие запросы. Это обеспечивает неблокирующее выполнение кода. Асинхронный код выполняется без каких-либо зависимостей и в произвольном порядке. Это повышает эффективность и пропускную способность системы. Для создания веб-приложений необходимо разбираться в асинхронных концепциях, поскольку мы будем иметь дело с действиями, которые требуют некоторого времени для обработки.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что это значит?</h6>
+                </header>
+            </article>
+            <article data-step="20">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Обещание обычно определяется как замена значения, которое в конечном итоге станет доступным.
+
+                    Асинхронные функции используют промисы за кулисами, поэтому понимание того, как работают промисы, является основополагающим для понимания того, как работают «async» и «await».
+                    
+                    После вызова обещания оно переходит в состояние ожидания. Это означает, что вызывающая функция продолжает выполняться, пока обещание находится в состоянии ожидания, пока оно не будет выполнено и не предоставит вызывающей функции запрошенные данные.
+                    
+                    Создание обещания:
+                    
+                    Promise API предоставляет конструктор Promise, который вы инициализируете с помощью new Promise().
+                    
+                    Используя resolve() и reject(), мы можем сообщить вызывающей стороне, каким было результирующее состояние Promise и что с ним делать.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Обещания</h6>
+                </header>
+            </article>
+            </article>
+            <article data-step="21">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Async/Await — это специальный синтаксис для более удобной работы с промисами. Его легко понять и использовать. Добавление ключевого слова async перед функцией гарантирует, что функция вернёт промис, а ключевое слово await заставляет JavaScript ждать, пока промис не будет выполнен и не вернётся результат.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Async/Await</h6>
+                </header>
+            </article>
+            <article data-step="22">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Node.js, будучи асинхронной платформой, не ждёт завершения таких операций, как ввод-вывод файлов, — Node.js использует обратные вызовы. Обратный вызов — это функция, которая вызывается по завершении заданной задачи; это предотвращает блокировку и позволяет запускать другой код в это время.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Обратные вызовы
+                    </h6>
+                </header>
+            </article>
+            <article data-step="23">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Функция setTimeout запускает функцию по истечении указанного периода. Время указывается в миллисекундах.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">setTimeout</h6>
+                </header>
+            </article>
+            <article data-step="24">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Метод setInterval() помогает многократно выполнять функцию с фиксированной задержкой. Он возвращает уникальный идентификатор интервала, который впоследствии можно использовать с методом clearInterval() для остановки дальнейшего многократного выполнения функции.
+
+                        setInterval() Это похоже на setTimeout, но с одной разницей. Вместо того чтобы запускать функцию обратного вызова один раз, она будет запускаться бесконечно с заданным вами интервалом времени (в миллисекундах):">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">setInterval</h6>
+                </header>
+            </article>
+            <article data-step="25">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Функция setImmediate задерживает выполнение функции, которая будет вызвана после завершения всех циклов обработки текущих событий. Это очень похоже на вызов setTimeout с задержкой в 0 мс.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">setImmediate
+                    </h6>
+                </header>
+            </article>
+            <article data-step="26">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Каждый раз, когда цикл обработки событий проходит полный цикл, мы называем это тиком. Когда мы передаём функцию в process.nextTick(), мы указываем движку вызывать эту функцию в конце текущей операции перед началом следующего тика цикла обработки событий.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">process.nextTick()
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- 10. Классы ES6 -->
+        <section class="step six text-primary">
+            <div class="circle">
+                <h2>Работа с файлами</h2>
+            </div>
+            <article data-step="27">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Шаблон glob чаще всего используется для указания имён файлов, называемых символами подстановки, и строк, называемых подстановкой.
+">
+                        <i class="fa-solid fa-box-open bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">glob
+                    </h6>
+                </header>
+            </article>
+            <article data-step="28">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Основан на fast-glob, но добавляет кучу полезных функций.
+          ">
+                        <i class="fa-solid fa-project-diagram bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">globby
+                    </h6>
+                </header>
+            </article>
+            <article data-step="29">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    fs-extra добавляет методы файловой системы, которых нет в стандартном модуле fs, и добавляет поддержку промисов в методы fs. Он также использует graceful-fs для предотвращения ошибок EMFILE. Он должен стать заменой для fs.
+          ">
+                        <i class="fa-solid fa-graduation-cap bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">fs-extra
+                    </h6>
+                </header>
+            </article>
+            <article data-step="30">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Chokidar — это быстрый файловый менеджер с открытым исходным кодом для Node. js. Вы предоставляете ему набор файлов, он отслеживает их изменения и уведомляет вас каждый раз, когда редактируется старый файл или создаётся новый.
+          ">
+                        <i class="fa-solid fa-layer-group bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">сhokidar</h6>
+                </header>
+            </article>
+        </section>
+        <!-- Секция Модули (ESModules) -->
+        <section class="step seven text-success">
+            <div class="circle">
+                <h2>Фреймворки
+                </h2>
+            </div>
+            <article data-step="31">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Express — это фреймворк для веб-приложений на Node.js, предоставляющий широкие возможности для создания веб-приложений и мобильных приложений. Он используется для создания одностраничных, многостраничных и гибридных веб-приложений.
+">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Express.js
+                    </h6>
+                </header>
+            </article>
+            <article data-step="32">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Fastify — это веб-фреймворк, ориентированный на удобство разработчиков, с минимальными накладными расходами и мощной архитектурой плагинов, созданный по мотивам Hapi и Express.
+">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Fastify</h6>
+                </header>
+            </article>
+            <article data-step="33">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        NestJS — это прогрессивный фреймворк Node.js для создания эффективных и масштабируемых серверных приложений.
+
+                        ">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">NestJS</h6>
+                </header>
+            </article>
+            <article data-step="34">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Hono — это лёгкий, простой и быстрый веб-фреймворк для Cloudflare Workers, Deno, Bun и других приложений. Это современное веб-приложение, которое является одновременно быстрым и гибким. Оно предлагает встроенную поддержку TypeScript и упрощает разработку в локальной среде. С помощью Hono можно легко создавать веб-приложения для публикации с помощью Deno, Bun и Cloudflare Workers.
+            ">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Hono</h6>
+                </header>
+            </article>
+        </section>
+    </main>
+{% endblock content %}

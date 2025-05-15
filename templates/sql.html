@@ -1,0 +1,448 @@
+{% extends 'base.html' %}
+{% block title %}
+<div class="container text-center">
+  <div class="semi-circle">
+    <h1>SQL</h1>
+  </div>
+</div>
+{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/sql.css"/>
+
+
+    <main id="infographic" class="d-flex flex-column align-items-center py-5">
+        <!-- Секция Основа -->
+        <section class="step one text-danger">
+            <div class="circle">
+                <h2>Основа</h2>
+            </div>
+            <article data-step="1">
+                <header class="d-flex align-items-center bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="SQL, что расшифровывается как «язык структурированных запросов», — это язык программирования, который используется для взаимодействия с базами данных и управления ими. SQL — это стандартный язык для работы с данными, хранящимися в системах управления реляционными базами данных (RDBMS), или для потоковой обработки в системах управления реляционными потоками данных (RDSMS). Впервые он был разработан компанией IBM в 1970-х годах.
+
+                    SQL состоит из нескольких компонентов, каждый из которых выполняет свою уникальную функцию в работе с базами данных:
+                    
+                    Запросы: это компонент, который позволяет извлекать данные из базы данных. Для этой цели чаще всего используется оператор SELECT.
+                    Язык определения данных (DDL): позволяет создавать, изменять или удалять базы данных и связанные с ними объекты, такие как таблицы, представления и т. д. Команды включают CREATE, ALTER, DROP и TRUNCATE.
+                    Язык манипулирования данными (DML): позволяет управлять данными в объектах базы данных. К этим командам относятся SELECT, INSERT, UPDATE и DELETE.
+                    Язык управления данными (DCL): включает в себя такие команды, как GRANT и REVOKE, которые в основном связаны с правами, разрешениями и другими задачами управления на уровне системы баз данных.
+                    Базы данных SQL бывают разных типов, например Oracle Database, Microsoft SQL Server и MySQL. Несмотря на множество различий, во всех базах данных SQL используются одни и те же команды — SQL.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что такое SQL?</h6>
+                </header>
+            </article>
+            <article data-step="2">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Реляционные базы данных — это тип системы управления базами данных (СУБД), которая хранит и предоставляет доступ к связанным друг с другом точкам данных. Основанные на реляционной модели, представленной Э. Ф. Коддом в 1970 году, они используют структуру, которая позволяет организовывать данные в таблицы со строками и столбцами. К ключевым особенностям относятся:
+
+                        Использование SQL (Structured Query Language) для запросов данных и управления ими
+                        Поддержка транзакций ACID (атомарность, согласованность, изоляция, надёжность)
+                        Обеспечение целостности данных с помощью ограничений (например, первичных и внешних ключей)
+                        Возможность устанавливать связи между таблицами, позволяя выполнять сложные запросы и извлекать данные
+                        Масштабируемость и поддержка многопользовательских сред
+                        К популярным системам реляционных баз данных относятся MySQL, PostgreSQL, Oracle и Microsoft SQL Server. Они широко используются в различных приложениях, от небольших проектов до крупных корпоративных систем, благодаря своей надёжности, согласованности и мощным возможностям запросов.
+                                                
+                        ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что такое реляционные БД?
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Модули
+ -->
+        <section class="step two text-warning">
+            <div class="circle">
+                <h2>Базовый синтаксис
+                </h2>
+            </div>
+            <article data-step="3">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Ключевые слова SQL — это зарезервированные слова, которые имеют особое значение в операторах SQL. К ним относятся команды (например, SELECT, INSERT, UPDATE), предложения (например, WHERE, GROUP BY, HAVING), а также другие синтаксические элементы, формирующие структуру запросов SQL. Понимание ключевых слов SQL необходимо для написания корректных и эффективных запросов к базе данных. Ключевые слова обычно не чувствительны к регистру, но для удобства чтения их часто пишут заглавными буквами.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ключевые слова
+                    </h6>
+                </header>
+            </article>
+            <article data-step="4">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Типы данных SQL определяют, какие значения могут храниться в столбце, и определяют, как данные сохраняются, обрабатываются и извлекаются. К распространённым типам данных относятся числовые типы (INTEGER, DECIMAL), символьные типы (CHAR, VARCHAR), типы даты и времени (DATE, TIMESTAMP), двоичные типы (BLOB), а также логические типы. В каждой системе управления базами данных может быть свой собственный набор типов данных с небольшими различиями. Выбор подходящего типа данных для каждого столбца имеет решающее значение для оптимизации хранения, обеспечения целостности данных и повышения производительности запросов.
+                        ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Типы данных</h6>
+                </header>
+            </article>
+            <article data-step="5">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="SELECT — одна из самых базовых команд SQL, которая используется для извлечения данных из одной или нескольких таблиц в базе данных. Она позволяет указывать, какие столбцы нужно извлечь, применять условия фильтрации, сортировать результаты и выполнять различные операции с данными. Оператор SELECT универсален и поддерживает объединения, подзапросы, агрегацию и многое другое, что делает его незаменимым для запросов и анализа данных в реляционных базах данных.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">SELECT</h6>
+                </header>
+            </article>
+            <article data-step="6">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Оператор «INSERT» используется для добавления новых строк данных в таблицу в базе данных. Существует две основные формы команды INSERT: INSERT INTO которая, если столбцы не названы, ожидает полный набор столбцов, и INSERT INTO table_name (column1, column2, ...) в которой только названные столбцы будут заполняться данными.
+                        ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">INSERT
+                    </h6>
+                </header>
+            </article>
+            <article data-step="7">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="DELETE — это оператор SQL, используемый для удаления одной или нескольких строк из таблицы. Он позволяет указать, какие строки нужно удалить, с помощью предложения WHERE или удалить все строки, если условие не указано. DELETE является частью языка манипулирования данными (DML) и используется для обслуживания данных, удаления устаревшей или неверной информации или реализации бизнес-логики, которая требует удаления данных. При использовании без предложения WHERE он очищает всю таблицу, сохраняя её структуру, в отличие от команды TRUNCATE.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">DELETE
+                    </h6>
+                </header>
+            </article>
+            <article data-step="8">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Оператор UPDATE в SQL используется для изменения существующих записей в таблице. Он позволяет изменять значения одного или нескольких столбцов на основе заданных условий. Базовый синтаксис включает указание имени таблицы, обновляемых столбцов с их новыми значениями и, при необходимости, предложение WHERE для фильтрации строк, которые должны быть затронуты. Оператор UPDATE можно использовать в сочетании с подзапросами, объединениями и CTE (выражениями общих таблиц) для более сложных изменений данных. Важно аккуратно использовать UPDATE, особенно с предложением WHERE, чтобы избежать непреднамеренных изменений данных. В транзакционных базах данных операции UPDATE могут быть отменены, если они являются частью транзакции, которая не была зафиксирована.
+                        ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">UPDATE</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция SELECT -->
+        <section class="step three text-success">
+            <div class="circle">
+                <h2>SELECT</h2>
+            </div>
+            
+            <article data-step="9">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Предложение FROM в SQL определяет таблицы, из которых следует извлекать данные. Оно является неотъемлемой частью операторов SELECT и вариантов SELECT like SELECT INTO и SELECT WHERE. FROM Также может использоваться для объединения таблиц.
+
+                    Как правило, за FROM следует разделённый пробелами список таблиц, в которых должна быть выполнена операция SELECT. Если вам нужно извлечь данные из нескольких таблиц, вы можете разделить их запятыми.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">FROM
+                    </h6>
+                </header>
+            </article>
+            <article data-step="10">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="GROUP BY Это предложение SQL, используемое в операторах SELECT для объединения идентичных данных в группы. Обычно оно используется с агрегатными функциями (например, COUNT, SUM, AVG) для выполнения вычислений для каждой группы строк. GROUP BY собирает данные из нескольких записей и группирует результаты по одному или нескольким столбцам, что позволяет анализировать данные с более высоким уровнем детализации. Это предложение является основой для создания сводных отчётов, анализа данных и создания значимых совокупностей данных в реляционных базах данных.
+
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">GROUP BY</h6>
+                </header>
+            </article>
+            <article data-step="11">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Предложение ORDER BY в SQL используется для сортировки набора результатов запроса по одному или нескольким столбцам. По умолчанию сортировка выполняется в порядке возрастания, но вы можете указать сортировку в порядке убывания с помощью ключевого слова DESC . Предложение может выполнять сортировку по числовым, датам или текстовым значениям, а несколько столбцов можно отсортировать, перечислив их в предложении ORDER BY , указав для каждого из них своё направление сортировки. Это предложение крайне важно для организации данных в осмысленной последовательности, например, для сортировки по дате, чтобы сначала отображались самые свежие записи, или в алфавитном порядке по имени.
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ORDER BY
+                    </h6>
+                </header>
+            </article>
+            <article data-step="12">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Предложение HAVING используется в сочетании с предложением GROUP BY для фильтрации результатов GROUP BY. Оно используется для указания условий для групповых функций, таких как SUM, COUNT, AVG, MAX или MIN.
+
+                    Важно отметить, что если предложение WHERE вводит условия для отдельных строк, то HAVING вводит условия для групп, созданных предложением GROUP BY.
+                    
+                    Также обратите внимание, что HAVING применяется к сводным групповым записям, а WHERE — к индивидуальным записям.
+          
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">HAVING
+                    </h6>
+                </header>
+            </article>
+            <article data-step="13">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="SQL JOINs — это операторы, которые используются для объединения строк из двух или более таблиц на основе связанного с ними столбца. Они позволяют извлекать данные из нескольких таблиц с помощью одного запроса, что обеспечивает сложный анализ данных и составление отчётов. К основным типам JOINs относятся:
+
+                    INNER JOIN (возвращает совпадающие строки из обеих таблиц)
+                    LEFT JOIN (возвращает все строки из левой таблицы и соответствующие строки из правой)
+                    RIGHT JOIN (противоположность LEFT JOIN)
+                    FULL JOIN (возвращает все строки, если в одной из таблиц есть совпадение)
+                    JOINs являются основой для работы с реляционными базами данных, упрощая интеграцию данных и их изучение в рамках связанных наборов данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">JOINs
+                    </h6>
+                </header>
+            </article>
+            <article data-step="14">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В SQL есть предложение WHERE, которое в основном используется для фильтрации записей. Если условие, указанное в предложении WHERE, выполняется, то возвращается только конкретное значение из таблицы. Предложение WHERE следует использовать для фильтрации записей и получения только необходимых записей.
+
+                    Предложение WHERE используется не только в операторе SELECT, но и в операторах UPDATE, DELETE и т. д., о которых мы узнаем в следующих главах.
+                    
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">WHERE
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Агрегатные запросы -->
+        <section class="step four text-success">
+            <div class="circle">
+                <h2>Агрегатные запросы</h2>
+            </div>
+            
+            <article data-step="15">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="SUM — это агрегатная функция в SQL, которая используется для вычисления суммы набора значений. Обычно она применяется к числовым столбцам в сочетании с предложением GROUP BY для вычисления сумм по разным категориям или группам данных. Функция SUM необходима для финансовых расчётов, статистического анализа и создания сводных отчётов на основе таблиц баз данных. Она игнорирует значения NULL и может использоваться в сочетании с другими агрегатными функциями для комплексного анализа данных.
+          ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">SUM
+                    </h6>
+                </header>
+            </article>
+            <article data-step="16">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="COUNT Это агрегатная функция SQL, которая возвращает количество строк, соответствующих заданным критериям. Ее можно использовать для подсчета всех строк в таблице, ненулевых значений в определенном столбце или строк, соответствующих определенным условиям, в сочетании с предложением WHERE. COUNT Часто используется в запросах для анализа данных, составления отчетов и оптимизации производительности для определения размера наборов данных или частоты появления определенных значений.
+
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">COUNT
+                    </h6>
+                </header>
+            </article>
+            <article data-step="17">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Функция AVG() в SQL — это агрегатная функция, которая вычисляет среднее значение числового столбца. Она возвращает сумму всех значений в столбце, разделённую на количество этих значений.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">AVG
+                    </h6>
+                </header>
+            </article>
+            <article data-step="18">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="MIN Это агрегатная функция в SQL, которая возвращает наименьшее значение из набора значений. Она работает с числовыми, датами или строковыми типами данных, выбирая минимальное значение из указанного столбца. Часто используется в сочетании с GROUP BY или MIN для поиска наименьшего значения в каждой группе. Эта функция полезна для различных задач по анализу данных, таких как определение самой низкой цены, самой ранней даты или имени в алфавитном порядке в наборе данных.
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">MIN
+                    </h6>
+                </header>
+            </article>
+            <article data-step="19">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="MAX Это агрегатная функция в SQL, которая возвращает наибольшее значение в наборе значений. Она может использоваться с числовыми, датами или строковыми типами данных для выбора максимального значения из указанного столбца. MAX Часто используется в сочетании с GROUP BY для поиска наибольшего значения в каждой группе. Эта функция полезна для различных задач по анализу данных, таких как поиск самой высокой зарплаты, самой поздней даты или фамилии в алфавитном порядке в наборе данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">MAX</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Ограничения -->
+        <section class="step five text-success">
+            <div class="circle">
+                <h2>Ограничения
+                </h2>
+            </div>
+            
+            <article data-step="20">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Первичный ключ в SQL — это уникальный идентификатор для каждой записи в таблице базы данных. Он обеспечивает уникальную идентификацию каждой строки в таблице, то есть ни одна из двух строк не может иметь одинаковое значение первичного ключа. Первичный ключ состоит из одного или нескольких столбцов и должен содержать уникальные значения без каких-либо NULL повторяющихся записей. Первичный ключ обеспечивает целостность сущности, предотвращая появление дублирующихся записей и гарантируя, что каждая запись может быть точно найдена и на неё можно сослаться, часто с помощью внешних ключей в других таблицах. Использование первичного ключа необходимо для установления связей между таблицами и поддержания целостности модели данных.
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Первичный ключ
+                    </h6>
+                </header>
+            </article>
+            </article>
+            <article data-step="21">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Внешний ключ в SQL — это столбец или группа столбцов в одной таблице, которые ссылаются на первичный ключ другой таблицы. Он устанавливает связь между двумя таблицами, обеспечивая ссылочную целостность и поддерживая взаимосвязи между связанными данными. Внешние ключи гарантируют, что значения в ссылающейся таблице соответствуют допустимым значениям в ссылающейся таблице, предотвращая появление «осиротевших» записей и поддерживая согласованность данных в разных таблицах. Они крайне важны для реализации реляционных баз данных и поддержки сложных запросов, объединяющих несколько таблиц.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Вторичный ключ
+                    </h6>
+                </header>
+            </article>
+            <article data-step="22">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="UNIQUE Это ограничение в SQL, используемое для того, чтобы все значения в столбце или наборе столбцов были уникальными. При применении к столбцу или комбинации столбцов оно предотвращает вставку в таблицу повторяющихся значений. Это ограничение крайне важно для поддержания целостности данных, особенно для таких полей, как адреса электронной почты, имена пользователей или коды товаров, где требуется уникальность. UNIQUE Ограничения могут быть применены при создании таблицы или добавлены позже, и они автоматически создают индекс для указанного столбца (столбцов) для повышения производительности запросов. В отличие от ограничений PRIMARY KEY столбцы UNIQUE могут содержать NULL значения (если это явно не запрещено), а таблица может иметь несколько ограничений UNIQUE
+
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Уникальный
+                    </h6>
+                </header>
+            </article>
+            <article data-step="23">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Ограничение NOT NULL в SQL гарантирует, что столбец не может иметь значение NULL. Таким образом, каждая строка/запись должна содержать значение для этого столбца. Это способ сделать определённые поля обязательными при вставке или обновлении записей в таблице.
+
+                        Например, если вы создаёте таблицу для хранения данных о сотрудниках, вы можете захотеть убедиться, что данные о сотруднике id и name всегда присутствуют. В этом случае вы можете использовать ограничение NOT NULL .">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Не нулевой</h6>
+                </header>
+            </article>
+            <article data-step="24">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Ограничение CHECK в SQL используется для обеспечения целостности данных путём указания условия, которое должно выполняться для каждой строки в таблице. Оно позволяет определять пользовательские правила или ограничения для значений, которые могут быть вставлены или обновлены в одном или нескольких столбцах. CHECK Ограничения помогают поддерживать качество данных, предотвращая добавление в базу данных неверных или противоречивых данных и гарантируя, что будут приняты только данные, соответствующие заданным критериям.
+
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">CHECK</h6>
+                </header>
+            </article>
+
+        </section>
+
+        <!-- 10. Классы ES6 -->
+        <section class="step six text-primary">
+            <div class="circle">
+                <h2>Функции</h2>
+            </div>
+            <article data-step="25">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="CONCAT Это функция SQL, которая используется для объединения двух или более строк в одну. Она принимает несколько входных строк в качестве аргументов и возвращает новую строку, которая представляет собой конкатенацию всех входных строк в том порядке, в котором они были указаны. CONCAT Обычно используется в операторах SELECT для объединения данных из нескольких столбцов, создания пользовательских форматов вывода или генерации динамических SQL-запросов.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">CONCAT
+                    </h6>
+                </header>
+            </article>
+            <article data-step="26">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Функция LENGTH в SQL возвращает количество символов в строке. Она используется для измерения размера текстовых данных, что может быть полезно при проверке данных, форматировании или анализе. В некоторых системах баз данных LENGTH может по-разному подсчитываться количество символов для многобайтовых наборов символов. Большинство диалектов SQL поддерживают LENGTH, но некоторые могут использовать альтернативные имена, такие как LEN (в SQL Server) или CHAR_LENGTH. Эта функция особенно полезна для обеспечения соблюдения ограничений по символам, разделения строк или выявления аномалий в строковых данных.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">LENGTH
+                    </h6>
+                </header>
+            </article>
+            <article data-step="27">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        SUBSTRING — это функция SQL, используемая для извлечения части строки. Она позволяет указать начальную позицию и длину извлекаемой подстроки. Эта функция полезна для обработки данных, синтаксического анализа и форматирования. Точный синтаксис может немного отличаться в разных системах баз данных, но основная функциональность остаётся неизменной, что делает её универсальным инструментом для работы со строковыми данными в базах данных.
+">
+                        <i class="fa-solid fa-box-open bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">SUBSTRING
+                    </h6>
+                </header>
+            </article>
+            <article data-step="28">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    UPPER() — это строковая функция в SQL, которая преобразует все символы в указанной строке в верхний регистр. Эта функция особенно полезна для нормализации данных, сравнения без учёта регистра или форматирования вывода. Функция UPPER() обычно работает с буквенными символами и оставляет небуквенные символы без изменений. Она часто используется в операторах SELECT для отображения данных, в предложениях WHERE для поиска без учёта регистра или в операциях с данными. В большинстве баз данных SQL также есть дополнительная функция LOWER() для преобразования в нижний регистр. При работе с международными наборами символов важно помнить о потенциальном поведении функции UPPER(), зависящем от региона.
+                    ">
+                        <i class="fa-solid fa-project-diagram bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">UPPER
+                    </h6>
+                </header>
+            </article>
+            <article data-step="29">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Функция LOWER в SQL преобразует все символы в указанной строке в нижний регистр. Это функция обработки строк, которая принимает один аргумент (вводную строку) и возвращает ту же строку, в которой все буквенные символы преобразованы в их строчные эквиваленты. LOWER полезна для стандартизации данных, сравнения без учёта регистра или форматирования вывода. Она не влияет на небуквенные символы или цифры в строке. LOWER обычно используется для очистки данных, поиска и обеспечения единообразного представления данных в разных системах.
+                    ">
+                        <i class="fa-solid fa-graduation-cap bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">LOWER
+                    </h6>
+                </header>
+            </article>
+            <article data-step="30">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Функция ABS() в SQL возвращает абсолютное значение заданного числового выражения, то есть преобразует любое отрицательное число в его положительный эквивалент, оставляя положительные числа без изменений. Эта функция полезна, когда нужно убедиться, что результат вычисления или значение, сохранённое в столбце базы данных, является неотрицательным, например, при вычислении расстояний, разностей или других показателей, где имеют смысл только положительные значения. Например, SELECT ABS(-5) вернёт 5.
+                    ">
+                        <i class="fa-solid fa-layer-group bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ABS</h6>
+                </header>
+            </article>
+            <article data-step="31">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Функция MOD в SQL вычисляет остаток от деления одного числа на другое. Она принимает два аргумента: делимое и делитель. MOD Возвращает остаток от операции деления, что полезно для различных математических операций, в том числе для проверки чётности/нечётности чисел, реализации циклических процессов или равномерного распределения данных. Синтаксис и точное поведение могут незначительно отличаться в разных системах баз данных, при этом в некоторых вместо ключевого слова MOD используется оператор %.
+">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">MOD
+                    </h6>
+                </header>
+            </article>
+            <article data-step="32">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Функция ROUND в SQL используется для округления числового значения до указанного количества знаков после запятой. Она принимает два аргумента: число, которое нужно округлить, и количество знаков после запятой, до которых нужно округлить. Если второй аргумент опущен, функция округляет число до ближайшего целого. Для положительных значений второго аргумента число округляется до указанного количества знаков после запятой; для отрицательных значений оно округляется до ближайшего десятка, сотни, тысячи и т. д. Функция ROUND полезна для форматирования числовых данных для отчётов или обеспечения постоянной точности вычислений.
+">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ROUND</h6>
+                </header>
+            </article>
+            <article data-step="33">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Функция CEILING() в SQL возвращает наименьшее целое число, большее или равное заданному числовому значению. Она полезна, когда нужно округлить число до ближайшего целого, независимо от того, является ли число целым или десятичным. Например, CEILING(4.2) вернёт 5, а CEILING(-4.7) вернёт -4. Эта функция обычно используется в сценариях, где необходимо округлить число в большую сторону, например, при вычислении количества страниц, необходимых для отображения определённого количества элементов, когда каждая страница имеет фиксированную вместимость.
+                        ">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">CEILING</h6>
+                </header>
+            </article>
+        </section>
+    </main>
+{% endblock content %}
