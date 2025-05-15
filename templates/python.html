@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% block title %}Python{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/python.css"/>
+
+<main id="infographic" class="d-flex flex-column align-items-center py-5">
+  <!-- Секция Основа -->
+  <section class="step one text-danger">
+    <div class="circle">
+      <h2>Основа</h2>
+    </div>
+    <article data-step="1">
+      <header class="d-flex align-items-center bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Python - это высокоуровневый, интерпретируемый язык программирования общего назначения. Философия его разработки заключается в том, чтобы сделать код читабельным за счет использования значительных отступов. Python поддерживает динамическую типизацию и сборку мусора.
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Что такое Python?</h6>
+      </header>
+    </article>
+    <article data-step="2">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Условные операторы в Python выполняют разные действия в зависимости от того, является ли конкретное условие истинным или ложным. Условные операторы в Python обрабатываются с помощью операторов if-elif-else и операторов MATCH-CASE.
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Условные обозначения</h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Переменные Javascript
+-->
+  <section class="step two text-warning">
+    <div class="circle">
+      <h2>Переменные</h2>
+    </div>
+    <article data-step="3">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Процесс преобразования значения одного типа данных (integer, string, float и т.д.) в другой тип данных называется преобразованием типов. В Python есть два типа преобразования типов: неявное и явное.">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Приведение типов</h6>
+      </header>
+    </article>
+    <article data-step="4">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Циклы используются для многократного выполнения блока кода.">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Циклы</h6>
+      </header>
+    </article>
+    <article data-step="5">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Исключения Python - это события, которые происходят во время выполнения программы и нарушают нормальное выполнение инструкций программы. Когда возникает исключение, это указывает на то, что произошла ошибка. Python предоставляет способ обработки этих исключений с помощью блоков try-except, позволяя разработчикам корректно справляться с ошибками и обеспечивать плавное продолжение работы программы или ее завершение.
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Исключения</h6>
+      </header>
+    </article>
+    <article data-step="6">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="В программировании функция - это многократно используемый блок кода, который при вызове выполняет определенную функциональность. Функции являются неотъемлемой частью любого языка программирования, поскольку они помогают сделать ваш код более модульным и пригодным для повторного использования. В Python мы определяем функцию с помощью ключевого слова def, затем записываем идентификатор функции (имя), за которым следуют круглые скобки и двоеточие.">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">Функции</h6>
+      </header>
+    </article>
+    <article data-step="7">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Списки: Список похож на массивы динамического размера, объявленные в других языках (vector в C++ и ArrayList в Java). Списки не всегда должны быть однородными, что делает его самым мощным инструментом в Python.
+
+        Кортеж: Кортеж - это набор объектов Python, разделенных запятыми. В некотором смысле кортеж похож на список с точки зрения индексации, вложенных объектов и повторения, но кортеж неизменяем, в отличие от списков, которые могут изменяться.
+        
+        Set: Набор - это неупорядоченный тип данных коллекции, который можно повторять, изменять и в котором нет повторяющихся элементов. Класс set в Python представляет математическое понятие набора.
+        
+        Словарь: В python словарь - это упорядоченная (начиная с версии 3.7) [неупорядоченная (версия 3.6 и более ранняя)] коллекция значений данных, используемая для хранения значений данных в виде карты, которая, в отличие от других типов данных, содержащих только одно значение в качестве элемента, содержит пару ключ:значение. Ключ-значение предоставляется в словаре для большей оптимизации.
+        
+        - Кортежи
+        Кортежи - это неизменяемые последовательности, что означает, что после создания кортежа его элементы не могут быть изменены. Кортежи часто используются для хранения связанных фрагментов информации. Они определяются путем помещения элементов в круглые скобки (), разделенные запятыми.
+        
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">Списки, кортежи, наборы и словари</h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Типы данных -->
+  <section class="step three text-success">
+    <div class="circle">
+      <h2>Структура данных</h2>
+    </div>
+    <article data-step="10">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Хэш-таблица, Карта, HashMap, Словарь или Ассоциативный - все это названия одной и той же структуры данных. Это структура данных, которая реализует определенный абстрактный тип данных, структуру, которая может преобразовывать ключи в значения.
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">Хэш-таблицы</h6>
+      </header>
+    </article>
+    <article data-step="11">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="•	Стеки: Операции выполняются LIFO (последний вход, первый выход), что означает, что последний добавленный элемент будет удален первым. Стек может быть реализован с использованием массива или связанного списка. Если в стеке заканчивается память, это называется переполнением стека.
+        •	Очередь: операции выполняются по принципу FIFO (первый вошел, первый вышел), что означает, что первый добавленный элемент будет первым удаленным. Очередь может быть реализована с использованием массива.
+        •	Куча: древовидная структура данных, в которой значение родительского узла упорядочено определенным образом по отношению к значению его дочерних узлов. Куча может быть либо минимальной (значение родительского узла меньше или равно значению его дочерних узлов), либо максимальной (значение родительского узла больше или равно значению его дочерних узлов).
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Cтеки и очереди</h6>
+      </header>
+    </article>
+    <article data-step="12">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Рекурсия - это метод решения вычислительной задачи, в котором решение зависит от решений меньших экземпляров одной и той же задачи. Рекурсия решает такие рекурсивные задачи с помощью функций, которые вызывают сами себя из своего собственного кода.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Рекурсия</h6>
+      </header>
+    </article>
+    <article data-step="13">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Модули относятся к файлам, содержащим инструкции и определения Python. Файл, содержащий код на Python, например: example.py, называется модулем, и его имя модуля будет example. Мы используем модули для разбивки больших программ на небольшие управляемые и упорядоченные файлы. Кроме того, модули обеспечивают возможность повторного использования кода.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Модули </h6>
+      </header>
+    </article>
+    <article data-step="14">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Лямбда-функции Python являются анонимными, что означает, что у функции нет имени. Как мы уже знаем, ключевое слово def используется для определения обычной функции в Python. Аналогично, ключевое слово lambda используется для определения анонимной функции в Python.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Лямбда-выражения</h6>
+      </header>
+    </article>
+    <article data-step="15">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Decorator - это шаблон проектирования в Python, который позволяет пользователю добавлять новые функциональные возможности к существующему объекту без изменения его структуры. Декораторы обычно вызываются перед определением функции, которую вы хотите украсить.
+        ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Декораторы</h6>
+      </header>
+    </article>
+    <article data-step="16">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Итератор - это объект, содержащий счетное число значений. Итератор - это объект, по которому можно выполнять итерации, что означает, что вы можете просматривать все значения. Технически, в Python итератор - это объект, реализующий протокол iterator, который состоит из методов iter() и next().
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Итераторы</h6>
+      </header>
+    </article>
+    <article data-step="17">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В Python объектно-ориентированное программирование (OOPs) - это парадигма программирования, которая использует объекты и классы в программировании. Она направлена на реализацию в программировании таких реальных сущностей, как наследование, полиморфизм, инкапсуляция и т.д. Основная концепция OOPs заключается в объединении данных и функций, которые с ними работают, в единое целое, чтобы никакая другая часть кода не могла получить доступ к этим данным.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">ООП</h6>
+      </header>
+    </article>
+    <article data-step="18">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Класс - это определенный пользователем шаблон или прототип, на основе которого создаются объекты. Классы предоставляют средства объединения данных и функциональных возможностей. При создании нового класса создается объект нового типа, что позволяет создавать новые экземпляры этого типа. К каждому экземпляру класса могут быть прикреплены атрибуты для поддержания его состояния. Экземпляры класса также могут иметь методы (определенные их классом) для изменения своего состояния.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Классы</h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Менеджеры пакетов -->
+  <section class="step four text-success">
+    <div class="circle">
+      <h2>Менеджеры пакетов</h2>
+    </div>
+    <article data-step="19">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Poetry - это инструмент для управления зависимостями и упаковки для Python, который работает в Windows, macOS и Linux. Poetry эффективно устанавливает пакеты и их зависимости, управляет ими и обновляет их. Poetry легко создает, сохраняет, загружает и переключается между средами проекта на вашем локальном компьютере. Он разработан специально для проектов на Python и обеспечивает оптимизированный рабочий процесс для управления зависимостями, виртуальными средами и созданием пакетов.
+          Poetry как менеджер пакетов помогает вам находить и устанавливать пакеты. Если вам нужна конкретная версия пакета или другая версия Python, Poetry легко справляется как с управлением зависимостями, так и с виртуальными средами. С помощью всего нескольких команд вы можете настроить полностью изолированную среду для запуска другой версии Python или конфигурации пакета, сохранив при этом вашу обычную среду разработки. Файл блокировки Poetry обеспечивает согласованную установку в разных средах, повышая воспроизводимость и стабильность ваших проектов.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Poetry</h6>
+      </header>
+    </article>
+    <article data-step="20">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Conda - это система управления пакетами и средой с открытым исходным кодом, которая работает в Windows, macOS и Linux. Conda быстро устанавливает, запускает и обновляет пакеты и их зависимости. Conda легко создает, сохраняет, загружает и переключается между средами на вашем локальном компьютере. Он был создан для программ на Python, но может упаковывать и распространять программное обеспечение для любого языка.         
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Conda</h6>
+      </header>
+    </article>
+    </article>
+    <article data-step="21">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="PyPI, обычно произносимое как pie-pee-eye, представляет собой хранилище, содержащее несколько сотен тысяч пакетов. Они варьируются от простых реализаций Hello, World до продвинутых библиотек глубокого обучения.
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">PyPI</h6>
+      </header>
+    </article>
+    <article data-step="22">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="uv - это “чрезвычайно быстрый” установщик и распознаватель пакетов python.">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Pip</h6>
+      </header>
+    </article>
+    <article data-step="23">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Объект Set позволяет хранить уникальные значения любого типа, будь то примитивные значения или ссылки на объекты. Значение в наборе может встречаться только один раз; оно уникально в коллекции набора.">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">uv</h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Фреймворки   -->
+  <section class="step five text-success">
+    <div class="circle">
+      <h2>Фреймворки</h2>
+    </div>
+    <article data-step="24">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Plotly Dash - это платформа Python, которая позволяет создавать аналитические веб-приложения. Это библиотека высокого уровня, которая позволяет создавать интерактивные веб-панели визуализации данных, не требуя обширных знаний в области веб-разработки.">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Plotly Dash</h6>
+      </header>
+    </article>
+    <article data-step="25">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Pyramid - это общая платформа для разработки веб-приложений с открытым исходным кодом, построенная на python. Она позволяет разработчикам на python легко создавать веб-приложения. Pyramid поддерживается корпоративной системой управления знаниями KARL (проект Джорджа Сороса).">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Pyramid</h6>
+      </header>
+    </article>
+    <article data-step="26">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="gevent - это библиотека Python, которая предоставляет высокоуровневый интерфейс для цикла обработки событий. Она основана на неблокирующем вводе-выводе (libevent/libev) и облегченных интерфейсах greenlets. Неблокирующий ввод-вывод означает, что запросы, ожидающие ввода-вывода по сети, не будут блокировать другие запросы; зеленые поля означают, что мы можем продолжать писать код в синхронном стиле.">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">gevent</h6>
+      </header>
+    </article>
+    <article data-step="27">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        Tornado - это масштабируемый неблокирующий веб-сервер и платформа для веб-приложений, написанные на Python. Он был разработан для использования FriendFeed; компания была приобретена Facebook в 2009 году, и вскоре после этого Tornado был доступен с открытым исходным кодом.">
+          <i class="fa-solid fa-box-open bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Tornado</h6>
+      </header>
+    </article>
+    <article data-step="28">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        aiohttp - это библиотека на Python версии 3.5+, которая обеспечивает простую и мощную реализацию асинхронного HTTP-клиента и сервера.">
+          <i class="fa-solid fa-project-diagram bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">AIOHTTP</h6>
+      </header>
+    </article>
+    <article data-step="29">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        Sanic - это веб-сервер на Python версии 3.7+ и веб-фреймворк, написанный для быстрой работы. Это позволяет использовать синтаксис async/await, добавленный в Python 3.5, что делает ваш код неблокирующим и быстрым.">
+          <i class="fa-solid fa-graduation-cap bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Sanic</h6>
+      </header>
+    </article>
+    <article data-step="30">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        FastAPI - это веб-фреймворк для разработки RESTful API на Python. FastAPI основан на Pydantic и type hints для проверки, сериализации и десериализации данных и автоматического создания документов OpenAPI.">
+          <i class="fa-solid fa-layer-group bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">FastAPI</h6>
+      </header>
+    </article>
+    <article data-step="31">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#infoModal"
+              data-modal-content="
+              Django - это бесплатный веб-фреймворк на основе Python с открытым исходным кодом, который соответствует архитектурному шаблону model–template–views. Он поддерживается Django Software Foundation, независимой организацией, основанной в США как 501 некоммерческая организация">
+          <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Django</h6>
+      </header>
+    </article>
+    <article data-step="32">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#infoModal"
+              data-modal-content="
+              Flask - это микро-веб-фреймворк, написанный на Python. Он классифицируется как микро-фреймворк, поскольку не требует специальных инструментов или библиотек. В нем нет уровня абстракции базы данных, проверки формы или каких-либо других компонентов, для которых уже существующие сторонние библиотеки предоставляют общие функции. Вместо этого он обеспечивает гибкость, требуя от вас выбора и интеграции лучших библиотек в соответствии с потребностями вашего проекта.">
+          <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Flask</h6>
+      </header>
+    </article>
+  </section>
+</main>
+{% endblock content %}

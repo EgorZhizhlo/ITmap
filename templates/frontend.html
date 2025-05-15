@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Frontend разработка — ITmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/webp" href="images/logo_new.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+
+    .hero-section {
+      background-color: transparent;
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-top: 100px;
+      color: #002b5f;
+      text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    .semi-circle {
+      display: inline-block;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 20px;
+      border-radius: 50px;
+      /* Превращает в прямоугольный овал */
+      border: 5px solid #7494ec;
+      text-align: center;
+    }
+
+    .semi-circle h1 {
+      margin: 0;
+      color: #1e5291;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* Стили для большого круга */
+    #infographic .circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 7px double;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+      position: absolute;
+      left: 50%;
+      margin: 40px 0;
+    }
+
+
+    .circles-container .circle {
+      width: 50px;
+      height: 50px;
+      gap: 30;
+      border-radius: 50%;
+      border: 5px double;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    /* Фиксированные изображения слева и справа от главной фотографии */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    .step.one header {
+      background-color: rgba(0, 48, 96, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 2: насыщенный зелёный фон + белый текст */
+    .step.two header {
+      background-color: rgba(0, 128, 64, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 3: тёмно-оранжевый фон + белый текст */
+    .step.three header {
+      background-color: rgba(255, 128, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 4: насыщенный красный фон + белый текст */
+    .step.four header {
+      background-color: rgba(192, 0, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.six header {
+      background-color: rgba(158, 199, 242, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.seven header {
+      background-color: rgba(125, 255, 149, 0.85) !important;
+      color: #ffffff !important;
+    }
+
+    .step.eight header {
+      background-color: rgba(252, 177, 206, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.nine header {
+      background-color: rgba(68, 209, 148, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Для нечётных секций смещаем круг влево */
+    #infographic section:nth-child(odd) .circle {
+      transform: translateX(-100%);
+    }
+
+    #infographic article {
+      max-width: 400px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      left: 50%;
+      position: relative;
+    }
+
+    /* Цвета и расположение секций-кругов */
+
+    #infographic .step.three .circle {
+      margin-top: -5px;
+    }
+
+
+    #infographic .step.two .circle {
+      color: rgb(224, 23, 143);
+    }
+
+    #infographic .step.two .circle {
+      color: rgb(224, 23, 143);
+    }
+
+    #infographic .step.four .circle {
+      transform: translate(95px, -40px);
+      color: blueviolet;
+    }
+
+    #infographic .step.one .circle {
+      transform: translate(-195px, 40px);
+      color: rgb(240, 8, 8);
+    }
+
+    #infographic .step.five .circle {
+      transform: translate(-230px, 30px);
+      color: rgb(235, 139, 247);
+    }
+
+    #infographic .step.six .circle {
+      transform: translate(50px, -25px);
+      color: rgb(176, 205, 29);
+    }
+
+    #infographic .step.seven .circle {
+      transform: translate(-160px, 25px);
+      color: rgb(26, 23, 218);
+    }
+
+    #infographic .step.eight .circle {
+      transform: translate(10px, 15px);
+      color: rgb(255, 0, 119);
+    }
+
+    #infographic .step.nine .circle {
+      transform: translate(-180px, -45px);
+      color: rgb(0, 168, 0);
+    }
+
+    #infographic .step.ten .circle {
+      transform: translate(40px, -45px);
+      color: rgb(0, 94, 255);
+    }
+
+
+    #infographic article header {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+
+
+    #infographic article header i {
+      display: flex;
+      font-size: 2em;
+      border-radius: 50%;
+      background-clip: padding-box;
+      padding: 14px;
+      transition: transform 0.4s;
+      color: #fff;
+      border: 16px solid var(--bs-dark);
+      margin: -16px 0 -16px -20px;
+    }
+
+    #infographic article:hover header i {
+      transform: scale(1.2);
+    }
+
+    #infographic article.active header i {
+      transform: none;
+    }
+
+    #infographic article .body {
+      background: var(--bgColor);
+      padding: 0 20px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+      overflow: hidden;
+    }
+
+    #infographic :nth-child(even) article {
+      text-align: right;
+      transform: translateX(-100%);
+    }
+
+    #infographic :nth-child(even) article header {
+      flex-flow: row-reverse;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    #infographic :nth-child(even) article header i {
+      margin: -16px -20px -16px 0;
+    }
+
+    #infographic section:nth-child(odd) article.active header {
+      border-bottom-right-radius: 0;
+    }
+
+    #infographic section:nth-child(even) article.active header {
+      border-bottom-left-radius: 0;
+    }
+
+    #infographic article.active .body {
+      padding: 20px;
+      max-height: 300px;
+      border: 1px solid;
+    }
+
+    /* Расположение этапов*/
+    #infographic article[data-step="1"] {
+      margin-left: 6px;
+    }
+
+    #infographic article[data-step="2"] {
+      margin-left: 54px;
+    }
+
+    #infographic article[data-step="3"] {
+      margin-left: 71px;
+      text-align: left;
+    }
+
+    #infographic article[data-step="4"] {
+      margin-left: 61px;
+    }
+
+    #infographic article[data-step="5"] {
+      margin-left: 22px;
+    }
+
+    #infographic article[data-step="6"] {
+      margin-left: -5px;
+    }
+
+    #infographic article[data-step="7"] {
+      margin-left: -54px;
+      text-align: right;
+
+    }
+
+    #infographic article[data-step="8"] {
+      margin-left: -70px;
+    }
+
+    #infographic article[data-step="9"] {
+      margin-left: -60px;
+    }
+
+    #infographic article[data-step="10"] {
+      margin-left: -21px;
+    }
+
+    #infographic article[data-step="11"] {
+      margin-left: 7px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="12"] {
+      margin-left: 55px;
+    }
+
+    #infographic article[data-step="13"] {
+      margin-left: 73px;
+    }
+
+    #infographic article[data-step="14"] {
+      margin-left: 85px;
+    }
+
+    #infographic article[data-step="15"] {
+      margin-left: 45px;
+    }
+
+    #infographic article[data-step="16"] {
+      margin-left: 15px;
+    }
+
+    #infographic article[data-step="17"] {
+      margin-left: -35px;
+    }
+
+    #infographic article[data-step="18"] {
+      margin-left: 0px;
+    }
+
+    #infographic article[data-step="19"] {
+      margin-left: 45px;
+    }
+
+    #infographic article[data-step="20"] {
+      margin-left: 20px;
+    }
+
+    #infographic article[data-step="21"] {
+      margin-left: -25px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="22"] {
+      margin-left: -30px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="23"] {
+      margin-left: -15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="24"] {
+      margin-left: 25px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="25"] {
+      margin-left: 65px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="26"] {
+      margin-left: 85px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="27"] {
+      margin-left: 110px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="28"] {
+      margin-left: 100px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="29"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="30"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="31"] {
+      margin-left: 15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="32"] {
+      margin-left: 3px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="33"] {
+      margin-left: -28px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="34"] {
+      margin-left: -55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="35"] {
+      margin-left: -40px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="36"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="37"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="38"] {
+      margin-left: 85px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="39"] {
+      margin-left: 85px;
+      width: 450px;
+    }
+
+    #infographic article[data-step="40"] {
+      margin-left: 65px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="41"] {
+      margin-left: 45px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="43"] {
+      margin-left: -10px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="44"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="45"] {
+      margin-left: 25px;
+      width: 250px;
+    }
+
+    /*Цвета кругов этапов*/
+
+    article[data-step="1"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="2"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="3"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="4"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="5"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="11"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="12"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="13"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="14"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="15"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="16"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="22"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="23"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="24"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="25"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="26"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="27"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="28"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="29"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="30"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="31"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="32"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="33"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="34"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="35"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="36"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="37"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="38"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="43"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="44"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="45"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    #infographic .circle {
+      padding: 0 !important;
+      margin: 40px auto;
+      /* центрируем по горизонтали и даём отступ снизу */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #infographic .circle h2,
+    #infographic .circle h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Стили для модальных окон: делаем их выше навбара */
+    .modal {
+      z-index: 10500 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10400 !important;
+    }
+
+    /* Форматирование текста в модальных окнах */
+    .modal-body {
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+
+    }
+
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">ITmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Основной заголовок -->
+  <div class="container text-center">
+    <div class="semi-circle">
+      <h1>Frontend разработка</h1>
+    </div>
+  </div>
+  <div class="roadmap-hero">
+    <!-- Добавлен класс visible, чтобы изображения отображались -->
+    <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+  </div>
+
+  <main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+      <div class="circle">
+        <h2>Основа</h2>
+      </div>
+      <article data-step="1">
+        <header class="d-flex align-items-center bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="HTTP (протокол передачи гипертекста) — основа передачи данных во Всемирной паутине. Это протокол прикладного уровня, который определяет, как форматируются и передаются сообщения между веб-браузерами и серверами. HTTP работает по модели «запрос-ответ»: клиенты (обычно веб-браузеры) отправляют запросы серверам, которые затем отвечают запрошенными данными. Протокол не сохраняет состояние, то есть каждый запрос не зависит от предыдущих запросов. HTTP поддерживает различные методы (GET, POST, PUT, DELETE и т. д.) для различных типов взаимодействия с ресурсами. HTTPS — это защищенная версия HTTP, использующая шифрование для защиты данных при передаче. HTTP/2 и HTTP/3 — более поздние версии, предлагающие улучшенную производительность за счет таких функций, как мультиплексирование и сжатие заголовков. Понимание HTTP имеет решающее значение для веб-разработки, поскольку оно лежит в основе того, как веб-приложения взаимодействуют и функционируют.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое HTTP?</h6>
+        </header>
+      </article>
+      <article data-step="2">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Доменное имя — это понятный человеку адрес, используемый для идентификации и доступа к веб-сайтам в Интернете. Он служит более запоминающейся альтернативой числовым IP-адресам, которые компьютеры используют для поиска веб-серверов. Доменные имена состоят из двух основных частей: домена второго уровня (обычно это имя веб-сайта или организации) и домена верхнего уровня (например, .com, .org, .net). Они регистрируются через регистраторов доменов и должны быть уникальными в пределах своего домена верхнего уровня. Доменные имена имеют решающее значение для брендинга, маркетинга и создания онлайн-присутствия. Система доменных имен (DNS) преобразует доменные имена в IP-адреса, позволяя пользователям получать доступ к веб-сайтам, вводя знакомые имена, а не сложные числовые последовательности.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое доменное имя?</h6>
+        </header>
+      </article>
+      <article data-step="3">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Веб-хостинг — это услуга, которая позволяет отдельным лицам и организациям сделать свои веб-сайты доступными в Интернете. Она включает в себя хранение файлов веб-сайта на мощных серверах, которые подключены к высокоскоростной сети. Услуги хостинга варьируются от общего хостинга до выделенного, VPS, облачного и управляемого хостинга.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое хостинг?</h6>
+        </header>
+      </article>
+      <article data-step="4">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="DNS (система доменных имен) — это система, которая преобразует понятные человеку доменные имена в IP-адреса. DNS использует иерархическую структуру и распределённую сеть серверов для разрешения запросов, что позволяет пользователям получать доступ к веб-сайтам по запоминающимся именам.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DNS и как он работает?</h6>
+        </header>
+      </article>
+      <article data-step="5">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Веб-браузер — это приложение для доступа к веб-страницам или онлайн-контенту посредством графического интерфейса.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Браузеры и как они работают?</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция HTML -->
+    <section class="step two text-warning">
+      <div class="circle">
+        <h2>HTML</h2>
+      </div>
+      <article data-step="6">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="HTML (язык гипертекстовой разметки) используется для создания структуры веб-страницы. Он позволяет задавать заголовки, абзацы, списки, ссылки и другие элементы, что создаёт основу для последующего применения CSS и JavaScript.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Основы HTML</h6>
+        </header>
+      </article>
+      <article data-step="7">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Семантический HTML подразумевает использование элементов разметки, которые отражают смысл содержимого, например, &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt; и &lt;footer&gt;. Это улучшает доступность, SEO и структуру кода.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Семантический HTML</h6>
+        </header>
+      </article>
+      <article data-step="8">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Проверка форм на стороне клиента позволяет убедиться, что все данные введены корректно до отправки на сервер. Этот процесс улучшает качество данных и повышает удобство пользователя.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Формы и валидация</h6>
+        </header>
+      </article>
+      <article data-step="9">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Доступность — практика создания веб-сайтов, пригодных для использования всеми, включая людей с ограниченными возможностями. Это достигается путём добавления альтернативных текстов для изображений, обеспечения навигации с клавиатуры и т.д.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Доступность</h6>
+        </header>
+      </article>
+      <article data-step="10">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Основы SEO включают оптимизацию контента, метатегов, ключевых слов, а также повышение скорости загрузки страниц и мобильной адаптивности, что улучшает видимость сайта в поисковых системах.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Основы SEO</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция CSS -->
+    <section class="step three text-success">
+      <div class="circle">
+        <h2>CSS</h2>
+      </div>
+      <article data-step="11">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="CSS используется для стилизации внешнего вида веб-сайта. Оно позволяет задавать цвета, шрифты, отступы и другие визуальные параметры, делая интерфейс сайта привлекательным и удобным для пользователя.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Основы CSS</h6>
+        </header>
+      </article>
+      <article data-step="12">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Создание макетов в веб-дизайне — это организация визуальных и структурных элементов страницы с помощью технологий, таких как Flexbox и CSS Grid. Эти инструменты помогают создавать адаптивные и удобные интерфейсы.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Создание макетов</h6>
+        </header>
+      </article>
+      <article data-step="13">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Адаптивный дизайн позволяет веб-сайту менять свой внешний вид в зависимости от размеров и ориентации экрана устройства пользователя. Это достигается с помощью медиа-запросов, гибких сеток и пропорциональных изображений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Адаптивный дизайн</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция JavaScript -->
+    <section class="step four text-success">
+      <div class="circle">
+        <h2>JavaScript</h2>
+      </div>
+      <article data-step="14">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="JavaScript — это универсальный язык программирования высокого уровня, который в основном используется для добавления интерактивных и динамических функций на веб-сайты. Он работает в браузере, что позволяет создавать сценарии на стороне клиента, которые могут манипулировать HTML и CSS, реагировать на пользовательские события и взаимодействовать с веб-API. JavaScript также используется на стороне сервера в таких средах, как Node.js, что позволяет разрабатывать полный стек. Он поддерживает событийно-ориентированный, функциональный и императивный стили программирования и имеет богатую экосистему библиотек и фреймворков (таких как React, Angular и Vue), которые расширяют его возможности и оптимизируют разработку.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Основы JavaScript</h6>
+        </header>
+      </article>
+      <article data-step="15">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Document Object Model (DOM) — это программный интерфейс, созданный для документов HTML и XML. Он представляет собой страницу, которая позволяет программам и скриптам динамически обновлять структуру, содержимое и стиль документа. С помощью DOM мы можем легко получать доступ и управлять тегами, идентификаторами, классами, атрибутами и т. д.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Манипуляции с DOM</h6>
+        </header>
+      </article>
+      <article data-step="16">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Fetch API — это современный интерфейс JavaScript для выполнения HTTP-запросов в веб-браузерах. Он обеспечивает более мощный и гибкий способ отправки и получения данных по сравнению со старыми методами, такими как XMLHttpRequest. Fetch использует Promises, что позволяет создавать более чистый асинхронный код. Он поддерживает различные форматы данных, настраиваемые заголовки и различные типы запросов (GET, POST и т. д.). API разработан с учетом расширяемости и хорошо интегрируется с другими веб-технологиями. Хотя он проще для базовых вариантов использования, Fetch также обрабатывает сложные сценарии, такие как отмена запросов и чтение потоковых ответов. Он широко поддерживается в современных браузерах и стал стандартом для сетевых запросов в клиентских приложениях JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Fetch API / Ajax (XHR)</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Хостинг -->
+    <section class="step five text-success">
+      <div class="circle">
+        <h2>Хостинг</h2>
+      </div>
+      <article data-step="17">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сервисы хостинга репозиториев предоставляют платформы для хранения, управления и совместной работы над программными проектами с использованием систем контроля версий, в первую очередь Git. Эти сервисы предлагают такие функции, как отслеживание проблем, запросы на вытягивание, инструменты проверки кода, вики-сайты и конвейеры непрерывной интеграции/непрерывного развертывания (CI/CD). Популярные платформы включают GitHub, GitLab, Bitbucket и SourceForge, каждая из которых предлагает уникальные предложения. GitHub, принадлежащий Microsoft, является крупнейшим и наиболее широко используемым, известным своим сообществом с открытым исходным кодом. GitLab предлагает полноценную платформу DevOps со встроенным CI/CD. Bitbucket, входящий в состав пакета Atlassian, хорошо интегрируется с другими инструментами Atlassian. Эти сервисы упрощают совместную работу в команде, совместное использование кода и управление проектами, что делает их неотъемлемой частью современных рабочих процессов разработки программного обеспечения. Они также часто предоставляют такие функции, как контроль доступа, защита филиалов и интеграция с различными инструментами разработки, улучшая общий процесс разработки.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое хостинг?</h6>
+        </header>
+      </article>
+      <article data-step="18">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitHub стал центральным хабом для проектов с открытым исходным кодом и широко используется разработчиками, компаниями и организациями как для частных, так и для публичных репозиториев. Он был приобретен Microsoft в 2018 году, но продолжает работать как относительно независимая организация. Популярность GitHub сделала его важным инструментом в современных рабочих процессах разработки программного обеспечения и ключевой платформой для демонстрации проектов кодирования и внесения вклада в программное обеспечение с открытым исходным кодом.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GitHub</h6>
+        </header>
+      </article>
+      <article data-step="19">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitLab — это веб-платформа DevOps, которая предоставляет комплексное решение для жизненного цикла разработки программного обеспечения. GitLab делает акцент на комплексном подходе, интегрируя различные инструменты разработки в единую платформу. Она доступна как в виде облачного сервиса, так и в виде решения с собственным размещением, что дает организациям гибкость в развертывании. Фокусировка GitLab на методах DevOps и ее всеобъемлющий набор функций делают ее популярной среди предприятий и команд, ищущих унифицированную платформу для всего процесса разработки. Хотя во многих отношениях она похожа на GitHub, интегрированные возможности CI/CD и возможности собственного размещения GitLab часто упоминаются как ключевые отличия.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GitLab</h6>
+        </header>
+      </article>
+      <article data-step="20">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Bitbucket — это веб-сервис хостинга репозитория управления версиями, принадлежащий Atlassian. Он предоставляет системы управления версиями Git и Mercurial как для проектов с открытым исходным кодом, так и для частных проектов. Bitbucket предлагает такие функции, как запросы на извлечение, разрешения для веток и встроенные комментарии для проверки кода. Он легко интегрируется с другими продуктами Atlassian, такими как Jira и Trello, облегчая управление проектами и отслеживание проблем. Bitbucket предоставляет как облачные, так и самостоятельные варианты размещения, удовлетворяя различные организационные потребности. Он поддерживает непрерывную интеграцию и развертывание (CI/CD) через Bitbucket Pipelines.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Bitbucket</h6>
+        </header>
+      </article>
+      </article>
+      <article data-step="21">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Услуги хостинга репозиториев предоставляют платформы для хранения, управления и совместной работы над программными проектами с использованием систем контроля версий, в первую очередь Git. Эти услуги предлагают такие функции, как отслеживание проблем, запросы на извлечение, инструменты обзора кода, вики и конвейеры непрерывной интеграции/непрерывного развертывания (CI/CD). Популярные платформы включают GitHub, GitLab, Bitbucket и SourceForge, каждая из которых предлагает уникальные предложения. GitHub, принадлежащий Microsoft, является крупнейшим и наиболее широко используемым, известным своим сообществом с открытым исходным кодом. GitLab предлагает полную платформу DevOps со встроенным CI/CD. Bitbucket, часть пакета Atlassian, хорошо интегрируется с другими инструментами Atlassian. Эти услуги облегчают совместную работу в команде, совместное использование кода и управление проектами, что делает их неотъемлемой частью современных рабочих процессов разработки программного обеспечения. Они также часто предоставляют такие функции, как контроль доступа, защита ветвей и интеграция с различными инструментами разработки, улучшая общий процесс разработки.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Хостинг VCS</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Менеджеры пакетов -->
+    <section class="step six text-success">
+      <div class="circle">
+        <h2>Менеджеры пакетов</h2>
+      </div>
+      <article data-step="22">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Диспетчеры пакетов — это инструменты, которые автоматизируют процесс установки, обновления, настройки и удаления пакетов программного обеспечения согласованным образом. Они отвечают за разрешение зависимостей, управление версиями и распространение пакетов для языков программирования и операционных систем. Популярные менеджеры пакетов включают npm для JavaScript, pip для Python и apt для дистрибутивов Linux на основе Debian. Эти инструменты поддерживают централизованный репозиторий пакетов, позволяя разработчикам легко обмениваться и повторно использовать код. Менеджеры пакетов упрощают настройку проекта, обеспечивают согласованность между средами разработки и помогают управлять сложными деревьями зависимостей. Они играют решающую роль в разработке современного программного обеспечения, оптимизируя рабочий процесс, улучшая совместную работу и улучшая возможность повторного использования кода.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое менеджеры пакетов?</h6>
+        </header>
+      </article>
+      <article data-step="23">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="npm (Node Package Manager) — это менеджер пакетов по умолчанию для Node.js, предоставляющий обширную экосистему повторно используемого кода JavaScript. Он позволяет разработчикам легко делиться, находить и устанавливать пакеты (библиотеки и инструменты) для своих проектов. npm состоит из интерфейса командной строки для установки и управления пакетами, а также онлайн-репозитория пакетов с открытым исходным кодом. Он управляет управлением зависимостями, контролем версий и запуском скриптов для проектов Node.js. Реестр npm — крупнейший реестр программного обеспечения в мире, содержащий более миллиона пакетов. Файл package.json npm определяет метаданные и зависимости проекта, что позволяет создавать воспроизводимые сборки в разных средах. Несмотря на конкуренцию со стороны таких альтернатив, как Yarn, npm остается наиболее широко используемым менеджером пакетов в экосистеме JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">npm</h6>
+        </header>
+      </article>
+      <article data-step="24">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="pnpm (performant npm) — это быстрый и эффективный менеджер пакетов для проектов JavaScript и Node.js, использующий дисковое пространство. Он устраняет неэффективность npm и Yarn, используя уникальный подход к хранению и связыванию зависимостей. pnpm создает единое глобальное хранилище для всех пакетов и использует жесткие ссылки для ссылки на них в node_modules проекта, что значительно сокращает использование дискового пространства и время установки. Он строго соответствует спецификациям package.json, обеспечивая единообразную установку в разных средах. pnpm предлагает такие функции, как поддержка рабочего пространства для монорепозиториев, параллельное управление версиями и улучшенную безопасность за счет лучшей изоляции зависимостей. Хотя pnpm менее широко распространен, чем npm или Yarn, его преимущества в производительности и эффективное использование диска привлекают все большее внимание в сообществе JavaScript">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">pnpm</h6>
+        </header>
+      </article>
+      <article data-step="25">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Yarn — это быстрый, надежный и безопасный менеджер пакетов для JavaScript, разработанный Facebook в качестве альтернативы npm (Node Package Manager). Он решает проблемы согласованности, безопасности и производительности в управлении зависимостями. Yarn использует файл блокировки для обеспечения согласованных установок в разных средах и предлагает параллельную установку пакетов, что значительно ускоряет процесс. Он имеет автономный режим, позволяющий установку из кэшированных пакетов, и обеспечивает улучшенную производительность сети за счет очереди запросов и повторных попыток. Внимание Yarn к безопасности включает проверку контрольной суммы каждого установленного пакета. Хотя он разделяет многие функции с npm, акцент Yarn на скорости, надежности и безопасности сделал его популярным выбором среди разработчиков, особенно для крупных проектов. Последние версии Yarn (Berry) представляют новые функции, такие как Plug'n'Play для еще более быстрого и эффективного разрешения пакетов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">yarn</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Фреймворки -->
+    <section class="step seven text-success">
+      <div class="circle">
+        <h2>Фреймворки</h2>
+      </div>
+      <article data-step="26">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="React — это библиотека JavaScript с открытым исходным кодом для создания пользовательских интерфейсов, в первую очередь для одностраничных приложений. Разработанная и поддерживаемая Facebook, она позволяет разработчикам создавать повторно используемые компоненты Ul, которые эффективно обновляются и визуализируются по мере изменения данных. React использует виртуальный DOM для оптимизации производительности и поддерживает однонаправленный поток данных. Его компонентная архитектура способствует модульности и возможности повторного использования. Экосистема React включает такие инструменты, как Redux для управления состоянием и React Native для разработки мобильных приложений. Декларативная природа библиотеки, эффективный рендеринг и сильная поддержка сообщества сделали ее одним из самых популярных вариантов для разработки интерфейса в современных веб-приложениях.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">React</h6>
+        </header>
+      </article>
+      <article data-step="27">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Vue.js — это прогрессивный фреймворк JavaScript для создания пользовательских интерфейсов. Он разработан для постепенного внедрения, что позволяет разработчикам постепенно интегрировать его в проекты. Vue использует подход на основе шаблонов с виртуальным DOM для эффективного рендеринга. Он имеет реактивную и компонуемую компонентную систему, что позволяет легко организовывать и повторно использовать код. Основная библиотека Vue фокусируется на слое представления, но ее можно легко расширить с помощью официальных и созданных сообществом инструментов для управления состоянием, маршрутизации и сборки. Известный своей плавной кривой обучения и гибкостью, Vue завоевал популярность как для небольших проектов, так и для крупномасштабных приложений. Его производительность, легкость и полная документация способствовали его широкому принятию в сообществе веб-разработчиков.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Vue.js</h6>
+        </header>
+      </article>
+      <article data-step="28">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Angular — популярный фреймворк веб-приложений с открытым исходным кодом, разработанный и поддерживаемый Google. Он использует TypeScript, статически типизированный надмножество JavaScript, для создания масштабируемых и эффективных одностраничных приложений (SPA). Angular следует архитектуре на основе компонентов, где пользовательский интерфейс состоит из повторно используемых, автономных компонентов. Фреймворк предоставляет такие функции, как двусторонняя привязка данных, внедрение зависимостей и мощный синтаксис шаблонов, которые упрощают разработку сложных веб-приложений. Angular также включает в себя полный набор инструментов для тестирования, маршрутизации и управления состоянием, что делает его полноценным решением для разработки интерфейса. Его модульная структура и акцент на передовой практике делают его особенно подходящим для крупномасштабных корпоративных приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Angular</h6>
+        </header>
+      </article>
+      <article data-step="29">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Svelte — это современный фреймворк JavaScript для создания пользовательских интерфейсов, который использует уникальный подход к веб-разработке. В отличие от традиционных фреймворков, которые выполняют большую часть своей работы в браузере, Svelte переносит эту работу на этап компиляции, который происходит при сборке вашего приложения. Он компилирует ваш код в эффективный ванильный JavaScript, что приводит к уменьшению размеров пакетов и повышению производительности во время выполнения. Svelte использует архитектуру на основе компонентов и отличается простым, интуитивно понятным синтаксисом, который позволяет разработчикам писать меньше кода. Он включает в себя встроенное управление состоянием, область действия CSS и анимацию. Подход Svelte устраняет необходимость в виртуальном DOM, что приводит к более быстрым начальным загрузкам и обновлениям. Его простота и преимущества в производительности завоевывают ему все большую популярность в сообществе разработчиков фронтенда.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Svelte </h6>
+        </header>
+      </article>
+      <article data-step="30">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="SolidJS — это декларативная, эффективная и гибкая библиотека JavaScript для создания пользовательских интерфейсов. Она использует мелкозернистую систему реактивности, которая обновляет только то, что изменяется, что обеспечивает высокую производительность. SolidJS компилирует шаблоны в реальные узлы DOM и обновляет их на месте, избегая накладных расходов виртуального DOM. Она предлагает синтаксис, похожий на React, что делает его знакомым многим разработчикам, но с другим базовым механизмом. SolidJS поддерживает JSX, обеспечивает встроенное управление состоянием и делает акцент на композиции, а не на наследовании. Ее небольшой размер и отсутствие накладных расходов во время выполнения делают ее особенно подходящей для приложений, требующих высокой производительности. Хотя SolidJS и является более новой по сравнению с некоторыми фреймворками, она набирает популярность благодаря своей простоте, производительности и дружественному к разработчикам подходу к реактивному программированию.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Solid JS </h6>
+        </header>
+      </article>
+      <article data-step="31">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Qwik — это интерфейсная среда с открытым исходным кодом, разработанная для оптимальной производительности и почти мгновенной загрузки веб-приложений. Она фокусируется на предоставлении «возобновляемой» модели приложения, в которой приложение может начать работу с минимальной загрузкой JavaScript. Qwik достигает этого с помощью мелкозернистой ленивой загрузки, сериализации состояния приложения и предварительной выборки. Она использует уникальный подход к гидратации, загружая JavaScript только для интерактивных элементов при необходимости. Qwik создан для современных веб-стандартов и нацелен на решение проблем производительности, распространенных в крупномасштабных веб-приложениях. Хотя Qwik все еще относительно новый по сравнению с устоявшимися фреймворками, инновационный подход Qwik к оптимизации производительности привлекает внимание в сообществе веб-разработчиков.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Qwik </h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Сборщики модулей -->
+    <section class="step eight text-success">
+      <div class="circle">
+        <h2>Сборщики модулей</h2>
+      </div>
+      <article data-step="32">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сборщики модулей — это инструменты разработки, которые объединяют несколько файлов JavaScript и их зависимости в один файл, оптимизированный для веб-браузеров.
+            Они разрешают и управляют зависимостями, преобразуют и оптимизируют код и часто поддерживают такие функции, как разделение кода и ленивая загрузка. Популярные упаковщики модулей включают Webpack, Rollup и Parcel. Эти инструменты решают проблемы управления сложными приложениями JavaScript, организуя код в модули, устраняя загрязнение глобальной области видимости и сокращая время загрузки. Упаковщики обычно поддерживают различные форматы файлов, позволяют использовать современные функции JavaScript посредством транспиляции и интегрируются с исполнителями задач и другими инструментами сборки. Их основная цель — оптимизировать процесс разработки и повысить производительность приложений в производственных средах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое cборщики модулей?</h6>
+        </header>
+      </article>
+      <article data-step="33">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Vite — это современный инструмент сборки и сервер разработки, предназначенный для быстрой и экономичной разработки веб-приложений. Созданный Эваном Ю, автором Vue.js, Vite использует собственные модули ES в браузере для обеспечения практически мгновенного запуска сервера и молниеносной замены модулей (HMR). Он поддерживает различные фреймворки, включая Vue, React и Svelte из коробки. Vite использует Rollup для производственных сборок, что приводит к высокооптимизированным пакетам. Он предлагает такие функции, как поддержка препроцессора CSS, интеграция TypeScript и расширяемость плагинов. Архитектура Vite, которая разделяет задачи разработки и сборки, позволяет ускорить циклы разработки и улучшить опыт разработчиков, особенно для крупномасштабных проектов, где традиционные пакетировщики могут испытывать трудности с производительностью.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Vite</h6>
+        </header>
+      </article>
+      <article data-step="34">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Speedy Web Compiler (SWC) — это быстрый, расширяемый компилятор JavaScript/TypeScript, написанный на Rust. Он разработан как более быстрая альтернатива Babel для транспиляции современного кода JavaScript в обратно совместимые версии.
+            SWC можно использовать как для компиляции, так и для объединения, что обеспечивает значительное повышение производительности по сравнению с традиционными инструментами на основе JavaScript. Он поддерживает новейшие функции ECMAScript, JSX и TypeScript и может быть настроен для пользовательских преобразований. SWC обычно используется в средах разработки для ускорения времени сборки и в производственных сборках для оптимизации кода. Его скорость и совместимость делают его все более популярным в крупномасштабных проектах JavaScript и в качестве основного компонента в других инструментах сборки и фреймворках, нацеленных на повышение производительности.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SWC</h6>
+        </header>
+      </article>
+      <article data-step="35">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Esbuild — это высокопроизводительный упаковщик и минификатор JavaScript, разработанный для скорости и эффективности. Созданный Эваном Уоллесом, он написан на Go и компилируется в машинный код, что делает его значительно быстрее традиционных инструментов сборки на основе JavaScript. esbuild поддерживает современные функции JavaScript, TypeScript и JSX из коробки, с почти мгновенным временем сборки даже для больших проектов. Он предлагает простой API и интерфейс командной строки, что упрощает интеграцию в существующие конвейеры сборки. Хотя esbuild в первую очередь ориентирован на скорость, он также обеспечивает базовое разделение кода, встряхивание дерева и генерацию исходной карты. Его экстремальная производительность делает его особенно подходящим для сред разработки и в качестве основы для других инструментов сборки, хотя ему могут не хватать некоторых расширенных функций, имеющихся в более зрелых упаковщиках">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Esbuild</h6>
+        </header>
+      </article>
+      <article data-step="36">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Webpack — популярный сборщик модулей JavaScript с открытым исходным кодом, который преобразует, объединяет или упаковывает ресурсы для Интернета. Он берет модули с зависимостями и генерирует статические ресурсы, представляющие эти модули. Webpack может обрабатывать не только JavaScript, но и другие ресурсы, такие как CSS, изображения и шрифты. Он использует загрузчики для предварительной обработки файлов и плагинов для выполнения более широкого спектра задач, таких как оптимизация пакетов. Основные функции Webpack включают разделение кода, отложенную загрузку и богатую экосистему расширений. Он поддерживает горячую замену модулей для более быстрой разработки и tree shake для устранения неиспользуемого кода. Хотя он имеет более крутую кривую обучения по сравнению с некоторыми альтернативами, гибкость и мощные функции Webpack делают его стандартным инструментом во многих современных рабочих процессах разработки JavaScript, особенно для сложных приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Webpack</h6>
+        </header>
+      </article>
+      <article data-step="37">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Rollup — это модульный упаковщик для JavaScript, который компилирует небольшие фрагменты кода в более крупные и сложные структуры. Он специализируется на создании меньших и более эффективных пакетов для модулей ES. Rollup отлично справляется с tree-shaking, устраняя неиспользуемый код для более компактных выходных данных. Он особенно хорошо подходит для библиотек и приложений, использующих формат модуля ES. Rollup поддерживает различные форматы выходных данных, включая UMD и CommonJS, что делает его универсальным для различных сценариев развертывания. Хотя он может потребовать больше настройки, чем некоторые альтернативы, фокус Rollup на модулях ES и его эффективное связывание делают его популярным для проектов, в которых приоритет отдается небольшим размерам пакетов и современным практикам JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Rollup</h6>
+        </header>
+      </article>
+      <article data-step="38">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Parcel — это сборщик веб-приложений с нулевой конфигурацией, который упрощает процесс создания и развертывания веб-проектов. Он поддерживает несколько языков программирования и типов файлов из коробки, включая JavaScript, CSS, HTML и различные форматы изображений. Parcel автоматически анализирует зависимости, преобразует код и оптимизирует ресурсы, не требуя сложного файла конфигурации. Он предлагает такие функции, как горячая замена модулей, разделение кода и tree shake по умолчанию. Главным преимуществом Parcel является простота использования и быстрое время сборки, достигаемое за счет параллельной обработки и кэширования. Хотя ему может не хватать некоторых расширенных функций более известных сборщиков, таких как Webpack, простота и производительность Parcel делают его привлекательным вариантом для быстрого прототипирования и небольших проектов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Parcel</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Тестировка приложений -->
+    <section class="step nine text-success">
+      <div class="circle">
+        <h2>Тестировка приложений</h2>
+      </div>
+      <article data-step="39">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Тестирование приложений включает в себя систематическую оценку программного обеспечения, чтобы убедиться, что оно соответствует требованиям, правильно функционирует и поддерживает качество. Основные типы тестирования включают:
+            Модульное тестирование: проверка отдельных компонентов или функций
+            Интеграционное тестирование: проверка взаимодействий между различными частями приложения
+            Функциональное тестирование: проверка соответствия приложения заданным требованиям
+            UI/UX тестирование: оценка пользовательского интерфейса и опыта работы
+            Тестирование производительности: оценка скорости, отзывчивости и стабильности приложения
+            Тестирование безопасности: выявление уязвимостей и обеспечение защиты данных
+            Тестирование доступности: проверка удобства использования для людей с ограниченными возможностями
+            Тестирование совместимости: проверка функциональности на различных устройствах и платформах
+            Современное тестирование часто включает в себя автоматизированные средства тестирования и конвейеры непрерывной интеграции/непрерывного развертывания (CI/CD). Разработка через тестирование (TDD) и разработка на основе поведения (BDD) — это популярные методологии, в которых особое внимание уделяется написанию тестов до или вместе с кодом. Эффективные стратегии тестирования помогают выявлять ошибки на ранних стадиях, улучшать качество кода и обеспечивать надежное взаимодействие с пользователем.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое тестировка приложений?</h6>
+        </header>
+      </article>
+      <article data-step="40">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Playwright — это фреймворк автоматизации с открытым исходным кодом, разработанный Microsoft для сквозного тестирования веб-приложений. Он предоставляет единый API для автоматизации браузеров Chromium, Firefox и WebKit в Windows, macOS и Linux. Playwright поддерживает несколько языков программирования, включая JavaScript, TypeScript, Python и .NET. Он предлагает такие функции, как автоматическое ожидание, сетевой перехват и мобильная эмуляция. Фреймворк отлично справляется с обработкой современных веб-приложений с динамическим контентом, обеспечивая надежную автоматизацию благодаря своей способности ждать готовности элементов перед выполнением действий с ними. Кроссбраузерные и кроссплатформенные возможности Playwright в сочетании с мощными инструментами для отладки и генерации тестов делают его надежным выбором для автоматизированного тестирования веб-приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Playwright</h6>
+        </header>
+      </article>
+      <article data-step="41">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Cypress framework — это сквозной фреймворк тестирования на основе JavaScript, построенный поверх Mocha, многофункционального фреймворка тестирования JavaScript, работающего в браузере и на нем, что делает асинхронное тестирование простым и удобным. Он также использует библиотеку утверждений BDD/TDD и браузер для сопряжения с любым фреймворком тестирования JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Cypress</h6>
+        </header>
+      </article>
+      <article data-step="42">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Стратегии аутентификации — это методы или приемы, используемые для проверки личности пользователя или системы с целью предоставления доступа к защищенному ресурсу. Существует несколько различных стратегий аутентификации, которые можно использовать, в том числе:
+            1)	Базовая аутентификация.
+            2)	Аутентификация на основе сеанса
+            3)	Аутентификация на основе токенов
+            4)	Аутентификация JWT
+            5)	OAuth
+            6)	SSO
+            Вам не обязательно изучать все это, как реализовать и все тонкости с самого начала. Но важно знать, что это такое и как они работают. Это поможет вам принимать более обоснованные решения при выборе стратегии аутентификации для вашего приложения.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Стратегии аутентификации</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция GraphQL -->
+    <section class="step ten text-success">
+      <div class="circle">
+        <h2>GraphQL</h2>
+      </div>
+      <article data-step="43">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="GraphQL — это язык запросов и среда выполнения для API, разработанная Facebook. Гибкость и эффективность GraphQL делают его популярным для создания сложных приложений, особенно с разнообразными требованиями клиентов. Он особенно полезен для мобильных приложений, где эффективность полосы пропускания имеет решающее значение. Хотя для этого требуется смена парадигмы с REST, многие разработчики и организации считают, что преимущества GraphQL перевешивают кривую обучения, особенно для крупномасштабных или быстро развивающихся API.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое GraphQL?</h6>
+        </header>
+      </article>
+      <article data-step="44">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Apollo GraphQL — это комплексная платформа для создания и управления слоями данных на основе GraphQL в современных приложениях. Она предоставляет набор инструментов и библиотек с открытым исходным кодом, которые упрощают реализацию GraphQL как на стороне клиента, так и на стороне сервера. На стороне клиента Apollo Client предлагает мощные возможности кэширования, управления состоянием и извлечения данных, легко интегрируясь с различными интерфейсными фреймворками. На стороне сервера Apollo Server облегчает создание API GraphQL, эффективно обрабатывая запросы, мутации и подписки. Платформа Apollo также включает инструменты разработчика для управления схемами, мониторинга производительности и управления API. Абстрагируясь от большей части сложности реализации GraphQL, Apollo позволяет разработчикам создавать более быстрые, масштабируемые и более удобные в обслуживании приложения с унифицированным графом данных.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Apollo</h6>
+        </header>
+      </article>
+      <article data-step="45">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Relay — это JavaScript-фреймворк, разработанный Facebook для создания приложений React, управляемых данными. Он специально разработан для работы с GraphQL, обеспечивая декларативный подход к извлечению и управлению данными в сложных веб-приложениях. Relay оптимизирует извлечение данных, размещая требования к данным с компонентами, обеспечивая эффективные обновления и минимизируя избыточную выборку. Он обрабатывает кэширование, обновления в реальном времени и оптимистичные обновления Ul из коробки. Архитектура Relay способствует масштабируемости и производительности в больших приложениях, управляя зависимостями данных и сокращая сетевые запросы. Хотя у него более крутая кривая обучения по сравнению с более простыми решениями для извлечения данных, Relay предлагает значительные преимущества для приложений со сложными требованиями к данным, особенно при использовании в сочетании с React и GraphQL.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Relay Modern</h6>
+        </header>
+      </article>
+    </section>
+  </main>
+
+  <!-- Модальное окно Bootstrap для вывода текста -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Заголовок с добавленным стикером -->
+          <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Содержимое модального окна заполняется динамически -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 ITmap.</p>
+    <p>Все права защищены.</p>
+    <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+  </footer>
+  <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+  <script>
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const modalContent = button.getAttribute('data-modal-content');
+      const modalBody = infoModal.querySelector('.modal-body');
+      // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+      modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+    });
+    document.querySelectorAll('.side-fixed').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.remove('rotating');
+        setTimeout(() => img.classList.add('rotating'), 10);
+      });
+    });
+
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Backend разработка — ITmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/webp" href="images/logo_new.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+
+    .hero-section {
+      background-color: transparent;
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-top: 100px;
+      color: #002b5f;
+      text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    .semi-circle {
+      display: inline-block;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 20px;
+      border-radius: 50px;
+      /* Превращает в прямоугольный овал */
+      border: 5px solid #7494ec;
+      text-align: center;
+    }
+
+    .semi-circle h1 {
+      margin: 0;
+      color: #1e5291;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* Стили для большого круга */
+    #infographic .circle {
+      width: 290px;
+      height: 250px;
+      border-radius: 50%;
+      border: 7px double;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+      position: absolute;
+      left: 50%;
+      margin: 40px 0;
+    }
+
+
+    .circles-container .circle {
+      width: 50px;
+      height: 50px;
+      gap: 30;
+      border-radius: 50%;
+      border: 5px double;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    /* Фиксированные изображения слева и справа от главной фотографии */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    .step.one header {
+      background-color: rgba(0, 48, 96, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 2: насыщенный зелёный фон + белый текст */
+    .step.two header {
+      background-color: rgba(0, 128, 64, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 3: тёмно-оранжевый фон + белый текст */
+    .step.three header {
+      background-color: rgba(255, 128, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 4: насыщенный красный фон + белый текст */
+    .step.four header {
+      background-color: rgba(192, 0, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.six header {
+      background-color: rgba(158, 199, 242, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.seven header {
+      background-color: rgba(125, 255, 149, 0.85) !important;
+      color: #ffffff !important;
+    }
+
+    .step.eight header {
+      background-color: rgba(252, 177, 206, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.nine header {
+      background-color: rgba(68, 209, 148, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.eleven header {
+      background-color: rgba(137, 159, 246, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Для нечётных секций смещаем круг влево */
+    #infographic section:nth-child(odd) .circle {
+      transform: translateX(-100%);
+    }
+
+    #infographic article {
+      max-width: 400px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      left: 50%;
+      position: relative;
+    }
+
+    /* Цвета и расположение секций-кругов */
+
+
+    #infographic .step.three .circle {
+      margin-top: 15px;
+      margin-left: 20px;
+    }
+
+
+    #infographic .step.two .circle {
+      color: rgb(224, 23, 143);
+      margin-top: -5px;
+      margin-left: 20px;
+    }
+
+    #infographic .step.four .circle {
+      transform: translate(-20px, -40px);
+      color: blueviolet;
+    }
+
+    #infographic .step.one .circle {
+      transform: translate(-195px, 40px);
+      color: rgb(240, 8, 8);
+      margin-top: 50px;
+      margin-left: -75px;
+    }
+
+    #infographic .step.five .circle {
+      transform: translate(-270px, 150px);
+      color: rgb(235, 139, 247);
+    }
+
+    #infographic .step.six .circle {
+      transform: translate(50px, -25px);
+      color: rgb(176, 205, 29);
+    }
+
+    #infographic .step.seven .circle {
+      transform: translate(-350px, 25px);
+      color: rgb(26, 23, 218);
+    }
+
+    #infographic .step.eight .circle {
+      transform: translate(100px, 15px);
+      color: rgb(255, 0, 119);
+    }
+
+    #infographic .step.nine .circle {
+      transform: translate(-300px, 45px);
+      color: rgb(0, 168, 0);
+    }
+
+    #infographic .step.ten .circle {
+      transform: translate(40px, -63px);
+      color: rgb(0, 94, 255);
+    }
+
+    #infographic .step.eleven .circle {
+      transform: translate(-300px, -45px);
+      color: rgb(80, 31, 108);
+    }
+
+    #infographic article header {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+
+
+    #infographic article header i {
+      display: flex;
+      font-size: 2em;
+      border-radius: 50%;
+      background-clip: padding-box;
+      padding: 14px;
+      transition: transform 0.4s;
+      color: #fff;
+      border: 16px solid var(--bs-dark);
+      margin: -16px 0 -16px -20px;
+    }
+
+    #infographic article:hover header i {
+      transform: scale(1.2);
+    }
+
+    #infographic article.active header i {
+      transform: none;
+    }
+
+    #infographic article .body {
+      background: var(--bgColor);
+      padding: 0 20px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+      overflow: hidden;
+    }
+
+    #infographic :nth-child(even) article {
+      text-align: right;
+      transform: translateX(-100%);
+    }
+
+    #infographic :nth-child(even) article header {
+      flex-flow: row-reverse;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    #infographic :nth-child(even) article header i {
+      margin: -16px -20px -16px 0;
+    }
+
+    #infographic section:nth-child(odd) article.active header {
+      border-bottom-right-radius: 0;
+    }
+
+    #infographic section:nth-child(even) article.active header {
+      border-bottom-left-radius: 0;
+    }
+
+    #infographic article.active .body {
+      padding: 20px;
+      max-height: 300px;
+      border: 1px solid;
+    }
+
+    /* Расположение этапов*/
+    #infographic article[data-step="1"] {
+      margin-left: 6px;
+      width: 190px;
+    }
+
+    #infographic article[data-step="2"] {
+      margin-left: 54px;
+      width: 190px;
+    }
+
+    #infographic article[data-step="3"] {
+      margin-left: 71px;
+      text-align: left;
+      width: 150px;
+    }
+
+    #infographic article[data-step="4"] {
+      margin-left: 61px;
+      width: 120px;
+    }
+
+    #infographic article[data-step="5"] {
+      margin-left: 22px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="6"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="7"] {
+      margin-left: -54px;
+      text-align: right;
+      width: 150px;
+
+    }
+
+    #infographic article[data-step="8"] {
+      margin-left: -70px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="9"] {
+      margin-left: -60px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="10"] {
+      margin-left: -21px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="11"] {
+      margin-left: 7px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="12"] {
+      margin-left: 55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="13"] {
+      margin-left: 73px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="14"] {
+      margin-left: 85px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="15"] {
+      margin-left: 45px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="16"] {
+      margin-left: 15px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="17"] {
+      margin-left: -35px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="18"] {
+      margin-left: -50px;
+    }
+
+    #infographic article[data-step="19"] {
+      margin-left: -75px;
+    }
+
+    #infographic article[data-step="20"] {
+      margin-left: -55px;
+    }
+
+    #infographic article[data-step="21"] {
+      margin-left: -30px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="22"] {
+      margin-left: -30px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="23"] {
+      margin-left: -15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="24"] {
+      margin-left: 25px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="25"] {
+      margin-left: 65px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="26"] {
+      margin-left: 85px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="27"] {
+      margin-left: 110px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="28"] {
+      margin-left: 100px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="29"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="30"] {
+      margin-left: 50px;
+      width: 230px;
+    }
+
+    #infographic article[data-step="31"] {
+      margin-left: 15px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="32"] {
+      margin-left: 3px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="33"] {
+      margin-left: -28px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="34"] {
+      margin-left: -55px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="35"] {
+      margin-left: -40px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="36"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="37"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="38"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="39"] {
+      margin-left: 100px;
+      width: 450px;
+    }
+
+    #infographic article[data-step="40"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="41"] {
+      margin-left: 45px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="42"] {
+      margin-left: 10px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="43"] {
+      margin-left: -10px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="44"] {
+      margin-left: -5px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="45"] {
+      margin-left: 25px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="46"] {
+      margin-left: 55px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="47"] {
+      margin-left: 75px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="48"] {
+      margin-left: 60px;
+      width: 350px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="49"] {
+      margin-left: 20px;
+      width: 400px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="50"] {
+      margin-left: -10px;
+      width: 230px;
+    }
+
+    #infographic article[data-step="51"] {
+      margin-left: -30px;
+      width: 150px;
+      height: 60px;
+
+    }
+
+    #infographic article[data-step="52"] {
+      margin-left: -25px;
+      width: 170px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="53"] {
+      margin-left: 5px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="54"] {
+      margin-left: 45px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="55"] {
+      margin-left: 35px;
+      width: 200px;
+      height: 60px;
+    }
+
+
+    /*Цвета кругов этапов*/
+
+    article[data-step="1"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="2"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="3"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="4"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="5"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="6"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="7"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="8"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="9"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="10"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="11"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="12"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="13"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="14"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="15"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="16"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="17"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="22"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="23"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="24"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="25"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="26"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="27"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="28"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="29"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="30"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="31"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="32"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="33"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="34"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="35"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="36"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="37"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="38"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="43"] .info-btn i {
+      background-color: #15904a !important;
+    }
+
+    article[data-step="44"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="45"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="46"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="47"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="48"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="49"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="53"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    article[data-step="54"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    article[data-step="55"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    #infographic .circle {
+      padding: 0 !important;
+      margin: 40px auto;
+      /* центрируем по горизонтали и даём отступ снизу */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #infographic .circle h2,
+    #infographic .circle h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Стили для модальных окон: делаем их выше навбара */
+    .modal {
+      z-index: 10500 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10400 !important;
+    }
+
+    /* Форматирование текста в модальных окнах */
+    .modal-body {
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+
+    }
+
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">ITmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Основной заголовок -->
+  <div class="container text-center">
+    <div class="semi-circle">
+      <h1>Backend разработка</h1>
+    </div>
+  </div>
+  <div class="roadmap-hero">
+    <!-- Добавлен класс visible, чтобы изображения отображались -->
+    <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+  </div>
+
+  <main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+      <div class="circle">
+        <h2>Выберите язык</h2>
+      </div>
+      <article data-step="1">
+        <header class="d-flex align-items-center bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="JavaScript — это универсальный язык программирования высокого уровня, который в основном используется для добавления интерактивных и динамических функций на веб-сайты. Он работает в браузере, что позволяет создавать сценарии на стороне клиента, которые могут манипулировать HTML и CSS, реагировать на пользовательские события и взаимодействовать с веб-API. JavaScript также используется на стороне сервера в таких средах, как Node.js, что позволяет разрабатывать полный стек. Он поддерживает событийно-ориентированный, функциональный и императивный стили программирования и имеет богатую экосистему библиотек и фреймворков (таких как React, Angular и Vue), которые расширяют его возможности и оптимизируют разработку.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">JavaScript</h6>
+        </header>
+      </article>
+      <article data-step="2">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Python — это высокоуровневый, интерпретируемый язык программирования, известный своей читабельностью, простотой и универсальностью. Его дизайн подчеркивает читабельность кода и четкий, понятный синтаксис, что делает его доступным как для начинающих, так и для опытных разработчиков. Python поддерживает несколько парадигм программирования, включая процедурное, объектно-ориентированное и функциональное программирование. Она имеет богатую экосистему библиотек и фреймворков, таких как Django и Flask для веб-разработки, Pandas и NumPy для анализа данных, а также TensorFlow и PyTorch для машинного обучения. Python широко используется в веб-разработке, науке о данных, автоматизации и написании скриптов, а также извлекает выгоду из сильного сообщества и обширной документации.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Python</h6>
+        </header>
+      </article>
+      <article data-step="3">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Java — это высокоуровневый объектно-ориентированный язык программирования, известный своей переносимостью, надежностью и масштабируемостью. Разработанная компанией Sun Microsystems (теперь Oracle), Java следует принципу «напиши один раз, запускай где угодно», позволяя выполнять код на любом устройстве с виртуальной машиной Java (JVM). Он широко используется для создания крупномасштабных корпоративных приложений, мобильных приложений Android и веб-сервисов. Java отличается автоматическим управлением памятью (сборкой мусора), обширной стандартной библиотекой и надежными функциями безопасности, что делает ее популярным выбором для серверных систем, распределенных приложений и облачных решений.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Java</h6>
+        </header>
+      </article>
+      <article data-step="4">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="C# (произносится как C-sharp) — современный объектно-ориентированный язык программирования, разработанный компанией Microsoft как часть ее фреймворка .NET. Он сочетает в себе мощь и эффективность C++ с простотой Visual Basic, отличаясь строгой типизацией, лексической областью видимости и поддержкой функциональных, обобщенных и компонентно-ориентированных парадигм программирования. C# широко используется для разработки классических приложений Windows, веб-приложений с ASP.NET, игр на Unity и кроссплатформенных мобильных приложений с использованием Xamarin. Он предлагает такие функции, как сборка мусора, безопасность типов и обширная поддержка библиотек. C# продолжает развиваться, с регулярными обновлениями, добавляющими новые возможности, такие как асинхронное программирование, типы ссылок, допускающие значение NULL, и сопоставление шаблонов. Его интеграция с экосистемой .NET и инструментами разработки Microsoft делает его популярным выбором для разработки корпоративного программного обеспечения и крупномасштабных приложений.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">C#</h6>
+        </header>
+      </article>
+      <article data-step="5">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Ruby — это высокоуровневый объектно-ориентированный язык программирования, известный своей простотой, производительностью и элегантным синтаксисом. Интуитивно понятный и легко читаемый, Ruby подчеркивает удовлетворенность разработчиков и быстрые циклы разработки. Он поддерживает несколько парадигм программирования, включая процедурное, функциональное и объектно-ориентированное программирование. Ruby особенно известен своей веб-средой Ruby on Rails, которая способствует быстрой разработке приложений, предоставляя соглашения и инструменты для эффективного создания веб-приложений. Гибкость языка в сочетании с богатой экосистемой библиотек и сильным сообществом делает его популярным для веб-разработки, написания сценариев и создания прототипов.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Ruby</h6>
+        </header>
+      </article>
+      <article data-step="6">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="PHP (гипертекстовый препроцессор) — это широко используемый скриптовый язык с открытым исходным кодом, предназначенный в первую очередь для веб-разработки, но также применимый для программирования общего назначения. Он встроен в HTML для создания динамических веб-страниц и взаимодействия с базами данных, часто работая с MySQL или другими системами баз данных. PHP известен своей простотой, легкостью интеграции с различными веб-серверами и обширной поддержкой функций, связанных с вебом. Его широкое распространение обусловлено его ролью в поддержке основных платформ и систем управления контентом, таких как WordPress, Joomla и Drupal. Функции PHP включают в себя написание скриптов на стороне сервера, управление сессиями и поддержку различных веб-протоколов и форматов.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">PHP</h6>
+        </header>
+      </article>
+      <article data-step="7">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Go, также известный как Golang, — это статически типизированный компилируемый язык программирования, разработанный Google. Он сочетает в себе эффективность компилируемых языков с простотой использования динамически типизированных интерпретируемых языков. Go имеет встроенную поддержку параллелизма через горутины и каналы, что делает его хорошо подходящим для сетевых и многоядерных систем. Он имеет простой и чистый синтаксис, быстрое время компиляции и эффективную сборку мусора. Стандартная библиотека Go является всеобъемлющей, что снижает потребность во внешних зависимостях. Язык подчеркивает простоту и читабельность, с такими особенностями, как неявные интерфейсы и отсутствие наследования. Go особенно популярен для создания микросервисов, веб-серверов и распределенных систем. Его производительность, простота и надежные инструменты делают его предпочтительным выбором для облачной разработки, инструментов DevOps и крупномасштабных серверных систем.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Go</h6>
+        </header>
+      </article>
+      <article data-step="8">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Rust — это язык системного программирования, известный своей ориентацией на безопасность, производительность и параллелизм. Он обеспечивает детальный контроль над системными ресурсами, обеспечивая при этом безопасность памяти без необходимости использования сборщика мусора. Модель владения Rust применяет строгие правила доступа к данным и управления ими, предотвращая такие распространенные проблемы, как разыменование нулевого указателя и гонка за данными. Его сильная система типов и современные функции, такие как сопоставление шаблонов и поддержка параллелизма, делают его пригодным для широкого спектра приложений, от низкоуровневого системного программирования до высокопроизводительных веб-серверов и инструментов. Rust набирает обороты как в промышленности, так и с открытым исходным кодом благодаря своей надежности и эффективности.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Rust</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция услуги хостинга -->
+    <section class="step two text-warning">
+      <div class="circle">
+        <h2>Услуги хостинга</h2>
+      </div>
+      <article data-step="9">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Услуги хостинга репозиториев — это платформы, предоставляющие инструменты хранения, управления и совместной работы для репозиториев кода с контролем версий. Эти сервисы поддерживают системы управления версиями, такие как Git, Mercurial или Subversion, позволяя разработчикам управлять и отслеживать изменения в своих кодовых базах, сотрудничать с другими пользователями и автоматизировать рабочие процессы. Ключевые функции часто включают ветвление и слияние, запросы на вытягивание, отслеживание проблем, проверку кода и интеграцию с конвейерами непрерывной интеграции и непрерывного развертывания (CI/CD). Популярные сервисы хостинга репозиториев включают GitHub, GitLab и Bitbucket, каждый из которых предлагает различные уровни бесплатных и платных функций, адаптированных к разным размерам команд и требованиям проекта.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="10">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitHub — это веб-платформа для управления версиями и совместной работы с использованием Git. Принадлежащая Microsoft, она предоставляет хостинг для разработки программного обеспечения и предлагает функции, выходящие за рамки базовой функциональности Git. GitHub включает в себя инструменты для управления проектами, проверки кода и социального кодирования. К основным функциям относятся репозитории для хранения кода, запросы на вытягивание для предложения и проверки изменений, проблемы для отслеживания ошибок и задач, а также действия для автоматизации рабочих процессов. Он поддерживает как публичные, так и частные репозитории, что делает его популярным для проектов с открытым исходным кодом и частной разработки. Функции GitHub для совместной работы, такие как форки репозиториев и встроенные комментарии к коду, упрощают разработку команды и участие сообщества. Благодаря обширным интеграциям и большой пользовательской базе GitHub стал центральным узлом для разработчиков, выступая в качестве портфолио, платформы для совместной работы и инструмента развертывания для программных проектов любого размера">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">GitHub</h6>
+        </header>
+      </article>
+      <article data-step="11">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitLab — это веб-платформа DevOps, которая предоставляет комплексное решение для жизненного цикла разработки программного обеспечения. Он предлагает управление исходным кодом, непрерывную интеграцию/непрерывное развертывание (CI/CD), отслеживание проблем и многое другое, и все это интегрировано в одно приложение. GitLab поддерживает репозитории Git и включает в себя такие функции, как запросы на слияние (аналогично запросам на вытягивание GitHub), вики-страницы и доски задач. В нем особое внимание уделяется практикам DevOps, предоставляя встроенные конвейеры CI/CD, реестр контейнеров и интеграцию с Kubernetes. GitLab предлагает как облачные, так и автономные варианты, что дает организациям гибкость в развертывании. Универсальный подход отличает ее от конкурентов, поскольку она включает в себя функции, которые могут потребовать нескольких инструментов в других экосистемах. Сосредоточенность GitLab на всем жизненном цикле DevOps, от планирования до мониторинга, делает ее популярной среди предприятий и команд, которым нужна единая платформа для рабочих процессов разработки.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GitLab</h6>
+        </header>
+      </article>
+      <article data-step="12">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Bitbucket — это веб-сервис хостинга репозиториев для контроля версий, принадлежащий компании Atlassian. В основном он использует системы контроля версий Git, предлагая как облачные, так и локальные варианты. Bitbucket предоставляет такие функции, как запросы pull для проверки кода, разрешения веток и встроенное комментирование кода. Он легко интегрируется с другими продуктами Atlassian, такими как Jira и Trello, что делает его популярным среди команд, уже использующих инструменты Atlassian. Bitbucket поддерживает непрерывную интеграцию и развертывание с помощью Bitbucket Pipelines. Он предлагает неограниченное количество частных репозиториев для небольших команд, что делает его экономически эффективным для небольших организаций.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Bitbucket</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция БД -->
+    <section class="step three text-success">
+      <div class="circle">
+        <h2>База данных</h2>
+      </div>
+      <article data-step="13">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Реляционные базы данных — это тип системы управления базами данных (СУБД), которая организует данные в структурированные таблицы со строками и столбцами, используя схему для определения отношений и ограничений данных. Они используют язык структурированных запросов (SQL) для запроса и управления данными, поддерживая такие операции, как извлечение, вставка, обновление и удаление данных. Реляционные базы данных обеспечивают целостность данных с помощью ключей (первичных и внешних) и ограничений (таких как уникальные и не-null) и предназначены для эффективной обработки сложных запросов, транзакций и связей данных. Примерами реляционных баз данных являются MySQL, PostgreSQL и Oracle Database. Они обычно используются в приложениях, требующих структурированного хранения данных, высокой согласованности и возможностей сложных запросов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое БД</h6>
+        </header>
+      </article>
+      <article data-step="14">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="PostgreSQL — это передовая система управления реляционными базами данных (РСУБД) с открытым исходным кодом, известная своей надежностью, расширяемостью и соответствием стандартам. Он поддерживает широкий спектр типов данных и расширенных функций, включая сложные запросы, внешние ключи и полнотекстовый поиск. PostgreSQL обладает широкими возможностями расширения, что позволяет пользователям определять пользовательские типы данных, операторы и функции. Он поддерживает свойства ACID (атомарность, согласованность, изоляция, устойчивость) для надежной обработки транзакций и предлагает надежную поддержку параллелизма и целостности данных. Его возможности делают его подходящим для различных приложений, от простых веб-приложений до крупномасштабных хранилищ данных и аналитических решений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">PostgreSQL</h6>
+        </header>
+      </article>
+      <article data-step="15">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="MySQL — это система управления реляционными базами данных (РСУБД) с открытым исходным кодом, известная своей скоростью, надежностью и простотой использования. Он использует SQL (язык структурированных запросов) для взаимодействия с базами данных и поддерживает ряд функций для управления данными, включая транзакции, индексирование и хранимые процедуры. MySQL широко используется для веб-приложений, хранилищ данных и различных других приложений благодаря своей масштабируемости и гибкости. Он хорошо интегрируется со многими языками программирования и платформами и часто используется в сочетании с веб-серверами и фреймворками в популярных программных стеках, таких как LAMP (Linux, Apache, MySQL, PHP/Python/Perl). MySQL поддерживается корпорацией Oracle и имеет большое сообщество и экосистему, поддерживающую его разработку и использование.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">MySQL</h6>
+        </header>
+      </article>
+      <article data-step="16">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Oracle Database — это высоконадежная система управления реляционными базами данных (РСУБД) корпоративного уровня, разработанная корпорацией Oracle. Известная своей масштабируемостью, надежностью и комплексными функциями, Oracle Database поддерживает сложные задачи управления данными и критически важные приложения. Он предоставляет расширенные функциональные возможности, такие как SQL-запросы, управление транзакциями, высокая доступность за счет кластеризации и хранилища данных. Решения Oracle для баз данных поддерживают различные модели данных, такие как реляционные, пространственные и графовые, а также предлагают инструменты для обеспечения безопасности, оптимизации производительности и интеграции данных. Он широко используется в отраслях, требующих крупномасштабной, безопасной и высокопроизводительной обработки данных.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Oracle</h6>
+        </header>
+      </article>
+      <article data-step="17">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="SQLite — это легковесный, бессерверный, автономный ядро базы данных SQL, разработанное для простоты и эффективности. Он широко используется во встраиваемых системах и приложениях, где не требуется полнофункциональный сервер базы данных, таких как мобильные приложения, настольные приложения и веб-сайты малого и среднего размера. SQLite хранит данные в одном файле, что упрощает развертывание и управление. Он поддерживает стандартные SQL-запросы и обеспечивает соответствие стандарту ACID (атомарность, согласованность, изоляция, долговечность) для обеспечения целостности данных. Компактность SQLite, минимальная конфигурация и простота использования делают его популярным выбором для приложений, которым требуется компактное высокопроизводительное решение для баз данных.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SQLite</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция API -->
+    <section class="step four text-success">
+      <div class="circle">
+        <h2>Про API</h2>
+      </div>
+      <article data-step="18">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="REST API (Representational State Transfer Application Programming Interface) — архитектурный стиль для проектирования сетевых приложений. Он использует стандартные методы HTTP (GET, POST, PUT, DELETE) для взаимодействия с ресурсами, которые представлены в виде URI (Uniform Resource Identifiers). REST API не имеют состояния, то есть каждый запрос от клиента к серверу должен содержать всю информацию, необходимую для понимания и обработки запроса. Они используют стандартные коды состояния HTTP для обозначения результатов запросов и часто обмениваются данными в таких форматах, как JSON или XML. REST API широко используются благодаря своей простоте, масштабируемости и легкости интеграции с веб-сервисами и приложениями.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">REST API</h6>
+        </header>
+      </article>
+      <article data-step="19">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="JSON или JavaScript Object Notation — это схема кодирования, разработанная для устранения необходимости в специальном коде для каждого приложения для взаимодействия с серверами, которые взаимодействуют определенным образом. Модуль JSON API предоставляет реализацию для хранилищ данных и структур данных, таких как типы сущностей, пакеты и поля. ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">JSON API</h6>
+        </header>
+      </article>
+      <article data-step="20">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Simple Object Access Protocol (SOAP) — протокол обмена сообщениями для обмена информацией между системами и приложениями. Когда дело доходит до интерфейсов прикладного программирования (API), SOAP API разрабатывается более структурированным и формализованным способом. Сообщения SOAP могут передаваться по различным протоколам более низкого уровня, включая связанный с Интернетом протокол передачи гипертекста (HTTP).">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SOAP</h6>
+        </header>
+      </article>
+      <article data-step="21">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GraphQL — это язык запросов для API и среда выполнения этих запросов, разработанная Facebook. В отличие от REST, где фиксированные конечные точки возвращают предопределенные данные, GraphQL позволяет клиентам запрашивать именно те данные, которые им нужны, что делает взаимодействие с API более гибким и эффективным. Он использует одну конечную точку и полагается на схему, определяющую типы и структуру доступных данных. Такой подход снижает избыточную и недостаточную выборку данных, что делает его идеальным для сложных приложений с различными потребностями в данных на нескольких платформах (например, в Интернете, на мобильных устройствах).">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GraphQL</h6>
+        </header>
+      </article>
+
+
+    </section>
+
+    <!-- Секция Аутентификация -->
+    <section class="step five text-success">
+      <div class="circle">
+        <h2>Аутентификация</h2>
+      </div>
+      <article data-step="22">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Аутентификация API — это процесс проверки личности клиентов, пытающихся получить доступ к API, который гарантирует, что только авторизованные пользователи или приложения могут взаимодействовать с ресурсами API.
+            К распространённым методам аутентификации относятся:
+            •	API-ключи
+            •	OAuth 2.0
+            •	JSON Web Tokens (JWT)
+            •	базовая (Basic) аутентификация
+            •	OpenID Connect
+            Эти методы различаются по сложности и уровню безопасности: от простых подходов на основе токенов до более сложных протоколов, которые обеспечивают и аутентификацию, и авторизацию.
+            Зачем нужна аутентификация API?
+            •	Защита конфиденциальных данных. Предотвращает несанкционированный доступ.
+            •	Аудит и отслеживание. Позволяет фиксировать, кто и как использует API.
+            •	Контроль доступа. Обеспечивает детальные правила, кому и к каким ресурсам разрешён доступ.
+            Как выбрать метод аутентификации?
+            Выбор зависит от:
+            1.	Требований к безопасности (уровень риска и критичность данных).
+            2.	Типов клиентов (веб-приложения, мобильные клиенты, серверные сервисы).
+            3.	Простоты реализации (наличие готовых библиотек, инфраструктурные ограничения).
+            4.	Потребностей в масштабировании (как будет расти нагрузка, нужно ли горизонтальное масштабирование).
+            Внедрение надёжной аутентификации API имеет решающее значение для обеспечения целостности, безопасности и контролируемого использования веб-сервисов и приложений в современных взаимосвязанных программных экосистемах.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое аутентификация?</h6>
+        </header>
+      </article>
+      <article data-step="23">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="JWT (JSON Web Token) — это открытый стандарт для безопасной передачи информации между сторонами в виде объекта JSON. Он состоит из трех частей: заголовка (который указывает тип токена и алгоритм, используемый для подписи), полезной нагрузки (которая содержит утверждения или передаваемые данные) и подписи (которая используется для проверки целостности и подлинности токена). JWT обычно используются для аутентификации и авторизации, позволяя пользователям безопасно передавать и проверять свою личность и разрешения через веб-приложения и API. Они компактны, самодостаточны и могут легко передаваться в заголовках HTTP, что делает их популярными для современных веб- и мобильных приложений">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">JWT</h6>
+        </header>
+      </article>
+      <article data-step="24">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="OAuth — это открытый стандарт авторизации, который позволяет сторонним приложениям получать доступ к ресурсам пользователя, не раскрывая его учетные данные. Он работает путем выдачи маркеров доступа после того, как пользователи предоставляют разрешение, которое приложения затем используют для взаимодействия с серверами ресурсов от имени пользователя. В этом процессе участвуют владелец ресурса (пользователь), сервер ресурсов (на котором хранятся данные) и сервер авторизации (на котором выдаются токены). OAuth обеспечивает безопасное управление доступом на основе токенов, которое обычно используется для предоставления приложениям разрешений на взаимодействие с такими службами, как учетные записи в социальных сетях или облачное хранилище.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">OAuth</h6>
+        </header>
+      </article>
+      <article data-step="25">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Базовая аутентификация — это простая схема аутентификации HTTP, встроенная в протокол HTTP. Он работает путем отправки учетных данных пользователя (имя пользователя и пароль), закодированных в формате base64 в заголовке HTTP. Когда клиент отправляет запрос к серверу, требующему аутентификации, сервер отвечает кодом состояния 401 и заголовком «WWW-Authenticate». Затем клиент повторно отправляет запрос с заголовком Authorization, содержащим слово Basic, за которым следует строка в кодировке base64 username:password. Несмотря на простоту реализации, базовая аутентификация имеет существенные ограничения безопасности: учетные данные в основном отправляются в виде обычного текста (base64 легко декодируется) и не обеспечивает никакого шифрования. Поэтому его следует использовать только через соединения HTTPS, чтобы обеспечить защиту учетных данных во время передачи. Из-за своей простоты и отсутствия расширенных функций безопасности базовая аутентификация обычно рекомендуется только для простых сценариев с низким уровнем риска или в качестве резервного механизма.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Базовая аутентификация</h6>
+        </header>
+      </article>
+      <article data-step="26">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Аутентификация на основе токенов — это протокол, который позволяет пользователям подтвердить свою личность и взамен получить уникальный токен доступа. В течение срока действия маркера пользователи получают доступ к веб-сайту или приложению, для которых был выпущен маркер, вместо того чтобы повторно вводить учетные данные каждый раз, когда они возвращаются на ту же веб-страницу, в приложение или на любой ресурс, защищенный тем же маркером. Токены аутентификации работают как штампованный билет. Пользователь сохраняет доступ до тех пор, пока токен остается действительным. Как только пользователь выходит из системы или выходит из приложения, токен становится недействительным. Аутентификация на основе токенов отличается от традиционных методов аутентификации на основе пароля или сервера. Токены обеспечивают второй уровень безопасности, а администраторы имеют детальный контроль над каждым действием и транзакцией.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Аутентификация токенов</h6>
+        </header>
+      </article>
+      <article data-step="27">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Аутентификация на основе файлов cookie — это метод поддержания пользовательских сессий в веб-приложениях. Когда пользователь входит в систему, сервер создает сессию и отправляет уникальный идентификатор (идентификатор сессии) клиенту в виде файла cookie. Этот файл cookie затем отправляется с каждым последующим запросом, что позволяет серверу идентифицировать и аутентифицировать пользователя. Фактические данные сеанса обычно хранятся на сервере, а файл cookie служит лишь ключом для доступа к этим данным. Этот подход учитывает состояние на стороне сервера и хорошо работает для традиционных веб-приложений. Он относительно прост в реализации и изначально поддерживается браузерами. Тем не менее, аутентификация на основе файлов cookie сталкивается с проблемами при кросс-доменных запросах, может быть уязвима для CSRF-атак, если она не защищена должным образом, и может быть не идеальной для современных одностраничных или мобильных приложений. Несмотря на эти ограничения, он остается распространенным методом аутентификации, особенно для веб-приложений, отрисовываемых на сервере.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">На основе файлов cookie</h6>
+        </header>
+      </article>
+      <article data-step="28">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="OpenID — это открытый стандарт децентрализованной аутентификации, который позволяет пользователям входить на несколько веб-сайтов и в приложения, используя единый набор учетных данных, управляемый поставщиком удостоверений (IdP). Это позволяет пользователям аутентифицировать свою личность через внешний сервис, упрощая процесс входа в систему и уменьшая потребность в нескольких именах пользователей и паролях. OpenID обычно работает в сочетании с OAuth 2.0 для авторизации, позволяя пользователям предоставлять доступ к своим данным, сохраняя при этом безопасность. Такой подход повышает удобство пользователей и оптимизирует управление идентификацией на различных платформах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">OpenID</h6>
+        </header>
+      </article>
+      <article data-step="29">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Security Assertion Markup Language (SAML) — это платформа на основе XML, используемая для единого входа (SSO) и федерации удостоверений, позволяющая пользователям пройти однократную аутентификацию и получить доступ к нескольким приложениям или службам. Он позволяет обмениваться данными аутентификации и авторизации между поставщиком удостоверений (IdP) и поставщиком услуг (SP). Утверждения SAML — это XML-документы, которые содержат идентификационные данные и атрибуты пользователя и используются для передачи учетных данных и разрешений для проверки подлинности. Внедрив SAML, организации могут оптимизировать управление пользователями, повысить безопасность за счет централизованной аутентификации и упростить работу пользователей за счет снижения потребности в многократном входе в систему в разных системах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SAML</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Кэширование   -->
+    <section class="step six text-success">
+      <div class="circle">
+        <h2>Кэширование </h2>
+      </div>
+      <article data-step="30">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Кэширование — это метод, используемый в вычислительной технике для быстрого хранения и извлечения часто используемых данных, что снижает потребность в их повторном извлечении из исходного, более медленного источника. Он включает в себя хранение копии данных в месте, доступ к которому более быстрый, чем к основному хранилищу. Кэширование может выполняться на различных уровнях, включая кэширование браузера, кэширование на уровне приложений и кэширование базы данных. Это значительно повышает производительность за счет уменьшения задержек, уменьшения сетевого трафика и снижения нагрузки на серверы или базы данных. К распространенным стратегиям кэширования относятся истечение срока действия по времени, алгоритмы наименьшего использования (LRU), а также политики сквозной или обратной записи. Хотя кэширование повышает скорость и эффективность, оно также создает проблемы с поддержанием согласованности и актуальности данных. Эффективное управление кэшем имеет решающее значение для баланса между повышением производительности и потребностью в актуальной информации в динамических системах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="31">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Кэширование на стороне сервера — это метод, используемый для повышения производительности приложений путем хранения часто используемых данных в памяти на сервере, что снижает потребность в повторном извлечении данных или вычислениях. Такой подход помогает ускорить время отклика и снизить нагрузку на базы данных и другие серверные сервисы. К распространенным методам относятся кэширование результатов запросов к базе данных, фрагментов HTML и ответов API. К популярным инструментам и технологиям кэширования на стороне сервера относятся Redis, Memcached и встроенные механизмы кэширования в веб-инфраструктурах. Благодаря эффективному управлению кэшированным контентом и его обслуживанию, кэширование на стороне сервера повышает масштабируемость и скорость реагирования приложений">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Серверная часть</h6>
+        </header>
+      </article>
+      <article data-step="32">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Служба сети доставки содержимого (CDN) предназначена для обеспечения высокой доступности и повышения производительности веб-сайтов. Это достигается за счет быстрой доставки ресурсов и контента веб-сайта, как правило, через географически более близкие к запросам клиента конечные точки.
+            Традиционные коммерческие CDN (Amazon CloudFront, Akamai, CloudFlare и Fastly) предоставляют серверы по всему миру, которые можно использовать для этой цели. Обслуживание ресурсов и контента через CDN снижает нагрузку на хостинг веб-сайта, обеспечивает дополнительный уровень кэширования для уменьшения потенциальных сбоев, а также может повысить безопасность веб-сайта
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CDN</h6>
+        </header>
+      </article>
+      <article data-step="33">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Кэширование на стороне клиента — это метод, при котором веб-браузеры или приложения хранят данные локально на устройстве пользователя для повышения производительности и снижения нагрузки на сервер. Он предполагает сохранение копий веб-страниц, изображений, скриптов и других ресурсов в системе клиента для более быстрого доступа при последующих посещениях. Современные браузеры реализуют различные механизмы кэширования, включая кэширование HTTP (с использованием заголовков, таких как Cache-Control и ETag), сервис-воркеры для автономной функциональности и API локального хранилища. Кэширование на стороне клиента значительно сокращает сетевой трафик и время загрузки, повышая удобство работы пользователей, особенно при медленных соединениях. Тем не менее, это требует тщательного управления, чтобы сбалансировать повышенную производительность с потребностью в актуальном контенте. Разработчики должны реализовать соответствующие стратегии аннулирования кэша и рассмотреть методы очистки кэша для критических обновлений. Эффективное кэширование на стороне клиента имеет решающее значение для создания отзывчивых и эффективных веб-приложений при минимальном использовании ресурсов сервера.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Клиентская часть</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Веб-безопасность -->
+    <section class="step seven text-success">
+      <div class="circle">
+        <h2>Веб-безопасность</h2>
+      </div>
+      <article data-step="34">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Веб-безопасность включает в себя защиту веб-приложений от угроз и уязвимостей для обеспечения конфиденциальности, целостности и доступности данных. К ключевым практикам относятся надежные механизмы аутентификации и авторизации, использование шифрования (например, SSL/TLS) для безопасной передачи данных, а также проверка вводимых пользователем данных для предотвращения таких атак, как SQL-инъекции и межсайтовые скрипты (XSS). Безопасные методы кодирования, эффективное управление сеансами, а также регулярные обновления и исправления имеют решающее значение для поддержания безопасности. Кроме того, постоянное тестирование безопасности, включая тестирование на проникновение и оценку уязвимостей, помогает выявлять и устранять потенциальные слабые места, защищая приложения и поддерживая доверие пользователей.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Зачем нужно?</h6>
+        </header>
+      </article>
+      <article data-step="35">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="MD5 (Message-Digest Algorithm 5) — широко используемая криптографическая хеш-функция, которая производит 128-битное хеш-значение, обычно представленное в виде 32-символьного шестнадцатеричного числа. Он был разработан для предоставления уникального идентификатора данных путем генерации выходных данных фиксированного размера (хэша) для любого входа. В то время как MD5 когда-то был популярен для проверки целостности данных и хранения паролей, теперь он считается криптографически взломанным и неподходящим для приложений, чувствительных к безопасности, из-за уязвимостей, которые позволяют проводить коллизионные атаки (когда два разных ввода создают один и тот же хэш). В результате MD5 в значительной степени был заменен более безопасными хеш-функциями, такими как SHA-256.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">MD5</h6>
+        </header>
+      </article>
+      <article data-step="36">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="HTTPS (защищённый протокол передачи гипертекста) — это расширение HTTP, предназначенное для защиты передачи данных между клиентом (например, браузером) и сервером. Он использует шифрование по протоколам SSL/TLS для обеспечения конфиденциальности, целостности и подлинности данных. Это предотвращает перехват или изменение конфиденциальной информации, такой как учётные данные для входа в систему или платёжные реквизиты, злоумышленниками. HTTPS необходим для защиты веб-приложений и стал стандартом для большинства веб-сайтов, особенно тех, которые работают с пользовательскими данными, поскольку он помогает защититься от атак типа «человек посередине» и прослушивания.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">HTTPS</h6>
+        </header>
+      </article>
+      <article data-step="37">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Rollup — это модульный упаковщик для JavaScript, который компилирует небольшие фрагменты кода в более крупные и сложные структуры. Он специализируется на создании меньших и более эффективных пакетов для модулей ES. Rollup отлично справляется с tree-shaking, устраняя неиспользуемый код для более компактных выходных данных. Он особенно хорошо подходит для библиотек и приложений, использующих формат модуля ES. Rollup поддерживает различные форматы выходных данных, включая UMD и CommonJS, что делает его универсальным для различных сценариев развертывания. Хотя он может потребовать больше настройки, чем некоторые альтернативы, фокус Rollup на модулях ES и его эффективное связывание делают его популярным для проектов, в которых приоритет отдается небольшим размерам пакетов и современным практикам JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Scrypt</h6>
+        </header>
+      </article>
+      <article data-step="38">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Bcrypt — это функция хеширования паролей, предназначенная для безопасного хеширования паролей для хранения в базах данных. Созданный Нильсом Провосом и Давидом Мазьером, он основан на шифре Blowfish и включает в себя соль для защиты от атак радужных столов. Ключевой особенностью Bcrypt является его адаптивная природа, позволяющая корректировать его фактор стоимости, чтобы сделать его медленнее по мере увеличения вычислительной мощности, тем самым поддерживая устойчивость к атакам методом перебора с течением времени. Он создает хеш-вывод фиксированного размера, обычно длиной 60 символов, который включает соль и фактор стоимости. Bcrypt широко используется во многих языках программирования и фреймворках благодаря своей надежности безопасности и относительной простоте реализации. Его намеренно медленная обработка делает его особенно эффективным для хранения паролей, где скорость не является приоритетом, но безопасность имеет первостепенное значение.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Bcrypt</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Масштабирование баз данных  -->
+    <section class="step eight text-success">
+      <div class="circle">
+        <h2>Масштабирование баз данных</h2>
+      </div>
+      <article data-step="39">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Тестирование приложений включает в себя систематическую оценку программного обеспечения, чтобы убедиться, что оно соответствует требованиям, правильно функционирует и поддерживает качество. Основные типы тестирования включают:
+            Модульное тестирование: проверка отдельных компонентов или функций
+            Интеграционное тестирование: проверка взаимодействий между различными частями приложения
+            Функциональное тестирование: проверка соответствия приложения заданным требованиям
+            UI/UX тестирование: оценка пользовательского интерфейса и опыта работы
+            Тестирование производительности: оценка скорости, отзывчивости и стабильности приложения
+            Тестирование безопасности: выявление уязвимостей и обеспечение защиты данных
+            Тестирование доступности: проверка удобства использования для людей с ограниченными возможностями
+            Тестирование совместимости: проверка функциональности на различных устройствах и платформах
+            Современное тестирование часто включает в себя автоматизированные средства тестирования и конвейеры непрерывной интеграции/непрерывного развертывания (CI/CD). Разработка через тестирование (TDD) и разработка на основе поведения (BDD) — это популярные методологии, в которых особое внимание уделяется написанию тестов до или вместе с кодом. Эффективные стратегии тестирования помогают выявлять ошибки на ранних стадиях, улучшать качество кода и обеспечивать надежное взаимодействие с пользователем.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое тестировка приложений?</h6>
+        </header>
+      </article>
+      <article data-step="40">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="CI/CD (Continuous Integration/Continuous Delivery) — это набор практик и инструментов в разработке программного обеспечения, которые автоматизируют процесс сборки, тестирования и развертывания изменений кода. Непрерывная интеграция включает в себя частое слияние изменений кода в центральный репозиторий, где выполняются автоматические сборки и тесты. Непрерывная поставка расширяет эту возможность, автоматически развертывая все изменения кода в тестовой или промежуточной среде после этапа сборки. Некоторые реализации включают непрерывное развертывание, при котором изменения автоматически выпускаются в рабочую среду. Конвейеры CI/CD обычно включают в себя такие этапы, как компиляция кода, модульное тестирование, интеграционное тестирование, сканирование безопасности и развертывание. Этот подход направлен на улучшение качества программного обеспечения, сокращение времени выхода на рынок и повышение эффективности разработки за счет выявления и устранения проблем на ранних этапах цикла разработки.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CI/CD</h6>
+        </header>
+      </article>
+      <article data-step="41">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Индексы баз данных — это структуры данных, которые повышают скорость операций извлечения данных в системе управления базами данных. Они работают аналогично книжным указателям, предоставляя быстрый способ поиска информации на основе определенных столбцов или наборов столбцов. Индексы создают отдельную структуру, содержащую ссылку на фактические данные, что позволяет ядру базы данных находить информацию без сканирования всей таблицы. Несмотря на то, что индексы значительно повышают производительность запросов, особенно для больших наборов данных, они сопряжены с компромиссами. Они увеличивают требования к дисковому пространству и могут замедлить операции записи, так как индекс необходимо обновлять при каждом изменении данных. К распространенным типам относятся индексы B-деревьев для общего использования, индексы растровых изображений для данных с низкой кратностью и хэш-индексы для сравнения на равенство. Правильное проектирование индексов имеет решающее значение для оптимизации производительности базы данных, баланса между быстрым чтением и более медленными операциями записи и повышенными потребностями в хранилище.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Индексы баз данных</h6>
+        </header>
+      </article>
+      <article data-step="42">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Репликация данных — это процесс создания и обслуживания нескольких копий одних и тех же данных в разных местах или узлах распределенной системы. Он повышает доступность, надежность и производительность данных, гарантируя, что данные останутся доступными даже в случае сбоя одного или нескольких узлов. Репликация может быть синхронной (изменения применяются ко всем копиям одновременно) или асинхронной (изменения распространяются после применения к основной копии). Он широко используется в системах баз данных, сетях доставки контента и распределенных файловых системах. Стратегии репликации включают в себя модели «ведущий-ведомый», «мультиведущий» и «одноранговый». Повышая отказоустойчивость и производительность чтения, репликация создает проблемы для поддержания согласованности данных между копиями и управления потенциальными конфликтами. Эффективные стратегии репликации должны обеспечивать баланс между согласованностью, доступностью и допустимостью разбиения, часто в соответствии с принципами теоремы CAP.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Репликация данных</h6>
+        </header>
+      </article>
+      <article data-step="43">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Теорема CAP, также известная как теорема Брюера, является фундаментальным принципом в распределенных системах баз данных. В нем говорится, что в распределенной системе невозможно одновременно гарантировать все три из следующих свойств: Согласованность (все узлы видят одни и те же данные в одно и то же время), Доступность (каждый запрос получает ответ, без гарантии, что он содержит самую последнюю версию данных) и Толерантность к разделам (система продолжает работать, несмотря на сбои в сети между узлами). Согласно теореме, распределенная система может в любой момент времени обеспечить только две из этих трех гарантий. Этот принцип определяет проектирование и архитектуру распределенных систем, влияя на решения о моделях согласованности данных, стратегиях репликации и обработке сбоев. Понимание теоремы CAP имеет решающее значение для проектирования надежных, масштабируемых распределенных систем и выбора подходящих решений для баз данных для конкретных сценариев использования в распределенных вычислительных средах.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Теорема CAP</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Архитектурные шаблоны -->
+    <section class="step nine text-success">
+      <div class="circle">
+        <h2>Архитектурные шаблоны</h2>
+      </div>
+      <article data-step="44">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Монолитные приложения разрабатываются как единое единое целое, в котором все компоненты, такие как пользовательский интерфейс, бизнес-логика и доступ к данным, тесно интегрированы и работают как единый сервис. Такая архитектура упрощает разработку и развертывание, так как все приложение управляется и развертывается вместе. Однако это может привести к проблемам с масштабируемостью, удобством обслуживания и гибкостью по мере роста приложения. Изменения в одной части приложения могут потребовать повторного развертывания всей системы, а масштабирование может потребовать дублирования всего приложения, а не масштабирования отдельных компонентов. Монолитные архитектуры могут подходить для небольших приложений или проектов с менее сложными требованиями, но многие организации переходят на микросервисы или модульные архитектуры, чтобы устранить эти ограничения по мере масштабирования.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Монолитные приложения</h6>
+        </header>
+      </article>
+      <article data-step="45">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Микросервисы — это архитектурный стиль, в котором приложение структурируется как набор слабо связанных, независимо развертываемых сервисов. Каждая микрослужба ориентирована на определенную бизнес-функцию и взаимодействует с другими пользователями с помощью упрощенных протоколов, обычно HTTP или очередей обмена сообщениями. Такой подход обеспечивает большую масштабируемость, гибкость и отказоустойчивость, так как сервисы можно разрабатывать, развертывать и масштабировать независимо друг от друга. Микросервисы также упрощают использование различных технологий и языков для различных компонентов, а также поддерживают непрерывную доставку и развертывание. Однако управление микрослужбами сопряжено со сложностью с точки зрения взаимодействия между службами, согласованности данных и оркестрации развертывания.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Микросервисы</h6>
+        </header>
+      </article>
+      <article data-step="46">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сервис-ориентированная архитектура (SOA) — это архитектурный шаблон, в котором программные компоненты, известные как сервисы, спроектированы так, чтобы их можно было использовать повторно, слабо связанные и взаимодействовать по сети. Каждая служба представляет собой автономную единицу, которая выполняет определенную бизнес-функцию и взаимодействует с другими службами через стандартизированные протоколы и форматы данных, такие как HTTP и XML. SOA позволяет организациям создавать масштабируемые, гибкие и совместимые системы, позволяя сервисам разрабатываться, развертываться и поддерживаться независимо. Такой подход способствует модульности, упрощению интеграции разрозненных систем и гибкости в адаптации к меняющимся бизнес-требованиям.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SOA</h6>
+        </header>
+      </article>
+      <article data-step="47">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сервисная сетка — это архитектурный шаблон для улучшения взаимодействия, безопасности и управления между микрослужбами в распределенной сети. Он использует коллекцию интеллектуальных прокси-серверов для управления обменом данными между службами, обеспечивая высокую доступность, эффективную балансировку нагрузки и надежное обнаружение служб. Кроме того, сервисная сетка предлагает расширенные функции, такие как наблюдаемость для мониторинга поведения сети и различные возможности управления трафиком. В типичной настройке сетки служб каждый микросервис связан с прокси-сервером. Этот прокси, часто развертываемый с использованием шаблона расширения, отвечает не только за обработку обмена данными с соответствующей микрослужбой, но и за реализацию различных сетевых функций. Эти функции включают балансировку нагрузки, интеллектуальную маршрутизацию и обеспечение безопасной передачи данных. Шаблон расширения, являющийся неотъемлемой частью сеток сервисов, предполагает развертывание прокси-сервера в виде контейнера расширения вместе с основным контейнером микрослужб, особенно в средах Kubernetes. Такая структура позволяет сервисной сетке функционировать независимо от самих микросервисов, упрощая управление и обновления.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Сервисная сетка</h6>
+        </header>
+      </article>
+      <article data-step="48">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Бессерверные вычисления — это модель облачных вычислений, в которой разработчики создают и запускают приложения без управления серверной инфраструктурой. В этой модели поставщики облачных услуг выполняют задачи по управлению серверами, масштабированию и обслуживанию. Разработчики развертывают код в виде функций, которые выполняются в ответ на события или триггеры и оплачиваются на основе фактического использования, а не зарезервированных мощностей. Такой подход упрощает разработку, абстрагируясь от проблем инфраструктуры, обеспечивая автоматическое масштабирование и снижая операционные издержки. К распространенным бессерверным платформам относятся AWS Lambda, Google Cloud Functions и Azure Functions, которые поддерживают ряд управляемых событиями приложений и микросервисов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Бессерверные вычисления</h6>
+        </header>
+      </article>
+      <article data-step="49">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Методология двенадцатифакторных приложений — это набор принципов для создания современных, масштабируемых и удобных в обслуживании веб-приложений, особенно подходящих для облачных сред. В нем подчеркивается передовой подход к разработке приложений таким образом, чтобы обеспечить переносимость, масштабируемость и простоту развертывания. Ключевые принципы включают в себя:
+            1.	Кодовая база: одна кодовая база, отслеживаемая в системе управления версиями, с большим количеством развертываний.
+            2.	Зависимости: явное объявление и изоляция зависимостей.
+            3.	Config: Сохранить конфигурацию в среде.
+            4.	Службы поддержки: Рассматривайте службы поддержки как прикрепленные ресурсы.
+            5.	Сборка, Выпуск, Запуск: Разделение этапов сборки и запуска.
+            6.	Процессы: выполнение приложения как одного или нескольких процессов без отслеживания состояния.
+            7.	Привязка портов: Экспорт услуг через привязку портов.
+            8.	Параллелизм: горизонтальное масштабирование с помощью модели процесса.
+            9.	Одноразовость: максимальная надежность благодаря быстрому запуску и плавному выключению.
+            10.	Паритет разработки и разработки: поддерживайте максимально схожее сходство сред разработки, промежуточной и производственной среды.
+            11.	Журналы: обрабатывайте журналы как потоки событий.
+            12.	Административные процессы: выполняйте административные или управленческие задачи как разовые процессы.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">12-ти факторные приложения</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Контейнеризация -->
+    <section class="step ten text-success">
+      <div class="circle">
+        <h2>Контейнеризация </h2>
+      </div>
+      <article data-step="50">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Контейнеризация и виртуализация — это технологии изоляции и запуска нескольких приложений на общем оборудовании, но они существенно различаются по подходу и использованию ресурсов. Виртуализация создает отдельные виртуальные машины (ВМ), каждая из которых имеет собственную операционную систему, работающую на гипервизоре. Это обеспечивает надежную изоляцию, но потребляет больше ресурсов. Контейнеризация, примером которой является Docker, использует общее ядро операционной системы для создания изолированных сред (контейнеров) для приложений. Контейнеры легче, запускаются быстрее и потребляют меньше ресурсов, чем виртуальные машины. Они идеально подходят для микросервисных архитектур и быстрого развертывания. Виртуализация обеспечивает лучшую изоляцию безопасности и подходит для запуска разных операционных систем на одном и том же оборудовании. Контейнеризация обеспечивает большую эффективность и масштабируемость, особенно для облачных приложений. Выбор между ними зависит от конкретных сценариев использования, требований к безопасности и потребностей инфраструктуры.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="51">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="– Платформа контейнеризации: позволяет упаковать приложение и все его зависимости в лёгкие изолированные контейнеры.
+            – Контейнеры запускаются одинаково в любой среде (локально, на сервере, в облаке).
+            – Быстрый запуск и остановка, малый оверхед по сравнению с виртуальными машинами.
+            – Стандартные инструменты: Dockerfile для описания образа, Docker Compose для оркестрации нескольких контейнеров в рамках одного хоста.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Docker</h6>
+        </header>
+      </article>
+      <article data-step="52">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="– Система оркестрации контейнеров: управляет развёртыванием, масштабированием и обслуживанием контейнированных приложений в кластере серверов.
+            – Основные возможности: автоматический подбор ресурсов, балансировка нагрузки, самовосстановление (подменяет «упавшие» контейнеры), rolling-обновления без простоя.
+            – Структура: Pod’ы (группы контейнеров), ReplicaSet (репликация), Deployment (обновления), Service (сеть), Namespace (изолированные среды).
+            – Работает поверх любой инфраструктуры: on-premise или облачные провайдеры, интегрируется с Helm для управления пакетами и GitOps-подходами.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Kubernetes</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Брокеры сообщений> -->
+    <section class="step eleven text-success">
+      <div class="circle">
+        <h2>Брокеры сообщений </h2>
+      </div>
+      <article data-step="53">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Брокеры сообщений — это посредники, которые упрощают взаимодействие между распределенными системами или компонентами путем приема, маршрутизации и доставки сообщений. Они обеспечивают асинхронную передачу сообщений, отделяя производителей (отправителей) от потребителей (получателей), что улучшает масштабируемость и гибкость. К общим функциям брокеров сообщений относятся очередь сообщений, балансировка нагрузки и обеспечение надежной доставки сообщений с помощью таких функций, как сохранение и подтверждение. К популярным брокерам сообщений относятся Apache Kafka, RabbitMQ и ActiveMQ, каждый из которых предлагает различные функции и возможности, подходящие для различных сценариев использования, таких как обработка данных в реальном времени, потоковая передача событий или управление задачами.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="54">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="RabbitMQ — это брокер сообщений с открытым исходным кодом, который облегчает обмен сообщениями между распределенными системами с помощью протокола Advanced Message Queuing Protocol (AMQP). Он обеспечивает асинхронную связь путем постановки в очередь и маршрутизации сообщений между производителями и потребителями, что помогает разъединить компоненты приложения и повысить масштабируемость и надежность. RabbitMQ поддерживает такие функции, как надежность сообщений, подтверждения и гибкая маршрутизация через обмены и очереди. Он обладает широкими возможностями настройки, что позволяет использовать различные шаблоны обмена сообщениями, включая публикацию/подписку, запрос/ответ и связь «точка-точка». RabbitMQ широко используется в корпоративных средах для обработки сообщений с высокой пропускной способностью и интеграции гетерогенных систем.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">RabbitMQ</h6>
+        </header>
+      </article>
+      <article data-step="55">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Apache Kafka — это распределенная платформа потоковой передачи событий, предназначенная для отказоустойчивой обработки данных с высокой пропускной способностью. Он действует как брокер сообщений, позволяя системам публиковать потоки записей и подписываться на них, подобно распределенному журналу коммитов. Kafka обладает высокой масштабируемостью и может обрабатывать большие объемы данных с низкой задержкой, что делает ее идеальной для аналитики в режиме реального времени, агрегирования журналов и интеграции данных. В нем представлены разделы по организации потоков данных, разделам для параллельной обработки и репликации для отказоустойчивости, что обеспечивает надежную и эффективную обработку больших потоков данных в распределенных системах..">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Apache Kafka</h6>
+        </header>
+      </article>
+    </section>
+  </main>
+
+  <!-- Модальное окно Bootstrap для вывода текста -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Заголовок с добавленным стикером -->
+          <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Содержимое модального окна заполняется динамически -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 ITmap.</p>
+    <p>Все права защищены.</p>
+    <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+  </footer>
+  <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+  <script>
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const modalContent = button.getAttribute('data-modal-content');
+      const modalBody = infoModal.querySelector('.modal-body');
+      // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+      modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+    });
+    document.querySelectorAll('.side-fixed').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.remove('rotating');
+        setTimeout(() => img.classList.add('rotating'), 10);
+      });
+    });
+
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

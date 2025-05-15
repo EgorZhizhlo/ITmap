@@ -1,0 +1,583 @@
+{% extends 'base.html' %}
+{% block title %}Typescript{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/typescript.css"/>
+
+<main id="infographic" class="d-flex flex-column align-items-center py-5">
+  <!-- Секция Основа -->
+  <section class="step one text-danger">
+    <div class="circle">
+      <h2>Основа</h2>
+    </div>
+    <article data-step="1">
+      <header class="d-flex align-items-center bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="TypeScript — это статически типизированный язык программирования, являющийся надмножеством JavaScript. Он был разработан и поддерживается корпорацией Microsoft. TypeScript был создан для решения проблем создания крупномасштабных приложений JavaScript и добавляет в язык необязательные аннотации типов, классы, интерфейсы и другие функции.
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Что такое TypeScript?</h6>
+      </header>
+    </article>
+    <article data-step="2">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="TypeScript — это надмножество JavaScript, которое добавляет необязательные аннотации типов и другие функции, такие как интерфейсы, классы и пространства имен. JavaScript — это динамически типизированный язык, который в основном используется для клиентской веб-разработки, а также может использоваться для серверной разработки.
+          Вот несколько ключевых различий между TypeScript и JavaScript:
+          -	Типы: TypeScript имеет необязательные аннотации типов, в то время как JavaScript является динамически типизированным. Это означает, что в TypeScript вы можете указать тип данных переменных, параметров и возвращаемых значений, что может помочь отловить ошибки, связанные с типами, во время компиляции.
+          -	Синтаксис: TypeScript расширяет синтаксис JavaScript такими функциями, как интерфейсы, классы и пространства имен. Это обеспечивает более надежную и организованную структуру для крупномасштабных проектов.
+          -	Инструментарий: TypeScript имеет лучшую поддержку инструментов, такую как лучшая интеграция редактора, проверка типов и рефакторинг кода.
+          -	Обратная совместимость: TypeScript полностью совместим с существующим кодом JavaScript, что означает, что вы можете использовать TypeScript в любой среде JavaScript.
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">TypeScript против JavaScript </h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Типы данных
+-->
+  <section class="step two text-warning">
+    <div class="circle">
+      <h2>Примитивные типы данных</h2>
+    </div>
+    <article data-step="3">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="boolean — это примитивный тип данных в TypeScript, представляющий логическое значение, т. е. true или false. Ниже приведен пример объявления логической переменной:
+          let isTrue: boolean = true;
+          let isFalse: boolean = false;
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">boolean</h6>
+      </header>
+    </article>
+    <article data-step="4">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Это примитивный тип данных в TypeScript, который представляет числовые значения. Он включает в себя как целые числа, так и значения с плавающей запятой.
+
+          let intValue: number = 42;
+          let floatValue: number = 3.14;">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">number</h6>
+      </header>
+    </article>
+    <article data-step="5">
+      <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Это примитивный тип данных в TypeScript, представляющий текстовые данные. Это набор элементов 16-битного набора символов Unicode.
+        let name: string = 'John Doe';          
+          ">
+          <i class="fa-solid fa-meteor bg-danger"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">string</h6>
+      </header>
+    </article>
+    <article data-step="6">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="void представляет возвращаемое значение функций, которые не возвращают значение. Это выведенный тип всякий раз, когда функция не имеет операторов return или не возвращает явного значения из этих операторов return:
+
+          // Выведенный тип возвращаемого значения — void
+          function noop() {
+          return;
+          }
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">void</h6>
+      </header>
+    </article>
+    <article data-step="7">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В JavaScript есть два примитивных значения, используемых для сигнализации об отсутствии или неинициализации значения: null (отсутствует) и undefined (неинициализируется).
+        В TypeScript есть два соответствующих типа с одинаковыми именами. Поведение этих типов зависит от того, включена ли у вас опция strictNullChecks.
+        При отключенной опции strictNullChecks к значениям, которые могут быть null или undefined, по-прежнему можно получить доступ обычным образом, а значения null и undefined можно назначить свойству любого типа. Это похоже на то, как ведут себя языки без проверки null (например, C#, Java). Отсутствие проверки этих значений, как правило, является основным источником ошибок; TypeScript всегда рекомендует включать strictNullChecks, если это практично в кодовой базе.
+        При включенной опции strictNullChecks, когда значение равно null или undefined, вам нужно будет проверить эти значения, прежде чем использовать методы или свойства для этого значения. Так же, как и проверка на undefined перед использованием необязательного свойства, мы можем использовать сужение для проверки значений, которые могут быть нулевыми:
+        
+        function doSomething(x: string | null) {
+        if (x === null) {
+        // ничего не делать
+        } else {
+        console.log('Hello, ' + x.toUpperCase());
+        }
+        }          
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">undefined</h6>
+      </header>
+    </article>
+    <article data-step="8">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="В JavaScript есть два примитивных значения, используемых для сигнализации об отсутствии или неинициализации значения: null (отсутствует) и undefined (неинициализируется).
+          В TypeScript есть два соответствующих типа с одинаковыми именами. То, как ведут себя эти типы, зависит от того, включена ли у вас опция strictNullChecks.
+          При отключенной опции strictNullChecks к значениям, которые могут быть null или undefined, по-прежнему можно получить доступ обычным образом, а значения null и undefined можно назначить свойству любого типа. Это похоже на то, как ведут себя языки без проверки null (например, C#, Java). Отсутствие проверки этих значений, как правило, является основным источником ошибок; TypeScript всегда рекомендует включать strictNullChecks, если это практично в кодовой базе.
+          
+          При включенной опции strictNullChecks, когда значение равно null или undefined, вам нужно будет проверить эти значения перед использованием методов или свойств для этого значения. Так же, как и проверка на undefined перед использованием необязательного свойства, мы можем использовать сужение для проверки значений, которые могут быть нулевыми:
+          
+          function doSomething(x: string | null) {
+          if (x === null) {
+          // ничего не делать
+          } else {
+          console.log('Hello, ' + x.toUpperCase());
+          }
+          }
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">null</h6>
+      </header>
+    </article>
+  </section>
+
+  <!-- Секция Объекты -->
+  <section class="step three text-success">
+    <div class="circle">
+      <h2>Объекты</h2>
+    </div>
+    <article data-step="9">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="TypeScript позволяет вам специально набирать объект, используя интерфейс, который может быть повторно использован несколькими объектами.
+
+        interface Person {
+        name: string;
+        age: number;
+        }
+        function greet(person: Person) {
+        return 'Hello ' + person.name;
+        }
+        
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">Интерфейс</h6>
+      </header>
+    </article>
+    <article data-step="10">
+      <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В TypeScript класс — это план создания объектов с определенными свойствами и методами. Классы — это фундаментальная концепция объектно-ориентированного программирования. Вот пример простого класса в TypeScript:
+
+        class Car {
+        make: string;
+        model: string;
+        year: number;
+        constructor(make: string, model: string, year: number) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        }
+        drive() {
+        console.log(`Driving my ${this.year} ${this.make} ${this.model}`);
+        }
+        }
+        
+          ">
+          <i class="fa-solid fa-cookie-bite bg-warning"></i>
+        </span>
+        <h6 class="text-uppercase my-3 pe-4">Класс</h6>
+      </header>
+    </article>
+    <article data-step="11">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Enums — это не расширение JavaScript на уровне типа. Оно позволяет разработчику определять набор именованных констант. Использование enums может упростить документирование намерений или создание набора отдельных случаев. TypeScript предоставляет как числовые, так и строковые enums.
+
+        Вот пример числового enum в TypeScript:
+        enum Direction {
+        Up = 1,
+        Down,
+        Left,
+        Right,
+        }
+        Выше у нас есть числовое enum, где Up инициализируется значением 1. Все следующие члены автоматически увеличиваются с этого момента. Другими словами, Direction.Up имеет значение 1, Down — 2, Left — 3, а Right — 4.
+        Если бы мы не использовали инициализатор для Up, он имел бы значение 0, а остальные члены автоматически увеличивались бы с этого момента.
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Enum</h6>
+      </header>
+    </article>
+    <article data-step="12">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Чтобы указать тип массива, например [1, 2, 3], можно использовать синтаксис number[]; этот синтаксис работает для любого типа (например, string[] — это массив строк и т. д.). Вы также можете увидеть это в записи Array<number>, что означает то же самое.
+
+          const numbers: number[] = [1, 2, 3];            
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Array</h6>
+      </header>
+    </article>
+    <article data-step="13">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Тип кортежа — это другой тип типа массива, который точно знает, сколько элементов он содержит и какие именно типы он содержит в определенных позициях.
+
+        type StringNumberPair = [string, number];
+        const pair: StringNumberPair = ['hello', 42];
+        const first = pair[0];
+        const second = pair[1];
+        // Ошибка: индекс выходит за границы
+        const third = pair[2];
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Кортеж</h6>
+      </header>
+    </article>
+    <article data-step="14">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Чтобы определить тип объекта, мы просто перечисляем его свойства и их типы.
+
+        Например, вот функция, которая принимает точечный объект:
+        // Аннотация типа параметра — тип объекта
+        function printCoord(pt: { x: number; y: number }) {
+        console.log(Значение координаты x равно + pt.x);
+        console.log(Значение координаты y равно  + pt.y);
+        }
+        printCoord({ x: 3, y: 7 });
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Объект</h6>
+      </header>
+    </article>
+
+  </section>
+
+  <!-- Секция Interface Builder -->
+  <section class="step four text-success">
+    <div class="circle">
+      <h2>Классы</h2>
+    </div>
+    <article data-step="15">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Классы в TypeScript - это схема для создания объектов (экземпляров класса), обеспечивающая способ структурирования объектов и инкапсуляции данных и поведения. Синтаксис классов в TypeScript похож на синтаксис классов в других объектно-ориентированных языках программирования, таких как Java и C#.
+        Класс в TypeScript определяется с помощью ключевого слова class, за которым следует имя класса. Определение класса может включать поля (также известные как свойства или атрибуты), методы (функции) и конструктор.
+        class Animal {
+          имя: строка;
+          constructor(name: string) {
+            this.name = name;
+          }
+          makeSound(): void {
+            console.log(`${this.name} издает звук`);
+          }
+        }
+        const dog = new Animal('Dog');
+        dog.makeSound(); // Вывод: Собака издает звук
+        В этом примере класс Animal имеет поле name, конструктор, устанавливающий значение поля name, и метод makeSound. Экземпляр класса Animal можно создать с помощью ключевого слова new, а доступ к его методам и свойствам осуществляется с помощью точечной нотации.
+        
+        ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Конструктор класса</h6>
+      </header>
+    </article>
+    <article data-step="16">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В TypeScript модификаторы доступа - это ключевые слова, используемые для управления видимостью и доступностью свойств и методов класса. В TypeScript существует три модификатора доступа:
+
+        public: Это модификатор доступа по умолчанию. Свойства и методы, объявленные как public, могут быть доступны из любого места, как внутри, так и вне класса.
+        private: К свойствам и методам, объявленным как private, можно обращаться только в пределах одного класса. Они недоступны извне класса.
+        protected: Доступ к свойствам и методам, объявленным как protected, возможен в пределах класса и его подклассов. Они недоступны за пределами класса и его подклассов.
+        Модификаторы доступа в TypeScript позволяют определять уровень видимости и доступности свойств и методов в классе, что делает код более удобным и безопасным.
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Модификаторы доступа</h6>
+      </header>
+    </article>
+    <article data-step="17">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Наследование и полиморфизм - два фундаментальных понятия в объектно-ориентированном программировании, и они также поддерживаются в TypeScript.
+        Наследование - это механизм, при котором подкласс наследует свойства и методы от своего родительского класса. Это позволяет подклассу повторно использовать код и поведение родительского класса, а также добавлять или изменять свое собственное поведение. В TypeScript наследование осуществляется с помощью ключевого слова extends.
+        Полиморфизм - это способность объекта принимать различные формы. Это позволяет рассматривать объекты разных классов как объекты общего класса, если они имеют общий интерфейс или иерархию наследования. В TypeScript полиморфизм достигается за счет переопределения и перегрузки методов.
+        класс Animal {
+          makeSound(): void {
+            console.log('Издает звук животного');
+          }
+        }
+        class Dog extends Animal {
+          makeSound(): void {
+            console.log('Лай');
+          }
+        }
+        class Cat extends Animal {
+          makeSound(): void {
+            console.log('Мяу');
+          }
+        }
+        let animal: Animal;
+        animal = new Dog();
+        animal.makeSound(); // Выход: Лай
+        animal = new Cat();
+        animal.makeSound(); // Выходные данные: Мяу
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Наследование и полиморфизм</h6>
+      </header>
+    </article>
+    <article data-step="18">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В TypeScript переопределение метода — это механизм, при котором подкласс предоставляет новую реализацию метода, уже определённого в родительском классе. Это позволяет подклассу наследовать поведение родительского класса, но изменять его в соответствии со своими потребностями.
+
+        Чтобы переопределить метод в TypeScript, сигнатура метода в подклассе должна точно соответствовать сигнатуре метода в родительском классе.
+        class Animal {
+          makeSound(): void {
+            console.log('Making animal sound');
+          }
+        }
+        
+        class Dog extends Animal {
+          makeSound(): void {
+            console.log('Bark');
+          }
+        }
+        
+        let animal: Animal;
+        
+        animal = new Dog();
+        animal.makeSound(); // Output: Bark
+        
+        В этом примере класс Dog переопределяет метод makeSound, определённый в классе Animal, и предоставляет собственную реализацию. Когда метод makeSound вызывается для экземпляра класса Dog, он будет использовать реализацию из класса Dog, а не из класса Animal
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Переопределение метода</h6>
+      </header>
+    </article>
+    <article data-step="19">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Абстрактные классы в TypeScript — это классы, которые не могут быть созданы самостоятельно и должны быть унаследованы другими классами. Абстрактные классы служат основой для других классов и могут содержать абстрактные методы, то есть методы без тела, которые должны быть переопределены в подклассе. Такие классы полезны для определения общего интерфейса или базовой функциональности, которую другие классы могут наследовать и расширять.
+
+          abstract class Animal {
+            abstract makeSound(): void;
+          
+            move(): void {
+              console.log('moving...');
+            }
+          }
+          
+          class Dog extends Animal {
+            makeSound(): void {
+              console.log('bark');
+            }
+          }">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Абстрактные классы</h6>
+      </header>
+    </article>
+    
+  </section>
+
+  <!-- Секция Типы утилит  -->
+  <section class="step five text-success">
+    <div class="circle">
+      <h2>Типы утилит</h2>
+    </div>
+    <article data-step="20">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="TypeScript предоставляет несколько служебных типов, которые можно использовать для управления и преобразования существующих типов. Вот некоторые из наиболее распространённых:
+
+        Partial: делает все свойства типа необязательными.
+        Readonly: делает все свойства типа доступными только для чтения.
+        Pick: позволяет вам выбирать определенные свойства из типа.
+        Omit: позволяет вам исключить определенные свойства из типа.
+        Exclude: создает тип , который является заданной разницей между A и B.
+        .. и многое другое.          
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Что это?</h6>
+      </header>
+    </article>
+    </article>
+    <article data-step="21">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Частичный тип в TypeScript позволяет сделать все свойства типа необязательными. Это полезно, когда вам нужно создать объект, содержащий только часть свойств существующего типа.
+
+        Вот пример использования частичного типа в TypeScript:
+        
+        interface User {
+          name: string;
+          age: number;
+          email: string;
+        }
+        
+        function createUser(user: Partial<User>): User {
+          return {
+            name: 'John Doe',
+            age: 30,
+            email: 'john.doe@example.com',
+            ...user,
+          };
+        }
+        
+        const newUser = createUser({ name: 'Jane Doe' });
+        
+        console.log(newUser);
+        // Output: { name: 'Jane Doe', age: 30, email: 'john.doe@example.com' }
+        
+          ">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Partial</h6>
+      </header>
+    </article>
+    <article data-step="22">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Функция Omit создаёт тип, выбирая все свойства из Type, а затем удаляя ключи (строковые литералы или объединение строковых литералов).
+
+          interface Todo {
+            title: string;
+            description: string;
+            completed: boolean;
+            createdAt: number;
+          }
+          
+          type TodoPreview = Omit<Todo, 'description'>;
+          
+          const todo: TodoPreview = {
+            title: 'Clean room',
+            completed: false,
+            createdAt: 1615544252770,
+          };
+          
+          type TodoInfo = Omit<Todo, 'completed' | 'createdAt'>;
+          
+          const todoInfo: TodoInfo = {
+            title: 'Pick up kids',
+            description: 'Kindergarten closes at 5pm',
+          };">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Omit</h6>
+      </header>
+    </article>
+    <article data-step="23">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Запись создаёт тип объекта, ключи свойств которого являются ключами, а значения свойств — типом. Эту утилиту можно использовать для сопоставления свойств одного типа с другим.
+
+          interface CatInfo {
+            age: number;
+            breed: string;
+          }
+          
+          type CatName = 'miffy' | 'boris' | 'mordred';
+          
+          const cats: Record<CatName, CatInfo> = {
+            miffy: { age: 10, breed: 'Persian' },
+            boris: { age: 5, breed: 'Maine Coon' },
+            mordred: { age: 16, breed: 'British Shorthair' },
+          };">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Record</h6>
+      </header>
+    </article>
+    <article data-step="24">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Выбор создаёт тип, выбирая набор свойств Keys (строковый литерал или объединение строковых литералов) из Type.
+
+          interface Todo {
+            title: string;
+            description: string;
+            completed: boolean;
+          }
+          
+          type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+          
+          const todo: TodoPreview = {
+            title: 'Clean room',
+            completed: false,
+          };">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Pick</h6>
+      </header>
+    </article>
+    <article data-step="25">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Readonly создаёт тип со всеми свойствами Type, установленными в режим только для чтения, то есть свойства созданного типа нельзя изменить.
+
+          interface Todo {
+            title: string;
+          }
+          
+          const todo: Readonly<Todo> = {
+            title: 'Delete inactive users',
+          };
+          
+          // Cannot assign to 'title' because it is a read-only property.
+          todo.title = 'Hello';">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Readonly</h6>
+      </header>
+    </article>
+    <article data-step="26">
+      <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+          data-modal-content="Функция Exclude создаёт тип, исключая из UnionType все элементы объединения, которые можно присвоить ExcludedMembers.
+
+          type T0 = Exclude<'a' | 'b' | 'c', 'a'>; // b | c
+          type T1 = Exclude<'a' | 'b' | 'c', 'a' | 'b'>; // c
+          type T2 = Exclude<string | number | (() => void), Function>; // string | number">
+          <i class="fa-solid fa-ghost bg-success px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Exclude</h6>
+      </header>
+    </article>
+    <article data-step="27">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        Этот тип предназначен для моделирования таких операций, как await в асинхронных функциях или метод .then() в Promises — в частности, для рекурсивного раскрытия Promises.
+
+        type A = Awaited<Promise<string>>;
+        // type A = string
+        
+        type B = Awaited<Promise<Promise<number>>>;
+        // type B = number
+        
+        type C = Awaited<boolean | Promise<number>>;
+        // type C = number | boolean.">
+          <i class="fa-solid fa-box-open bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Awaited</h6>
+      </header>
+    </article>
+    <article data-step="28">
+      <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+        <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+        Функция Extract создаёт тип, извлекая из Type все элементы объединения, которые можно присвоить Union.
+
+type T0 = Extract<'a' | 'b' | 'c', 'a' | 'f'>;
+//    ^ = type T0 = a">
+          <i class="fa-solid fa-box-open bg-primary px-3"></i>
+        </span>
+        <h6 class="text-uppercase my-3 ps-4">Extract</h6>
+      </header>
+    </article>
+  </section>
+</main>
+{% endblock content %}

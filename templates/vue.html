@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% block title %}Vue{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/vue.css"/>
+
+<main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+        <div class="circle">
+            <h2>Директивы</h2>
+        </div>
+        <article data-step="1">
+            <header class="d-flex align-items-center bg-danger bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Vue.js — это «прогрессивный» фреймворк, что означает: вы можете начать использовать его для части страницы и по мере роста проекта постепенно добавлять новые возможности. Vue строится вокруг реактивного ядра, которое автоматически отслеживает изменения в данных и обновляет DOM с минимальными усилиями.
+        ">
+                    <i class="fa-solid fa-meteor bg-danger"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Что такое Vue?</h6>
+            </header>
+        </article>
+        <article data-step="2">
+            <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Директива v-html похожа на директиву v-text, но разница в том, что v-html отображает свое содержимое как HTML. Это означает, что если вы передадите HTML-элемент, он будет отображаться как элемент, а не обычный текст. Поскольку содержимое отображается как HTML, это может представлять угрозу безопасности, если содержимое содержит вредоносный код JavaScript. По этой причине вы никогда не должны использовать эту директиву в сочетании с пользовательским вводом, если только ввод не будет предварительно должным образом очищен.">
+                    <i class="fa-solid fa-meteor bg-danger"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-html</h6>
+            </header>
+        </article>
+        <article data-step="3">
+            <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Директива v-text используется для установки свойства textContent элемента. Важно отметить, что при использовании этой директивы она перезапишет содержимое HTML внутри элемента. Ожидаемый ввод - строка, поэтому важно заключить любой текст в одинарные кавычки.">
+                    <i class="fa-solid fa-meteor bg-danger"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-text</h6>
+            </header>
+        </article>
+        <article data-step="4">
+            <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Директива v-model в Vue.js используется для создания двусторонних привязок данных к элементам ввода формы, таким как <input>, <textarea> и <select>. Это означает, что данные в компоненте могут обновляться, когда пользователь вводит что-либо, и пользовательский интерфейс будет обновляться, если данные в компоненте изменятся.">
+                    <i class="fa-solid fa-meteor bg-danger"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-model</h6>
+            </header>
+        </article>
+        <article data-step="5">
+            <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Директива v-once заставляет HTML-элемент отображаться только один раз, пропуская каждое последующее обновление
+        ">
+                    <i class="fa-solid fa-meteor bg-danger"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-once</h6>
+            </header>
+        </article>
+        <article data-step="6">
+            <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Директива v-pre заставляет элемент отображать его содержимое как есть, пропуская его компиляцию. Наиболее распространенный вариант использования - при отображении необработанного синтаксиса mustache.">
+                    <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                </span>
+                <h6 class="text-uppercase my-3 pe-4">v-pre</h6>
+            </header>
+        </article>
+        <article data-step="7">
+            <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Позволяет динамически изменять src, href, классы, стили и любые другие атрибуты на основе реактивных данных. Поддерживает передачу как простых значений, так и объектов/массивов для сложных наборов классов или встроенных стилей.
+        ">
+                    <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                </span>
+                <h6 class="text-uppercase my-3 pe-4">v-bind</h6>
+            </header>
+        </article>
+    </section>
+
+    <!-- Секция Рендеринг
+-->
+    <section class="step two text-warning">
+        <div class="circle">
+            <h2>Рендеринг
+            </h2>
+        </div>
+        <article data-step="8">
+            <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Условный и циклический рендеринг
+        Vue даёт инструменты, чтобы компоновать интерфейс в зависимости от состояния приложения и автоматически поддерживать актуальность списка элементов при изменении данных.">
+                    <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                </span>
+                <h6 class="text-uppercase my-3 pe-4">Что это?</h6>
+            </header>
+        </article>
+        <article data-step="9">
+            <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Директивы, которые добавляют или удаляют элементы из DOM полностью. Если условие ложно, элемент исчезает и его состояние уничтожается.
+        ">
+                    <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                </span>
+                <h6 class="text-uppercase my-3 pe-4">v-if / v-else-if / v-else</h6>
+            </header>
+        </article>
+        <article data-step="10">
+            <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Просто меняет CSS-свойство display, оставляя элемент в DOM, но скрывая визуально. Подходит для случаев, когда вам нужно часто переключать видимость и сохранить внутреннее состояние компонента.
+        ">
+                    <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                </span>
+                <h6 class="text-uppercase my-3 pe-4">v-show</h6>
+            </header>
+        </article>
+        <article data-step="11">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Позволяет рендерить списки на основе массива или объекта. Обязательно укажите уникальный :key (обычно id из данных), чтобы Vue мог эффективно отслеживать изменения: при добавлении, удалении или перемещении элементов он минимизирует количество перерисовок и сохраняет состояние дочерних компонентов.
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-for</h6>
+            </header>
+        </article>
+    </section>
+
+    <!-- Секция Обработка событий -->
+    <section class="step three text-success">
+        <div class="circle">
+            <h2>Обработка событий
+            </h2>
+        </div>
+        <article data-step="12">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Директива для навешивания слушателя на любое стандартное событие (click, input, mouseover и др.). Сокращённая запись вида @click=increment эквивалентна v-on:click=increment
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">v-on / @</h6>
+            </header>
+        </article>
+        <article data-step="13">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В блоке methods вы определяете все функции-обработчики. Они автоматически получают доступ к реактивным данным через this
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Методы в компоненте</h6>
+            </header>
+        </article>
+        <article data-step="14">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content=".prevent (автоматически вызывает event.preventDefault()), .stop (stopPropagation()), .once (слушатель сработает только один раз), .capture, .self и другие, чтобы гибко управлять поведением событий без лишнего кода.
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Модификаторы</h6>
+            </header>
+    </section>
+
+    <!-- Секция свойства и наблюдатели -->
+    <section class="step four text-success">
+        <div class="circle">
+            <h2>Свойства и наблюдатели</h2>
+        </div>
+        </article>
+        <article data-step="15">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Свойства, которые автоматически пересчитываются, когда изменяются их зависимости, и при этом кешируются до следующего изменения. Используйте computed для любых «дорогих» или часто используемых вычислений в шаблоне.
+    ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">computed</h6>
+            </header>
+        </article>
+        <article data-step="16">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Реакция на изменение конкретного свойства или выражения. Подходит, когда вам нужно выполнить асинхронный запрос или побочный эффект (например, плагин, стороннюю библиотеку) в ответ на изменение данных. Опции immediate позволяют запускать наблюдатель сразу при инициализации, deep — отслеживать вложенные изменения в объектах/массивах.
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">watch</h6>
+            </header>
+        </article>
+        <article data-step="17">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Обычные функции, вызываемые вручную из шаблона или других методов. Не кешируются и не привязаны к реактивности, подходят для единичных действий (например, при нажатии кнопки).
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">methods</h6>
+            </header>
+        </article>
+    </section>
+
+    <!-- Секция Операторы сравнения  -->
+    <section class="step five text-success">
+        <div class="circle">
+            <h2>Объекты и прототипы</h2>
+        </div>
+        <article data-step="18">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Встроенные объекты, или «глобальные объекты», — это объекты, встроенные в саму спецификацию языка. В языке JavaScript есть множество встроенных объектов, доступных в глобальной области видимости. Вот несколько примеров:
+        Number
+        Math
+        Date
+        String
+        Error
+        Function
+        Boolean
+        ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Встроенные объекты</h6>
+            </header>
+        </article>
+        <article data-step="19">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Дочерний компонент объявляет, какие свойства он ожидает получить от родителя. Props валидируются по типу, могут иметь значения по умолчанию и обязательность (required). Это гарантирует, что компонент всегда получит ожидаемые данные.">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">props</h6>
+            </header>
+        </article>
+        <article data-step="20">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="когда дочерний компонент хочет сообщить родителю о каком-то событии или передать результат, он вызывает this.$emit('eventName', payload). Родитель, подключив слушатель Child @event-name=handler, получает данные и может ими управлять.
+            ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">$emit</h6>
+            </header>
+        </article>
+        </article>
+        <article data-step="21">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Позволяет передавать параметры из любого предка к потомкам без промежуточной прокладки через props на каждом уровне — удобно для глобальных сервисов (например, тема оформления или i18n-плагин).
+            ">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">provide / inject</h6>
+            </header>
+        </article>
+    </section>
+
+    <!-- 10. Классы Управление состоянием -->
+    <section class="step six text-primary">
+        <div class="circle">
+            <h2>Управление состоянием</h2>
+        </div>
+        <article data-step="22">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Современная альтернатива Vuex, лёгкая и гибкая. Вы создаёте сторы через defineStore, указывая state, getters (вычисляемые свойства) и actions (методы для синхронных и асинхронных изменений).">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Pinia</h6>
+            </header>
+        </article>
+        <article data-step="23">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="После app.use(createPinia()) любой компонент может подключить необходимый стор и работать с ним, не передавая данные через props.">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Глобальная регистрацияet</h6>
+            </header>
+        </article>
+        <article data-step="24">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Pinia позволяет разделять логику на несколько сто­ров, а также использовать плагины для автоматического сохранения в localStorage, интеграции с devtools и пр.">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Модули и плагины</h6>
+            </header>
+        </article>
+    </section>
+    <!-- Секция Модули (ESModules) -->
+    <section class="step seven text-success">
+        <div class="circle">
+            <h2>Composition API</h2>
+        </div>
+        <article data-step="25">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Composition API — новая парадигма написания компонентов, появившаяся в Vue 3, облегчающая переиспользование логики и работу с TypeScript.">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+            </header>
+        </article>
+        <article data-step="26">
+            <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="Основной блок, где вы объявляете реактивные переменные (ref и reactive), функции и отслеживаете их. Всё, что возвращено из setup, становится доступно в шаблоне.">
+                    <i class="fa-solid fa-ghost bg-success px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">setup()</h6>
+            </header>
+        </article>
+        <article data-step="27">
+            <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="
+    методы ref(), reactive(), computed(), watch() дают низкоуровневый контроль над реактивностью. toRefs() помогает избежать потери реактивных связей при деструктуризации.">
+                    <i class="fa-solid fa-box-open bg-primary px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Reactivity API</h6>
+            </header>
+        </article>
+        <article data-step="28">
+            <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                    data-modal-content="
+    Composition API удобен для крупных компонентов и библиотек, где логика разбита на «хуки» и легко тестируется. Options API остаётся интуитивным для новичков и небольших компонентов; выбор зависит от масштаба и стиля команды.">
+                    <i class="fa-solid fa-project-diagram bg-primary px-3"></i>
+                </span>
+                <h6 class="text-uppercase my-3 ps-4">Когда использовать</h6>
+            </header>
+        </article>
+    </section>
+</main>
+{% endblock content %}

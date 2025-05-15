@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}React{% endblock title %}
+{% block hero %}
+    <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+{% endblock hero %}
 {% block content %}
+<link rel="stylesheet" href="/static/css/react.css"/>
 <main id="infographic" class="d-flex flex-column align-items-center py-5">
     <!-- Секция Основа -->
     <section class="step one text-danger">
@@ -470,25 +475,4 @@ Axios — это клиентский HTTP-интерфейс, основанн�
         </article>
     </section>
 </main>
-
-<!-- Модальное окно Bootstrap для вывода текста -->
-<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <!-- Заголовок с добавленным стикером -->
-                <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Содержимое модального окна заполняется динамически -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
+{% endblock content %}

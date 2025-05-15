@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Angular — ITmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/webp" href="images/logo_new.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: url("images/фон.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .hero-section {
+            background-color: transparent;
+            background-image: url("images/фон.webp");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            margin-top: 100px;
+            color: #002b5f;
+            text-align: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            background-color: #002b5f;
+            border-bottom: 1px solid #001c42;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover {
+            color: #e0e0e0 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link.btn {
+            margin-left: 10px;
+            color: #fff !important;
+            border-color: #fff;
+        }
+
+        .navbar-nav .nav-link.btn:hover {
+            background-color: #001c42;
+            color: #fff !important;
+            border-color: #001c42;
+        }
+
+        .semi-circle {
+            display: inline-block;
+            padding: 20px 60px;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 100px auto 50px;
+            border-radius: 50px;
+            /* Превращает в прямоугольный овал */
+            border: 5px solid #7494ec;
+            text-align: center;
+        }
+
+        .semi-circle h1 {
+            margin: 0;
+            color: #1e5291;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* Стили для большого круга */
+        #infographic .circle {
+            width: 250px;
+            height: 200px;
+            border-radius: 50%;
+            border: 7px double;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 60px;
+            position: absolute;
+            left: 50%;
+            margin: 40px 0;
+        }
+
+
+        .circles-container .circle {
+            width: 50px;
+            height: 50px;
+            gap: 30;
+            border-radius: 50%;
+            border: 5px double;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        /* Фиксированные изображения слева и справа от главной фотографии */
+        .side-fixed {
+            position: fixed;
+            top: 30%;
+            width: 200px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+
+        .side-fixed.visible {
+            opacity: 1;
+        }
+
+        .side-fixed.left {
+            left: 5%;
+        }
+
+        .side-fixed.right {
+            right: 5%;
+        }
+
+        .step.one header {
+            background-color: rgba(0, 48, 96, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 2: насыщенный зелёный фон + белый текст */
+        .step.two header {
+            background-color: rgba(0, 128, 64, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 3: тёмно-оранжевый фон + белый текст */
+        .step.three header {
+            background-color: rgba(255, 128, 0, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 4: насыщенный красный фон + белый текст */
+        .step.four header {
+            background-color: rgba(192, 0, 0, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.five header {
+            background-color: rgba(158, 199, 242, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.six header {
+            background-color: rgba(158, 199, 242, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.seven header {
+            background-color: rgba(125, 255, 149, 0.85) !important;
+            color: #ffffff !important;
+        }
+
+        .step.eight header {
+            background-color: rgba(252, 177, 206, 0.85) !important;
+            color: #fff !important;
+        }
+
+        
+
+        /* Для нечётных секций смещаем круг влево */
+        #infographic section:nth-child(odd) .circle {
+            transform: translateX(-100%);
+        }
+
+        #infographic section:nth-child(odd) article header {
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        #infographic article {
+            max-width: 400px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            left: 50%;
+            position: relative;
+        }
+
+        /* Цвета и расположение секций-кругов */
+        #infographic .step.one .circle {
+            transform: translate(-285px, -100px);
+            color: rgb(240, 8, 8);
+        }
+
+        #infographic .step.two .circle {
+            transform: translate(65px, 40px);
+            color: rgb(224, 23, 143);
+        }
+
+        #infographic .step.three .circle {
+            margin-top: -5px;
+            transform: translate(-285px, 150px);
+        }
+
+        #infographic .step.four .circle {
+            transform: translate(65px, 80px);
+            color: blueviolet;
+        }
+
+
+        #infographic .step.five .circle {
+            transform: translate(-290px, -30px);
+            color: rgb(235, 139, 247);
+        }
+
+        #infographic .step.six .circle {
+            transform: translate(170px, -40px);
+            color: rgb(176, 205, 29);
+        }
+
+        #infographic .step.seven .circle {
+            transform: translate(-280px, -35px);
+            color: rgb(26, 23, 218);
+        }
+
+        #infographic article header i {
+            display: flex;
+            font-size: 2em;
+            border-radius: 50%;
+            background-clip: padding-box;
+            padding: 14px;
+            transition: transform 0.4s;
+            color: #fff;
+            border: 16px solid var(--bs-dark);
+            margin: -16px 0 -16px -20px;
+        }
+
+        #infographic article:hover header i {
+            transform: scale(1.2);
+        }
+
+        #infographic article.active header i {
+            transform: none;
+        }
+
+        #infographic article .body {
+            background: var(--bgColor);
+            padding: 0 20px;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            max-height: 0;
+            transition: max-height 0.5s, padding 0.5s;
+            overflow: hidden;
+        }
+
+        #infographic :nth-child(even) article {
+            text-align: right;
+            transform: translateX(-100%);
+        }
+
+        #infographic :nth-child(even) article header {
+            flex-flow: row-reverse;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        #infographic :nth-child(even) article header i {
+            margin: -16px -20px -16px 0;
+        }
+
+        #infographic section:nth-child(odd) article.active header {
+            border-bottom-right-radius: 0;
+        }
+
+        #infographic section:nth-child(even) article.active header {
+            border-bottom-left-radius: 0;
+        }
+
+        #infographic article.active .body {
+            padding: 20px;
+            max-height: 300px;
+            border: 1px solid;
+        }
+
+        /* Расположение этапов*/
+        #infographic article[data-step="1"] {
+            margin-left: 6px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="2"] {
+            margin-left: 54px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="3"] {
+            margin-left: 71px;
+            text-align: left;
+            width: 200px;
+        }
+
+        #infographic article[data-step="4"] {
+            margin-left: 61px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="5"] {
+            margin-left: 22px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="6"] {
+            margin-left: -15px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="7"] {
+            margin-left: -54px;
+            text-align: right;
+            width: 250px;
+        }
+
+        #infographic article[data-step="8"] {
+            margin-left: -70px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="9"] {
+            margin-left: -60px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="10"] {
+            margin-left: -30px;
+            width: 400px;
+        }
+
+        #infographic article[data-step="11"] {
+            margin-left: 7px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="12"] {
+            margin-left: 55px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="13"] {
+            margin-left: 73px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="14"] {
+            margin-left: 85px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="15"] {
+            margin-left: 75px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="16"] {
+            margin-left: 30px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="17"] {
+            margin-left: -5px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="18"] {
+            margin-left: -25px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="19"] {
+            margin-left: -45px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="20"] {
+            margin-left: -60px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="21"] {
+            margin-left: -45px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="22"] {
+            margin-left: -40px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="23"] {
+            margin-left: -15px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="24"] {
+            margin-left: 10px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="25"] {
+            margin-left: 60px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="26"] {
+            margin-left: 85px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="27"] {
+            margin-left: 100px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="28"] {
+            margin-left: 120px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="29"] {
+            margin-left: 95px;
+            width: 280px;
+        }
+
+        #infographic article[data-step="30"] {
+            margin-left: 80px;
+            width: 450px;
+        }
+
+        #infographic article[data-step="31"] {
+            margin-left: 25px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="32"] {
+            margin-left: -16px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="33"] {
+            margin-left: -40px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="34"] {
+            margin-left: -55px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="35"] {
+            margin-left: -40px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="36"] {
+            margin-left: -5px;
+            width: 200px;
+        }
+
+        /*Цвета кругов этапов*/
+        article[data-step="1"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="2"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="3"] .info-btn i {
+            background-color: #ffec1b !important;
+        }
+
+        article[data-step="4"] .info-btn i {
+            background-color: #ffec1b !important;
+        }
+
+        article[data-step="5"] .info-btn i {
+            background-color: #ffec1b !important;
+        }
+
+        article[data-step="8"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="9"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="10"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="11"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="12"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="13"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="14"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="15"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="16"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="17"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="18"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="22"] .info-btn i {
+            background-color: #da7ded !important;
+        }
+
+        article[data-step="23"] .info-btn i {
+            background-color: #da7ded !important;
+        }
+
+        article[data-step="24"] .info-btn i {
+            background-color: #da7ded !important;
+        }
+
+        article[data-step="25"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="26"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="27"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="28"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="29"] .info-btn i {
+            background-color: #7aff49 !important;
+        }
+
+        article[data-step="30"] .info-btn i {
+            background-color: #7aff49 !important;
+        }
+
+        article[data-step="31"] .info-btn i {
+            background-color: #7aff49 !important;
+        }
+
+        article[data-step="32"] .info-btn i {
+            background-color: #7aff49 !important;
+        }
+
+        article[data-step="33"] .info-btn i {
+            background-color: #efbafb !important;
+        }
+
+        article[data-step="34"] .info-btn i {
+            background-color: #efbafb !important;
+        }
+
+        article[data-step="35"] .info-btn i {
+            background-color: #efbafb !important;
+        }
+
+        article[data-step="36"] .info-btn i {
+            background-color: #efbafb !important;
+        }
+
+
+
+
+        #infographic .circle {
+            padding: 0 !important;
+            margin: 40px auto;
+            /* центрируем по горизонтали и даём отступ снизу */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        #infographic .circle h2,
+        #infographic .circle h4 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Стили для модальных окон: делаем их выше навбара */
+        .modal {
+            z-index: 10500 !important;
+        }
+
+        .modal-backdrop {
+            z-index: 10400 !important;
+        }
+
+        /* Форматирование текста в модальных окнах */
+        .modal-body {
+            font-size: 1.1em;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .side-fixed.rotating {
+            animation: spin 1s linear;
+
+        }
+
+        footer {
+            background-color: #002b5f;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #001c42;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .hero-section {
+                margin-top: 80px;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+
+            .roadmap-hero img.main-photo {
+                max-width: 60%;
+            }
+
+            .arrow {
+                width: 60px;
+                height: 60px;
+            }
+
+            .left-arrow,
+            .right-arrow {
+                height: 32px;
+            }
+
+            .roadmap-card {
+                max-width: 100% !important;
+                font-size: 16px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">ITmap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Основной заголовок -->
+    <div class="container text-center">
+        <div class="semi-circle">
+            <h1>Angular</h1>
+        </div>
+    </div>
+    <div class="roadmap-hero">
+        <!-- Добавлен класс visible, чтобы изображения отображались -->
+        <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+        <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+    </div>
+
+    <main id="infographic" class="d-flex flex-column align-items-center py-5">
+        <!-- Секция Основа -->
+        <section class="step one text-danger">
+            <div class="circle">
+                <h2>Основа</h2>
+            </div>
+            <article data-step="1">
+                <header class="d-flex align-items-center bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Angular — это популярный фреймворк для разработки веб-приложений с открытым исходным кодом, разработанный компанией Google. Он написан на TypeScript и позволяет разработчикам с лёгкостью создавать динамичные одностраничные веб-приложения. Angular предоставляет широкий набор функций для создания интерактивных и адаптивных пользовательских интерфейсов, что делает его мощным инструментом для современной веб-разработки.
+
+                    Одной из ключевых особенностей Angular является использование компонентов, которые представляют собой многократно используемые строительные блоки для создания веб-приложений. Компоненты инкапсулируют код HTML, CSS и TypeScript, необходимый для определения конкретной части веб-страницы, что упрощает управление и поддержку сложных приложений. Angular также включает в себя мощную систему внедрения зависимостей, которая помогает управлять зависимостями между различными частями приложения и способствует повторному использованию кода. Кроме того, Angular предоставляет инструменты для маршрутизации, обработки форм и управления состоянием, что делает его универсальным фреймворком для создания широкого спектра веб-приложений.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что такое Angular?</h6>
+                </header>
+            </article>
+            <article data-step="2">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Angular — это интерфейсный веб-фреймворк с открытым исходным кодом на основе TypeScript, разработанный и поддерживаемый компанией Google.
+
+                        Он используется для создания динамических одностраничных веб-приложений (SPA). Angular предоставляет комплексные инструменты, включая внедрение зависимостей, привязку данных, маршрутизацию и тестирование, для создания надёжных и масштабируемых веб-приложений.">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">История</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Компоненты-->
+        <section class="step two text-warning">
+            <div class="circle">
+                <h2>Компоненты
+                </h2>
+            </div>
+            <article data-step="3">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В Angular метаданные селектора - это важнейшее свойство, определяемое в декораторе @Component, которое определяет, как компонент может быть идентифицирован и использован в HTML-шаблонах. Оно определяет способ отображения компонента в DOM, позволяя разработчикам создавать многократно используемые и легко идентифицируемые компоненты.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Селектор
+                    </h6>
+                </header>
+            </article>
+            <article data-step="4">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Метаданные шаблона - это свойство, определяемое в декораторе @Component, которое задает HTML-шаблон компонента. Оно позволяет определить структуру и макет представления компонента.">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Шаблон</h6>
+                </header>
+            </article>
+            <article data-step="5">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Проп (сокращение от «свойства») и состояние — это обычные объекты JavaScript. Хотя и то, и другое содержит информацию, которая влияет на вывод компонента, они отличаются одним важным аспектом: проп передаётся компоненту (аналогично параметрам функции), а состоянием управляет компонент (аналогично переменным, объявленным внутри функции).
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Автономный компонент </h6>
+                </header>
+            </article>
+            <article data-step="6">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Свойство imports определяет зависимости шаблона компонента standalone — директивы, компоненты и каналы, которые можно использовать в его шаблоне.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Импорт
+                    </h6>
+                </header>
+            </article>
+            <article data-step="7">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Определяет набор внедряемых объектов, которые видны дочерним элементам DOM.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">viewProvider
+
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Модули -->
+        <section class="step three text-success">
+            <div class="circle">
+                <h2>Модули</h2>
+            </div>
+            <article data-step="8">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Модули в Angular действуют как контейнеры, в которых мы можем группировать компоненты, директивы, фильтры и сервисы, связанные с приложением.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Что это?</h6>
+                </header>
+            </article>
+            <article data-step="9">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Поставщик — это инструкция для системы внедрения зависимостей о том, как получить значение для зависимости. В большинстве случаев эти зависимости — это сервисы, которые вы создаёте и предоставляете.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Зависимости
+                    </h6>
+                </header>
+            </article>
+            <article data-step="10">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="По умолчанию NgModules загружаются сразу. Это означает, что все NgModules загружаются сразу после загрузки приложения, независимо от того, нужны они в данный момент или нет. Для больших приложений с большим количеством маршрутов рассмотрите возможность отложенной загрузки — шаблона проектирования, при котором NgModules загружаются по мере необходимости. Отложенная загрузка помогает уменьшить размер начального пакета, что, в свою очередь, сокращает время загрузки.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Модули отложенной загрузки
+                    </h6>
+                </header>
+            </article>
+            <article data-step="11">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Функциональные модули — это NgModules для организации кода. С помощью функциональных модулей вы можете отделить код, связанный с конкретной функцией или возможностью, от другого кода. Разделение областей вашего приложения помогает в совместной работе разработчиков и команд, разделении директив и управлении размером корневого модуля.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Функциональные модули
+
+                    </h6>
+                </header>
+            </article>
+            <article data-step="12">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Создание модулей в Angular помогает организовать приложение в виде управляемых и согласованных блоков. Каждый модуль может содержать связанные компоненты, директивы, каналы и сервисы. Вот подробное руководство по созданию и использованию модулей в Angular.
+          
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Создание модулей
+                    </h6>
+                </header>
+            </article>
+            <article data-step="13">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Модульная архитектура Angular делит приложение на взаимосвязанные блоки, называемые NgModules, каждый из которых определяется декоратором @NgModule. Эти модули объединяют связанные компоненты, директивы, каналы и сервисы, чтобы инкапсулировать функциональность и способствовать модульной разработке. Корневой модуль (AppModule) является точкой входа, запускающей приложение и импортирующей необходимые модули, такие как BrowserModule. Функциональные модули инкапсулируют конкретные функции и могут загружаться активно или лениво для повышения производительности и удобства управления. Общие модули объединяют многократно используемые компоненты и сервисы, чтобы предотвратить дублирование кода. Метаданные @NgModule включают такие свойства, как импорт, объявления, экспорт, поставщики и начальная загрузка, которые помогают управлять зависимостями, объявлениями, видимостью, поставщиками услуг и корневым компонентом. Такой модульный подход улучшает организацию кода, масштабируемость и удобство сопровождения приложений Angular.       
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Модульная архитектура
+
+                    </h6>
+                </header>
+            </article>
+
+        </section>
+
+        <!-- Секция Хуки -->
+        <section class="step four text-success">
+            <div class="circle">
+                <h2>Шаблоны</h2>
+            </div>
+            <article data-step="14">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В шаблоне Angular привязка создаёт динамическую связь между частью пользовательского интерфейса, созданной на основе шаблона (элементом DOM, директивой или компонентом), и моделью (экземпляром компонента, которому принадлежит шаблон). Эта связь может использоваться для синхронизации представления с моделью, для уведомления модели о событии или действии пользователя в представлении или для обоих случаев. Алгоритм обнаружения изменений в Angular отвечает за синхронизацию представления и модели. Привязки всегда состоят из двух частей: цели, которая будет получать привязанное значение, и шаблонного выражения, которое создаёт значение на основе модели.
+                    
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Привязка данных
+                    </h6>
+                </header>
+            </article>
+            <article data-step="15">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Привязка свойств помогает задавать значения для свойств HTML-элементов или директив. Чтобы привязать свойство элемента, заключите его в квадратные скобки [], чтобы Angular оценивал правую часть присваивания как динамическое выражение.
+
+          ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Привязка к свойству
+                    </h6>
+                </header>
+            </article>
+            <article data-step="16">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Привязка атрибутов в Angular позволяет напрямую задавать значения атрибутов. С помощью привязки атрибутов можно улучшить доступность, динамически стилизовать приложение и одновременно управлять несколькими классами CSS или стилями.
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Привязка атрибута
+                    </h6>
+                </header>
+            </article>
+            <article data-step="17">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Привязка событий позволяет отслеживать действия пользователя, такие как нажатия клавиш, движения мыши, щелчки и касания, и реагировать на них.
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Привязка к событию
+                    </h6>
+                </header>
+            </article>
+            <article data-step="18">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Двусторонняя привязка позволяет компонентам вашего приложения обмениваться данными. Используйте двустороннюю привязку для прослушивания событий и одновременного обновления значений между родительским и дочерним компонентами. Синтаксис двусторонней привязки в Angular представляет собой комбинацию квадратных скобок и круглых скобок [()], обычно известных как banana in a box.
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Двусторонняя привязка
+                    </h6>
+                </header>
+            </article>
+            <article data-step="19">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Шаблоны Angular поддерживают блоки управления, которые позволяют условно отображать, скрывать и повторять элементы.
+
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Поток управления
+                    </h6>
+                </header>
+            </article>
+            <article data-step="20">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Переменные-ссылки в шаблоне позволяют использовать данные из одной части шаблона в другой части шаблона. Переменная шаблона может ссылаться на элемент DOM в шаблоне, компоненте или директиве. В шаблоне используйте символ решетки # для объявления переменной-ссылки.
+
+
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ссылочные переменные
+                    </h6>
+                </header>
+            </article>
+            </article>
+            <article data-step="21">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="@Input() и @Output() предоставляют дочернему компоненту возможность взаимодействовать с родительским компонентом. @Input() позволяют родительскому компоненту обновлять данные в дочернем компоненте. И наоборот, @Output() позволяют дочернему компоненту отправлять данные родительскому компоненту.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Ввод-вывод
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Директивы -->
+        <section class="step five text-success">
+            <div class="circle">
+                <h2>Директивы</h2>
+            </div>
+            <article data-step="22">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Директивы — это функции, которые будут выполняться всякий раз, когда их обнаружит компилятор Angular. Директивы Angular расширяют возможности HTML-элементов, добавляя к DOM пользовательское поведение.
+
+                        Согласно основной концепции, директивы Angular делятся на три категории: директивы атрибутов, структурные директивы и директивы компонентов">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Что это?</h6>
+                </header>
+            </article>
+            <article data-step="23">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Измените внешний вид или поведение элементов DOM и компонентов Angular с помощью директив атрибутов.
+
+                        Наиболее часто используемыми директивами атрибутов являются:
+                        
+                        ngClass
+                        ngStyle
+                        ngModel
+                        ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Атрибутивные директивы
+                    </h6>
+                </header>
+            </article>
+            <article data-step="24">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Структурные директивы — это директивы, применяемые к элементу ng-template и условно или многократно отображающие содержимое этого <ng-template>. Если вы просто заключите элементы в <ng-template> без применения структурной директивы, эти элементы не будут отображаться.
+
+                            В Angular существуют три стандартных структурных директивы:
+                            
+                            *ngIf — условно включает шаблон в зависимости от значения выражения, возвращаемого логической функцией.
+                            *ngFor – упрощает перебор по массиву.
+                            *ngSwitch – визуализирует каждый соответствующий вид.
+                            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Структурные директивы
+                    </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- 10. Классы ES6 -->
+        <section class="step six text-primary">
+            <div class="circle">
+                <h2>Маршрутизация</h2>
+            </div>
+            <article data-step="25">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="router-outlet — это директива, которая доступна в пакете @angular/router и используется маршрутизатором для обозначения места в шаблоне, куда следует вставить соответствующий компонент.
+
+                        Благодаря выходу маршрутизатора ваше приложение будет иметь несколько представлений/страниц, а шаблон приложения будет действовать как оболочка вашего приложения. Любой элемент, который вы добавите в оболочку, будет отображаться в каждом представлении, но только часть, отмеченная выходом маршрутизатора, будет меняться между представлениями.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">router-outlet
+                    </h6>
+                </header>
+            </article>
+            <article data-step="26">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Угловой маршрутизатор вызывает события, когда он переходит с одного маршрута на другой. Это вызывает несколько событий, таких как NavigationStart, NavigationEnd, NavigationCancel NavigationError, ResolveStart и т.д. Вы можете прослушивать эти события и узнавать, когда изменяется состояние маршрута. Некоторые из полезных событий - это начало изменения маршрута (navigationStart) и завершение изменения маршрута (NavigationEnd).">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">События маршрутизатора
+                    </h6>
+                </header>
+            </article>
+            <article data-step="27">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                        Используйте защиту маршрутов, чтобы пользователи не могли переходить в определённые части приложения без авторизации.
+
+                        Защитники маршрутов Angular — это интерфейсы, предоставляемые Angular, которые при реализации позволяют контролировать доступность маршрута на основе условий, указанных в реализации функций этого интерфейса.
+                        
+                        Некоторыми типами угловых ограждений являются CanActivate, CanActivateChild, CanDeactivate CanMatch и Resolve.
+                        
+                        ">
+                        <i class="fa-solid fa-box-open bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Охранники маршрута
+
+                    </h6>
+                </header>
+            </article>
+            <article data-step="28">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Отложенная загрузка — это метод в Angular, который позволяет загружать компоненты JavaScript асинхронно при активации определённого маршрута. Он повышает скорость загрузки приложения за счёт разделения приложения на несколько пакетов. Пакеты загружаются по мере необходимости, когда пользователь перемещается по приложению.
+
+          ">
+                        <i class="fa-solid fa-project-diagram bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Отложенная загрузка
+
+                    </h6>
+                </header>
+            </article>
+        </section>
+        <!-- Секция Формы -->
+        <section class="step seven text-success">
+            <div class="circle">
+                <h2>Формы
+                </h2>
+            </div>
+            <article data-step="29">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Динамические формы в Angular — это гибкий способ создания форм, в которых структура (например, поля формы и правила проверки) генерируется во время выполнения, а не задаётся жёстко. Используя FormBuilder и FormGroup Angular, вы можете динамически добавлять, удалять или изменять элементы формы на основе пользовательского ввода, данных, полученных с сервера, или другой логики. Такой подход позволяет создавать сложные формы, которые могут адаптироваться к различным сценариям использования, сокращая потребность в нескольких шаблонах форм и делая кодовую базу более удобной для поддержки и масштабирования.
+          ">
+                        <i class="fa-solid fa-graduation-cap bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Динамические формы
+
+                    </h6>
+                </header>
+            </article>
+            <article data-step="30">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Форма на основе шаблона — это самая простая форма, которую мы можем создать в Angular. В основном она используется для создания простых приложений с формами.
+
+                    Он использует двустороннюю привязку данных (ngModel) для создания компонентов формы и управления ими.                    
+
+          ">
+                        <i class="fa-solid fa-layer-group bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Формы, управляемые шаблоном
+                    </h6>
+                </header>
+            </article>
+            <article data-step="31">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                        Начиная с Angular 14, реактивные формы по умолчанию строго типизированы. Вам не нужно определять дополнительные пользовательские типы или добавлять множество аннотаций типов в объявления форм, чтобы воспользоваться преимуществами дополнительной безопасности типов, поскольку Angular будет определять типы на основе значения по умолчанию элемента управления формой. Нетипизированные формы по-прежнему поддерживаются. Чтобы использовать их, необходимо импортировать символы Untyped из @angular/forms.
+">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Типизированные формы
+                    </h6>
+                </header>
+            </article>
+            <article data-step="32">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                        Реактивные формы в Angular используются для обработки вводимых пользователем данных. Мы можем определять элементы управления с помощью таких классов, как FormGroup и FormControl.
+                        ">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Реактивные формы
+                    </h6>
+                </header>
+            </article>
+        </section>
+        <!-- Секция Формы -->
+        <section class="step eight text-success">
+            <div class="circle">
+                <h2>Угловой интерфейс CLI
+                </h2>
+            </div>
+
+            <article data-step="33">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="
+                        Чтобы установить Angular CLI в локальной системе, вам нужно установить Node.js. Для Angular требуется активная LTS-версия Node или поддерживаемая LTS-версия Node. Angular CLI использует Node и связанный с ним менеджер пакетов npm для установки и запуска инструментов JavaScript вне браузера. После установки Node вы можете запустить npm install -g @angular/cli для установки Angular CLI.
+
+                        ">
+                        <i class="fa-solid fa-puzzle-piece bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Локальная настройка
+                    </h6>
+                </header>
+            </article>
+            <article data-step="34">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Команда Angular CLI ng deploy запускает сборку CLI, связанную с вашим проектом. Ряд сторонних сборщиков реализуют возможности развёртывания на различных платформах. Вы можете добавить любой из них в свой проект с помощью ng add.
+
+            ">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Развертывание
+                    </h6>
+                </header>
+            </article>
+            <article data-step="35">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Сквозное тестирование (E2E) — это форма тестирования, которая используется для проверки того, что всё приложение работает должным образом от начала до конца. Сквозное тестирование отличается от модульного тем, что оно полностью не зависит от деталей реализации вашего кода. Обычно оно используется для проверки приложения таким образом, чтобы имитировать взаимодействие с ним пользователя. Команда ng e2e сначала проверит ваш проект на наличие цели «e2e». Если он не сможет его найти, интерфейс командной строки спросит, какой пакет e2e вы хотите использовать, и проведёт вас через процесс настройки.
+
+                    ">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Комплексное тестирование
+
+                    </h6>
+                </header>
+            </article>
+            <article data-step="36">
+                <header class="d-flex align-items-center text-primary bg-primary bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+                    Схема — это генератор кода на основе шаблонов, который поддерживает сложную логику. Это набор инструкций для преобразования программного проекта путём создания или изменения кода.
+            ">
+                        <i class="fa-solid fa-exchange-alt bg-primary px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Схемы</h6>
+                </header>
+            </article>
+        </section>
+    </main>
+
+    <!-- Модальное окно Bootstrap для вывода текста -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Заголовок с добавленным стикером -->
+                    <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Содержимое модального окна заполняется динамически -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 ITmap.</p>
+        <p>Все права защищены.</p>
+        <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+    </footer>
+    <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+    <script>
+        const infoModal = document.getElementById('infoModal');
+        infoModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const modalContent = button.getAttribute('data-modal-content');
+            const modalBody = infoModal.querySelector('.modal-body');
+            // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+            modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+        });
+        document.querySelectorAll('.side-fixed').forEach(img => {
+            img.addEventListener('click', () => {
+                img.classList.remove('rotating');
+                setTimeout(() => img.classList.add('rotating'), 10);
+            });
+        });
+
+    </script>
+
+    <!-- Bootstrap 5 JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

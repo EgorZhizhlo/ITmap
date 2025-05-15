@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block hero %}
+    <section class="hero-section">
+      <div class="roadmap-hero">
+        <img src="/static/images/flower.webp" alt="Слева" class="side-fixed left visible" />
+        <img src="/static/images/logo.webp" alt="Главная фотография" class="main-photo" />
+        <img src="/static/images/flower.webp" alt="Справа" class="side-fixed right visible" />
+        <div class="arrow arrow-top-left"></div>
+        <div class="arrow arrow-top-right"></div>
+        <div class="arrow arrow-bottom-left"></div>
+        <div class="arrow arrow-bottom-right"></div>
+      </div>
+      <h1 class="site-title">Найди свою карту к успеху в IT</h1>
+      <div class="site-description">
+        <p>На нашем сайте вы найдёте разнообразные дорожные карты, которые помогут вам освоить популярные роли и навыки
+          в сфере IT. Узнайте, какие технологии изучать в первую очередь и как планировать своё развитие.</p>
+      </div>
+    </section>
+{% endblock hero %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/main.css"/>
+
+  <!-- Основной контент -->
+  <div class="main-content">
+
+    <!-- Ролевые Roadmap -->
+    <section class="roles-section">
+      <div class="section-header" data-bs-toggle="collapse" data-bs-target="#rolesRoadmap" aria-expanded="true">
+        <h3>
+          <img src="/static/images/стрелка-_1_.webp" alt="Стрелка слева" class="left-arrow" />
+          РОЛЕВЫЕ ROADMAP
+          <img src="/static/images/стрелка.webp" alt="Стрелка справа" class="right-arrow" />
+        </h3>
+      </div>
+      <div class="collapse show" id="rolesRoadmap">
+        <div class="row text-center g-5">
+          <div class="col-md-4">
+            <a href="/frontend" class="roadmap-card">
+              Frontend разработка<span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/backend" class="roadmap-card">
+              Backend разработка <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/devops" class="roadmap-card">
+              DevOps <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+        </div>
+        <div class="row text-center g-5 mt-2">
+          <div class="col-md-4">
+            <a href="/prodmanager" class="roadmap-card">
+              Product Manager <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/ux-design" class="roadmap-card">
+              UX Дизайн <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/data-analyst" class="roadmap-card">
+              Аналитик данных <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+        </div>
+        <div class="row text-center g-5 mt-2">
+          <div class="col-md-4">
+            <a href="/android" class="roadmap-card">
+              Android разработка <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/ios" class="roadmap-card">
+              iOS разработка<span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/cyber-security" class="roadmap-card">
+              Кибербезопасность <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Roadmap навыков -->
+    <section class="skills-section">
+      <div class="section-header" data-bs-toggle="collapse" data-bs-target="#skillsRoadmap" aria-expanded="true">
+        <h3>
+          <img src="/static/images/arrow-_1_.webp" alt="Стрелка слева" class="left-arrow" />
+          ROADMAP НАВЫКОВ
+          <img src="/static/images/arrow.webp" alt="Стрелка справа" class="right-arrow" />
+        </h3>
+      </div>
+      <div class="collapse show" id="skillsRoadmap">
+        <div class="row text-center g-5 mt-2">
+          <div class="col-md-4">
+            <a href="/docker" class="roadmap-card">
+              Docker <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/react" class="roadmap-card">
+              React <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/vue" class="roadmap-card">
+              Vue <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+        </div>
+        <div class="row text-center g-5 mt-2">
+          <div class="col-md-4">
+            <a href="/angular" class="roadmap-card">
+              Angular <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/javascript" class="roadmap-card">
+              JavaScript <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/nodejs" class="roadmap-card">
+              Node.js <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+        </div>
+        <div class="row text-center g-5 mt-2">
+          <div class="col-md-4">
+            <a href="/typescript" class="roadmap-card">
+              TypeScript <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/python" class="roadmap-card">
+              Python <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a href="/sql" class="roadmap-card">
+              SQL <span class="favorite-icon" onclick="toggleFavorite(event, this)">☆</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="staircase-container">
+        <div class="stair-step"></div>
+        <div class="stair-step"></div>
+        <div class="stair-step"></div>
+        <div class="stair-step"></div>
+        <div class="stair-step trophy-step">🏆</div>
+      </div>
+    </section>
+
+  </div>
+
+  {% endblock content %}

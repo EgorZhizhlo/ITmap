@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>DevOps — ITmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/webp" href="images/logo_new.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+
+    .hero-section {
+      background-color: transparent;
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-top: 100px;
+      color: #002b5f;
+      text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    .semi-circle {
+      display: inline-block;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 20px;
+      border-radius: 50px;
+      /* Превращает в прямоугольный овал */
+      border: 5px solid #7494ec;
+      text-align: center;
+    }
+
+    .semi-circle h1 {
+      margin: 0;
+      color: #1e5291;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* Стили для большого круга */
+    #infographic .circle {
+      width: 250px;
+      height: 200px;
+      border-radius: 50%;
+      border: 7px double;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+      position: absolute;
+      left: 50%;
+      margin: 40px 0;
+    }
+
+
+    .circles-container .circle {
+      width: 50px;
+      height: 50px;
+      gap: 30;
+      border-radius: 50%;
+      border: 5px double;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    /* Фиксированные изображения слева и справа от главной фотографии */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    .step.one header {
+      background-color: rgba(0, 48, 96, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 2: насыщенный зелёный фон + белый текст */
+    .step.two header {
+      background-color: rgba(0, 128, 64, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 3: тёмно-оранжевый фон + белый текст */
+    .step.three header {
+      background-color: rgba(255, 128, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 4: насыщенный красный фон + белый текст */
+    .step.four header {
+      background-color: rgba(192, 0, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.six header {
+      background-color: rgba(158, 199, 242, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.seven header {
+      background-color: rgba(125, 255, 149, 0.85) !important;
+      color: #ffffff !important;
+    }
+
+    .step.eight header {
+      background-color: rgba(252, 177, 206, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.nine header {
+      background-color: rgba(68, 209, 148, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.eleven header {
+      background-color: rgba(64, 92, 206, 0.85) !important;
+      color: #fff !important;
+    }
+    
+
+    /* Для нечётных секций смещаем круг влево */
+    #infographic section:nth-child(odd) .circle {
+      transform: translateX(-100%);
+    }
+
+    #infographic article {
+      max-width: 400px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      left: 50%;
+      position: relative;
+    }
+
+    /* Цвета и расположение секций-кругов */
+    #infographic .step.three .circle {
+      margin-top: 35px;
+      margin-left: 20px;
+    }
+
+
+    #infographic .step.two .circle {
+      color: rgb(224, 23, 143);
+      margin-top: 100px;
+      margin-left: -10px;
+    }
+
+    #infographic .step.four .circle {
+      transform: translate(-20px, -40px);
+      color: blueviolet;
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+
+    #infographic .step.one .circle {
+      transform: translate(-195px, 40px);
+      color: rgb(240, 8, 8);
+      margin-top: 10px;
+      margin-left: -55px;
+    }
+
+    #infographic .step.five .circle {
+      transform: translate(-270px, 150px);
+      color: rgb(235, 139, 247);
+      margin-top: -150px;
+      margin-left: -50px;
+    }
+
+    #infographic .step.six .circle {
+      transform: translate(50px, -25px);
+      color: rgb(176, 205, 29);
+      margin-top: 250px;
+      margin-left: 100px;
+    }
+
+    #infographic .step.seven .circle {
+      transform: translate(-350px, 25px);
+      color: rgb(26, 23, 218);
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+
+
+    #infographic .step.eight .circle {
+      transform: translate(100px, 15px);
+      color: rgb(255, 0, 119);
+      margin-top: -15px;
+      margin-left: -10px;
+    }
+
+    #infographic .step.nine .circle {
+      transform: translate(-300px, 45px);
+      color: rgb(0, 168, 0);
+      margin-top: -10px;
+      margin-left: 20px;
+    }
+
+    #infographic .step.ten .circle {
+      transform: translate(40px, -63px);
+      color: rgb(0, 94, 255);
+      margin-top: 100px;
+      margin-left: 20px;
+    }
+
+    #infographic .step.eleven .circle {
+      transform: translate(-300px, -45px);
+      color: rgb(80, 31, 108);
+    }
+
+    #infographic article header {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+
+
+    #infographic article header i {
+      display: flex;
+      font-size: 2em;
+      border-radius: 50%;
+      background-clip: padding-box;
+      padding: 14px;
+      transition: transform 0.4s;
+      color: #fff;
+      border: 16px solid var(--bs-dark);
+      margin: -16px 0 -16px -20px;
+    }
+
+    #infographic article:hover header i {
+      transform: scale(1.2);
+    }
+
+    #infographic article.active header i {
+      transform: none;
+    }
+
+    #infographic article .body {
+      background: var(--bgColor);
+      padding: 0 20px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+      overflow: hidden;
+    }
+
+    #infographic :nth-child(even) article {
+      text-align: right;
+      transform: translateX(-100%);
+    }
+
+    #infographic :nth-child(even) article header {
+      flex-flow: row-reverse;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    #infographic :nth-child(even) article header i {
+      margin: -16px -20px -16px 0;
+    }
+
+    #infographic section:nth-child(odd) article.active header {
+      border-bottom-right-radius: 0;
+    }
+
+    #infographic section:nth-child(even) article.active header {
+      border-bottom-left-radius: 0;
+    }
+
+    #infographic article.active .body {
+      padding: 20px;
+      max-height: 300px;
+      border: 1px solid;
+    }
+
+    /* Расположение этапов*/
+    #infographic article[data-step="1"] {
+      margin-left: 6px;
+      width: 260px;
+    }
+
+    #infographic article[data-step="2"] {
+      margin-left: 54px;
+      width: 190px;
+    }
+
+    #infographic article[data-step="3"] {
+      margin-left: 71px;
+      text-align: left;
+      width: 150px;
+    }
+
+    #infographic article[data-step="4"] {
+      margin-left: 61px;
+      width: 120px;
+    }
+
+    #infographic article[data-step="5"] {
+      margin-left: 22px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="6"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="7"] {
+      margin-left: -54px;
+      text-align: right;
+      width: 150px;
+
+    }
+
+    #infographic article[data-step="8"] {
+      margin-left: -70px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="9"] {
+      margin-left: -60px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="10"] {
+      margin-left: -21px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="11"] {
+      margin-left: 7px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="12"] {
+      margin-left: 55px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="13"] {
+      margin-left: 73px;
+      width: 450px;
+    }
+
+    #infographic article[data-step="14"] {
+      margin-left: 85px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="15"] {
+      margin-left: 45px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="16"] {
+      margin-left: 15px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="17"] {
+      margin-left: -35px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="18"] {
+      margin-left: -50px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="19"] {
+      margin-left: -45px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="20"] {
+      margin-left: -15px;
+    }
+
+    #infographic article[data-step="21"] {
+      margin-left: -45px;
+      width: 230px;
+    }
+
+    #infographic article[data-step="22"] {
+      margin-left: -30px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="23"] {
+      margin-left: -15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="24"] {
+      margin-left: 35px;
+      width: 230px;
+    }
+
+    #infographic article[data-step="25"] {
+      margin-left: 65px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="26"] {
+      margin-left: 85px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="27"] {
+      margin-left: 110px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="28"] {
+      margin-left: 100px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="29"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="30"] {
+      margin-left: 40px;
+      width: 130px;
+    }
+
+    #infographic article[data-step="31"] {
+      margin-left: 15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="32"] {
+      margin-left: -15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="33"] {
+      margin-left: -48px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="34"] {
+      margin-left: -55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="35"] {
+      margin-left: -40px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="36"] {
+      margin-left: -5px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="37"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="38"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="39"] {
+      margin-left: 100px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="40"] {
+      margin-left: 75px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="41"] {
+      margin-left: 45px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="42"] {
+      margin-left: 10px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="43"] {
+      margin-left: 0px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="44"] {
+      margin-left: -5px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="45"] {
+      margin-left: 25px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="46"] {
+      margin-left: 55px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="47"] {
+      margin-left: 55px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="48"] {
+      margin-left: 60px;
+      width: 200px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="49"] {
+      margin-left: 20px;
+      width: 200px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="50"] {
+      margin-left: -10px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="51"] {
+      margin-left: -30px;
+      width: 150px;
+      height: 60px;
+
+    }
+
+    #infographic article[data-step="52"] {
+      margin-left: -25px;
+      width: 250px;
+      height: 60px;
+    }
+
+    #infographic article[data-step="53"] {
+      margin-left: 5px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="54"] {
+      margin-left: 45px;
+      width: 200px;
+    }
+
+
+    /*Цвета кругов этапов*/
+    article[data-step="1"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="2"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="3"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="4"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="5"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="6"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="7"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="8"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="9"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="10"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="11"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="12"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="13"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="14"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="15"] .info-btn i {
+      background-color: #e99696 !important;
+    }
+
+    article[data-step="16"] .info-btn i {
+      background-color: #8523dc !important;
+    }
+
+    article[data-step="17"] .info-btn i {
+      background-color: #8523dc !important;
+    }
+
+    article[data-step="18"] .info-btn i {
+      background-color: #8523dc !important;
+    }
+
+    article[data-step="19"] .info-btn i {
+      background-color: #8523dc !important;
+    }
+
+    article[data-step="21"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="22"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="23"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="24"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="25"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="26"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="27"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="28"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="29"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="30"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="31"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="32"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="33"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="34"] .info-btn i {
+      background-color: #194cd6 !important;
+    }
+
+    article[data-step="35"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="36"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="37"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="38"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="39"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="40"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="43"] .info-btn i {
+      background-color: #15904a !important;
+    }
+
+    article[data-step="44"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="45"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="46"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="47"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="48"] .info-btn i {
+      background-color: #5e92ec !important;
+    }
+
+    article[data-step="49"] .info-btn i {
+      background-color: #5e92ec !important;
+    }
+
+    article[data-step="50"] .info-btn i {
+      background-color: #5e92ec !important;
+    }
+
+    article[data-step="51"] .info-btn i {
+      background-color: #5e92ec !important;
+    }
+
+    article[data-step="52"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    article[data-step="53"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    article[data-step="54"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    article[data-step="55"] .info-btn i {
+      background-color: #a62de2 !important;
+    }
+
+    #infographic .circle {
+      padding: 0 !important;
+      margin: 40px auto;
+      /* центрируем по горизонтали и даём отступ снизу */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #infographic .circle h2,
+    #infographic .circle h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Стили для модальных окон: делаем их выше навбара */
+    .modal {
+      z-index: 10500 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10400 !important;
+    }
+
+    /* Форматирование текста в модальных окнах */
+    .modal-body {
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+
+    }
+
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">ITmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Основной заголовок -->
+  <div class="container text-center">
+    <div class="semi-circle">
+      <h1>DevOps</h1>
+    </div>
+  </div>
+  <div class="roadmap-hero">
+    <!-- Добавлен класс visible, чтобы изображения отображались -->
+    <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+  </div>
+
+  <main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+      <div class="circle">
+        <h2>Выберите язык</h2>
+      </div>
+      <article data-step="1">
+        <header class="d-flex align-items-center bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="JavaScript - это высокоуровневый интерпретируемый язык программирования, используемый в основном для клиентской веб-разработки. Он обеспечивает интерактивное и динамическое размещение контента на веб-страницах, позволяя разработчикам создавать адаптивные пользовательские интерфейсы и сложные веб-приложения. JavaScript является базовой технологией Всемирной паутины, наряду с HTML и CSS. Он поддерживает объектно-ориентированную, императивную и функциональную парадигмы программирования. С появлением Node.js JavaScript также стал популярным для разработки на стороне сервера. Язык отличается динамической типизацией, первоклассными функциями и объектной ориентацией на основе прототипов. Повсеместное распространение JavaScript в веб-браузерах, обширная экосистема библиотек и фреймворков (таких как React, Angular и Vue.js ), а также его универсальность для интерфейсной и серверной разработки сделали его одним из наиболее широко используемых языков программирования в современной разработке программного обеспечения.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">JavaScript/Node.js</h6>
+        </header>
+      </article>
+      <article data-step="2">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Python - это высокоуровневый интерпретируемый язык программирования, известный своей простотой, удобочитаемостью и универсальностью. Он поддерживает несколько парадигм программирования, включая процедурное, объектно-ориентированное и функциональное программирование. Обширная стандартная библиотека Python и обширная экосистема пакетов сторонних производителей делают его подходящим для широкого спектра приложений, от веб-разработки и анализа данных до искусственного интеллекта и научных вычислений. Его чистый синтаксис и динамическая типизация обеспечивают быструю разработку и прототипирование. Философия Python “батарейки в комплекте” обеспечивает богатые встроенные функциональные возможности, а кроссплатформенная совместимость обеспечивает переносимость кода. Благодаря мощной поддержке сообщества и постоянному развитию Python стал одним из самых популярных языков программирования, широко используемым в академических кругах, промышленности и проектах с открытым исходным кодом для решения самых разных задач - от простых сценариев до разработки сложного программного обеспечения.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Python</h6>
+        </header>
+      </article>
+      </article>
+      <article data-step="3">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Ruby — это высокоуровневый объектно-ориентированный язык программирования, известный своей простотой, производительностью и элегантным синтаксисом. Интуитивно понятный и легко читаемый, Ruby подчеркивает удовлетворенность разработчиков и быстрые циклы разработки. Он поддерживает несколько парадигм программирования, включая процедурное, функциональное и объектно-ориентированное программирование. Ruby особенно известен своей веб-средой Ruby on Rails, которая способствует быстрой разработке приложений, предоставляя соглашения и инструменты для эффективного создания веб-приложений. Гибкость языка в сочетании с богатой экосистемой библиотек и сильным сообществом делает его популярным для веб-разработки, написания сценариев и создания прототипов.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Ruby</h6>
+        </header>
+      </article>
+      <article data-step="4">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Go, также известный как Golang, — это статически типизированный компилируемый язык программирования, разработанный Google. Он сочетает в себе эффективность компилируемых языков с простотой использования динамически типизированных интерпретируемых языков. Go имеет встроенную поддержку параллелизма через горутины и каналы, что делает его хорошо подходящим для сетевых и многоядерных систем. Он имеет простой и чистый синтаксис, быстрое время компиляции и эффективную сборку мусора. Стандартная библиотека Go является всеобъемлющей, что снижает потребность во внешних зависимостях. Язык подчеркивает простоту и читабельность, с такими особенностями, как неявные интерфейсы и отсутствие наследования. Go особенно популярен для создания микросервисов, веб-серверов и распределенных систем. Его производительность, простота и надежные инструменты делают его предпочтительным выбором для облачной разработки, инструментов DevOps и крупномасштабных серверных систем.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Go</h6>
+        </header>
+      </article>
+      <article data-step="5">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Rust - это язык системного программирования, который фокусируется на безопасности, параллелизме и производительности. Разработанный Mozilla Research, Rust сочетает в себе низкоуровневый контроль над системными ресурсами с высокоуровневыми абстракциями, предотвращая распространенные ошибки программирования, такие как null или зависающие ссылки на указатели во время компиляции. Он оснащен функцией проверки заимствований для управления памятью и предотвращения утечки данных, что делает его идеальным для создания надежного и эффективного программного обеспечения. Абстракции Rust с нулевыми затратами, сопоставление с образцом и дженерики на основе признаков предлагают мощные инструменты для четкого выражения сложных идей. Растущая экосистема Rust, используемая в основном для системного программирования, веб-сборки и разработки игр, поддерживает различные области. Его акцент на безопасность памяти без ущерба для производительности делает его все более популярным для разработки безопасных высокопроизводительных приложений в самых разных областях - от операционных систем до веб-сервисов.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Rust</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Операционная система -->
+    <section class="step two text-warning">
+      <div class="circle">
+        <h2>Операционная система</h2>
+      </div>
+      <article data-step="6">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="FreeBSD - это бесплатная Unix-подобная операционная система с открытым исходным кодом, произошедшая от Berkeley Software Distribution (BSD). Известная своей стабильностью, производительностью и расширенными сетевыми возможностями, FreeBSD популярна для серверных сред, встроенных систем и как основа для сетевых устройств. Он оснащен монолитным ядром, полным набором пользовательских утилит и коллекцией портов для простой установки программного обеспечения. FreeBSD поддерживает широкий спектр архитектур и включает в себя расширенные функции, такие как файловая система ZFS, тюрьмы для контейнеризации и фильтр пакетов pf. Хотя он менее распространен в средах настольных компьютеров, он широко используется в интернет-инфраструктуре, системах хранения данных и компаниями, которым требуется надежная, настраиваемая операционная система с разрешительной лицензией.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">FreeBSD</h6>
+        </header>
+      </article>
+      <article data-step="7">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="OpenBSD - бесплатная Unix-подобная операционная система с открытым исходным кодом, известная своим сильным акцентом на безопасность, корректность кода и упреждающий подход к устранению уязвимостей. Он известен своим строгим процессом проверки кода, интегрированной криптографией и функциями безопасности по умолчанию, такими как защита стека и защита памяти. OpenBSD стала пионером многих инноваций в области безопасности, включая OpenSSH, и придерживается философии “безопасности по умолчанию”. Система ценится за исчерпывающую документацию, чистую и согласованную кодовую базу и соответствие стандартам. OpenBSD используется в основном в серверных средах, особенно для брандмауэров и сетевых устройств, но также поддерживает использование настольных компьютеров. Его акцент на безопасность и стабильность делает его популярным в средах с высоким уровнем безопасности и среди разработчиков, специализирующихся на программировании системного уровня и сетевой безопасности..">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">OpenBSD</h6>
+        </header>
+      </article>
+      <article data-step="8">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="NetBSD - бесплатная Unix-подобная операционная система с открытым исходным кодом, произошедшая от Berkeley Software Distribution (BSD). Он известен своей высокой переносимостью и поддерживает широкий спектр аппаратных платформ - от крупномасштабных серверов до встроенных устройств. NetBSD делает упор на чистый дизайн, хорошо написанный код и соблюдение стандартов. Он имеет модульную архитектуру ядра, что делает его адаптируемым к различным средам. NetBSD включает в себя расширенные функции, такие как kernel ASLR (рандомизация расположения адресного пространства) для повышения безопасности. Он особенно популярен в исследовательских средах, во встраиваемых системах и среди пользователей, которые ценят системную согласованность между различными аппаратными средствами. Несмотря на то, что NetBSD менее распространена в средах настольных компьютеров, акцент на переносимости и чистоте кода делает ее предпочтительной для кроссплатформенной разработки и специализированных вычислительных приложений.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">NetBSD</h6>
+        </header>
+      </article>
+      <article data-step="9">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Ubuntu и Debian - популярные дистрибутивы Linux, причем Debian служит исходной базой для Ubuntu. Debian известен своей стабильностью, обширным репозиторием пакетов и тщательным процессом тестирования, что делает его предпочтительным выбором для серверов и систем, требующих долгосрочной поддержки. Ubuntu, производная от Debian, нацелена на обеспечение более удобного взаимодействия с обычными выпусками, уделение особого внимания простоте использования и возможностям коммерческой поддержки. Она отличается более упрощенным процессом установки, обширной документацией и активным сообществом. Оба дистрибутива используют систему управления пакетами Debian (APT) и разделяют многие базовые технологии, но Ubuntu делает упор на более отточенный опыт работы с настольными компьютерами и быстрый цикл выпуска.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Ubuntu / Debian</h6>
+        </header>
+      </article>
+      <article data-step="10">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="SUSE - это операционная система на базе Linux, известная своей стабильностью, универсальностью и ориентацией на удобное для пользователя управление системой. Он предлагает два основных дистрибутива: openSUSE Leap, стабильную версию корпоративного уровня с регулярными точечными выпусками, и openSUSE Tumbleweed, переходящую версию с последними обновлениями программного обеспечения. openSUSE широко используется разработчиками, системными администраторами и корпоративными средами благодаря надежному управлению пакетами с помощью Zypper и YaST (еще одного инструмента настройки), который упрощает настройку системы. Он также поддерживает широкий спектр оборудования и предлагает мощную поддержку со стороны сообщества.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">SUSE Linux</h6>
+        </header>
+      </article>
+      <article data-step="11">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Red Hat Enterprise Linux (RHEL) - популярный дистрибутив операционной системы Linux, предназначенный для использования на уровне предприятия. Он разработан и поддерживается компанией Red Hat, Inc. и доступен по модели, основанной на подписке. Существует несколько дистрибутивов Linux, основанных на RHEL или которые были каким-либо образом получены из RHEL. Эти дистрибутивы известны как производные RHEL. Некоторые примеры производных RHEL включают: AlmaLinux, CentOS, CloudLinux, Oracle Linux и Scientific Linux. Производные RHEL часто используются в корпоративных средах, поскольку они обеспечивают стабильность и надежность RHEL, но с дополнительным преимуществом в виде бесплатных или более дешевых альтернатив.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">RHEL</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Знание терминала -->
+    <section class="step three text-success">
+      <div class="circle">
+        <h2>Знание терминала</h2>
+      </div>
+      <article data-step="12">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Мониторинг процессов - это непрерывное наблюдение и анализ процессов в ИТ-системе или организации для обеспечения оптимальной производительности, действенности и соответствия требованиям. Он включает отслеживание ключевых показателей, использования ресурсов и поведения отдельных процессов или приложений, запущенных в системе. Этот метод помогает выявлять аномалии, узкие места или потенциальные проблемы до того, как они повлияют на общую производительность системы или взаимодействие с пользователем. Инструменты мониторинга процессов обычно предоставляют данные об использовании ЦП, памяти, операциях ввода-вывода и активности потоков в режиме реального времени. Они часто включают функции оповещения, ведения журнала и визуализации данных процесса. В современных ИТ-средах мониторинг процессов имеет решающее значение для поддержания стабильности системы, оптимизации распределения ресурсов, устранения неполадок с производительностью и поддержки планирования пропускной способности в сложных распределенных системах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Мониторинг процессов</h6>
+        </header>
+      </article>
+      <article data-step="13">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Мониторинг производительности - это систематическое наблюдение и измерение операционной эффективности ИТ-системы. Она включает в себя сбор, анализ и отчетность по ключевым показателям эффективности (KPI) для различных компонентов, включая приложения, сети, серверы и базы данных. В этом процессе используются специализированные инструменты для отслеживания таких показателей, как время отклика, пропускная способность, использование ресурсов и частота ошибок. Мониторинг производительности помогает выявлять узкие места, прогнозировать потенциальные проблемы и оптимизировать системные ресурсы. Это крайне важно для поддержания соглашений об уровне обслуживания (SLA), обеспечения удовлетворенности пользователей и поддержки планирования пропускной способности. В современных ИТ-средах мониторинг производительности часто включает аналитику в режиме реального времени, аналитические данные, основанные на искусственном интеллекте, и автоматизированные системы оповещения, обеспечивающие упреждающее управление сложными распределенными системами и поддерживающие постоянное совершенствование ИТ-операций и предоставления услуг.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Мониторинг производительности</h6>
+        </header>
+      </article>
+      <article data-step="14">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сетевые инструменты - это важные программные утилиты, используемые для мониторинга, анализа, устранения неполадок и управления компьютерными сетями. Они включают в себя широкий спектр приложений, таких как Wireshark для глубокого анализа пакетов, Nmap для сканирования сети и аудита безопасности, Ping для тестирования базового подключения, Traceroute для визуализации сетевых путей, Netstat для отображения сетевых подключений, Tcpdump для захвата пакетов из командной строки, Iperf для тестирования производительности, Netcat для различных сетевых операций, Nslookup / Dig для DNS-запросов и PuTTY для удаленного доступа через SSH или telnet. В совокупности эти инструменты позволяют сетевым администраторам и специалистам по безопасности диагностировать проблемы, оптимизировать производительность, проводить оценки безопасности и поддерживать общую работоспособность и эффективность сетевых инфраструктур, начиная от небольших локальных сетей и заканчивая крупномасштабными корпоративными средами.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Сетевые инструменты</h6>
+        </header>
+      </article>
+      <article data-step="15">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Инструменты управления текстом - это утилиты или программное обеспечение, которые позволяют пользователям эффективно изменять, обрабатывать и преобразовывать текстовые данные. Эти инструменты часто используются в написании сценариев, очистке данных и задачах автоматизации. Распространенные инструменты для работы с текстом включают sed (редактор потоков) для поиска и замены, awk для сканирования шаблонов и извлечения данных и grep для поиска текста с использованием регулярных выражений. Другие популярные инструменты включают cut, sort, tr и uniq для различных функций обработки текста. Эти инструменты командной строки обычно используются в средах UNIX / Linux для обработки больших текстовых файлов, автоматизации рабочих процессов и выполнения сложных текстовых преобразований.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Управление текстом</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция VCS Хостинг -->
+    <section class="step four text-success">
+      <div class="circle">
+        <h2>VCS Хостинг</h2>
+      </div>
+      <article data-step="16">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Системы контроля версий (VCS) - это инструменты, которые отслеживают изменения в коде и файлах с течением времени, позволяя нескольким пользователям совместно работать над проектами, вести историю и управлять различными версиями кодовых баз. Они помогают отслеживать модификации, объединять изменения и разрешать конфликты. Существует два основных типа венчурных капиталистов: централизованные и распределенные. Централизованные системы (такие как Subversion и CVS) полагаются на единый центральный репозиторий, в то время как распределенные системы (такие как Git и Mercurial) позволяют каждому пользователю иметь полную копию репозитория, включая его историю. Распределенные виртуальные машины, такие как Git, особенно популярны благодаря своей гибкости, возможностям ветвления и надежной поддержке совместных рабочих процессов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="17">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitHub - это веб-платформа для контроля версий и совместной работы с использованием Git. Она предоставляет облачный хостинг репозитория Git, предлагая такие функции, как отслеживание ошибок, управление задачами и вики-проекты проектов. GitHub упрощает просмотр кода с помощью запросов на извлечение, поддерживает отслеживание проблем и позволяет создавать социальное кодирование с помощью таких функций, как разветвление и основные репозитории. Он предлагает как публичные, так и частные репозитории, что делает его популярным для проектов с открытым исходным кодом и частной разработки. Экосистема GitHub включает интеграцию с различными инструментами разработки и платформами CI / CD. Благодаря таким функциям, как GitHub Actions для автоматизации, GitHub Packages для управления пакетами и GitHub Pages для веб-хостинга, он служит комплексной платформой для рабочих процессов разработки программного обеспечения, способствуя сотрудничеству между разработчиками">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GitHub</h6>
+        </header>
+      </article>
+      <article data-step="18">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitLab - это веб-инструмент жизненного цикла DevOps, который предоставляет менеджеру репозитория Git функции wiki, отслеживания проблем и конвейера CI / CD. Он предлагает полноценную платформу DevOps, поставляемую в виде единого приложения, охватывающего весь жизненный цикл разработки программного обеспечения от планирования до мониторинга. GitLab поддерживает как облачные, так и автономные варианты, удовлетворяющие различным потребностям организации. Ключевые функции включают интегрированный CI / CD, реестр контейнеров, реестр пакетов и инструменты сканирования безопасности. В нем особое внимание уделяется методологиям innersource, позволяющим командам более эффективно сотрудничать внутри организации. Встроенные возможности GitLab в области DevOps в сочетании с ориентацией на единую интегрированную платформу делают ее популярной среди организаций, стремящихся оптимизировать свои процессы разработки и эффективно внедрять методы DevOps.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">GitLab</h6>
+        </header>
+      </article>
+      <article data-step="19">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Bitbucket - это веб-сервис хостинга репозитория с контролем версий, принадлежащий Atlassian, в основном используемый для исходного кода и проектов разработки, использующих системы контроля версий Git или Mercurial. Он предлагает как облачные, так и автономные варианты, легко интегрируясь с другими инструментами Atlassian, такими как Jira и Trello. Bitbucket предоставляет такие функции, как запросы на извлечение, обзоры кода, конвейеры CI / CD через конвейеры Bitbucket и встроенные вики-страницы для документации. Он бесплатно поддерживает частные репозитории, что делает его популярным как среди небольших команд, так и на предприятиях. Уделяя особое внимание совместной работе в команде, управлению проектами и автоматизации развертывания, Bitbucket служит комплексной платформой для всего жизненного цикла разработки программного обеспечения.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Bitbucket</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Контейнеры -->
+    <section class="step five text-success">
+      <div class="circle">
+        <h2>Контейнеры</h2>
+      </div>
+      <article data-step="21">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Контейнеры - это легкие, переносимые и изолированные среды, которые упаковывают приложения и их зависимости, обеспечивая согласованное развертывание в различных вычислительных средах. Они инкапсулируют программный код, среду выполнения, системные инструменты, библиотеки и настройки, гарантируя, что приложение работает одинаково независимо от того, где оно развернуто. Контейнеры совместно используют ядро операционной системы хоста, что делает их более эффективными, чем традиционные виртуальные машины. Популярные платформы контейнеризации, такие как Docker, предоставляют инструменты для создания, распространения и запуска контейнеров. Эта технология поддерживает архитектуры микросервисов, упрощает развертывание приложений, повышает масштабируемость и расширяет возможности DevOps за счет оптимизации процесса разработки и обеспечения более эффективного использования ресурсов.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="22">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Docker - это платформа с открытым исходным кодом, которая автоматизирует развертывание, масштабирование и управление приложениями с использованием технологии контейнеризации. Это позволяет разработчикам упаковывать приложения со всеми их зависимостями в стандартизированные модули, называемые контейнерами, обеспечивая согласованное поведение в различных средах. Docker предоставляет облегченную альтернативу полной виртуализации компьютера, используя виртуализацию на уровне операционной системы для запуска нескольких изолированных систем на одном хосте. Его экосистема включает инструменты для создания, совместного использования и запуска контейнеров, такие как Docker Engine, Docker Hub и Docker Compose. Docker стал неотъемлемой частью современных практик DevOps, упрощая архитектуру микросервисов, непрерывные конвейеры интеграции / развертывания и эффективное использование ресурсов как в средах разработки, так и в производственных средах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Docker</h6>
+        </header>
+      </article>
+      <article data-step="23">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="LXC (контейнеры Linux) - это метод виртуализации на уровне операционной системы для запуска нескольких изолированных систем Linux на одном хосте с использованием одного ядра Linux. Он обеспечивает легкую альтернативу полной виртуализации компьютера, предлагая почти максимальную производительность и плотность. LXC использует функции ядра Linux, такие как контрольные группы и пространства имен, для создания контейнеров, которые имеют собственное процессное и сетевое пространство, используя при этом то же ядро, что и хост-система. Эта технология обеспечивает эффективное использование ресурсов и быстрое развертывание приложений. LXC часто используется для создания сред разработки, тестирования и запуска нескольких изолированных служб на одном компьютере. Хотя LXC похож по концепции на Docker, он в большей степени ориентирован на системный контейнер по сравнению с Docker, ориентированным на контейнер приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">LXC</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Сетевые протоколы   -->
+    <section class="step six text-success">
+      <div class="circle">
+        <h2>Сетевые протоколы</h2>
+      </div>
+      <article data-step="24">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Сетевые протоколы - это стандартизированные правила и процедуры, которые определяют, как данные передаются, принимаются и интерпретируются по компьютерным сетям. Они определяют формат, время, последовательность и контроль ошибок при передаче данных. Ключевые протоколы включают:
+          1.	TCP / IP (протокол управления передачей / Internet Protocol): базовый набор для интернет-коммуникаций.
+          2.	HTTP / HTTPS: для просмотра веб-страниц и безопасной передачи данных в Интернете.
+          3.	FTP / SFTP: протоколы передачи файлов.
+          4.	SMTP / POP3 / IMAP: протоколы связи по электронной почте.
+          5.	DNS: для разрешения доменных имен.
+          6.	DHCP: для автоматического назначения IP-адреса.
+          7.	SSL / TLS: для безопасной зашифрованной связи.
+          8.	UDP: для быстрой передачи данных без установления соединения.          
+          ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="25">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="DNS (Система доменных имен) - иерархическая децентрализованная система присвоения имен компьютерам, службам или другим ресурсам, подключенным к Интернету или частной сети. Он преобразует понятные человеку доменные имена (например, www.example.com) в IP-адреса (например, 192.0.2.1), которые компьютеры используют для идентификации друг друга в сети. DNS служит телефонной книгой Интернета, позволяя пользователям получать доступ к веб-сайтам, используя легко запоминающиеся имена вместо цифровых IP-адресов. Система включает DNS-серверы, преобразователи и записи (например, A, CNAME, MX), работающие вместе для эффективной маршрутизации интернет-трафика. DNS имеет решающее значение для функциональности Интернета, влияя на все - от просмотра веб-страниц и электронной почты до балансировки нагрузки и обнаружения сервисов в современных облачных архитектурах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DNS</h6>
+        </header>
+      </article>
+      <article data-step="26">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="HTTP (протокол передачи гипертекста) является основой передачи данных во Всемирной паутине. Это протокол прикладного уровня, который позволяет передавать различные типы данных, в первую очередь веб-страницы и их компоненты, между клиентами (обычно веб-браузерами) и серверами. HTTP работает по модели запрос-ответ, когда клиенты отправляют запросы на ресурсы, а серверы отвечают запрошенными данными или сообщениями об ошибках. По своей конструкции он не имеет состояния, что означает, что каждый запрос независим от предыдущих. HTTP поддерживает различные методы (GET, POST, PUT, DELETE и т.д.) Для различных типов операций. Хотя изначально HTTPS был разработан для передачи обычного текста, его безопасная версия с использованием шифрования в настоящее время широко используется для защиты передаваемых данных.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">HTTP</h6>
+        </header>
+      </article>
+      <article data-step="27">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="HTTPS (hypertext Transfer Protocol Secure) - это безопасная версия HTTP, шифрующая данные, которыми обмениваются клиент и сервер. Он использует протоколы SSL / TLS для обеспечения аутентификации, целостности данных и конфиденциальности. Протокол HTTPS предотвращает перехват, несанкционированное вмешательство и атаки типа человек посередине, шифруя все сообщения. Он использует цифровые сертификаты для проверки подлинности веб-сайтов, повышая доверие и безопасность. Протокол HTTPS имеет решающее значение для защиты конфиденциальной информации, такой как учетные данные для входа в систему и финансовые данные. Он стал стандартом безопасного веб-общения, при этом основные браузеры помечают сайты, не использующие HTTPS, как “небезопасные”. HTTPS также обеспечивает преимущества SEO и необходим для многих современных веб-функций и прогрессивных веб-приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">HTTPS</h6>
+        </header>
+      </article>
+      <article data-step="28">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Уровень защищенных Сокетов (SSL) и Безопасность транспортного уровня (TLS) - это криптографические протоколы, используемые для обеспечения безопасности интернет-коммуникаций. Эти протоколы шифруют данные, которые передаются через Интернет, поэтому любой, кто попытается перехватить пакеты, не сможет интерпретировать эти данные. Одно из отличий, которое важно знать, заключается в том, что SSL теперь устарел из-за недостатков в системе безопасности, и большинство современных веб-браузеров больше не поддерживают его. Но TLS по-прежнему безопасен и широко поддерживается, поэтому предпочтительно использовать TLS.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SSL / TLS</h6>
+        </header>
+      </article>
+      <article data-step="29">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="SSH (Безопасная Оболочка) - это криптографический сетевой протокол, используемый для безопасного доступа к удаленным машинам и управления ими по незащищенной сети. Он обеспечивает зашифрованную связь, обеспечивая конфиденциальность и целостность, а также обеспечивает безопасную передачу файлов, выполнение команд и туннелирование. SSH широко используется для удаленного администрирования серверов, облачной инфраструктуры и сетевых устройств, обычно используя аутентификацию на основе ключей или паролей. Такие инструменты, как OpenSSH, обычно используются для установления SSH-соединений, обеспечивая безопасную альтернативу старым, менее безопасным протоколам, таким как Telnet.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SSH</h6>
+        </header>
+      </article>
+      <article data-step="30">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Модель OSI (Взаимосвязь открытых систем) представляет собой концептуальную основу, которая стандартизирует функции телекоммуникационной или вычислительной системы на семи уровнях абстракции. Этими уровнями, снизу доверху, являются: Физический, Канал передачи данных, Сеть, Транспорт, сеанс, презентация и приложение. Каждый уровень служит определенной цели в процессе передачи данных, при этом нижние уровни обрабатывают больше аппаратно-ориентированных задач, а верхние уровни занимаются программным обеспечением и аспектами пользовательского интерфейса. Эта модель помогает понять, как данные перемещаются по сети, устранить неполадки в сети и разработать сетевые протоколы и аппаратное обеспечение. Несмотря на то, что модель OSI не строго соблюдается в реальных реализациях, она остается ценным образовательным инструментом и ориентиром для сетевых инженеров и разработчиков, обеспечивая общий язык для обсуждения сетевых операций и архитектуры.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">OSI</h6>
+        </header>
+      </article>
+      <article data-step="31">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="FTP (File Transfer Protocol) - стандартный сетевой протокол, используемый для передачи файлов между клиентом и сервером в компьютерной сети. Он работает по модели клиент-сервер, обычно используя отдельные соединения для управления и передачи данных между клиентом и сервером. FTP позволяет пользователям загружать файлы и управлять ими в удаленных системах, поддерживая как аутентифицированный, так и анонимный доступ. Широко используемый из-за своей простоты и совместимости, FTP имеет ограничения безопасности, поскольку он передает данные и учетные данные в виде обычного текста. В результате для передачи конфиденциальных данных приобрели популярность более безопасные альтернативы, такие как SFTP (SSH File Transfer Protocol) и FTPS (FTP Secure). Несмотря на свой возраст, FTP по-прежнему используется для различных нужд передачи файлов, особенно в устаревших системах, где безопасность менее критична.
+            SFTP (SSH File Transfer Protocol) - это безопасный протокол передачи файлов, который обеспечивает доступ к файлам, их передачу и функции управления по потоку данных secure shell (SSH). Он разработан как расширение SSH для обеспечения возможностей безопасной передачи файлов. SFTP шифрует как команды, так и данные при передаче, защищая от перехвата и атак типа человек посередине. В отличие от традиционного FTP, SFTP использует единое соединение и не разделяет каналы управления и передачи данных. Он поддерживает такие функции, как возобновление прерванных передач, списки каталогов и удаленное удаление файлов. SFTP широко используется в корпоративных средах для безопасной передачи файлов, автоматизированных сценариев и как более безопасная альтернатива FTP. Его интеграция с SSH делает его предпочтительным выбором для системных администраторов и разработчиков, безопасно работающих с удаленными системами.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">FTP / SFTP</h6>
+        </header>
+      </article>
+      <article data-step="32">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Электронная почта становится сегодня одной из самых ценных услуг в Интернете. Большинство интернет-систем используют SMTP как метод передачи почты от одного пользователя другому. SMTP - это push-протокол, который используется для отправки почты, тогда как POP (протокол почтового отделения) или IMAP (протокол доступа к интернет-сообщениям) используются для получения этих электронных писем на стороне получателя. SMTP - это протокол прикладного уровня. Клиент, который хочет отправить почту, открывает TCP-соединение с SMTP-сервером и затем отправляет почту по этому соединению. SMTP-сервер находится в режиме постоянного прослушивания. Как только он прослушивает TCP-соединение от любого клиента, SMTP-процесс инициирует соединение через порт 25. После успешного установления TCP-соединения клиентский процесс мгновенно отправляет почту.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SMTP</h6>
+        </header>
+      </article>
+      <article data-step="33">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="DMARC (проверка подлинности сообщений на основе домена, создание отчетов и соответствие требованиям) - это протокол проверки подлинности электронной почты, основанный на SPF и DKIM для защиты от подделки электронной почты и фишинговых атак. Это позволяет владельцам доменов указывать, как получатели электронной почты должны обрабатывать сообщения, которые не проходят проверку подлинности. DMARC предоставляет владельцам доменов механизм обратной связи для получения отчетов о результатах проверки подлинности электронной почты, помогая им отслеживать и улучшать безопасность своей электронной почты. Внедряя политики DMARC, организации могут повысить эффективность доставки своей электронной почты, защитить репутацию своего бренда и снизить вероятность использования их домена в мошеннических почтовых кампаниях. DMARC широко используется крупными поставщиками услуг электронной почты и считается важнейшим компонентом современных стратегий безопасности электронной почты.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DMARC</h6>
+        </header>
+      </article>
+      <article data-step="34">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="IMAP (Internet Message Access Protocol) - это стандартный протокол электронной почты, который позволяет почтовым клиентам получать доступ к сообщениям, хранящимся на почтовом сервере. В отличие от POP3, IMAP хранит электронную почту на сервере, обеспечивая доступ с нескольких устройств при сохранении синхронизации. Он поддерживает структуру папок, помечение сообщений и частичный поиск сообщений, что делает его эффективным для управления большими объемами электронной почты. IMAP позволяет пользователям выполнять поиск на стороне сервера, сокращая использование полосы пропускания. Он предназначен для длительного хранения почты на сервере, идеально подходит для пользователей, которым необходимо получить доступ к своей электронной почте с различных устройств или из разных мест. Возможности синхронизации IMAP и функции управления на стороне сервера делают его предпочтительным протоколом для большинства современных систем электронной почты, особенно в мобильных средах и средах с несколькими устройствами.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">IMAP</h6>
+        </header>
+      </article>
+      <article data-step="35">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Структура политики отправителя (SPF) используется для аутентификации отправителя электронной почты. При наличии записи SPF интернет-провайдеры могут проверить, что почтовый сервер авторизован для отправки электронной почты для определенного домена. Запись SPF - это текстовая запись DNS, содержащая список IP-адресов, которым разрешено отправлять электронную почту от имени вашего домена.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">SPF</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Облачные провайдеры -->
+    <section class="step seven text-success">
+      <div class="circle">
+        <h2>Облачные провайдеры</h2>
+      </div>
+      <article data-step="36">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Облачные провайдеры предоставляют уровень API для абстрактной инфраструктуры и предоставляют ее на основе ограничений безопасности и выставления счетов. Облако работает на серверах в центрах обработки данных, но абстракции искусно создают видимость взаимодействия с единой “платформой” или большим приложением. Возможность быстрого предоставления, настройки и защиты ресурсов с помощью облачных провайдеров стала ключом как к огромному успеху, так и к сложности современных DevOps.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="37">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Веб - сервисы Amazon с 2011 года является ведущей платформой облачных вычислений на рынке, опережая Azure и Google Cloud. AWS предлагает более 200 сервисов с центрами обработки данных, расположенными по всему миру. Сервис AWS - это онлайн-платформа, предоставляющая масштабируемые и экономичные решения для облачных вычислений. Это широко распространенная облачная платформа, которая предлагает ряд операций по требованию, таких как вычислительная мощность, хранение базы данных, доставка контента и так далее.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">AWS</h6>
+        </header>
+      </article>
+      <article data-step="38">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Microsoft Azure - это комплексная платформа облачных вычислений, предлагающая широкий спектр услуг для создания, развертывания приложений и управления ими через центры обработки данных, управляемые Microsoft. Он предоставляет решения Инфраструктура как услуга (IaaS), Платформа как услуга (PaaS) и Программное обеспечение как услуга (SaaS), поддерживающие различные языки программирования, инструменты и фреймворки, включая как системы, специфичные для Microsoft, так и системы сторонних производителей. Сервисы Azure охватывают вычисления, аналитику, хранилище, сети и многое другое, позволяя компаниям масштабировать и трансформировать свои операции, использовать искусственный интеллект и машинное обучение, а также внедрять надежные меры безопасности, при этом потенциально снижая затраты на ИТ за счет модели ценообразования по мере поступления..">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Azure</h6>
+        </header>
+      </article>
+      <article data-step="39">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Rollup — это модульный упаковщик для JavaScript, который компилирует небольшие фрагменты кода в более крупные и сложные структуры. Он специализируется на создании меньших и более эффективных пакетов для модулей ES. Rollup отлично справляется с tree-shaking, устраняя неиспользуемый код для более компактных выходных данных. Он особенно хорошо подходит для библиотек и приложений, использующих формат модуля ES. Rollup поддерживает различные форматы выходных данных, включая UMD и CommonJS, что делает его универсальным для различных сценариев развертывания. Хотя он может потребовать больше настройки, чем некоторые альтернативы, фокус Rollup на модулях ES и его эффективное связывание делают его популярным для проектов, в которых приоритет отдается небольшим размерам пакетов и современным практикам JavaScript.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Google Cloud</h6>
+        </header>
+      </article>
+      <article data-step="40">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="DigitalOcean - поставщик облачной инфраструктуры, который предлагает простые, доступные и удобные для разработчиков виртуальные частные серверы, известные как “Дроплеты”. Она ориентирована на предоставление простых сервисов облачных вычислений, включая виртуальные машины, управляемые базы данных, объектные хранилища и кластеры Kubernetes. DigitalOcean известен своим удобным интерфейсом, прозрачными ценами и обширной документацией, что делает его популярным среди разработчиков, стартапов и предприятий малого и среднего бизнеса. Платформа делает упор на простоту и производительность, предлагая такие функции, как приложения в один клик, командное управление и надежный API для автоматизации. Несмотря на то, что DigitalOcean не обладает такими широкими возможностями, как некоторые крупные облачные провайдеры, упрощенный подход и конкурентоспособные цены делают его привлекательным вариантом для тех, кто ищет простые решения для облачной инфраструктуры.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DigitalOcean</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция CI / CD -->
+    <section class="step eight text-success">
+      <div class="circle">
+        <h2>CI / CD</h2>
+      </div>
+      <article data-step="41">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="CI / CD - это метод частой доставки приложений заказчикам путем внедрения автоматизации на этапах разработки приложений. Основными концепциями, приписываемыми CI / CD, являются непрерывная интеграция, непрерывная доставка и непрерывное развертывание. CI / CD - это решение проблем, которые может вызвать интеграция нового кода для групп разработчиков и эксплуатации. В частности, CI / CD обеспечивает постоянную автоматизацию и непрерывный мониторинг на протяжении всего жизненного цикла приложений, от этапов интеграции и тестирования до доставки и развертывания. Взятые вместе, эти взаимосвязанные практики часто называют “конвейером CI / CD” и поддерживаются группами разработки и эксплуатации, работающими совместно гибким образом с использованием либо подхода DevOps, либо подхода SRE к проектированию надежности сайта.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое CI / CD?</h6>
+        </header>
+      </article>
+      <article data-step="42">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="TeamCity - сервер непрерывной интеграции (CI) и непрерывной доставки (CD), разработанный компанией JetBrains и предназначенный для автоматизации процессов сборки, тестирования и развертывания при разработке программного обеспечения. Он поддерживает несколько языков и фреймворков, предлагая гибкую и масштабируемую среду для управления конвейерами. TeamCity предоставляет мощные функции, такие как интеграция с контролем версий, объединение сборок в цепочки, параллельное выполнение и подробные отчеты. Он также предлагает удобный веб-интерфейс, настраиваемые конфигурации сборки и обширную поддержку плагинов, что делает его популярным выбором для команд, стремящихся оптимизировать свои рабочие процессы CI / CD.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">TeamCity</h6>
+        </header>
+      </article>
+      <article data-step="43">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Индексы баз данных — это структуры данных, которые повышают скорость операций извлечения данных в системе управления базами данных. Они работают аналогично книжным указателям, предоставляя быстрый способ поиска информации на основе определенных столбцов или наборов столбцов. Индексы создают отдельную структуру, содержащую ссылку на фактические данные, что позволяет ядру базы данных находить информацию без сканирования всей таблицы. Несмотря на то, что индексы значительно повышают производительность запросов, особенно для больших наборов данных, они сопряжены с компромиссами. Они увеличивают требования к дисковому пространству и могут замедлить операции записи, так как индекс необходимо обновлять при каждом изменении данных. К распространенным типам относятся индексы B-деревьев для общего использования, индексы растровых изображений для данных с низкой кратностью и хэш-индексы для сравнения на равенство. Правильное проектирование индексов имеет решающее значение для оптимизации производительности базы данных, баланса между быстрым чтением и более медленными операциями записи и повышенными потребностями в хранилище.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Jenkins</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Обеспечение -->
+    <section class="step nine text-success">
+      <div class="circle">
+        <h2>Обеспечение</h2>
+      </div>
+      <article data-step="44">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="AWS Cloud Development Kit (AWS CDK) - это платформа разработки программного обеспечения с открытым исходным кодом, используемая для безопасного и воспроизводимого предоставления ресурсов облачной инфраструктуры с помощью AWS CloudFormation. AWS CDK обеспечивает гибкость при написании инфраструктуры в виде кода на популярных языках, таких как JavaScript, TypeScript, Python, Java, C # и Go.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">AWS CDK</h6>
+        </header>
+      </article>
+      <article data-step="45">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="AWS CloudFormation - это сервис инфраструктура как код, который позволяет пользователям определять и предоставлять ресурсы инфраструктуры AWS с помощью шаблонов. Эти шаблоны, написанные на JSON или YAML, описывают требуемые ресурсы AWS и их свойства. CloudFormation автоматизирует создание, обновление и удаление ресурсов, обеспечивая согласованное и повторяющееся развертывание в нескольких средах. Он поддерживает широкий спектр сервисов AWS и может управлять сложными взаимозависимостями между ресурсами. CloudFormation также предоставляет такие функции, как наборы изменений для предварительного просмотра изменений, вложенные стеки для модульных конструкций и обнаружение отклонений для идентификации изменений, внесенных вручную. Этот сервис позволяет командам контролировать версии своей инфраструктуры, внедрять лучшие практики и оптимизировать управление ресурсами AWS на протяжении всего их жизненного цикла.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CloudFormation</h6>
+        </header>
+      </article>
+      <article data-step="46">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Terraform - это инструмент для разработки инфраструктуры в виде кода с открытым исходным кодом (IaC), разработанный HashiCorp, используемый для определения, подготовки и управления облачной и локальной инфраструктурой с использованием декларативных файлов конфигурации. Он поддерживает несколько облачных провайдеров, таких как AWS, Azure и Google Cloud, а также различные сервисы и платформы, обеспечивая автоматизацию инфраструктуры в различных средах. Управление состоянием и модульная структура Terraform обеспечивают эффективное масштабирование, возможность повторного использования и контроль версий инфраструктуры. Он широко используется для автоматизации подготовки инфраструктуры, уменьшения количества ошибок, совершаемых вручную, и улучшения согласованности и повторяемости инфраструктуры.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Terraform</h6>
+        </header>
+      </article>
+      <article data-step="47">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Pulumi - это платформа инфраструктуры как кода с открытым исходным кодом (IaC), которая позволяет разработчикам определять облачные ресурсы и управлять ими, используя знакомые языки программирования, такие как JavaScript, TypeScript, Python, Go и языки .NET. Он поддерживает множество облачных провайдеров, включая AWS, Azure, Google Cloud и Kubernetes. Подход Pulumi позволяет разработчикам использовать стандартные программные конструкции, такие как циклы, функции и классы, для создания многоразового и модульного кода инфраструктуры. Он обеспечивает единый рабочий процесс для развертывания ресурсов в различных облачных средах и управления ими, предлагая такие функции, как управление состоянием, обнаружение отклонений и предварительный просмотр изменений перед развертыванием. Экосистема Pulumi включает реестр готовых компонентов и интеграций с системами CI / CD, что делает ее мощным инструментом для команд, внедряющих методы DevOps и управляющих сложными инфраструктурами с несколькими облаками.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Pulumi</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Мониториг -->
+    <section class="step ten text-success">
+      <div class="circle">
+        <h2>Мониториг</h2>
+      </div>
+      <article data-step="48">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Prometheus - это набор инструментов для мониторинга систем и оповещения с открытым исходным кодом, разработанный для обеспечения надежности и масштабируемости. Он включает в себя многомерную модель данных, гибкий язык запросов (PromQL) и эффективную базу данных временных рядов. Prometheus собирает показатели из настроенных целевых объектов с заданными интервалами, оценивает выражения правил, отображает результаты и может запускать оповещения при соблюдении заданных условий. Он работает на основе модели извлечения, извлекая метрики из конечных точек HTTP и поддерживая обнаружение служб в динамических средах. Prometheus особенно хорошо подходит для мониторинга микросервисов и контейнерных сред, легко интегрируясь с такими системами, как Kubernetes. Его экосистема включает различные экспортеры для систем сторонних производителей и встроенный менеджер оповещений. Широко применяемый в облачных архитектурах, Prometheus является ключевым компонентом современных стеков наблюдаемости и часто используется вместе с такими инструментами визуализации, как Grafana.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Prometheus</h6>
+        </header>
+      </article>
+      <article data-step="49">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Grafana - это веб-приложение для аналитики и интерактивной визуализации с открытым исходным кодом. Оно подключается к различным источникам данных, включая базы данных временных рядов, реляционные базы данных и облачные сервисы, для создания настраиваемых информационных панелей. Grafana превосходно визуализирует данные временных рядов для анализа инфраструктуры и приложений, поддерживая широкий спектр типов диаграмм и подключаемых модулей. Она обладает возможностями оповещения, аутентификации пользователей и ролевого контроля доступа. Grafana обычно используется для мониторинга системных показателей, производительности приложений и бизнес-аналитики. Его гибкость и возможность комбинировать данные из нескольких источников делают его популярным в средах DevOps для создания комплексных решений мониторинга. Удобный интерфейс Grafana и широкие возможности настройки позволяют пользователям создавать визуально привлекательные и информативные панели мониторинга для визуализации и анализа данных в режиме реального времени.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Grafana</h6>
+        </header>
+      </article>
+      <article data-step="50">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Zabbix - это решение для мониторинга с открытым исходным кодом, предназначенное для отслеживания производительности, доступности и работоспособности ИТ-инфраструктуры. Оно предоставляет комплексные возможности мониторинга серверов, сетей, приложений и служб через централизованную платформу. Zabbix поддерживает широкий спектр методов сбора данных, включая мониторинг на основе агентов, SNMP, IPMI и пользовательские сценарии. Он предлагает такие функции, как оповещение в режиме реального времени, визуализации с настраиваемыми панелями мониторинга и подробные отчеты. Его масштабируемость и гибкость делают его подходящим для сред различного размера, от небольших сетей до крупных корпоративных систем.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Zabbix</h6>
+        </header>
+      </article>
+      <article data-step="51">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Datadog - это платформа мониторинга и аналитики для крупномасштабных приложений. Она включает в себя мониторинг инфраструктуры, мониторинг производительности приложений, ведение журналов и мониторинг взаимодействия с пользователем. Datadog объединяет данные по всему вашему стеку с помощью более чем 400 интеграций для устранения неполадок, оповещения и построения графиков.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Datadog</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция GitOps> -->
+    <section class="step eleven text-success">
+      <div class="circle">
+        <h2>GitOps</h2>
+      </div>
+      <article data-step="52">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="GitOps - это парадигма управления инфраструктурой и развертыванием приложений с использованием Git как единственного источника достоверности. Она расширяет практику DevOps за счет использования репозиториев Git для хранения декларативных описаний инфраструктуры и приложений. Изменения в желаемое состояние вносятся с помощью запросов на извлечение, которые запускают автоматизированные процессы для приведения фактического состояния в соответствие с желаемым. GitOps полагается на инструменты непрерывного развертывания, которые автоматически приводят действующую систему в соответствие с желаемым состоянием, определенным в Git. Этот подход обеспечивает такие преимущества, как контроль версий для инфраструктуры, улучшенную проверяемость, более простой откат и расширенную совместную работу. GitOps особенно хорошо подходит для облачных приложений и сред Kubernetes, предлагая упрощенный метод управления сложными распределенными системами.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это такое?</h6>
+        </header>
+      </article>
+      <article data-step="53">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Argo CD - это инструмент непрерывной доставки для Kubernetes, основанный на методологии GitOps. Он используется для автоматизации развертывания облачных приложений и управления ими путем непрерывной синхронизации желаемого состояния приложения с фактическим состоянием приложения в производственной среде. В рабочем процессе Argo CD изменения в приложении вносятся путем фиксации кода или изменений конфигурации в репозитории Git. Argo CD отслеживает репозиторий и автоматически внедряет изменения в производственную среду, используя непрерывный конвейер доставки. Конвейер запускается изменениями в репозитории Git и отвечает за создание, тестирование и развертывание изменений в производственной среде.Argo CD разработан как простой и эффективный способ управления облачными приложениями, поскольку позволяет разработчикам вносить изменения в систему с помощью знакомых инструментов и процессов, а также обеспечивает четкую и проверяемую историю всех изменений в системе. Он часто используется в сочетании с такими инструментами, как Helm, для автоматизации развертывания облачных приложений и управления ими.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">ArgoCD</h6>
+        </header>
+      </article>
+      <article data-step="54">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="FluxCD - это инструмент непрерывной доставки на основе GitOps для Kubernetes. Он автоматизирует развертывание приложений, используя репозитории Git в качестве источника достоверности для определения желаемого состояния системы. FluxCD постоянно отслеживает эти репозитории и автоматически применяет изменения к кластеру при обнаружении различий. Он поддерживает многопользовательскую работу, выпуски Helm и предоставляет такие функции, как автоматическое обновление образов и уведомления. FluxCD обеспечивает декларативное управление инфраструктурой и приложениями с контролем версий, обеспечивая согласованность в разных средах и упрощая процесс развертывания. Его интеграция с Kubernetes делает его особенно полезным для облачных приложений, позволяя командам внедрять эффективные, автоматизированные и проверяемые рабочие процессы развертывания.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">FluxCD</h6>
+        </header>
+      </article>
+    </section>
+  </main>
+
+  <!-- Модальное окно Bootstrap для вывода текста -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Заголовок с добавленным стикером -->
+          <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Содержимое модального окна заполняется динамически -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 ITmap.</p>
+    <p>Все права защищены.</p>
+    <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+  </footer>
+  <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+  <script>
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const modalContent = button.getAttribute('data-modal-content');
+      const modalBody = infoModal.querySelector('.modal-body');
+      // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+      modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+    });
+    document.querySelectorAll('.side-fixed').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.remove('rotating');
+        setTimeout(() => img.classList.add('rotating'), 10);
+      });
+    });
+
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

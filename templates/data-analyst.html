@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Аналитик данных — ITmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/webp" href="images/logo_new.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: url("images/фон.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .hero-section {
+            background-color: transparent;
+            background-image: url("images/фон.webp");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            margin-top: 100px;
+            color: #002b5f;
+            text-align: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            background-color: #002b5f;
+            border-bottom: 1px solid #001c42;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: #fff !important;
+        }
+
+        .navbar-brand:hover {
+            color: #e0e0e0 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-link.btn {
+            margin-left: 10px;
+            color: #fff !important;
+            border-color: #fff;
+        }
+
+        .navbar-nav .nav-link.btn:hover {
+            background-color: #001c42;
+            color: #fff !important;
+            border-color: #001c42;
+        }
+
+        .semi-circle {
+            display: inline-block;
+            padding: 20px 60px;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 100px auto 50px;
+            border-radius: 50px;
+            /* Превращает в прямоугольный овал */
+            border: 5px solid #7494ec;
+            text-align: center;
+        }
+
+        .semi-circle h1 {
+            margin: 0;
+            color: #1e5291;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* Стили для большого круга */
+        #infographic .circle {
+            width: 250px;
+            height: 230px;
+            border-radius: 50%;
+            border: 7px double;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 60px;
+            position: absolute;
+            left: 50%;
+            margin: 40px 0;
+        }
+
+
+        .circles-container .circle {
+            width: 50px;
+            height: 50px;
+            gap: 30;
+            border-radius: 50%;
+            border: 5px double;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        /* Фиксированные изображения слева и справа от главной фотографии */
+        .side-fixed {
+            position: fixed;
+            top: 30%;
+            width: 200px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+
+        .side-fixed.visible {
+            opacity: 1;
+        }
+
+        .side-fixed.left {
+            left: 5%;
+        }
+
+        .side-fixed.right {
+            right: 5%;
+        }
+
+        .step.one header {
+            background-color: rgba(0, 48, 96, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 2: насыщенный зелёный фон + белый текст */
+        .step.two header {
+            background-color: rgba(0, 128, 64, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 3: тёмно-оранжевый фон + белый текст */
+        .step.three header {
+            background-color: rgba(255, 128, 0, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Секция 4: насыщенный красный фон + белый текст */
+        .step.four header {
+            background-color: rgba(192, 0, 0, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.six header {
+            background-color: rgba(158, 199, 242, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.seven header {
+            background-color: rgba(125, 255, 149, 0.85) !important;
+            color: #ffffff !important;
+        }
+
+        .step.eight header {
+            background-color: rgba(252, 177, 206, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.nine header {
+            background-color: rgba(68, 209, 148, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.ten header {
+            background-color: rgba(156, 199, 251, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.eleven header {
+            background-color: rgba(171, 183, 255, 0.85) !important;
+            color: #fff !important;
+        }
+
+        .step.thirteen header {
+            background-color: rgba(233, 171, 255, 0.85) !important;
+            color: #fff !important;
+        }
+
+        /* Для нечётных секций смещаем круг влево */
+        #infographic section:nth-child(odd) .circle {
+            transform: translateX(-100%);
+        }
+
+        #infographic article {
+            max-width: 400px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            left: 50%;
+            position: relative;
+        }
+
+        /* Цвета и расположение секций-кругов */
+        #infographic .step.one .circle {
+            transform: translate(-245px, -20px);
+            color: rgb(240, 8, 8);
+        }
+
+        #infographic .step.two .circle {
+            transform: translate(15px, 80px);
+            color: rgb(224, 23, 143);
+        }
+
+        #infographic .step.three .circle {
+            margin-top: -5px;
+            transform: translate(-285px, 150px);
+        }
+
+        #infographic .step.four .circle {
+            transform: translate(125px, 40px);
+            color: blueviolet;
+        }
+
+
+        #infographic .step.five .circle {
+            transform: translate(-280px,-50px);
+            color: rgb(235, 139, 247);
+        }
+
+        #infographic .step.six .circle {
+            transform: translate(60px, -40px);
+            color: rgb(176, 205, 29);
+        }
+
+        #infographic .step.seven .circle {
+            transform: translate(-230px, -75px);
+            color: rgb(26, 23, 218);
+        }
+
+
+        #infographic article header {
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        #infographic article header i {
+            display: flex;
+            font-size: 2em;
+            border-radius: 50%;
+            background-clip: padding-box;
+            padding: 14px;
+            transition: transform 0.4s;
+            color: #fff;
+            border: 16px solid var(--bs-dark);
+            margin: -16px 0 -16px -20px;
+        }
+
+        #infographic article:hover header i {
+            transform: scale(1.2);
+        }
+
+        #infographic article.active header i {
+            transform: none;
+        }
+
+        #infographic article .body {
+            background: var(--bgColor);
+            padding: 0 20px;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            max-height: 0;
+            transition: max-height 0.5s, padding 0.5s;
+            overflow: hidden;
+        }
+
+        #infographic :nth-child(even) article {
+            text-align: right;
+            transform: translateX(-100%);
+        }
+
+        #infographic :nth-child(even) article header {
+            flex-flow: row-reverse;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        #infographic :nth-child(even) article header i {
+            margin: -16px -20px -16px 0;
+        }
+
+        #infographic section:nth-child(odd) article.active header {
+            border-bottom-right-radius: 0;
+        }
+
+        #infographic section:nth-child(even) article.active header {
+            border-bottom-left-radius: 0;
+        }
+
+        #infographic article.active .body {
+            padding: 20px;
+            max-height: 300px;
+            border: 1px solid;
+        }
+
+        /* Расположение этапов*/
+        #infographic article[data-step="1"] {
+            margin-left: 6px;
+            width: 310px;
+        }
+
+        #infographic article[data-step="2"] {
+            margin-left: 54px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="3"] {
+            margin-left: 71px;
+            text-align: left;
+            width: 300px;
+        }
+
+        #infographic article[data-step="4"] {
+            margin-left: 61px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="5"] {
+            margin-left: 52px;
+            width: 240px;
+        }
+
+        #infographic article[data-step="6"] {
+            margin-left: -5px;
+            width: 240px;
+        }
+
+        #infographic article[data-step="7"] {
+            margin-left: -54px;
+            text-align: right;
+            width: 250px;
+        }
+
+        #infographic article[data-step="8"] {
+            margin-left: -70px;
+            width: 270px;
+        }
+
+        #infographic article[data-step="9"] {
+            margin-left: -60px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="10"] {
+            margin-left: -21px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="11"] {
+            margin-left: 7px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="12"] {
+            margin-left: 55px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="13"] {
+            margin-left: 73px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="14"] {
+            margin-left: 85px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="15"] {
+            margin-left: 65px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="16"] {
+            margin-left: 30px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="17"] {
+            margin-left: -5px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="18"] {
+            margin-left: -25px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="19"] {
+            margin-left: -45px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="20"] {
+            margin-left: -60px;
+            width: 350px;
+        }
+
+        #infographic article[data-step="21"] {
+            margin-left: -65px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="22"] {
+            margin-left: -60px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="23"] {
+            margin-left: -15px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="24"] {
+            margin-left: 25px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="25"] {
+            margin-left: 55px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="26"] {
+            margin-left: 85px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="27"] {
+            margin-left: 110px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="28"] {
+            margin-left: 120px;
+            width: 180px;
+        }
+
+        #infographic article[data-step="29"] {
+            margin-left: 105px;
+            width: 180px;
+        }
+
+        #infographic article[data-step="30"] {
+            margin-left: 50px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="31"] {
+            margin-left: 25px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="32"] {
+            margin-left: 0px;
+            width: 200px;
+        }
+
+        #infographic article[data-step="33"] {
+            margin-left: -50px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="34"] {
+            margin-left: -45px;
+            width: 250px;
+        }
+
+        #infographic article[data-step="35"] {
+            margin-left: -40px;
+            width: 300px;
+        }
+
+        #infographic article[data-step="36"] {
+            margin-left: -5px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="37"] {
+            margin-left: 50px;
+            width: 150px;
+        }
+
+        #infographic article[data-step="38"] {
+            margin-left: 85px;
+            width: 180px;
+        }
+
+        #infographic article[data-step="39"] {
+            margin-left: 85px;
+            width: 200px;
+        }
+
+
+        /*Цвета кругов этапов*/
+        article[data-step="1"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="2"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="3"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="4"] .info-btn i {
+            background-color: #6d8cf2 !important;
+        }
+
+        article[data-step="5"] .info-btn i {
+            background-color: #ffec1b !important;
+        }
+
+        article[data-step="10"] .info-btn i {
+            background-color: #ffec1b !important;
+        }
+
+        article[data-step="11"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="12"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="13"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="14"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="15"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="16"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="17"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="18"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+        article[data-step="19"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+        article[data-step="20"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+        article[data-step="21"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+        article[data-step="22"] .info-btn i {
+            background-color: #fc3737 !important;
+        }
+
+        article[data-step="23"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="24"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="25"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="26"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="27"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="28"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="29"] .info-btn i {
+            background-color: #39732d !important;
+        }
+
+        article[data-step="30"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="31"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="32"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="33"] .info-btn i {
+            background-color: #36bcf5 !important;
+        }
+
+        article[data-step="34"] .info-btn i {
+            background-color: #f86b00 !important;
+        }
+
+        article[data-step="35"] .info-btn i {
+            background-color: #f86b00 !important;
+        }
+
+        article[data-step="36"] .info-btn i {
+            background-color: #f86b00 !important;
+        }
+
+        article[data-step="37"] .info-btn i {
+            background-color: #f86b00 !important;
+        }
+
+        article[data-step="38"] .info-btn i {
+            background-color: #ffb2e5 !important;
+        }
+
+        article[data-step="39"] .info-btn i {
+            background-color: #ffb2e5 !important;
+        }
+
+        #infographic .circle {
+            padding: 0 !important;
+            margin: 40px auto;
+            /* центрируем по горизонтали и даём отступ снизу */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        #infographic .circle h2,
+        #infographic .circle h4 {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Стили для модальных окон: делаем их выше навбара */
+        .modal {
+            z-index: 10500 !important;
+        }
+
+        .modal-backdrop {
+            z-index: 10400 !important;
+        }
+
+        /* Форматирование текста в модальных окнах */
+        .modal-body {
+            font-size: 1.1em;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .side-fixed.rotating {
+            animation: spin 1s linear;
+
+        }
+
+        footer {
+            background-color: #002b5f;
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #001c42;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .hero-section {
+                margin-top: 80px;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+
+            .roadmap-hero img.main-photo {
+                max-width: 60%;
+            }
+
+            .arrow {
+                width: 60px;
+                height: 60px;
+            }
+
+            .left-arrow,
+            .right-arrow {
+                height: 32px;
+            }
+
+            .roadmap-card {
+                max-width: 100% !important;
+                font-size: 16px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">ITmap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Основной заголовок -->
+    <div class="container text-center">
+        <div class="semi-circle">
+            <h1>Аналитик данных</h1>
+        </div>
+    </div>
+    <div class="roadmap-hero">
+        <!-- Добавлен класс visible, чтобы изображения отображались -->
+        <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+        <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+    </div>
+
+    <main id="infographic" class="d-flex flex-column align-items-center py-5">
+        <!-- Секция Основа -->
+        <section class="step one text-danger">
+            <div class="circle">
+                <h2>Типы аналитики данных</h2>
+            </div>
+            <article data-step="1">
+                <header class="d-flex align-items-center bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Описательный анализ - это один из основных видов анализа данных, который позволяет заглянуть в прошлое. Для аналитиков данных использование описательного анализа предполагает использование исторических данных для понимания изменений, произошедших в бизнесе с течением времени. В первую очередь это касается аспекта “что произошло”, он анализирует исходные данные из прошлого, чтобы делать выводы и выявлять закономерности и тенденции. Это помогает компаниям понять свои сильные и слабые стороны и точно определить операционные проблемы, подготавливая почву для точной бизнес-аналитики и процессов принятия решений.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Описательная аналитика</h6>
+                </header>
+            </article>
+            <article data-step="2">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Диагностическая аналитика, как важнейший вид анализа данных, направлена на изучение результатов прошлой деятельности, чтобы понять, почему что-то произошло. Это неотъемлемая часть работы, выполняемой аналитиками данных. С помощью таких методов, как детализация, обнаружение данных, корреляции и причинно-следственный анализ, аналитики данных, использующие диагностическую аналитику, могут выйти за рамки общих тенденций и определить первопричину изменений, наблюдаемых в данных. Следовательно, это позволяет предприятиям эффективно решать оперативные и стратегические проблемы, позволяя им понять причины, стоящие за такими проблемами. Для каждого аналитика данных умение проводить диагностический анализ данных является обязательным качеством, которое расширяет его аналитические возможности.">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Диагностическая аналитика</h6>
+                </header>
+            </article>
+            <article data-step="3">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Прогностический анализ - это важнейший вид анализа данных, который должен быть понятен любому компетентному аналитику данных. Он относится к практике извлечения информации из существующих наборов данных с целью определения закономерностей и прогнозирования будущих результатов и тенденций. Аналитики данных применяют к данным статистические алгоритмы, методы машинного обучения и искусственный интеллект, чтобы предвидеть будущие результаты. Прогнозный анализ позволяет организациям действовать на опережение и разрабатывать стратегию, предоставляя им ценную информацию о будущих событиях. Это мощный инструмент, который дает компаниям значительное конкурентное преимущество, позволяя управлять рисками, выявлять возможности и принимать стратегические решения.">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Прогнозный анализ</h6>
+                </header>
+            </article>
+            <article data-step="4">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Предписывающая аналитика - важнейший вид анализа данных, который необходим для принятия решений на основе данных в бизнесе и организации. Цель предписывающей аналитики как аналитика данных - рекомендовать различные действия, используя прогнозы на основе известных параметров, чтобы помочь лицам, принимающим решения, понять вероятные результаты. В Prescriptive analytics используется набор методов и инструментов, таких как алгоритмы, машинное обучение, процедуры компьютерного моделирования и древовидные структуры принятия решений, позволяющие автоматизировать процесс принятия решений. Таким образом, предписывающая аналитика не только предсказывает, что произойдет и когда это произойдет, но и объясняет, почему это произойдет, что повышает значимость роли аналитика данных в организации.">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Директивная аналитика</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Основы -->
+        <section class="step two text-warning">
+            <div class="circle">
+                <h2>Концепции</h2>
+            </div>
+            <article data-step="5">
+                <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В области анализа данных концепция сбора данных имеет огромное значение. Как следует из самого термина, сбор данных относится к процессу сбора и измерения информации о целевых переменных установленным систематическим образом, который позволяет аналитику данных отвечать на соответствующие вопросы и оценивать результаты. Этот шаг является основополагающим для любой схемы анализа данных, поскольку он является первым этапом взаимодействия с исходными данными, которые впоследствии преобразуются в реальные аналитические данные. Эффективность анализа данных в значительной степени зависит от качества и количества собранных данных. Для сбора данных используются различные методологии и инструменты в зависимости от характера требуемых данных, такие как опросы, наблюдения, эксперименты или поиск информации в онлайн-хранилищах данных. Этот процесс должен осуществляться с четкими целями и тщательным рассмотрением, чтобы обеспечить точность и актуальность на более поздних этапах анализа и принятия решений.
+            ">
+                        <i class="fa-solid fa-meteor bg-danger"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Сбор данных</h6>
+                </header>
+            </article>
+            <article data-step="6">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Очистка данных является важнейшим компонентом работы аналитика данных. Она включает в себя процесс проверки, очистки, преобразования и моделирования данных для получения полезной информации, обоснования выводов и поддержки принятия решений. Этот процесс имеет решающее значение для аналитиков данных, поскольку позволяет получать точную и значимую информацию на основе данных, что в конечном итоге приводит к принятию более качественных и обоснованных бизнес-решений. Глубокое понимание процедур и методов очистки данных является фундаментальным навыком для любого аналитика данных. Следовательно, необходимо уделять особое внимание поддержанию качества данных, обеспечивая их целостность, точность и согласованность в процессе очистки данных.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Очистка</h6>
+                </header>
+            </article>
+            <article data-step="7">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="В области анализа данных изучение данных является ключевой концепцией, которую используют аналитики для эффективного понимания и интерпретации данных. Как правило, этот процесс исследования включает в себя выявление закономерностей, выявление аномалий, изучение базовых структур и проверку гипотез, что часто достигается с помощью описательной статистики, визуальных методов или сложных алгоритмов. Это фундаментальная основа для любого аналитика данных, которая в конечном счете определяет направление дальнейшего анализа или моделирования. Эта концепция служит основой для работы со сложностями и неопределенностями в данных, что позволяет улучшить процесс принятия решений в различных областях - от бизнеса и финансов до здравоохранения и социальных наук.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Исследование</h6>
+                </header>
+            </article>
+            <article data-step="8">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Визуализация данных - необходимый навык в арсенале каждого аналитика данных. Эта практика заключается в преобразовании сложных необработанных данных в графический формат, который позволяет упростить понимание больших массивов данных, тенденций, отклонений и важных закономерностей. Будь то круговые диаграммы, линейные графики, гистограмматические диаграммы или тепловые карты, методы визуализации данных не только упрощают анализ данных, но и способствуют более эффективному доведению полученных результатов до сведения других пользователей. Эта ключевая концепция подчеркивает важность представления данных в удобоваримой и визуально привлекательной форме для принятия решений на основе данных в организации.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Визуализация</h6>
+                </header>
+            </article>
+            <article data-step="9">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Статистический анализ играет важнейшую роль в повседневной работе аналитика данных. Он включает в себя сбор, изучение, интерпретацию и представление данных, позволяя аналитикам выявлять закономерности, тенденции и взаимосвязи, делать выводы и поддерживать принятие решений в различных областях. Применяя статистические концепции, аналитики данных могут преобразовывать сложные наборы данных в понятную информацию, которую организации могут использовать для получения практических рекомендаций. Этот краеугольный камень анализа данных позволяет аналитикам создавать прогнозные модели, анализировать тенденции и получать ценную бизнес-информацию, что делает его незаменимым в мире анализа данных. Для аналитиков данных жизненно важно владеть такими статистическими методологиями, чтобы эффективно обрабатывать большие объемы данных.">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Статистический анализ</h6>
+                </header>
+            </article>
+            <article data-step="10">
+                <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Машинное обучение, разновидность искусственного интеллекта, является незаменимым инструментом в руках аналитика данных. Оно обеспечивает возможность автоматического обучения, совершенствования на основе опыта и принятия решений без явного программирования. В контексте анализа данных машинное обучение вносит значительный вклад в выявление скрытых данных, распознавание закономерностей или составление прогнозов на основе больших объемов данных. Благодаря использованию различных алгоритмов и моделей аналитики данных могут использовать машинное обучение для преобразования необработанных данных в значимую информацию, что делает его важнейшей концепцией анализа данных.
+            ">
+                        <i class="fa-solid fa-cookie-bite bg-warning"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 pe-4">Машинное обучение </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Базовые фун-ции Excel -->
+        <section class="step three text-success">
+            <div class="circle">
+                <h2>Базовые фун-ции Excel</h2>
+            </div>
+            <article data-step="11">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Функция ЕСЛИ в Excel является важнейшим инструментом для аналитиков данных, позволяющим им создавать условные выражения, очищать и проверять данные, выполнять вычисления на основе определенных условий, создавать пользовательские показатели, применять условное форматирование, автоматизировать задачи и генерировать динамические отчеты. Аналитики данных используют ЕСЛИ для классификации данных, обработки недостающих значений, расчета бонусов или пользовательских показателей, выделения тенденций и улучшения визуализации, что в конечном итоге способствует принятию обоснованных решений с помощью анализа данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ЕСЛИ</h6>
+                </header>
+            </article>
+            <article data-step="12">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Функция РАЗНДАТ является невероятно ценным инструментом для аналитика данных в Excel или Google Таблицах, поскольку позволяет рассчитать разницу между двумя датами. Эта функция использует три параметра: начальную дату, конечную дату и требуемый тип разницы (измеряемый в годах, месяцах, днях и т.д.). При анализе данных, особенно при работе с данными временных рядов или при выявлении тенденций за определенные периоды, функция РАЗНДАТ является необходимой актив. Понимание его функциональности позволит аналитику данных постепенно и эффективно манипулировать данными или формировать их.
+          РАЗНДАТ технически по-прежнему поддерживается, но не будет отображаться в качестве опции. Дополнительную информацию смотрите на странице “Справка” Excel.          
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">РАЗНДАТ</h6>
+                </header>
+            </article>
+            <article data-step="13">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Аналитики данных часто имеют дело с большими и сложными наборами данных, которым требуются эффективные инструменты для обработки и извлечения данных. Именно здесь такие базовые функции, как ВПР и ГПР в Excel, становятся чрезвычайно полезными. Это универсальные функции поиска и ссылки, которые позволяют находить заданные данные в огромном массиве, обеспечивая простоту и удобство в задачах поиска данных.
+            Вертикальный поиск (ВПР) используется для поиска данных в таблице, отсортированной по вертикали, в то время как горизонтальный поиск (ГПР) используется для данных, упорядоченных по горизонтали. Владение этими функциями имеет решающее значение для любого инструментария аналитика данных, поскольку они могут значительно ускорить доступ к данным, уменьшить количество ошибок при извлечении данных и упростить общий процесс анализа. По сути, эти две функции являются не просто базовыми функциями; они служат важными инструментами для эффективного анализа данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ВПР и ГПР</h6>
+                </header>
+            </article>
+            <article data-step="14">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="В Microsoft Excel функции ЗАМЕНИТЬ и ПОДСТАВИТЬ являются мощными инструментами, используемыми для изменения текстовых данных в ячейках. Обе функции предназначены для изменения текста, но используются в разных сценариях в зависимости от характера необходимых изменений.
+          Функция ПОДСТАВИТЬ используется для замены вхождений указанной подстроки на новую подстроку. Она позволяет заменять текст на основе совпадающих символов, а не позиции, что делает ее идеальной для изменения конкретных экземпляров текста в строке. Функция ЗАМЕНИТЬ используется для замены части текстовой строки другой текстовой строкой в зависимости от ее положения в исходном тексте. Она особенно полезна, когда вам нужно заменить определенный фрагмент текста новым текстом, начиная с указанной позиции.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ЗАМЕНИТЬ / ПОДСТАВИТЬ</h6>
+                </header>
+            </article>
+            <article data-step="15">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Термин ОБЪЕДИНИТЬ относится к операции объединения двух или более структур данных, будь то строки, массивы или наборы данных, из конца в конец в последовательности. В контексте анализа данных аналитик данных использует конкатенацию в качестве базовой функции для объединения или привязки наборов данных вдоль оси - вертикально или горизонтально. Эта функция обычно используется при анализе данных или предварительной обработке для объединения данных из нескольких источников, обработки пропущенных значений и придания данным формы, которая лучше подходит для инструментов анализа. Понимание объединения играет решающую роль в управлении сложными и большими массивами данных, с которыми часто работают аналитики.
+          ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ОБЪЕДИНИТЬ</h6>
+                </header>
+            </article>
+            <article data-step="16">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Среднее значение, также часто называемое mean, является одним из наиболее часто используемых математических вычислений при анализе данных. Оно обеспечивает простую и полезную оценку набора данных. Для аналитика данных понимание того, как вычислять и интерпретировать средние значения, имеет основополагающее значение. Базовые функции, включая усреднение, являются неотъемлемыми компонентами анализа данных, которые используются для обобщения и понимания сложных наборов данных. Несмотря на концептуальную простоту, сила усреднения заключается в его полезности для целого ряда анализов - от моделей прогнозирования до понимания тенденций и закономерностей в наборе данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">СРЗНАЧ</h6>
+                </header>
+            </article>
+            <article data-step="17">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Суммирование - одна из самых фундаментальных операций в анализе данных. Для аналитика данных способность быстро и точно суммировать числовые данные является ключом к получению содержательной информации из больших массивов данных. Операция может быть выполнена с использованием различных программ и языков программирования, таких как Excel, SQL, Python, R и т.д., Каждый из которых предоставляет различные методы вычисления сумм. Понимание операции суммирование имеет решающее значение для таких задач, как анализ тенденций, прогнозирование, составление бюджета и, по сути, для любых операций, связанных с количественными данными.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">СУММ и СУММЕСЛИ</h6>
+                </header>
+            </article>
+            <article data-step="18">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Обрезание считается базовой, но жизненно важной функцией в области анализа данных. Она играет важную роль в подготовке и очистке набора данных, что является ключом к точности анализа. Она позволяет аналитикам данных оптимизировать набор данных, удаляя лишние пробелы и повышая качество данных. Кроме того, функции могут помочь уменьшить количество ошибок, повысить эффективность моделирования данных и обеспечить надежное получение аналитических данных. Таким образом, понимание функции является неотъемлемой частью инструментария аналитика данных
+            •	Группы точек останова: организация наборов связанных точек останова и управление ими. Точки останова можно задать, щелкнув в нижней части редактора исходного кода или с помощью навигатора точек останова.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ЛЕВСИМВ, ПРАВСИМВ, ПСТР</h6>
+                </header>
+            </article>
+            <article data-step="19">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Функция подсчета в анализе данных - одна из самых фундаментальных задач, с которой приходится сталкиваться аналитику данных. Эта функция является простым, но мощным инструментом, который помогает понять основные данные, предоставляя информацию о количестве или частоте появления уникальных элементов в наборах данных. Актуальность count проявляется в различных сценариях – от понимания популярности определенной категории до анализа активности клиентов и многого другого. Эта базовая функция позволяет получить важнейшее представление о данных, что делает ее незаменимым навыком в арсенале любого аналитика данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">СЧЕТ/ СЧЕТЕСЛИ/ СЧЕТЕСЛИМН</h6>
+                </header>
+            </article>
+            <article data-step="20">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="IПонимание минимальных и максимальных значений в вашем наборе данных имеет решающее значение при анализе данных. Эти базовые функции, часто называемые функциями МИН/МАКС, являются статистическими инструментами, которые аналитики данных используют для проверки распределения конкретного набора данных. Определяя самые низкие и самые высокие значения, аналитики данных могут получить представление о диапазоне набора данных, выявить возможные выбросы и понять изменчивость данных. Помимо использования в описательной статистике, функции МИН/МАКС также играют жизненно важную роль в нормализации данных, формируя точность прогнозных моделей в области машинного обучения и искусственного интеллекта.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">МИН/МАКС</h6>
+                </header>
+            </article>
+            <article data-step="21">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Аналитики данных постоянно сталкиваются с необходимостью обобщать, исследовать и анализировать свои данные для принятия значимых и обоснованных решений. Одним из самых мощных инструментов для этого в Microsoft Excel является сводная таблица. Сводные таблицы позволяют аналитикам систематизировать и обобщать большие объемы данных в сжатом табличном формате. Преимущество сводных таблиц заключается в их способности динамически манипулировать данными, что приводит к более быстрому анализу и более глубокому пониманию. Понимание и эффективное использование сводных таблиц является фундаментальным навыком для любого аналитика данных, поскольку это напрямую влияет на его способность извлекать важную информацию из необработанных наборов данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Сводные таблицы</h6>
+                </header>
+            </article>
+            <article data-step="22">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Excel служит мощным инструментом для аналитиков данных, когда дело доходит до организации данных, манипулирования ими, восстановления и визуализации. Одной из невероятных функций, которые он предлагает, является построение графиков. Построение графиков, по сути, означает создание визуальных представлений данных, которые помогают аналитикам легко разбираться в сложных данных и демонстрируют убедительные истории тенденций, корреляций и статистического анализа данных. Эти диаграммы варьируются от простых гистограмм до более сложных трехмерных поверхностных и фондовых диаграмм. Как специалисту по анализу данных, умение составлять графики в Excel существенно улучшает интерпретацию данных, упрощая извлечение значимой информации из обширных наборов данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Графики</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Изучить -->
+        <section class="step four text-success">
+            <div class="circle">
+                <h2>Изучить</h2>
+            </div>
+            </article>
+            <article data-step="23">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="SQL нужен аналитику для работы с базами данных. Этот язык структурированных запросов позволяет извлекать, обрабатывать и анализировать информацию, которая хранится в реляционных базах.  
+            Основные задачи
+            •	Поиск закономерностей в данных. Аналитик использует SQL, чтобы выявлять тренды, шаблоны или корреляции, строить гипотезы.  
+            •	Управление данными. Например, группировка, объединение сведений из разных таблиц. 
+            •	Визуализация результатов. Аналитик создаёт отчёты и дашборды для презентации данных заказчикам.  
+            •	Оптимизация производительности. Специалист исследует индексы, совершенствует структуру таблиц и оптимизирует запросы, чтобы снизить время их выполнения.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">SQL</h6>
+                </header>
+            </article>
+            <article data-step="24">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="R - это мощный язык, широко используемый аналитиками данных и статистиками по всему миру. Предлагая широкий спектр статистических и графических методов, R зарекомендовал себя как отличный инструмент для обработки данных, статистического моделирования и визуализации. Благодаря обширному набору пакетов и встроенным функциям для анализа данных, R позволяет аналитикам данных выполнять сложный поисковый анализ данных, создавать сложные модели и потрясающие визуализации. Кроме того, благодаря открытому исходному коду, R постоянно развивается благодаря вкладу мирового статистического сообщества.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Язык R</h6>
+                </header>
+            </article>
+            <article data-step="25">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Python - это высокоуровневый, интерпретируемый язык программирования общего назначения. Философия его дизайна заключается в том, чтобы сделать код читабельным за счет использования значительных отступов. Python динамически типизируется и не требует сборки мусора.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Python</h6>
+                </header>
+            </article>
+            <article data-step="26">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Pandas - это широко признанная и чрезвычайно полезная библиотека для работы с данными в мире анализа данных. Известная своими надежными функциями, такими как очистка, сопоставление и анализ данных, pandas стала одним из самых популярных инструментов для аналитиков данных. Созданный на базе NumPy, он предоставляет высокопроизводительные и простые в использовании структуры данных и инструменты анализа данных. По сути, его гибкость и универсальность делают его важной частью инструментария аналитика данных, поскольку он позволяет решать практически любые задачи по обработке данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Pandas</h6>
+                </header>
+            </article>
+            <article data-step="27">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Dplyr - это мощный и популярный инструментарий для работы с данными в R. Для аналитиков данных эта библиотека предоставляет встроенные функции для эффективного управления, очистки и обработки данных. Она была разработана таким образом, чтобы быть простой и интуитивно понятной, обеспечивая надежный и последовательный синтаксис. Dplyr обеспечивает надежность данных и быструю обработку, что важно для аналитиков, работающих с большими наборами данных. Уделяя особое внимание эффективности, такие функции dplyr, как select, filter, arrangize, mutate, summary и group_by, оптимизируют операции анализа данных, делая манипулирование данными более плавной и беспроблемной процедурой для аналитиков данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Dplyr</h6>
+                </header>
+            </article>
+            <article data-step="28">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Matplotlib - это важнейшая библиотека визуализации данных, которая широко используется аналитиками данных для создания широкого спектра графиков. С помощью Matplotlib аналитики данных могут четко и эффективно передавать результаты, извлекая информацию из сложных наборов данных. Он предлагает иерархическую среду, с которой очень удобно работать специалисту по обработке данных. Предоставляя объектно-ориентированный API, он обеспечивает широкую настройку и интеграцию в более крупные приложения. Универсальность Matplotlib - от гистограмм, столбчатых диаграмм, точечных диаграмм до 3D-графиков - помогает аналитикам данных лучше понимать и наглядно представлять данные.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Matplotlib</h6>
+                </header>
+            </article>
+            <article data-step="29">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Когда дело доходит до визуализации данных в программировании на R, ggplot2 является одним из основных инструментов для анализа данных. Эта библиотека визуализации данных, входящая в набор пакетов tidyverse, облегчает создание сложных и продуманных визуальных описаний. Благодаря своей философии grammar of graphics, ggplot2 позволяет аналитикам строить графики и диаграммы слой за слоем, тем самым обеспечивая детальный контроль над графическими функциями и дизайном. Его универсальность в создании индивидуальной и эстетически привлекательной графики является жизненно важным преимуществом для любого аналитика данных, занимающегося поисковым анализом данных, созданием отчетов или информационной панели.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">ggplot2 </h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция Сбор данных -->
+        <section class="step five text-success">
+            <div class="circle">
+                <h2>Сбор данных</h2>
+            </div>
+            <article data-step="30">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="За каждым сильным аналитиком данных стоит не просто богатый набор данных, но и набор надежных баз данных, которые обеспечивают эффективный сбор данных. Базы данных являются фундаментальным аспектом сбора данных в мире, где способность управлять, систематизировать и оценивать большие объемы данных имеет решающее значение. Как специалист по анализу данных, понимание и использование баз данных играет важную роль в сборе необходимых данных для проведения качественного и количественного анализа, прогнозирования тенденций и принятия решений, основанных на данных. Таким образом, глубокое знание баз данных может считаться ключевым компонентом арсенала аналитика данных. Эти базы данных могут варьироваться от реляционных баз данных, таких как SQL, до баз данных NoSQL, таких как MongoDB, каждая из которых выполняет уникальную роль в процессе сбора данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Базы данных</h6>
+                </header>
+            </article>
+            <article data-step="31">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Файлы CSV или значений, разделенных запятыми, играют важную роль в сборе данных для аналитиков. Эти типы файлов обеспечивают эффективное хранение данных и обычно создаются с помощью программного обеспечения для работы с электронными таблицами, такого как Microsoft Excel или Google Sheets, но их простота делает их совместимыми с различными приложениями, которые работают с данными. В контексте анализа данных файлы CSV широко используются для импорта и экспорта больших наборов данных, что делает их незаменимыми в инструментарии любого аналитика данных. Они позволяют аналитикам упорядочивать огромные объемы информации в структурированном формате, что является основополагающим для извлечения полезной информации из необработанных данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Файлы CSV</h6>
+                </header>
+            </article>
+            <article data-step="32">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Интерфейсы прикладного программирования, более известные как API, играют фундаментальную роль в работе аналитиков данных, особенно в процессе сбора данных. API - это наборы протоколов, процедур и инструментов, которые позволяют различным программным приложениям взаимодействовать друг с другом. При анализе данных широко используются API для безопасного и эффективного сбора, обмена и манипулирования данными из различных источников. Этот процесс сбора данных имеет первостепенное значение для формирования аналитической информации.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">API</h6>
+                </header>
+            </article>
+            <article data-step="33">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Веб-скрейпинг играет важную роль в сборе уникальных наборов данных для анализа. В сфере задач аналитика данных веб-скрейпинг - это метод извлечения информации с веб-сайтов и преобразования ее в структурированный формат, такой как CSV, электронная таблица Excel или даже в базы данных. Этот метод позволяет аналитикам данных собирать большие массивы данных из Интернета, что в противном случае заняло бы много времени, если бы выполнялось вручную. Возможность эффективного сбора и разбора данных в Интернете может дать аналитикам данных конкурентное преимущество в их процессе анализа данных - от получения глубокой и содержательной информации до принятия решений, основанных на данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Веб-скрейпинг</h6>
+                </header>
+            </article>
+        </section>
+        <!-- Секция Архитектурные шаблоны -->
+        <section class="step six text-success">
+            <div class="circle">
+                <h2>ML алгоритмы</h2>
+            </div>
+            <article data-step="34">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Для аналитика данных крайне важно понимать такие темы машинного обучения, как деревья решений. Деревья решений являются фундаментальным аспектом в области машинного обучения и искусственного интеллекта. Они представляют собой простой, но эффективный метод анализа данных. Они находят применение в нескольких областях, включая управление взаимоотношениями с клиентами, выявление мошенничества, финансовый анализ, здравоохранение и многое другое. Проще говоря, дерево решений можно рассматривать как метод анализа сложных решений и оценки вероятных результатов. Это введение поможет аналитикам данных понять логику, лежащую в основе деревьев решений, и то, как они создаются с целью прогнозирующего моделирования.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Деревья решений</h6>
+                </header>
+            </article>
+            <article data-step="35">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Для аналитика данных крайне важно понимать различные алгоритмы машинного обучения. Наивный байесовский алгоритм - один из таких базовых, но мощных алгоритмов, используемых для прогнозирующего моделирования и классификации данных. Этот алгоритм использует принципы теории вероятностей и статистики, в частности теорему Байеса, с наивным предположением о независимости прогнозирующих факторов. Алгоритм Naive Bayes идеально подходит для работы с большими объемами данных и является конкурентоспособным алгоритмом для классификации текстов, фильтрации спама, систем рекомендаций и многого другого. Понимание наивного метода Байеса может значительно улучшить способность аналитика данных создавать более эффективные модели и получать превосходные аналитические результаты.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Наивный байесовский подход</h6>
+                </header>
+            </article>
+            <article data-step="36">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="K-Nearest Neighbors (KNN) - это простой, но мощный алгоритм, используемый в области машинного обучения, который аналитик данных может использовать для таких задач, как классификация или регрессия. Он работает на основе принципа близости, при котором определение категории нового экземпляра зависит от категории его ближайших соседей. Для аналитика данных, работающего со сложными наборами данных, важно понимать, как работает алгоритм KNN, его применимость, плюсы и минусы. Это облегчит принятие обоснованных решений о том, когда следует использовать его для достижения наилучших результатов при анализе данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">KNN</h6>
+                </header>
+            </article>
+            <article data-step="37">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Kmeans - это фундаментально важный метод анализа данных, который широко используется в основах машинного обучения. Аналитик данных, использующий Kmeans, разбивает большие наборы данных на подгруппы или кластеры на основе определенных характеристик или параметров. Основная цель - получить информацию о сходствах/различиях в наборе данных, которая затем может быть использована для понимания закономерностей, тенденций и прогнозного моделирования. Точное использование Kmeans может привести к более эффективному принятию решений, прогнозированию и стратегическому планированию на основе данных.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Kmeans</h6>
+                </header>
+            </article>
+        </section>
+
+        <!-- Секция платформы -->
+        <section class="step seven text-success">
+            <div class="circle">
+                <h2>Платформы</h2>
+            </div>
+            <article data-step="38">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-modal-content="Hadoop является важнейшим элементом в области платформ обработки данных, предлагая эффективное решение для хранения, управления и анализа огромных объемов данных. Поиск значимых идей из большого потока данных - сложная задача, с которой сталкиваются многие аналитики данных. Обычные средства обработки данных не справляются с крупномасштабными данными, что открывает путь для таких продвинутых платформ, как Hadoop. Эта платформа с открытым исходным кодом от Apache Software Foundation отлично подходит для хранения и обработки больших объемов данных на кластерах компьютеров. Примечательно, что Hadoop включает в себя два ключевых модуля - распределенную файловую систему Hadoop (HDFS) для хранения и MapReduce для обработки. Способность Hadoop обрабатывать как структурированные, так и неструктурированные данные еще больше расширяет его возможности. Для любого аналитика данных глубокое понимание Hadoop может открыть мощные способы эффективного управления данными и создания содержательной аналитики.">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Hadoop</h6>
+                </header>
+            </article>
+            <article data-step="39">
+                <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+                    <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Являясь платформой для обработки больших объемов данных, Apache Spark демонстрирует огромную важность в области анализа данных. Наряду с возможностью обработки как пакетной аналитики, так и аналитики в реальном времени, Spark предлагает интерфейс для программирования целых кластеров с неявным параллелизмом данных и отказоустойчивостью. Для аналитика данных владение Spark становится необходимым для эффективной обработки и анализа сложных и объемных данных. Этот мощный инструмент с открытым исходным кодом может упростить сложную задачу по извлечению полезной информации из массивных, разрозненных наборов данных.
+            ">
+                        <i class="fa-solid fa-ghost bg-success px-3"></i>
+                    </span>
+                    <h6 class="text-uppercase my-3 ps-4">Spark</h6>
+                </header>
+            </article>
+        </section>
+    </main>
+
+    <!-- Модальное окно Bootstrap для вывода текста -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Заголовок с добавленным стикером -->
+                    <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Содержимое модального окна заполняется динамически -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 ITmap.</p>
+        <p>Все права защищены.</p>
+        <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+    </footer>
+    <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+    <script>
+        const infoModal = document.getElementById('infoModal');
+        infoModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const modalContent = button.getAttribute('data-modal-content');
+            const modalBody = infoModal.querySelector('.modal-body');
+            // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+            modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+        });
+        document.querySelectorAll('.side-fixed').forEach(img => {
+            img.addEventListener('click', () => {
+                img.classList.remove('rotating');
+                setTimeout(() => img.classList.add('rotating'), 10);
+            });
+        });
+
+    </script>
+
+    <!-- Bootstrap 5 JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

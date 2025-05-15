@@ -1,0 +1,542 @@
+
+
+.step.one header {
+	background-color: rgba(0, 48, 96, 0.85) !important;
+	color: #fff !important;
+}
+
+/* Секция 2: насыщенный зелёный фон + белый текст */
+.step.two header {
+	background-color: rgba(0, 128, 64, 0.85) !important;
+	color: #fff !important;
+}
+
+/* Секция 3: тёмно-оранжевый фон + белый текст */
+.step.three header {
+	background-color: rgba(255, 128, 0, 0.85) !important;
+	color: #fff !important;
+}
+
+/* Секция 4: насыщенный красный фон + белый текст */
+.step.four header {
+	background-color: rgba(192, 0, 0, 0.85) !important;
+	color: #fff !important;
+}
+
+.step.six header {
+	background-color: rgba(158, 199, 242, 0.85) !important;
+	color: #fff !important;
+}
+
+.step.seven header {
+	background-color: rgba(125, 255, 149, 0.85) !important;
+	color: #ffffff !important;
+}
+
+.step.eight header {
+	background-color: rgba(252, 177, 206, 0.85) !important;
+	color: #fff !important;
+}
+
+.step.nine header {
+	background-color: rgba(68, 209, 148, 0.85) !important;
+	color: #fff !important;
+}
+
+.step.ten header {
+	background-color: rgba(156, 199, 251, 0.85) !important;
+	color: #fff !important;
+}
+
+/* Для нечётных секций смещаем круг влево */
+#infographic section:nth-child(odd) .circle {
+	transform: translateX(-100%);
+}
+
+#infographic article {
+	max-width: 400px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	left: 50%;
+	position: relative;
+}
+
+/* Цвета и расположение секций-кругов */
+#infographic .step.one .circle {
+	transform: translate(-285px, 90px);
+	color: rgb(240, 8, 8);
+}
+
+#infographic .step.two .circle {
+	transform: translate(65px, -20px);
+	color: rgb(224, 23, 143);
+}
+
+#infographic .step.three .circle {
+	margin-top: -5px;
+	transform: translate(-245px, 5px);
+}
+
+#infographic .step.four .circle {
+	transform: translate(95px, -50px);
+	color: blueviolet;
+}
+
+
+#infographic .step.five .circle {
+	transform: translate(-360px, -40px);
+	color: rgb(235, 139, 247);
+}
+
+#infographic .step.six .circle {
+	transform: translate(80px, -50px);
+	color: rgb(176, 205, 29);
+}
+
+#infographic .step.seven .circle {
+	transform: translate(-260px, -10px);
+	color: rgb(26, 23, 218);
+}
+
+#infographic .step.eight .circle {
+	transform: translate(80px, 0px);
+	color: rgb(255, 0, 119);
+}
+
+#infographic .step.nine .circle {
+	transform: translate(-300px, -65px);
+	color: rgb(0, 168, 0);
+}
+
+#infographic .step.ten .circle {
+	transform: translate(40px, -45px);
+	color: rgb(0, 94, 255);
+}
+
+#infographic .step.eleven .circle {
+	transform: translate(40px, 75px);
+	color: rgb(0, 94, 255);
+}
+
+#infographic .step.twelve .circle {
+	transform: translate(-260px, -45px);
+	color: rgb(245, 163, 68);
+}
+
+#infographic .step.thirteen .circle {
+	transform: translate(40px, -35px);
+	color: rgb(214, 67, 243);
+}
+
+#infographic article header {
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+}
+
+#infographic article header i {
+	display: flex;
+	font-size: 2em;
+	border-radius: 50%;
+	background-clip: padding-box;
+	padding: 14px;
+	transition: transform 0.4s;
+	color: #fff;
+	border: 16px solid var(--bs-dark);
+	margin: -16px 0 -16px -20px;
+}
+
+#infographic article:hover header i {
+	transform: scale(1.2);
+}
+
+#infographic article.active header i {
+	transform: none;
+}
+
+#infographic article .body {
+	background: var(--bgColor);
+	padding: 0 20px;
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+	max-height: 0;
+	transition: max-height 0.5s, padding 0.5s;
+	overflow: hidden;
+}
+
+#infographic :nth-child(even) article {
+	text-align: right;
+	transform: translateX(-100%);
+}
+
+#infographic :nth-child(even) article header {
+	flex-flow: row-reverse;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+}
+
+#infographic :nth-child(even) article header i {
+	margin: -16px -20px -16px 0;
+}
+
+#infographic section:nth-child(odd) article.active header {
+	border-bottom-right-radius: 0;
+}
+
+#infographic section:nth-child(even) article.active header {
+	border-bottom-left-radius: 0;
+}
+
+#infographic article.active .body {
+	padding: 20px;
+	max-height: 300px;
+	border: 1px solid;
+}
+
+/* Расположение этапов*/
+#infographic article[data-step="1"] {
+	margin-left: 6px;
+	width: 300px;
+}
+
+#infographic article[data-step="2"] {
+	margin-left: 54px;
+	width: 250px;
+}
+
+#infographic article[data-step="3"] {
+	margin-left: 71px;
+	text-align: left;
+	width: 150px;
+}
+
+#infographic article[data-step="4"] {
+	margin-left: 61px;
+	width: 150px;
+}
+
+#infographic article[data-step="5"] {
+	margin-left: 22px;
+	width: 150px;
+}
+
+#infographic article[data-step="6"] {
+	margin-left: -5px;
+	width: 150px;
+}
+
+#infographic article[data-step="7"] {
+	margin-left: -54px;
+	text-align: right;
+	width: 150px;
+}
+
+#infographic article[data-step="8"] {
+	margin-left: -70px;
+	width: 200px;
+}
+
+#infographic article[data-step="9"] {
+	margin-left: -60px;
+	width: 350px;
+}
+
+#infographic article[data-step="10"] {
+	margin-left: -21px;
+	width: 200px;
+}
+
+#infographic article[data-step="11"] {
+	margin-left: 7px;
+	width: 200px;
+}
+
+#infographic article[data-step="12"] {
+	margin-left: 35px;
+	width: 200px;
+}
+
+#infographic article[data-step="13"] {
+	margin-left: 73px;
+	width: 280px;
+}
+
+#infographic article[data-step="14"] {
+	margin-left: 85px;
+	width: 230px;
+}
+
+#infographic article[data-step="15"] {
+	margin-left: 75px;
+	width: 200px;
+}
+
+#infographic article[data-step="16"] {
+	margin-left: 30px;
+	width: 180px;
+}
+
+#infographic article[data-step="17"] {
+	margin-left: -5px;
+	width: 200px;
+}
+
+#infographic article[data-step="18"] {
+	margin-left: -55px;
+	width: 300px;
+}
+
+#infographic article[data-step="19"] {
+	margin-left: -75px;
+	width: 150px;
+}
+
+#infographic article[data-step="20"] {
+	margin-left: -75px;
+	width: 200px;
+}
+
+#infographic article[data-step="21"] {
+	margin-left: -65px;
+	width: 250px;
+}
+
+#infographic article[data-step="22"] {
+	margin-left: -30px;
+	width: 150px;
+}
+
+#infographic article[data-step="23"] {
+	margin-left: -15px;
+	width:350px;
+}
+
+#infographic article[data-step="24"] {
+	margin-left: 25px;
+	width: 250px;
+}
+
+#infographic article[data-step="25"] {
+	margin-left: 55px;
+	width: 250px;
+}
+
+#infographic article[data-step="26"] {
+	margin-left: 85px;
+	width: 200px;
+}
+
+#infographic article[data-step="27"] {
+	margin-left: 110px;
+	width: 300px;
+}
+
+#infographic article[data-step="28"] {
+	margin-left: 120px;
+	width: 350px;
+}
+
+#infographic article[data-step="29"] {
+	margin-left: 75px;
+	width: 180px;
+}
+
+#infographic article[data-step="30"] {
+	margin-left: 50px;
+	width: 300px;
+}
+
+
+
+
+/*Цвета кругов этапов*/
+article[data-step="1"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+
+article[data-step="2"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+
+article[data-step="3"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+
+article[data-step="4"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+
+article[data-step="5"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+article[data-step="6"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+article[data-step="7"] .info-btn i {
+	background-color: #6d8cf2 !important;
+}
+article[data-step="8"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="9"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+article[data-step="10"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="11"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="12"] .info-btn i {
+	background-color: #fe951d !important;
+}
+
+article[data-step="13"] .info-btn i {
+	background-color: #fe951d !important;
+}
+
+article[data-step="14"] .info-btn i {
+	background-color: #fe951d !important;
+}
+
+article[data-step="15"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="16"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="17"] .info-btn i {
+	background-color: #fc3737 !important;
+}
+
+article[data-step="18"] .info-btn i {
+	background-color: #39732d !important;
+}
+
+article[data-step="22"] .info-btn i {
+	background-color: #68ea4e !important;
+}
+
+article[data-step="23"] .info-btn i {
+	background-color: #68ea4e !important;
+}
+
+article[data-step="24"] .info-btn i {
+	background-color: #68ea4e !important;
+}
+
+article[data-step="25"] .info-btn i {
+	background-color: #36bcf5 !important;
+}
+
+article[data-step="26"] .info-btn i {
+	background-color: #36bcf5 !important;
+}
+
+article[data-step="27"] .info-btn i {
+	background-color: #36bcf5 !important;
+}
+
+article[data-step="28"] .info-btn i {
+	background-color: #36bcf5 !important;
+}
+
+
+#infographic .circle {
+	padding: 0 !important;
+	margin: 40px auto;
+	/* центрируем по горизонтали и даём отступ снизу */
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+#infographic .circle h2,
+#infographic .circle h4 {
+	margin: 0;
+	padding: 0;
+}
+
+/* Стили для модальных окон: делаем их выше навбара */
+.modal {
+	z-index: 10500 !important;
+}
+
+.modal-backdrop {
+	z-index: 10400 !important;
+}
+
+/* Форматирование текста в модальных окнах */
+.modal-body {
+	font-size: 1.1em;
+	line-height: 1.6;
+	white-space: pre-wrap;
+}
+
+@keyframes spin {
+	from {
+			transform: rotate(0deg);
+	}
+
+	to {
+			transform: rotate(360deg);
+	}
+}
+
+.side-fixed.rotating {
+	animation: spin 1s linear;
+
+}
+
+footer {
+	background-color: #002b5f;
+	padding: 10px;
+	text-align: center;
+	border-top: 1px solid #001c42;
+	font-size: 0.9rem;
+	line-height: 1.2;
+	color: #fff;
+}
+
+footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+@media (max-width: 768px) {
+	.navbar-brand {
+			font-size: 1.5rem;
+	}
+
+	.hero-section {
+			margin-top: 80px;
+	}
+
+	.site-title {
+			font-size: 1.5rem;
+	}
+
+	.roadmap-hero img.main-photo {
+			max-width: 60%;
+	}
+
+	.arrow {
+			width: 60px;
+			height: 60px;
+	}
+
+	.left-arrow,
+	.right-arrow {
+			height: 32px;
+	}
+
+	.roadmap-card {
+			max-width: 100% !important;
+			font-size: 16px;
+			padding: 20px;
+	}
+}

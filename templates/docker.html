@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Docker — ITmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/webp" href="images/logo_new.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+
+    .hero-section {
+      background-color: transparent;
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-top: 100px;
+      color: #002b5f;
+      text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    .semi-circle {
+      display: inline-block;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 5px;
+      border-radius: 50px;
+      /* Превращает в прямоугольный овал */
+      border: 5px solid #7494ec;
+      text-align: center;
+    }
+
+    .semi-circle h1 {
+      margin: 0;
+      color: #1e5291;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* Стили для большого круга */
+    #infographic .circle {
+      width: 250px;
+      height: 230px;
+      border-radius: 50%;
+      border: 7px double;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+      position: absolute;
+      left: 50%;
+      margin: 40px 0;
+    }
+
+
+    .circles-container .circle {
+      width: 50px;
+      height: 50px;
+      gap: 30;
+      border-radius: 50%;
+      border: 5px double;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    /* Фиксированные изображения слева и справа от главной фотографии */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    .step.one header {
+      background-color: rgba(0, 48, 96, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 2: насыщенный зелёный фон + белый текст */
+    .step.two header {
+      background-color: rgba(0, 128, 64, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 3: тёмно-оранжевый фон + белый текст */
+    .step.three header {
+      background-color: rgba(255, 128, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 4: насыщенный красный фон + белый текст */
+    .step.four header {
+      background-color: rgba(192, 0, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.six header {
+      background-color: rgba(158, 199, 242, 0.85) !important;
+      color: #fff !important;
+    }
+
+
+    /* Для нечётных секций смещаем круг влево */
+    #infographic section:nth-child(odd) .circle {
+      transform: translateX(-100%);
+    }
+
+    #infographic article {
+      max-width: 400px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      left: 50%;
+      position: relative;
+    }
+
+    /* Цвета и расположение секций-кругов */
+    #infographic .step.one .circle {
+      transform: translate(-225px, 30px);
+      color: rgb(240, 8, 8);
+    }
+
+    #infographic .step.two .circle {
+      transform: translate(35px, -10px);
+      color: rgb(224, 23, 143);
+    }
+    #infographic .step.three .circle {
+      margin-top: -5px;
+      transform: translate(-265px, 60px);
+    }
+
+    #infographic .step.four .circle {
+      transform: translate(65px, -20px);
+      color: blueviolet;
+    }
+
+    #infographic .step.five .circle {
+      transform: translate(-360px, 30px);
+      color: rgb(235, 139, 247);
+    }
+    #infographic .step.six .circle {
+      transform: translate(100px, 30px);
+      color: rgb(18, 81, 13);
+    }
+
+    
+
+    #infographic article header {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+    #infographic article header i {
+      display: flex;
+      font-size: 2em;
+      border-radius: 50%;
+      background-clip: padding-box;
+      padding: 14px;
+      transition: transform 0.4s;
+      color: #fff;
+      border: 16px solid var(--bs-dark);
+      margin: -16px 0 -16px -20px;
+    }
+
+    #infographic article:hover header i {
+      transform: scale(1.2);
+    }
+
+    #infographic article.active header i {
+      transform: none;
+    }
+
+    #infographic article .body {
+      background: var(--bgColor);
+      padding: 0 20px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+      overflow: hidden;
+    }
+
+    #infographic :nth-child(even) article {
+      text-align: right;
+      transform: translateX(-100%);
+    }
+
+    #infographic :nth-child(even) article header {
+      flex-flow: row-reverse;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    #infographic :nth-child(even) article header i {
+      margin: -16px -20px -16px 0;
+    }
+
+    #infographic section:nth-child(odd) article.active header {
+      border-bottom-right-radius: 0;
+    }
+
+    #infographic section:nth-child(even) article.active header {
+      border-bottom-left-radius: 0;
+    }
+
+    #infographic article.active .body {
+      padding: 20px;
+      max-height: 300px;
+      border: 1px solid;
+    }
+
+    /* Расположение этапов*/
+    #infographic article[data-step="1"] {
+      margin-left: 6px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="2"] {
+      margin-left: 54px;
+      width: 290px;
+    }
+
+    #infographic article[data-step="3"] {
+      margin-left: 71px;
+      text-align: left;
+      width: 200px;
+    }
+
+    #infographic article[data-step="4"] {
+      margin-left: 61px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="5"] {
+      margin-left: 22px;
+      width: 330px;
+    }
+
+    #infographic article[data-step="6"] {
+      margin-left: -5px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="7"] {
+      margin-left: -54px;
+      text-align: right;
+      width: 400px;
+    }
+
+    #infographic article[data-step="8"] {
+      margin-left: -70px;
+      width: 270px;
+    }
+
+    #infographic article[data-step="9"] {
+      margin-left: -60px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="10"] {
+      margin-left: -21px;
+      width: 370px;
+    }
+
+    #infographic article[data-step="11"] {
+      margin-left: 7px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="12"] {
+      margin-left: 55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="13"] {
+      margin-left: 73px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="14"] {
+      margin-left: 85px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="15"] {
+      margin-left: 75px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="16"] {
+      margin-left: 30px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="17"] {
+      margin-left: -5px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="18"] {
+      margin-left: -25px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="19"] {
+      margin-left: -75px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="20"] {
+      margin-left: -85px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="21"] {
+      margin-left: -75px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="22"] {
+      margin-left: -55px;
+      width: 250px;
+    }
+    #infographic article[data-step="23"] {
+      margin-left: -30px;
+      width: 200px;
+    }
+    #infographic article[data-step="24"] {
+      margin-left: 20px;
+      width: 250px;
+    }
+    #infographic article[data-step="25"] {
+      margin-left: 50px;
+      width: 250px;
+    }
+    #infographic article[data-step="26"] {
+      margin-left: 45px;
+      width: 250px;
+    }
+    #infographic article[data-step="27"] {
+      margin-left: 35px;
+      width: 200px;
+    }
+    #infographic article[data-step="28"] {
+      margin-left: 20px;
+      width: 200px;
+    }
+
+    /*Цвета кругов этапов*/
+    article[data-step="1"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="2"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="3"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="4"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="5"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+    article[data-step="6"] .info-btn i {
+      background-color: #f5d019 !important;
+    }
+    article[data-step="9"] .info-btn i {
+      background-color: #f5d019 !important;
+    }
+
+    article[data-step="10"] .info-btn i {
+      background-color: #f5d019 !important;
+    }
+
+    article[data-step="11"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="12"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="13"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="14"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="15"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="16"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="17"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="18"] .info-btn i {
+      background-color: #39732d !important;
+    }
+    article[data-step="19"] .info-btn i {
+      background-color: #be77f5 !important;
+    }
+    article[data-step="20"] .info-btn i {
+      background-color: #be77f5 !important;
+    }
+    article[data-step="21"] .info-btn i {
+      background-color: #be77f5 !important;
+    }
+    article[data-step="22"] .info-btn i {
+      background-color: #be77f5 !important;
+    }
+    article[data-step="23"] .info-btn i {
+      background-color: #be77f5 !important;
+    }
+
+    
+
+    #infographic .circle {
+      padding: 0 !important;
+      margin: 40px auto;
+      /* центрируем по горизонтали и даём отступ снизу */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #infographic .circle h2,
+    #infographic .circle h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Стили для модальных окон: делаем их выше навбара */
+    .modal {
+      z-index: 10500 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10400 !important;
+    }
+
+    /* Форматирование текста в модальных окнах */
+    .modal-body {
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+
+    }
+
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">ITmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Основной заголовок -->
+  <div class="container text-center">
+    <div class="semi-circle">
+      <h1>Docker</h1>
+    </div>
+  </div>
+  <div class="roadmap-hero">
+    <!-- Добавлен класс visible, чтобы изображения отображались -->
+    <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+  </div>
+
+  <main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+      <div class="circle">
+        <h2>Основа</h2>
+      </div>
+      <article data-step="1">
+        <header class="d-flex align-items-center bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Контейнеры — это лёгкие, переносимые и изолированные программные окружения, которые позволяют разработчикам запускать и упаковывать приложения вместе с их зависимостями, обеспечивая одинаковую работу на разных платформах. Они помогают упростить процессы разработки, развертывания и управления приложениями, гарантируя их стабильную работу независимо от базовой инфраструктуры.
+            ">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что такое контейнеры?</h6>
+        </header>
+      </article>
+      <article data-step="2">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Контейнеры решают проблему несоответствия сред при работе в больших командах. До появления контейнеров или виртуальных сред множество проблем и потери времени возникало из-за необходимости устанавливать и настраивать локальные окружения для сборки проектов, которыми делились коллеги или друзья.
+            ">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Зачем нужны?</h6>
+        </header>
+      </article>
+      <article data-step="3">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Термин «bare metal» (буквально «голое железо») используется для описания компьютера, работающего непосредственно на аппаратном обеспечении без виртуализации. Это самый производительный способ запуска приложения, но одновременно и наименее гибкий: на одном сервере можно запускать только одно приложение, и его нельзя легко перенести на другой сервер.
+
+            Виртуальные машины (ВМ) позволяют запускать несколько приложений на одном сервере. Каждая ВМ работает поверх гипервизора — программного обеспечения, эмулирующего аппаратное обеспечение компьютера. Гипервизор даёт возможность запускать разные операционные системы на одном сервере и обеспечивает изоляцию приложений, работающих в разных ВМ.
+            
+            Контейнеры позволяют запускать несколько приложений на одном сервере без накладных расходов на гипервизор. Каждый контейнер работает поверх контейнерного движка (программы для управления жизненным циклом контейнеров), который контролирует и изолирует процессы с помощью возможностей ядра хост-операционной системы.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">bare metal</h6>
+        </header>
+      </article>
+      <article data-step="4">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Open Container Initiative (OCI) — это проект Linux Foundation, целью которого является создание отраслевых стандартов для форматов контейнеров и сред выполнения. Его основная задача — обеспечить совместимость и взаимодействие контейнерных сред с помощью определённых технических спецификаций.
+            ">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Docker и OCI</h6>
+        </header>
+      </article>
+      <article data-step="5">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Компоненты Docker
+          В экосистеме Docker есть три ключевых компонента:
+          
+          Dockerfile: текстовый файл, содержащий инструкции (команды) для создания образа Docker.
+          Образ Docker: моментальный снимок контейнера, созданный на основе Dockerfile. Образы хранятся в реестре, например в Docker Hub, и могут быть загружены или выгружены в реестр.
+          Контейнер Docker: работающий экземпляр образа Docker.
+          Команды Docker
+          Ниже приведены некоторые важные команды Docker, которые вы будете часто использовать:
+          
+          docker pull <image>: Загрузите образ из реестра, например Docker Hub.
+          docker build -t <image_name> <path>: Создайте образ из Dockerfile, где <path> — это каталог, содержащий Dockerfile.
+          docker image ls: Перечислите все изображения, доступные на вашем локальном компьютере.
+          docker run -d -p <host_port>:<container_port> --name <container_name> <image>: Запустите контейнер из образа, сопоставив порты хоста с портами контейнера.
+          docker container ls: Перечислите все запущенные контейнеры.
+          docker container stop <container>: Остановите работающий контейнер.
+          docker container rm <container>: Извлеките остановленный контейнер.
+          docker image rm <image>: Удалите изображение с вашего локального компьютера.
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Основные команды</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Понимание продукта -->
+    <section class="step two text-warning">
+      <div class="circle">
+        <h2>Основные технологии</h2>
+      </div>
+      <article data-step="6">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Понимание основных технологий, на которых основан Docker, даст вам более глубокое представление о том, как работает Docker, и поможет более эффективно использовать платформу.
+
+          Контейнеры Linux (LXC)
+          Контейнеры Linux (LXC) позволяют запускать несколько независимых систем Linux на одном компьютере. Контейнеры LXC, работающие как изолированные пространства, совместно используют ресурсы хоста, такие как память и вычислительная мощность, без необходимости в собственной полной копии операционной системы, что обеспечивает лёгкий и быстрый запуск.
+          
+          Контрольные группы (cgroups)
+          Группы управления (cgroups) — это функция ядра Linux, которая позволяет распределять ресурсы, такие как процессорное время, память и ввод-вывод, и управлять ими для набора процессов.
+          
+          Файловые системы Union (UnionFS)
+          UnionFS — это сервис файловой системы, который позволяет объединять несколько файловых систем в единое представление.
+          
+          Пространства имен
+          Пространства имен - это еще одна функция ядра Linux, обеспечивающая изоляцию процессов.
+            ">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это?</h6>
+        </header>
+      </article>
+      <article data-step="7">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Компоненты понимания продукта
+            1)	Бизнес-цели: Поймите задачи и цели компании или клиента, для которого вы разрабатываете продукт. Они хотят увеличить количество пользователей, повысить продажи или обеспечить бесперебойную работу? Знание целей определит ваши дизайнерские решения и обеспечит соответствие UX-дизайна видению компании.
+            2)	Целевая аудитория: Четко определите целевую аудиторию или персону пользователя продукта. Поймите их демографические характеристики, болевые точки и предпочтения. Это понимание поможет вам разработать опыт с учетом их потребностей и ожиданий, что приведет к повышению вовлеченности и удовлетворенности.
+            3)	Путешествие пользователя: Составьте схему путешествия пользователя по продукту - от начальной точки контакта до конечной цели. Этот процесс поможет вам выявить области, в которых пользователи могут столкнуться с трудностями или путаницей, и даст вам план для создания плавного потока пользователей.
+            4)	Анализ конкурентов: Оцените сильные и слабые стороны продуктов конкурентов, чтобы выявить возможности для дифференциации и улучшения, а также почерпнуть вдохновение из успешных или инновационных разработок.
+            5)	Соответствие бренду: Ознакомьтесь с фирменным стилем компании, включая цвета, шрифты и темы. Важно, чтобы ваш дизайн соответствовал бренду, чтобы создать целостный и узнаваемый пользовательский опыт.
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Компоненты понимания продукта</h6>
+        </header>
+      </article>
+      <article data-step="8">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Пространства имён Docker — это фундаментальная функция Linux, которую Docker использует для создания изолированных сред для контейнеров. Они обеспечивают уровень изоляции, создавая отдельные экземпляры глобальных системных ресурсов, благодаря чему каждый контейнер считает, что у него есть собственный уникальный набор ресурсов. Docker использует несколько типов пространств имён, в том числе PID (идентификатор процесса), NET (сеть), MNT (монтирование), UTS (система разделения времени Unix), IPC (межпроцессное взаимодействие) и USER. Используя эти пространства имён, Docker может создавать лёгкие, переносимые и безопасные контейнеры, которые стабильно работают в разных средах.
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Пространства имен</h6>
+        </header>
+      </article>
+      <article data-step="9">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Cgroups, или «группы управления», — это функция ядра Linux, которая позволяет распределять ресурсы, такие как процессорное время, память, пропускная способность сети и ввод-вывод, между группами процессов, запущенных в системе, и управлять ими. Она играет важную роль в изоляции ресурсов и ограничении ресурсов, которые может использовать запущенный контейнер. Docker использует Cgroups для ограничения ресурсов, используемых контейнерами, что позволяет обеспечить их стабильное и предсказуемое поведение. Ниже приведены некоторые ключевые особенности и преимущества Cgroups в контексте контейнеров Docker:
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Cgroups</h6>
+        </header>
+      </article>
+      <article data-step="10">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Объединённые файловые системы, также известные как UnionFS, играют важнейшую роль в общем функционировании Docker. Это уникальный тип файловой системы, который создаёт виртуальную многоуровневую файловую структуру путём наложения нескольких каталогов друг на друга. Вместо того чтобы изменять исходную файловую систему или объединять каталоги, UnionFS позволяет одновременно монтировать несколько каталогов в одной точке монтирования, сохраняя их содержимое отдельно. Эта функция особенно полезна в контексте Docker, поскольку позволяет управлять и оптимизировать производительность хранилища, сводя к минимуму дублирование и уменьшая размер образа контейнера.
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Объединение файловых систем</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Виртуализация -->
+    <section class="step three text-success">
+      <div class="circle">
+        <h2>Сторонние образы</h2>
+      </div>
+      
+      <article data-step="11">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сторонние образы — это готовые образы контейнеров Docker, доступные в Docker Hub или других реестрах контейнеров. Эти образы создаются и поддерживаются отдельными лицами или организациями и могут использоваться в качестве отправной точки для ваших контейнерных приложений.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это?</h6>
+        </header>
+      </article>
+      <article data-step="12">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="
+          Запуск базы данных в контейнере Docker может упростить процесс разработки и развёртывания. Docker Hub предоставляет множество готовых образов для популярных баз данных, таких как MySQL, PostgreSQL и MongoDB.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">БД</h6>
+        </header>
+      </article>
+      <article data-step="13">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Docker позволяет создавать изолированные одноразовые среды, которые можно удалить после завершения тестирования. Это значительно упрощает работу со сторонним программным обеспечением, тестирование различных зависимостей или версий, а также позволяет быстро экспериментировать, не рискуя повредить локальную систему.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Тестовые среды</h6>
+        </header>
+      </article>
+      <article data-step="14">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Образы Docker могут включать в себя утилиты командной строки или автономные приложения, которые мы можем запускать внутри контейнеров.
+          
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Утилиты командной строки</h6>
+      </article>
+    </section>
+
+    <!-- Секция Interface Builder -->
+    <section class="step four text-success">
+      <div class="circle">
+        <h2>Запуск контейнеров</h2>
+      </div>
+      <article data-step="15">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Запуск контейнеров Docker обычно выполняется с помощью простой команды docker run, которая представляет собой комбинацию команд docker create и docker start.
+          ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Как?</h6>
+        </header>
+      </article>
+      <article data-step="16">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Команда docker run создает и запускает новый контейнер на основе указанного образа. Она объединяет операции docker create и docker start, предлагая ряд параметров для настройки среды выполнения контейнера. Пользователи могут задавать переменные среды, сопоставлять порты и тома, определять сетевые подключения и устанавливать ограничения ресурсов. Команда поддерживает автономный режим для фонового выполнения, интерактивный режим для доступа к оболочке и возможность переопределить команду по умолчанию, заданную в образе. К распространенным флагам относятся -d для автономного режима, -p для сопоставления портов, -v для монтирования томов и --name для присвоения пользовательского имени контейнеру. Понимание docker run имеет фундаментальное значение для эффективного развертывания контейнеров Docker и управления ими.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">docker run</h6>
+        </header>
+      </article>
+      <article data-step="17">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Docker Compose — это инструмент для определения и запуска многоконтейнерных приложений Docker. Он позволяет создавать приложения, управлять ими и запускать их с помощью простого файла YAML под названием docker-compose.yml. Этот файл описывает службы, сети и тома вашего приложения, позволяя легко запускать контейнеры и управлять ими с помощью одной команды.
+          - Плагины: богатая экосистема пользовательских плагинов расширяет функциональность Figma и позволяет адаптировать инструмент под ваши задачи.          
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">docker-compose</h6>
+        </header>
+      </article>
+      <article data-step="18">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Параметры конфигурации среды выполнения Docker позволяют эффективно управлять средами контейнеров. Изменяя ограничения ресурсов, сетевые настройки, профили безопасности и драйверы ведения журналов, вы можете оптимизировать производительность и повысить безопасность. Вы также можете настроить переменные среды, подключить тома и переопределить поведение по умолчанию — все это важно для адаптации контейнеров к вашим конкретным потребностям. Для более опытных пользователей доступны инструменты для настройки возможностей ядра и политик перезапуска. Независимо от того, используете ли вы флаги командной строки или файлы Docker Compose, эти параметры помогут обеспечить бесперебойную и стабильную работу ваших контейнеров независимо от места их развёртывания.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Параметры конфигурации</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Измерение влияния -->
+    <section class="step five text-success">
+      <div class="circle">
+        <h2>Docker CLI</h2>
+      </div>
+      <article data-step="19">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Интерфейс командной строки Docker (CLI) - это мощный инструмент, используемый для взаимодействия с Docker Engine, позволяющий разработчикам и операторам создавать контейнеры и связанные с ними ресурсы, управлять ими и устранять неполадки. С помощью широкого набора команд Docker CLI обеспечивает контроль над всеми аспектами Docker, включая создание контейнеров и управление ими (docker run, docker stop), создание образов (docker build), управление сетями (docker network), обработку хранилища (docker volume) и проверку состояния системы (docker ps, docker info). Благодаря интуитивно понятному синтаксису и гибкости пользователи могут автоматизировать сложные рабочие процессы, оптимизировать процессы разработки и с лёгкостью поддерживать контейнерные приложения, что делает его базовой утилитой для управления Docker и оркестрации.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Что это?</h6>
+        </header>
+      </article>
+      <article data-step="20">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Контейнеры — это изолированные, облегчённые среды, в которых приложения работают с использованием общего ядра операционной системы, обеспечивая согласованность и переносимость в различных вычислительных средах. Они содержат всё необходимое для работы приложения, например код, зависимости и конфигурации, что позволяет легко перемещать и запускать контейнерное приложение в любом месте. С помощью Docker CLI вы можете создавать, запускать, останавливать контейнеры и управлять ими с помощью таких команд, как docker run, docker ps для вывода списка запущенных контейнеров, docker stop для их остановки и docker exec для взаимодействия с ними в режиме реального времени. Интерфейс командной строки предоставляет разработчикам мощный инструмент для создания, управления и отладки контейнеров, упрощая процесс разработки и эксплуатации.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Контейнеры</h6>
+        </header>
+      </article>
+      </article>
+      <article data-step="21">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Образы Docker — это легковесные, автономные и исполняемые программные пакеты, которые включают в себя всё необходимое для запуска программного обеспечения, например код приложения, среду выполнения, библиотеки и системные инструменты. Они служат основой для создания контейнеров и состоят из слоёв, где каждый слой представляет собой изменение файловой системы, что позволяет эффективно хранить и распространять их. Образы Docker можно хранить и извлекать из реестров контейнеров, таких как Docker Hub, что позволяет разработчикам совместно использовать, развёртывать и выпускать версии своих приложений в разных средах, обеспечивая воспроизводимость и упрощая процесс управления зависимостями.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Изображения</h6>
+        </header>
+      </article>
+      <article data-step="22">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content=" Volumes Docker — это решения для постоянного хранения данных, которые используются для управления и хранения данных за пределами файловой системы контейнера, обеспечивая сохранность данных даже при удалении или повторном создании контейнера. Они идеально подходят для хранения данных приложений, журналов и файлов конфигурации, которые должны сохраняться при перезапуске и обновлении контейнера. С помощью Docker CLI вы можете создавать тома и управлять ими с помощью таких команд, как docker volume create для определения нового тома, docker volume ls для вывода списка всех томов и docker run -v для подключения тома к конкретному контейнеру. Такой подход помогает поддерживать целостность данных, упрощает процессы резервного копирования и поддерживает обмен данными между контейнерами, делая тома основной частью контейнерных приложений с отслеживанием состояния.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Volumes</h6>
+        </header>
+      </article>
+      <article data-step="23">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сети Docker позволяют контейнерам взаимодействовать друг с другом и с внешними системами, обеспечивая необходимую связь для архитектур микросервисов. По умолчанию Docker предлагает несколько типов сетей, таких как мост, хост и оверлей, каждый из которых подходит для разных сценариев использования, например для изолированных сред, сценариев с высокой производительностью или многоузловой связи. С помощью Docker CLI вы можете создавать, проверять и управлять сетями с помощью таких команд, как docker network create для определения пользовательских сетей, docker network ls для вывода списка существующих сетей и docker network connect для подключения контейнера к сети. Такая гибкость позволяет разработчикам контролировать взаимодействие контейнеров, обеспечивая безопасную и эффективную коммуникацию между распределёнными приложениями.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Сети</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Развертывание -->
+    <section class="step six text-success">
+        <div class="circle">
+          <h2>Развертывание</h2>
+        </div>
+        <article data-step="24">
+          <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+            <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+              data-modal-content="Варианты «платформа как услуга» (PaaS) для развёртывания контейнеров обеспечивают упрощённую и управляемую среду, в которой разработчики могут создавать, развёртывать и масштабировать контейнерные приложения, не беспокоясь о базовой инфраструктуре. К популярным предложениям PaaS относятся Google Cloud Run, Azure App Service, AWS Elastic Beanstalk и Heroku, которые абстрагируют от сложностей управления контейнерами и предлагают автоматическое масштабирование, простую интеграцию с конвейерами CI/CD и возможности мониторинга. Эти платформы поддерживают быструю разработку и развёртывание, позволяя командам сосредоточиться на логике приложения, а не на управлении серверами, и обеспечивая бесперебойную работу контейнеров в производственной среде с минимальными эксплуатационными издержками.
+              ">
+              <i class="fa-solid fa-ghost bg-success px-3"></i>
+            </span>
+            <h6 class="text-uppercase my-3 ps-4">Параметры PaaS</h6>
+          </header>
+        </article>
+        <article data-step="25">
+          <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+            <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Kubernetes — это платформа оркестрации контейнеров с открытым исходным кодом, предназначенная для автоматизации развёртывания, масштабирования и управления контейнерными приложениями. Она предоставляет надёжную основу для обработки сложных контейнерных рабочих нагрузок, объединяя контейнеры в логические единицы, называемые модулями, управляя обнаружением сервисов, балансировкой нагрузки и масштабированием с помощью декларативных конфигураций. Kubernetes позволяет командам развёртывать контейнеры на кластерах машин, обеспечивая высокую доступность и отказоустойчивость за счёт таких возможностей самовосстановления, как автоматический перезапуск, замена и механизмы отката. Благодаря обширной экосистеме и гибкости Kubernetes стал стандартом де-факто для запуска крупномасштабных распределённых приложений, упрощая операции и повышая надёжность контейнерных рабочих нагрузок.">
+              <i class="fa-solid fa-ghost bg-success px-3"></i>
+            </span>
+            <h6 class="text-uppercase my-3 ps-4">Kubernetes</h6>
+          </header>
+        </article>
+        </article>
+        <article data-step="26">
+          <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+            <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Docker Swarm — это собственный инструмент Docker для управления контейнерами, который позволяет пользователям развёртывать контейнеры, управлять ими и масштабировать их в кластере хостов Docker. Превращая группу узлов Docker в единый унифицированный кластер, Swarm обеспечивает высокую доступность, балансировку нагрузки и автоматическое планирование контейнеров с помощью простых декларативных команд. Благодаря таким функциям, как обнаружение сервисов, постепенные обновления и встроенная защита с помощью шифрования TLS, Docker Swarm предлагает доступную альтернативу более сложным оркестраторам, таким как Kubernetes. Тесная интеграция с Docker CLI и простота настройки делают его подходящим выбором для небольших и средних развёртываний, где приоритетными являются простота и удобство управления.
+              ">
+              <i class="fa-solid fa-ghost bg-success px-3"></i>
+            </span>
+            <h6 class="text-uppercase my-3 ps-4">Docker Swarm</h6>
+          </header>
+        </article>
+        <article data-step="27">
+          <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+            <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+              data-modal-content=" Volumes Docker — это решения для постоянного хранения данных, которые используются для управления и хранения данных за пределами файловой системы контейнера, обеспечивая сохранность данных даже при удалении или повторном создании контейнера. Они идеально подходят для хранения данных приложений, журналов и файлов конфигурации, которые должны сохраняться при перезапуске и обновлении контейнера. С помощью Docker CLI вы можете создавать тома и управлять ими с помощью таких команд, как docker volume create для определения нового тома, docker volume ls для вывода списка всех томов и docker run -v для подключения тома к конкретному контейнеру. Такой подход помогает поддерживать целостность данных, упрощает процессы резервного копирования и поддерживает обмен данными между контейнерами, делая тома основной частью контейнерных приложений с отслеживанием состояния.
+              ">
+              <i class="fa-solid fa-ghost bg-success px-3"></i>
+            </span>
+            <h6 class="text-uppercase my-3 ps-4">Volumes</h6>
+          </header>
+        </article>
+        <article data-step="28">
+          <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+            <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+              data-modal-content="Nomad - это менеджер кластеров и планировщик, который позволяет развертывать контейнерные приложения, управлять ими и масштабировать их. Он автоматически обрабатывает сбои узлов, распределение ресурсов и управление контейнерами. Nomad поддерживает запуск контейнеров Docker, а также других контейнерных сред выполнения и неконтейнеризованных приложений.
+              ">
+              <i class="fa-solid fa-ghost bg-success px-3"></i>
+            </span>
+            <h6 class="text-uppercase my-3 ps-4">Nomad</h6>
+          </header>
+        </article>
+      </section>
+  </main>
+
+  <!-- Модальное окно Bootstrap для вывода текста -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Заголовок с добавленным стикером -->
+          <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Содержимое модального окна заполняется динамически -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 ITmap.</p>
+    <p>Все права защищены.</p>
+    <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+  </footer>
+  <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+  <script>
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const modalContent = button.getAttribute('data-modal-content');
+      const modalBody = infoModal.querySelector('.modal-body');
+      // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+      modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+    });
+    document.querySelectorAll('.side-fixed').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.remove('rotating');
+        setTimeout(() => img.classList.add('rotating'), 10);
+      });
+    });
+
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

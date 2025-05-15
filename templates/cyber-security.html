@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Кибербезопасность — ITmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/webp" href="images/logo_new.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+
+    .hero-section {
+      background-color: transparent;
+      background-image: url("images/фон.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+    }
+
+    h1 {
+      margin-top: 100px;
+      color: #002b5f;
+      text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    .semi-circle {
+      display: inline-block;
+      padding: 20px 60px;
+      background: rgba(255, 255, 255, 0.8);
+      margin: 100px auto 20px;
+      border-radius: 50px;
+      /* Превращает в прямоугольный овал */
+      border: 5px solid #7494ec;
+      text-align: center;
+    }
+
+    .semi-circle h1 {
+      margin: 0;
+      color: #1e5291;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    /* Стили для большого круга */
+    #infographic .circle {
+      width: 270px;
+      height: 230px;
+      border-radius: 50%;
+      border: 7px double;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 60px;
+      position: absolute;
+      left: 50%;
+      margin: 40px 0;
+    }
+
+
+    .circles-container .circle {
+      width: 50px;
+      height: 50px;
+      gap: 30;
+      border-radius: 50%;
+      border: 5px double;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 5px;
+    }
+
+    /* Фиксированные изображения слева и справа от главной фотографии */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    .step.one header {
+      background-color: rgba(0, 48, 96, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 2: насыщенный зелёный фон + белый текст */
+    .step.two header {
+      background-color: rgba(0, 128, 64, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 3: тёмно-оранжевый фон + белый текст */
+    .step.three header {
+      background-color: rgba(255, 128, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Секция 4: насыщенный красный фон + белый текст */
+    .step.four header {
+      background-color: rgba(192, 0, 0, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.six header {
+      background-color: rgba(158, 199, 242, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.seven header {
+      background-color: rgba(125, 255, 149, 0.85) !important;
+      color: #ffffff !important;
+    }
+
+    .step.eight header {
+      background-color: rgba(252, 177, 206, 0.85) !important;
+      color: #fff !important;
+    }
+
+    .step.nine header {
+      background-color: rgba(68, 209, 148, 0.85) !important;
+      color: #fff !important;
+    }
+    .step.ten header {
+      background-color: rgba(111, 200, 255, 0.85) !important;
+      color: #fff !important;
+    }
+    .step.eleven header {
+      background-color: rgba(129, 160, 255, 0.85) !important;
+      color: #fff !important;
+    }
+
+    /* Для нечётных секций смещаем круг влево */
+    #infographic section:nth-child(odd) .circle {
+      transform: translateX(-100%);
+    }
+
+    #infographic article {
+      max-width: 400px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      left: 50%;
+      position: relative;
+    }
+
+    /* Цвета и расположение секций-кругов */
+
+    #infographic .step.three .circle {
+      margin-top: -5px;
+      transform: translate(-285px, 40px);
+    }
+
+
+    #infographic .step.two .circle {
+      transform: translate(65px, 40px);
+      color: rgb(224, 23, 143);
+    }
+
+    #infographic .step.four .circle {
+      transform: translate(55px, 190px);
+      color: blueviolet;
+    }
+
+    #infographic .step.one .circle {
+      transform: translate(-285px, -80px);
+      color: rgb(240, 8, 8);
+    }
+
+    #infographic .step.five .circle {
+      transform: translate(-260px, -40px);
+      color: rgb(235, 139, 247);
+    }
+
+    #infographic .step.six .circle {
+      transform: translate(100px, -5px);
+      color: rgb(176, 205, 29);
+    }
+
+    #infographic .step.seven .circle {
+      transform: translate(-340px, -60px);
+      color: rgb(26, 23, 218);
+    }
+
+    #infographic .step.eight .circle {
+      transform: translate(60px, -60px);
+      color: rgb(255, 0, 119);
+    }
+
+    #infographic .step.nine .circle {
+      transform: translate(-240px, -5px);
+      color: rgb(0, 168, 0);
+    }
+
+    #infographic .step.ten .circle {
+      transform: translate(40px, -45px);
+      color: rgb(0, 94, 255);
+    }
+
+    #infographic .step.eleven .circle {
+      transform: translate(40px, 75px);
+      color: rgb(0, 94, 255);
+    }
+
+    #infographic article header {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+
+
+    #infographic article header i {
+      display: flex;
+      font-size: 2em;
+      border-radius: 50%;
+      background-clip: padding-box;
+      padding: 14px;
+      transition: transform 0.4s;
+      color: #fff;
+      border: 16px solid var(--bs-dark);
+      margin: -16px 0 -16px -20px;
+    }
+
+    #infographic article:hover header i {
+      transform: scale(1.2);
+    }
+
+    #infographic article.active header i {
+      transform: none;
+    }
+
+    #infographic article .body {
+      background: var(--bgColor);
+      padding: 0 20px;
+      border-bottom-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      max-height: 0;
+      transition: max-height 0.5s, padding 0.5s;
+      overflow: hidden;
+    }
+
+    #infographic :nth-child(even) article {
+      text-align: right;
+      transform: translateX(-100%);
+    }
+
+    #infographic :nth-child(even) article header {
+      flex-flow: row-reverse;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    #infographic :nth-child(even) article header i {
+      margin: -16px -20px -16px 0;
+    }
+
+    #infographic section:nth-child(odd) article.active header {
+      border-bottom-right-radius: 0;
+    }
+
+    #infographic section:nth-child(even) article.active header {
+      border-bottom-left-radius: 0;
+    }
+
+    #infographic article.active .body {
+      padding: 20px;
+      max-height: 300px;
+      border: 1px solid;
+    }
+
+    /* Расположение этапов*/
+    #infographic article[data-step="1"] {
+      margin-left: 6px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="2"] {
+      margin-left: 54px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="3"] {
+      margin-left: 71px;
+      text-align: left;
+      width: 300px;
+    }
+
+    #infographic article[data-step="4"] {
+      margin-left: 61px;
+      width: 300px;
+    }
+
+    #infographic article[data-step="5"] {
+      margin-left: 22px;
+      width: 270px;
+    }
+
+    #infographic article[data-step="6"] {
+      margin-left: -5px;
+      width: 270px;
+    }
+
+    #infographic article[data-step="7"] {
+      margin-left: -54px;
+      text-align: right;
+      width: 250px;
+    }
+
+    #infographic article[data-step="8"] {
+      margin-left: -70px;
+      width: 270px;
+    }
+
+    #infographic article[data-step="9"] {
+      margin-left: -60px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="10"] {
+      margin-left: -21px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="11"] {
+      margin-left: 7px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="12"] {
+      margin-left: 55px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="13"] {
+      margin-left: 73px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="14"] {
+      margin-left: 85px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="15"] {
+      margin-left: 75px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="16"] {
+      margin-left: 30px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="17"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="18"] {
+      margin-left: -25px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="19"] {
+      margin-left: -45px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="20"] {
+      margin-left: -60px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="21"] {
+      margin-left: -55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="22"] {
+      margin-left: -30px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="23"] {
+      margin-left: -15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="24"] {
+      margin-left: 25px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="25"] {
+      margin-left: 55px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="26"] {
+      margin-left: 85px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="27"] {
+      margin-left: 110px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="28"] {
+      margin-left: 120px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="29"] {
+      margin-left: 75px;
+      width: 180px;
+    }
+
+    #infographic article[data-step="30"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="31"] {
+      margin-left: 25px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="32"] {
+      margin-left: -13px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="33"] {
+      margin-left: -30px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="34"] {
+      margin-left: -55px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="35"] {
+      margin-left: -40px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="36"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="37"] {
+      margin-left: 50px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="38"] {
+      margin-left: 85px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="39"] {
+      margin-left: 85px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="40"] {
+      margin-left: 65px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="41"] {
+      margin-left: 45px;
+      width: 250px;
+    }
+
+    #infographic article[data-step="43"] {
+      margin-left: -10px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="44"] {
+      margin-left: -35px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="45"] {
+      margin-left: -55px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="46"] {
+      margin-left: -45px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="47"] {
+      margin-left: -25px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="48"] {
+      margin-left: -5px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="49"] {
+      margin-left: 15px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="50"] {
+      margin-left: 35px;
+      width: 150px;
+    }
+
+    #infographic article[data-step="51"] {
+      margin-left: 35px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="52"] {
+      margin-left: 55px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="53"] {
+      margin-left: 55px;
+      width: 400px;
+    }
+
+    #infographic article[data-step="54"] {
+      margin-left: 45px;
+      width: 350px;
+    }
+
+    #infographic article[data-step="55"] {
+      margin-left: 25px;
+      width: 450px;
+    }
+
+    #infographic article[data-step="56"] {
+      margin-left: 5px;
+      width: 200px;
+    }
+
+    #infographic article[data-step="57"] {
+      margin-left: -15px;
+      width: 400px;
+    }
+
+    #infographic article[data-step="58"] {
+      margin-left: -45px;
+      width: 200px;
+    }
+
+    /*Цвета кругов этапов*/
+    article[data-step="1"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="2"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="3"] .info-btn i {
+      background-color: #6d8cf2 !important;
+    }
+
+    article[data-step="4"] .info-btn i {
+      background-color: #ffec1b !important;
+    }
+
+    article[data-step="5"] .info-btn i {
+      background-color: #ffec1b !important;
+    }
+
+    article[data-step="10"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="11"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="12"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="13"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="14"] .info-btn i {
+      background-color: #fc3737 !important;
+    }
+
+    article[data-step="15"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="16"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="22"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="23"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="24"] .info-btn i {
+      background-color: #39732d !important;
+    }
+
+    article[data-step="25"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="26"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="27"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="28"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="29"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="30"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="31"] .info-btn i {
+      background-color: #36bcf5 !important;
+    }
+
+    article[data-step="32"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="33"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="34"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="35"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="36"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="37"] .info-btn i {
+      background-color: #f86b00 !important;
+    }
+
+    article[data-step="38"] .info-btn i {
+      background-color: #0a8b47 !important;
+    }
+    article[data-step="39"] .info-btn i {
+      background-color: #0a8b47 !important;
+    }
+
+    article[data-step="43"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="44"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="45"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="46"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="47"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="48"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="49"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    article[data-step="50"] .info-btn i {
+      background-color: #06eaff !important;
+    }
+
+    #infographic .circle {
+      padding: 0 !important;
+      margin: 40px auto;
+      /* центрируем по горизонтали и даём отступ снизу */
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #infographic .circle h2,
+    #infographic .circle h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Стили для модальных окон: делаем их выше навбара */
+    .modal {
+      z-index: 10500 !important;
+    }
+
+    .modal-backdrop {
+      z-index: 10400 !important;
+    }
+
+    /* Форматирование текста в модальных окнах */
+    .modal-body {
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+
+    }
+
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">ITmap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Основной заголовок -->
+  <div class="container text-center">
+    <div class="semi-circle">
+      <h1>Кибербезопасность</h1>
+    </div>
+  </div>
+  <div class="roadmap-hero">
+    <!-- Добавлен класс visible, чтобы изображения отображались -->
+    <img src="images/image.webp" alt="Слева" class="side-fixed left visible" />
+    <img src="images/image.webp" alt="Справа" class="side-fixed right visible" />
+  </div>
+
+  <main id="infographic" class="d-flex flex-column align-items-center py-5">
+    <!-- Секция Основа -->
+    <section class="step one text-danger">
+      <div class="circle">
+        <h2>Начальные уровни</h2>
+      </div>
+      <article data-step="1">
+        <header class="d-flex align-items-center bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="CompTIA A+ — это начальная сертификация для ИТ-специалистов, которая фокусируется на основных знаниях и навыках в области компьютерного оборудования, программного обеспечения и устранения неполадок. Эта сертификация широко признана в ИТ-индустрии и может служить трамплином для людей, желающих начать карьеру в сфере информационных технологий.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CompTIA A+</h6>
+        </header>
+      </article>
+      <article data-step="2">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Сертификация CompTIA Linux+ — это начальная сертификация, предназначенная для лиц, которые стремятся изучить и продемонстрировать свои навыки и знания операционной системы Linux. Эта сертификация широко признана в ИТ-индустрии как необходимая квалификация для администраторов Linux начального уровня и помогает им получить прочную основу для задач администрирования системы Linux.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CompTIA Linux+</h6>
+        </header>
+      </article>
+      <article data-step="3">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="CompTIA Network+ — это очень востребованная сертификация для ИТ-специалистов, которые стремятся создать прочную основу в концепциях и практиках сетевых технологий. Эта сертификация не зависит от поставщика, то есть она охватывает широкий спектр знаний, которые могут быть применены к различным сетевым технологиям, продуктам и решениям. Сертификация Network+ предназначена для новичков в мире ИТ-сетей, и рекомендуется сначала получить сертификацию CompTIA A+, прежде чем переходить к Network+.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CompTIA Network+</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Основы -->
+    <section class="step two text-warning">
+      <div class="circle">
+        <h2>Основа</h2>
+      </div>
+      <article data-step="4">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Изучите устройство и особенности администрирования в Windows и популярных дистрибутивах Linux. Научитесь устанавливать, обновлять систему, работать с командной строкой и правами пользователей.">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Операционные системы</h6>
+        </header>
+      </article>
+      <article data-step="5">
+        <header class="d-flex align-items-center text-danger bg-danger bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Разберите принципы обмена данными по сетям: установление TCP-соединения, маршрутизация пакетов, работа протоколов уровня приложений (как веб-сервер отвечает на HTTP-запрос) и перевод доменных имён в IP-адреса.
+            ">
+            <i class="fa-solid fa-meteor bg-danger"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Сетевые протоколы</h6>
+        </header>
+      </article>
+      <article data-step="6">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Поймите, как процессор выполняет инструкции, как устроена оперативная и постоянная память, чем отличаются HDD и SSD, и какую роль играет I/O в производительности и безопасности.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Архитектура</h6>
+        </header>
+      </article>
+      <article data-step="7">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Конфиденциальность, целостность, доступность. Это базовые требования к любой системе безопасности: гарантировать, что только авторизованные лица видят данные, данные не искажаются и сервисы работают без простоев.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">CIA-триада</h6>
+        </header>
+      </article>
+      <article data-step="8">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Симметричные/асимметричные алгоритмы, хэш-функции. Разберитесь в алгоритмах шифрования (AES, RSA), подписи, сертификатах и назначении хэш-функций (SHA-256, MD5) для проверки целостности.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Криптография</h6>
+        </header>
+      </article>
+      <article data-step="9">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Фишинг, DDoS, SQL-инъекции, XSS. Изучите основные векторы атак: как злоумышленники обманывают пользователей, перегружают сервисы и внедряют вредоносный код в веб-приложения.">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Типы атак</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Виртуализация -->
+    <section class="step three text-success">
+      <div class="circle">
+        <h2>Виртуализация</h2>
+      </div>
+      <article data-step="10">
+        <header class="d-flex align-items-center text-warning bg-warning bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Kali Linux — это «ящик инструментов» для изучения и практики в области информационной безопасности. Если вы никогда раньше не сталкивались с этой системой, вот короткий обзор, который поможет вам сделать первые шаги.
+            Kali Linux — это бесплатный дистрибутив на базе Debian, в котором уже установлено более 600 специальных программ для тестирования на проникновение (pentest), анализа уязвимостей, реверс-инжиниринга и цифровой форензики. Вместо того чтобы скачивать и настраивать каждый инструмент по отдельности, вы получаете всё в одном пакете.
+            Зачем начинающему изучать Kali?
+            •	Вы сразу работаете в среде, близкой к реальным условиям задач по безопасности.
+            •	Множество уроков и видеоуроков именно под этот дистрибутив.
+            •	Сообщества новичков и профи — в Telegram, на форумe Kali и на сайтах типа Habr и Xakep.
+            ">
+            <i class="fa-solid fa-cookie-bite bg-warning"></i>
+          </span>
+          <h6 class="text-uppercase my-3 pe-4">Kali Linux</h6>
+        </header>
+      </article>
+      <article data-step="11">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="VMware - ведущий поставщик программного обеспечения для виртуализации и облачных вычислений. Основная технология VMware позволяет запускать несколько виртуальных машин на одном физическом сервере, каждая со своей операционной системой и ресурсами. Набор продуктов VMware включает инструменты для виртуализации серверов, настольных компьютеров, управления облаком и сетевой виртуализации. Ключевые продукты, такие как vSphere и ESXi, обеспечивают эффективное использование ресурсов, улучшенную масштабируемость и упрощенное управление ИТ. Решения VMware широко используются в корпоративных средах для консолидации серверов, включения облачных вычислений, облегчения аварийного восстановления и поддержки сред разработки и тестирования. Технологии компании играют решающую роль в современных операциях центров обработки данных и стратегиях гибридного облака.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">VMware</h6>
+        </header>
+      </article>
+      <article data-step="12">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Virtualbox— это бесплатное программное обеспечение для виртуализации с открытым исходным кодом, разработанное Oracle. Оно позволяет пользователям запускать несколько операционных систем одновременно на одном физическом компьютере. VirtualBox поддерживает широкий спектр гостевых операционных систем, включая различные версии Windows, Linux, macOS и другие. Он предоставляет такие функции, как моментальные снимки для удобного сохранения состояния системы, общие папки для обмена файлами между хост-и гостевыми системами и поддержку USB-устройств. VirtualBox популярен среди разработчиков, ИТ-специалистов и энтузиастов для тестирования программного обеспечения, запуска устаревших приложений и экспериментов с различными операционными системами без необходимости в отдельном физическом оборудовании.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Virtualbox</h6>
+        </header>
+      </article>
+      <article data-step="13">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Proxmox - это платформа управления виртуализацией с открытым исходным кодом, которая объединяет виртуальную среду Proxmox (Proxmox VE) и почтовый шлюз Proxmox. Proxmox VE объединяет технологии виртуализации, включая KVM для виртуальных машин и LXC для облегченных контейнеров, в единый веб-интерфейс для управления и развертывания виртуализированных сред. Он предлагает такие функции, как высокая доступность, решения для управления хранилищем и резервного копирования. Почтовый шлюз Proxmox обеспечивает безопасность электронной почты и решения по борьбе со спамом, защищая почтовые системы от угроз. Proxmox ценится за свою гибкость, экономичность и комплексные возможности управления.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">proxmox</h6>
+        </header>
+      </article>
+      <article data-step="14">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Гипервизор, также известный как монитор виртуальных машин (VMM), представляет собой программное обеспечение или микропрограммное обеспечение, которое позволяет создавать виртуальные машины (VMS) и управлять ими путем абстрагирования базового оборудования. Это позволяет запускать несколько виртуальных машин на одной физической машине, каждая из которых работает независимо со своей собственной операционной системой и приложениями. Гипервизоры способствуют лучшему использованию ресурсов, позволяя физическому серверу размещать несколько виртуальных сред, оптимизируя эффективность оборудования.
+            Существует два типа гипервизоров:
+            -	Гипервизор типа 1, или простой гипервизор, работает непосредственно на физическом оборудовании без операционной системы хоста. Он обеспечивает более высокую производительность и обычно используется в корпоративных средах. Примеры включают VMware ESXi и Microsoft Hyper-V.
+            -	Гипервизор типа 2 работает поверх существующей операционной системы, полагаясь на ОС хоста для управления ресурсами. Обычно они используются для личных целей или в целях разработки, например, VMware Workstation и Oracle VirtualBox.
+            Гипервизоры играют фундаментальную роль в облачных вычислениях, виртуализации и консолидации серверов, обеспечивая гибкое и эффективное управление ресурсами и изоляцию между виртуальными средами.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Гипервизор</h6>
+        </header>
+    </section>
+
+    <!-- Секция Устранение неполадок -->
+    <section class="step four text-success">
+      <div class="circle">
+        <h2>Устранение неполадок</h2>
+      </div>
+      </article>
+      <article data-step="15">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="ipconfig - это широко используемая утилита командной строки для операционных систем Windows, которая предоставляет ценную информацию о конфигурации сети компьютера. Это может быть чрезвычайно полезно в задачах реагирования на инциденты и обнаружения при расследовании проблем, связанных с сетью, извлечении важных сетевых сведений или при попытке установить IP-адрес компьютера.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">ipconfig</h6>
+        </header>
+      </article>
+      <article data-step="16">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Ping - это сетевая утилита, используемая для проверки доступности и отзывчивости устройства в сети. Он отправляет пакеты эхо-запроса протокола Internet Control Message Protocol (ICMP) целевому хосту и измеряет время, необходимое для получения эхо-ответа. Ping обычно используется для диагностики проблем с сетевым подключением, определения сетевой задержки и проверки того, подключен ли конкретный сервер или устройство к сети. Успешный ответ на запрос ping указывает на то, что целевое устройство доступно, в то время как сбои или задержки могут указывать на сетевые проблемы, такие как потеря пакетов или проблемы с маршрутизацией.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">ping</h6>
+        </header>
+      </article>
+      <article data-step="17">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="netstat (статистика сети) - это инструмент командной строки, используемый для отображения сетевых подключений, таблиц маршрутизации и статистики сетевого интерфейса. Он предоставляет информацию об активных соединениях TCP и UDP, прослушиваемых портах и состоянии сетевых интерфейсов. Используя netstat, пользователи могут отслеживать сетевую активность, диагностировать проблемы с подключением и определять открытые порты и службы, запущенные в системе. Этот инструмент доступен в различных операционных системах, включая Windows, macOS и Linux, и часто используется для устранения неполадок в сети и оценки безопасности.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">netstat</h6>
+        </header>
+      </article>
+      <article data-step="18">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Route - это сетевая утилита, используемая для просмотра таблицы IP-маршрутизации и управления ею в Unix-подобных системах и системах Windows. Это позволяет пользователям отображать текущие маршруты, по которым проходят пакеты данных, а также добавлять, изменять или удалять маршруты сетевого трафика. Эта команда часто используется при устранении неполадок и настройке сети для управления потоками данных между различными сетями и подсетями. Задавая маршруты вручную, администраторы могут определять конкретные пути для сетевого трафика, минуя маршруты по умолчанию и оптимизируя производительность или безопасность.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">route</h6>
+        </header>
+      </article>
+      <article data-step="19">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Nmap (Сетевой Картограф) - инструмент сетевого сканирования с открытым исходным кодом, используемый для обнаружения хостов и служб в сети, определения открытых портов и обнаружения уязвимостей. Он предоставляет подробную информацию о подключенных к сети устройствах, включая их IP-адреса, операционные системы и запущенные службы. Nmap поддерживает различные методы сканирования, такие как TCP SYN scan, UDP scan и определение версии службы. Он широко используется для оценки сетевой безопасности, сканирования уязвимостей и управления инвентаризацией сети, помогая администраторам и специалистам по безопасности понимать и обеспечивать безопасность своих сетевых сред.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">nmap</h6>
+        </header>
+      </article>
+      <article data-step="20">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Tcpdump - это мощный анализатор пакетов командной строки, используемый для устранения неполадок в сети и анализа безопасности. Он фиксирует и отображает содержимое сетевых пакетов, соответствующих заданным критериям. Tcpdump может перехватывать и отображать протоколы связи, заголовки пакетов и данные полезной нагрузки, передаваемые по сетевому интерфейсу. Он обычно используется для диагностики сетевых проблем, мониторинга сетевого трафика, обнаружения подозрительных действий и анализа поведения протокола. Tcpdump предлагает различные варианты фильтрации, позволяющие сосредоточиться на определенных типах трафика, IP-адресах или портах. Хотя в основном он используется в Unix-подобных системах, его эквивалентом для Windows является WinDump. Из-за возможности сбора конфиденциальных данных использование tcpdump часто требует прав администратора и должно соответствовать юридическим и этическим нормам.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">tcpdump</h6>
+        </header>
+      </article>
+      </article>
+      <article data-step="21">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="ARP - это протокол, используемый интернет-протоколом (IP) для сопоставления IP-адреса с физическим адресом, также известным как MAC-адрес управления доступом к среде. ARP необходим для маршрутизации данных между устройствами в локальной сети (LAN), поскольку он позволяет транслировать IP-адреса на определенное оборудование в сети. Когда устройство хочет установить связь с другим устройством в той же локальной сети, ему необходимо определить соответствующий MAC-адрес для целевого IP-адреса. ARP помогает в этом процессе, отправляя запрос ARP, содержащий целевой IP-адрес. Все устройства в широковещательном домене получают этот ARP-запрос и сравнивают целевой IP-адрес со своим собственным IP-адресом. Если найдено совпадение, устройство с соответствующим IP-адресом отправляет ARP-ответ, содержащий его MAC-адрес. Устройство, инициировавшее ARP-запрос, теперь может обновить свой ARP-кэш (таблицу, в которой хранятся сопоставления IP-адреса с MAC-адресом) новой информацией, а затем продолжить отправку данных на MAC-адрес цели.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">arp</h6>
+        </header>
+      </article>
+      <article data-step="22">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Tracert (трассировка маршрута в системах на базе Unix) - это инструмент сетевой диагностики, используемый для отслеживания пути, по которому пакеты данных проходят от исходного компьютера до узла назначения. Он показывает количество пройденных переходов (промежуточных маршрутизаторов), IP-адреса этих маршрутизаторов и время прохождения в оба конца для каждого перехода. Tracert работает, отправляя пакеты с увеличивающимися значениями времени ожидания (TTL), заставляя отвечать каждый маршрутизатор на пути следования. Этот инструмент полезен для выявления узких мест в сети, точного определения мест, где происходит потеря пакетов, и понимания пути маршрутизации сетевого трафика. Он обычно используется для устранения неполадок с сетевым подключением, анализа производительности сети и отображения топологии сети.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">tracert</h6>
+        </header>
+      </article>
+      <article data-step="23">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="nslookup - сетевая утилита, используемая для запроса к серверам системы доменных имен (DNS) информации о доменных именах и IP-адресах. Это позволяет пользователям получать подробную информацию, такую как сопоставления IP-адресов для данного доменного имени, обратный поиск для поиска доменных имен, связанных с IP-адресом, и типы записей DNS, такие как записи A, MX и CNAME. nslookup помогает устранять неполадки, связанные с DNS, проверять конфигурации DNS и анализировать записи DNS. Его можно запустить из командной строки в различных операционных системах, включая Windows, macOS и Linux.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">nslookup</h6>
+        </header>
+      </article>
+      <article data-step="24">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="IPTables - это утилита командной строки для настройки правил фильтрации пакетов и управления ими в операционной системе Linux. Она позволяет системному администратору определять правила брандмауэра, которые контролируют входящий и исходящий сетевой трафик, и управлять ими. IPTables - это важный инструмент для защиты систем Linux и обеспечения надлежащего потока сетевого трафика.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">iptables</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция аутентификации -->
+    <section class="step five text-success">
+      <div class="circle">
+        <h2>Аутентификации</h2>
+      </div>
+      <article data-step="25">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Kerberos - это протокол сетевой аутентификации, разработанный для обеспечения надежной аутентификации клиент / серверных приложений. Он был разработан Массачусетским технологическим институтом в 1980-х годах и назван в честь трехглавого пса из греческой мифологии, который охранял врата Ада, символизируя цель протокола обеспечить безопасную аутентификацию в потенциально враждебной сетевой среде.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Kerberos</h6>
+        </header>
+      </article>
+      <article data-step="26">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Служба пользователей с удаленным доступом для аутентификации (RADIUS) - это сетевой протокол, обеспечивающий централизованное управление аутентификацией, авторизацией и бухгалтерским учетом (AAA) для пользователей, которые подключаются к сетевой службе и используют ее. Он обычно используется для управления доступом к сетевым ресурсам, таким как VPN, Wi-Fi и службы удаленного доступа. Серверы RADIUS проверяют учетные данные пользователей, применяют политики доступа и регистрируют действия пользователей. Он работает через UDP-порты 1812 (аутентификация) и 1813 (учет) и поддерживает шифрование для безопасной передачи учетных данных пользователя.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">RADIUS</h6>
+        </header>
+      </article>
+      <article data-step="27">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="LDAP (Облегченный Протокол доступа к Каталогу) - это стандартизированный прикладной протокол для доступа к распределенным информационным службам каталогов и их обслуживания по IP-сети. В основном он используется для запросов и модификации служб каталогов, таких как аутентификация пользователя и поиск информации. LDAP организует данные в виде иерархической древовидной структуры и обычно используется в корпоративных средах для централизованного управления пользователями, аутентификации и авторизации. Он поддерживает такие функции, как единый вход, и может интегрироваться с различными приложениями и службами. LDAP широко используется совместно с Active Directory и другими службами каталогов для обеспечения централизованного хранилища учетных записей пользователей, групп и других организационных данных, способствуя эффективному управлению пользователями и ресурсами в сетевых средах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">LDAP</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция Типы соединений -->
+    <section class="step six text-success">
+      <div class="circle">
+        <h2>Типы соединений</h2>
+      </div>
+      <article data-step="28">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Связь в ближнем поле (NFC) - это беспроводная технология ближнего действия, которая позволяет устройствам обмениваться данными на очень коротких расстояниях, обычно до 4 дюймов (10 см). NFC обычно используется для таких приложений, как бесконтактные платежи, электронные билеты и передача данных между устройствами. Он работает на частоте 13,56 МГц и поддерживает различные режимы, включая одноранговую связь, эмуляцию карты и режимы чтения / записи. NFC обеспечивает быстрое и безопасное взаимодействие с минимальными настройками, что делает его удобным для мобильных платежей, контроля доступа и обмена информацией.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">NFC</h6>
+        </header>
+      </article>
+      <article data-step="29">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Bluetooth - это стандарт беспроводной технологии ближнего действия, используемый для обмена данными между стационарными и мобильными устройствами на коротких расстояниях. Хотя он обеспечивает удобство подключения периферийных устройств и передачи информации, он также создает ряд проблем с точки зрения кибербезопасности. Уязвимости Bluetooth потенциально могут позволить злоумышленникам перехватывать сообщения, выполнять вредоносный код или получать несанкционированный доступ к устройствам. К распространенным атакам относятся перехват, bluesnarfing и bluebugging. Чтобы снизить эти риски, специалисты по кибербезопасности рекомендуют регулярно обновлять встроенное ПО устройства, использовать новейшие протоколы Bluetooth, включать шифрование и отключать Bluetooth, когда оно не используется. Несмотря на продолжающиеся улучшения безопасности, Bluetooth остается вектором атак, который требует бдительного мониторинга и защиты как в личных, так и в корпоративных средах.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Bluetooth </h6>
+        </header>
+      </article>
+      <article data-step="30">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="WiFi - это технология беспроводной сети, которая позволяет устройствам подключаться к Интернету и общаться друг с другом без использования физических кабелей. Для передачи данных используются радиоволны, обычно работающие в диапазонах частот 2,4 ГГц и 5 ГГц. Сети Wi-Fi создаются с помощью беспроводных маршрутизаторов или точек доступа и могут быть найдены в домах, офисах, общественных местах и многих других местах. Технология соответствует стандартам IEEE 802.11, а более новые версии (например, WiFi 6 или 802.11ax) предлагают повышенную скорость, лучшую производительность в местах массового скопления людей и повышенную энергоэффективность. Wi-Fi способствует распространению мобильных и интеллектуальных устройств, поддерживая Интернет вещей (IoT) и обеспечивая большую гибкость и мобильность сетевого подключения.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">WiFi</h6>
+        </header>
+      </article>
+      <article data-step="31">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Инфракрасный (IR) - это тип технологии беспроводной связи, которая использует световые волны в электромагнитном спектре для передачи данных между устройствами. Инфракрасные соединения широко используются для связи на короткие расстояния, обычно встречаясь в таких устройствах, как пульты дистанционного управления, беспроводные клавиатуры и мыши, а также для связи компьютер-принтер.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Инфракрасный</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Наборы -->
+    <section class="step seven text-success">
+      <div class="circle">
+        <h2>Наборы</h2>
+      </div>
+      <article data-step="32">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Пакет Microsoft Office представляет собой набор программного обеспечения для повышения производительности, разработанного Microsoft, которое обычно используется как в личных, так и в профессиональных целях. Он включает в себя основные приложения, такие как Word (обработка текстов), Excel (электронные таблицы), PowerPoint (презентации) и Outlook (электронная почта и календарь). Другие приложения в пакете могут включать Access (управление базой данных), OneNote (создание заметок) и Teams (совместная работа и коммуникация). Пакет предлагает интегрированные инструменты для создания документов, данных и коммуникаций, управления ими и совместного использования, поддерживая широкий спектр деловых и личных задач повышения производительности.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Microsoft Office</h6>
+        </header>
+      </article>
+      <article data-step="33">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="iCloud - это облачное хранилище и услуга облачных вычислений, предоставляемая компанией Apple Inc. Это позволяет пользователям хранить данные, такие как документы, фотографии и музыку, на удаленных серверах и синхронизировать их со своими устройствами Apple, включая iPhone, iPad и MacBook.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">iCloud</h6>
+        </header>
+      </article>
+      <article data-step="34">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Google Workspace, ранее известная как G Suite, представляет собой набор облачных инструментов для повышения производительности и совместной работы, разработанных Google. Он включает в себя такие популярные приложения, как Gmail для электронной почты, Google Drive для хранения файлов и обмена ими, Google Docs для создания и редактирования документов, Google Sheets для электронных таблиц и Google Meet для видеоконференций. С точки зрения кибербезопасности Google Workspace обладает как преимуществами, так и проблемами. Он предлагает надежные встроенные функции безопасности, такие как двухфакторная аутентификация, шифрование данных при передаче и в режиме ожидания, а также расширенную защиту от угроз. Однако его облачный характер означает, что организации должны тщательно управлять средствами контроля доступа, политиками обмена данными и соблюдением различных нормативных актов. Специалисты по безопасности должны проявлять бдительность в отношении потенциальных фишинговых атак, нацеленных на аккаунты Google, утечки данных из-за неправильных настроек общего доступа и рисков, связанных с интеграцией приложений сторонних производителей. Понимание того, как правильно настроить Google Workspace и осуществлять мониторинг, имеет решающее значение для поддержания безопасности среды совместной работы организации и защиты конфиденциальной информации, хранящейся в этих широко используемых инструментах.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Google Workspace</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Операционные системы -->
+    <section class="step eight text-success">
+      <div class="circle">
+        <h2>Операционные системы</h2>
+      </div>
+      <article data-step="35">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Linux - это Unix-подобное ядро операционной системы с открытым исходным кодом, впервые выпущенное Линусом Торвальдсом в 1991 году. Оно составляет ядро различных операционных систем, известных как дистрибутивы Linux. Linux известен своей стабильностью, безопасностью и гибкостью, что делает его популярным для серверов, встраиваемых систем и все чаще для настольного использования. Он поддерживает широкий спектр оборудования и предлагает мощные интерфейсы командной строки наряду с графическими интерфейсами пользователя. Linux придерживается принципов Unix, делая упор на модульность и философию “делай что-то одно, и делай это хорошо”. Его открытый исходный код позволяет разрабатывать и настраивать на основе сообщества. Linux широко используется в облачных вычислениях, суперкомпьютерах и устройствах Android и является фундаментальным компонентом стека веб-серверов LAMP (Linux, Apache, MySQL, PHP).">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Linux</h6>
+        </header>
+      </article>
+      <article data-step="36">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Windows - широко используемая операционная система Microsoft для персональных компьютеров и серверов. Она предоставляет графический пользовательский интерфейс, возможности многозадачности и поддерживает широкий спектр программных приложений и аппаратных устройств. Windows предлагает такие функции, как управление файлами, контроль учетных записей пользователей, встроенные средства безопасности и регулярные обновления. Она поставляется в различных версиях для различных случаев использования, от домашних компьютеров до корпоративных сред. Windows интегрируется с облачными сервисами Microsoft и включает инструменты для повышения производительности, игр и управления системой. Широкое распространение делает ее основной мишенью как для разработчиков программного обеспечения, так и для угроз кибербезопасности, что требует регулярных обновлений и исправлений системы безопасности.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Windows</h6>
+        </header>
+      </article>
+      <article data-step="37">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="macOS - это операционная система, разработанная компанией Apple Inc. для своей линейки компьютеров Mac. Известная своим удобным интерфейсом и интеграцией с другими продуктами Apple, macOS имеет архитектуру на базе Unix, обеспечивающую стабильность, безопасность и производительность. Он включает в себя набор встроенных приложений, таких как Safari, Mail и Finder, и поддерживает широкий спектр программного обеспечения сторонних производителей. macOS обеспечивает бесшовную интеграцию с такими сервисами, как iCloud, Continuity и Handoff, повышая производительность и расширяя возможности подключения на устройствах Apple. Регулярные обновления и уделение особого внимания дизайну и удобству использования делают macOS популярным выбором как для личного, так и для профессионального использования.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">macOS</h6>
+        </header>
+      </article>
+    </section>
+    <!-- Секция IP термины -->
+    <section class="step nine text-success">
+      <div class="circle">
+        <h2>IP термины</h2>
+      </div>
+      <article data-step="38">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Локальный Хост - это стандартное имя хоста, используемое для доступа к локальному компьютеру, на котором запущена сетевая служба или приложение. Он преобразуется в IP-адрес обратной связи 127.0.0.1 для IPv4 или :: 1 для IPv6. Подключаясь к localhost, вы эффективно взаимодействуете со своим собственным компьютером, что позволяет вам тестировать и отлаживать сетевые службы или приложения локально, не обращаясь к внешним сетям.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">localhost</h6>
+        </header>
+      </article>
+      <article data-step="39">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Обратная связь относится к специальному сетевому интерфейсу, используемому для отправки трафика обратно на то же устройство в целях тестирования и диагностики. Адрес обратной связи для IPv4 равен 127.0.0.1, в то время как для IPv6 это ::1. Когда устройство отправляет запрос на адрес обратной связи, сетевые данные не покидают локальный компьютер; вместо этого они обрабатываются внутри компании, позволяя разработчикам тестировать приложения или сетевые службы, не требуя доступа к внешней сети. Loopback обычно используется для моделирования сетевого трафика, проверки локальных служб или локальной отладки проблем.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">loopback</h6>
+        </header>
+      </article>
+      <article data-step="40">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="CIDR, или бесклассовая междоменная маршрутизация, представляет собой метод распределения IP-адресов и маршрутизации пакетов интернет-протокола более гибким и эффективным способом по сравнению с более старым методом классовой IP-адресации. Разработанный в начале 1990-х годов, CIDR помогает замедлить исчерпание IPv4-адресов и уменьшить размер таблиц маршрутизации, что приводит к повышению производительности и масштабируемости Интернета.
+            CIDR достигает своих целей, заменяя традиционные схемы адресации классов A, B и C системой, которая допускает маскировку подсети переменной длины (VLSM). В CIDR IP-адрес и его маска подсети записываются вместе как единое целое, называемое нотацией CIDR.
+            Запись CIDR выглядит следующим образом: 192.168.1.0/24. Здесь 192.168.1.0 - это IP-адрес, а /24 представляет маску подсети. Число после косой черты (/) называется длиной префикса, которая указывает, сколько битов маски подсети должно быть установлено равным 1 (битовая маска). Остальные биты маски подсети устанавливаются равными 0.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">CIDR</h6>
+        </header>
+      </article>
+      <article data-step="41">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Маска подсети - это 32-разрядное число, используемое в IP-сетях для разделения IP-адреса на части сети и хоста. Оно определяет, какая часть IP-адреса относится к сети, а какая - к хосту. Маски подсетей позволяют сетевым администраторам создавать подсети, повышая эффективность сети и безопасность за счет управления потоком трафика между подсетями. Распространенные маски подсети включают 255.255.255.0 (для сети a /24) и 255.255.0.0 (для сети a /16). Разделение на подсети помогает эффективно распределять IP-адреса, сокращает широковещательный трафик и повышает производительность сети. Понимание масок подсетей имеет решающее значение для настройки сети, устранения неполадок и реализации эффективных стратегий сегментации сети.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">маска подсети</h6>
+        </header>
+      </article>
+      <article data-step="42">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Шлюз по умолчанию - это сетевой узел, обычно маршрутизатор или брандмауэр, который служит точкой доступа или посредником между локальной сетью и внешними сетями, такими как Интернет. Когда устройству в локальной сети необходимо установить связь с устройством за пределами его собственной подсети — например, получить доступ к веб-сайту или отправить электронное письмо, — оно отправляет данные на шлюз по умолчанию, который затем направляет их соответствующему внешнему адресату. Шлюз по умолчанию выполняет функцию диспетчера трафика, гарантируя правильную пересылку пакетов данных между внутренней и внешней сетями, что делает его важнейшим компонентом для обеспечения связи за пределами локальной сети.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">шлюз по умолчанию</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Понять -->
+    <section class="step eleven text-success">
+      <div class="circle">
+        <h2>Терминология</h2>
+      </div>
+      <article data-step="43">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Виртуальная локальная сеть (VLAN) - это логическая сегментация физической сети, позволяющая нескольким изолированным сетям существовать в одной физической инфраструктуре. Сети VLAN объединяют устройства в зависимости от функции, подразделения или приложения, независимо от их физического местоположения. Они повышают производительность сети за счет сокращения широковещательного трафика, повышают безопасность за счет изоляции чувствительных систем и обеспечивают гибкость в проектировании сети и управлении. VLAN настраиваются на сетевых коммутаторах с использованием стандарта IEEE 802.1Q, который добавляет теги к фреймам Ethernet для идентификации членства в VLAN. Эта технология имеет решающее значение для эффективного сетевого администрирования на крупных предприятиях, в центрах обработки данных и сложных сетевых средах.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">VLAN</h6>
+        </header>
+      </article>
+      <article data-step="44">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Демилитаризованная зона, также известная как демилитаризованная зона, представляет собой определенную часть сети, которая функционирует как буфер или разделение между внутренней, надежной сетью организации и внешними, ненадежными сетями, такими как Интернет. Основная цель DMZ - изолировать критически важные системы и данные от потенциально враждебной внешней среды и обеспечить дополнительный уровень безопасности.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DMZ</h6>
+        </header>
+      </article>
+      <article data-step="45">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Протокол разрешения адресов (ARP) - важнейший механизм, используемый в сетях, который позволяет интернет-протоколу (IP) сопоставлять IP-адрес с соответствующим физическим адресом, обычно известным как MAC-адрес управления доступом к среде. Этот протокол необходим для того, чтобы устройства в Локальной сети (LAN) могли обмениваться данными путем преобразования IP-адресов в определенные аппаратные адреса.
+            Когда одно устройство в локальной сети хочет связаться с другим, ему необходимо знать MAC-адрес, связанный с IP-адресом целевого устройства. ARP облегчает это, отправляя запрос ARP, который транслирует целевой IP-адрес на все устройства в сети. Каждое устройство проверяет запрошенный IP-адрес на соответствие своему собственному. Устройство, которое распознает IP-адрес как свой собственный, отвечает ARP-ответом, который включает его MAC-адрес.
+            Как только запрашивающее устройство получает MAC—адрес, оно обновляет свой ARP-кэш - таблицу, в которой хранятся сопоставления IP—адреса с MAC-адресом, что позволяет ему отправлять данные непосредственно на правильный аппаратный адрес.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">ARP</h6>
+        </header>
+      </article>
+      <article data-step="46">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Система доменных имен (DNS) - это фундаментальный протокол Интернета, который переводит понятные человеку доменные имена, такие как www.example.com , в IP-адреса, такие как 192.0.2.1, которые используются компьютерами для определения местоположения и связи друг с другом. По сути, DNS действует как телефонная книга Интернета, позволяя пользователям получать доступ к веб-сайтам и сервисам без необходимости запоминать цифровые IP-адреса. Когда пользователь вводит доменное имя в браузере, DNS-запрос отправляется на DNS-сервер, который затем преобразует домен в соответствующий IP-адрес, позволяя браузеру подключиться к соответствующему серверу. DNS имеет решающее значение для функциональности Интернета, поскольку он лежит в основе практически всех действий в Интернете, гарантируя, что запросы направляются правильным адресатам.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">DNS</h6>
+        </header>
+      </article>
+      <article data-step="47">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="IP, или интернет-протокол, является фундаментальной концепцией кибербезопасности, которая относится к способу передачи данных по сетям, в частности через Интернет. Это ключевой компонент архитектуры Интернета и служит основным строительным блоком для связи между устройствами, подключенными к сети. IP-адрес - это уникальный идентификатор, присваиваемый каждому устройству, подключенному к сети, например компьютеру или смартфону. Он состоит из ряда цифр, разделенных точками (например, 192.168.1.1). IP-адресами могут быть либо IPv4 (32-разрядный), либо более новый формат IPv6 (128-разрядный), который предоставляет более доступные адреса. Они позволяют устройствам отправлять и получать пакеты данных на другие устройства в Интернете и от них.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">IP</h6>
+        </header>
+      </article>
+      <article data-step="48">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Виртуальная частная сеть (VPN) - это метод безопасного подключения, используемый для расширения частных сетей между сетями общего пользования, такими как Интернет. Он создает зашифрованный туннель между устройством пользователя и удаленным сервером, маскируя IP-адрес пользователя и шифруя передаваемые данные. VPN используются для различных целей, включая повышение конфиденциальности в Интернете, обход географических ограничений, обеспечение безопасности связи по общедоступному Wi-Fi и предоставление удаленного доступа к корпоративным сетям. Они используют такие протоколы, как OpenVPN, L2TP / IPSec или WireGuard, для обеспечения конфиденциальности и целостности данных. Хотя VPN предлагают значительные преимущества в области конфиденциальности и безопасности, их эффективность может варьироваться в зависимости от политики провайдера и конкретной реализации.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">VPN</h6>
+        </header>
+      </article>
+      <article data-step="49">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Городская сеть (MAN) - это тип сети, охватывающий город или крупный кампус, соединяющий несколько локальных сетей (LAN) в пределах этой географической области. MANs предназначены для предоставления услуг высокоскоростной передачи данных и связи организациям, учреждениям или предприятиям по всему городу. Они поддерживают множество приложений, включая доступ в Интернет, подключение к внутренней сети и обмен данными между несколькими местоположениями. Как правило, MAN быстрее и охватывают более широкую область, чем локальные сети, но имеют меньший охват по сравнению с глобальными сетями (WAN).
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">MAN</h6>
+        </header>
+      </article>
+      <article data-step="50">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Локальная вычислительная сеть (LAN) - это компьютерная сеть, соединяющая компьютеры и устройства в пределах ограниченной территории, такой как дом, офис, школа или небольшая группа зданий. В локальных сетях обычно используются технологии Ethernet или Wi-Fi для обеспечения высокоскоростной передачи данных между подключенными устройствами. Они позволяют совместно использовать ресурсы, включая файлы, принтеры и подключения к Интернету. Локальные сети характеризуются более высокими скоростями передачи данных, меньшей задержкой и более прямым контролем над конфигурацией сети и безопасностью по сравнению с глобальными сетями (WAN). К распространенным приложениям локальной сети относятся общий доступ к файлам, совместная работа, локальный хостинг веб-сайтов или сервисов и сетевые игры. Появление программно-определяемых сетей и облачных технологий расширило возможности локальной сети, сделав ее инфраструктуру более гибкой и масштабируемой.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">LAN</h6>
+        </header>
+      </article>
+    </section>
+
+    <!-- Секция Навыки и знания -->
+    <section class="step twelve text-success">
+      <div class="circle">
+        <h2>Навыки и знания</h2>
+      </div>
+      <article data-step="51">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Цепочка киберуничтожения - это модель, разработанная Lockheed Martin, крупной аэрокосмической компанией, компанией военной поддержки и безопасности, для понимания и предотвращения кибервзломов в различных сетях и системах. Он служит основой для разделения этапов кибератаки, облегчая специалистам по безопасности выявление, смягчение и предотвращение угроз.
+          Концепция основана на военной модели, где термин “цепочка убийств” представляет собой серию шагов, необходимых для успешного нацеливания на противника и вступления в бой с ним. В контексте кибербезопасности модель разбивает этапы кибератаки на семь отдельных фаз:
+          -   Разведка: Эта начальная фаза включает сбор разведданных о цели, которые могут включать изучение общедоступных баз данных, выполнение сканирования сети или методы социальной инженерии.
+          -   Использование оружия: На этом этапе злоумышленник создает оружие – такое как вредоносное ПО, вирус или эксплойт – и снабжает его механизмом доставки, который может проникнуть в систему цели.
+          -   Доставка: злоумышленник выбирает и применяет способ доставки для передачи оружия цели. Распространенные методы включают вложения электронной почты, вредоносные URL-адреса или зараженные обновления программного обеспечения.
+          -   Эксплуатация: Это фаза, на которой оружие активируется, используя уязвимости в системах или приложениях цели для выполнения кода злоумышленника.
+          -   Установка: После успешного запуска эксплойта злоумышленник устанавливает вредоносное ПО в систему жертвы, подготавливая почву для дальнейших атак или утечки данных.
+          -   Командование и контроль (C2): злоумышленник устанавливает канал связи с зараженной системой, позволяющий ему удаленно управлять вредоносным ПО и выполнять дальнейшие действия.
+          -   Действия по достижению целей: На этом заключительном этапе злоумышленник достигает своей цели, которая может включать кражу конфиденциальных данных, компрометацию систем или нарушение работы сервисов.
+          
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Цепочка киберуничтожения</h6>
+        </header>
+      </article>
+      <article data-step="52">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal"
+            data-modal-content="Многофакторная аутентификация (MFA) и двухфакторная аутентификация (2FA) - это методы безопасности, которые требуют от пользователей предоставления двух или более форм проверки для доступа к системе. 2FA специально использует два фактора, обычно объединяя что-то, что пользователь знает (например, пароль), с чем-то, что у него есть (например, телефон или токен), или с чем-то, чем он является (например, отпечаток пальца). MFA, с другой стороны, может включать дополнительные уровни аутентификации, помимо двух факторов, что еще больше повышает безопасность. Оба метода направлены на усиление контроля доступа, затрудняя доступ неавторизованным лицам, даже если пароли скомпрометированы.">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">MFA и 2FA</h6>
+        </header>
+      </article>
+      <article data-step="53">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Основные концепции нулевого доверия основаны на принципе “никогда не доверяй, всегда проверяй”, подчеркивающем необходимость постоянной проверки каждого пользователя, устройства и приложения, пытающегося получить доступ к ресурсам, независимо от их местоположения внутри или за пределами периметра сети. В отличие от традиционных моделей безопасности, которые полагаются на надежную защиту периметра, Нулевое доверие предполагает, что угрозы уже могут существовать внутри сети и что ни одному объекту не следует доверять по умолчанию. Ключевые принципы включают строгую проверку личности, доступ с наименьшими привилегиями, микросегментацию и непрерывный мониторинг. Такой подход ограничивает доступ к ресурсам на основе ролей пользователей, применяет детализированные политики безопасности и постоянно отслеживает ненормальное поведение, гарантируя поддержание безопасности, даже если один сегмент сети скомпрометирован. Система Zero Trust предназначена для защиты современных ИТ-сред от растущих угроз, сосредоточив внимание на защите данных и ресурсов, а не только периметра сети.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Концепции нулевого доверия</h6>
+        </header>
+      </article>
+      <article data-step="54">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Когда дело доходит до кибербезопасности, обнаружение и предотвращение вторжений имеет решающее значение для защиты ценных информационных систем и сетей. В этом разделе мы обсудим основы систем обнаружения вторжений (IDS) и систем предотвращения вторжений (IPS), чтобы помочь вам лучше понять их функции и важность в вашей общей стратегии кибербезопасности.
+            Система обнаружения вторжений (IDS) - это важнейший инструмент безопасности, предназначенный для мониторинга и анализа сетевого трафика или действий хостинга на предмет любых признаков вредоносной активности, нарушений политик или попыток несанкционированного доступа. Как только угроза или аномалия идентифицирована, IDS отправляет предупреждение администратору безопасности для дальнейшего расследования и возможных действий.
+            Система предотвращения вторжений (IPS) - это передовое решение безопасности, тесно связанное с IDS. В то время как IDS в основном фокусируется на обнаружении вторжений и оповещении о них, IPS делает еще один шаг вперед и активно работает над предотвращением атак. Он отслеживает, анализирует и выполняет предварительно настроенные автоматические действия на основе подозрительных действий, таких как блокирование вредоносного трафика, сброс подключений или удаление вредоносных пакетов.            
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Основы IDS и IP-адресов</h6>
+        </header>
+      </article>
+      <article data-step="55">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Аутентификация - это процесс подтверждения личности пользователя, устройства или системы. Он подтверждает, что объект, пытающийся получить доступ к ресурсу, является тем, за кого он себя выдает. Наиболее распространенной формой аутентификации является использование имен пользователей и паролей. Другие методы включают в себя::
+
+            Авторизация начинается после завершения процесса аутентификации. Это включает в себя предоставление или отказ в доступе к ресурсу на основе привилегий аутентифицированного пользователя. Авторизация определяет, какие действия аутентифицированному пользователю или объекту разрешено выполнять в системе или приложении.            
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Аутентификация, авторизация</h6>
+        </header>
+      </article>
+      <article data-step="56">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Хеширование - это криптографический процесс, который преобразует входные данные любого размера в строку символов фиксированного размера, обычно шестнадцатеричное число. Этот вывод, называемый хэш-значением или дайджестом, уникален для входных данных и служит цифровым отпечатком пальца. В отличие от шифрования, хеширование - это односторонний процесс, что означает невозможность обратного преобразования хэша для получения исходных данных с вычислительной точки зрения. В сфере кибербезопасности хеширование широко используется для хранения паролей, проверки целостности данных и цифровых подписей. Распространенные алгоритмы хеширования включают MD5 (сейчас считается небезопасным), SHA-256 и bcrypt. Хеширование помогает обнаружить несанкционированные изменения данных, поскольку даже небольшое изменение входных данных приводит к значительному изменению хэш-значения. Однако надежность хэш-функции имеет решающее значение, поскольку слабые алгоритмы могут быть уязвимы для коллизионных атак, когда разные входные данные создают один и тот же хэш, что потенциально ставит под угрозу меры безопасности, основанные на уникальности хэш-значений.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Хеширование</h6>
+        </header>
+      </article>
+      <article data-step="57">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Открытые и закрытые ключи - это криптографические компоненты, используемые в асимметричном шифровании.
+            Открытый ключ: этот ключ является общедоступным и используется для шифрования данных или проверки цифровой подписи. Он может быть широко распространен и используется кем угодно для отправки зашифрованных сообщений владельцу ключа или для проверки его цифровых подписей.
+            Закрытый ключ: Этот ключ хранится владельцем в секрете и используется для расшифровки данных, зашифрованных соответствующим открытым ключом, или для создания цифровой подписи. Он должен быть строго защищен для поддержания безопасности зашифрованных сообщений и аутентификации.
+            Вместе они обеспечивают безопасную связь и аутентификацию, при которой открытый ключ шифрует или проверяет, а закрытый ключ расшифровывает или подписывает.            
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Pvt-ключ против Pub-ключа</h6>
+        </header>
+      </article>
+      <article data-step="58">
+        <header class="d-flex align-items-center text-success bg-success bg-opacity-10">
+          <span class="info-btn" data-bs-toggle="modal" data-bs-target="#infoModal" data-modal-content="Алмазная модель - это платформа кибербезопасности, используемая для анализа и понимания киберугроз путем разделения атаки на четыре основных компонента: противник, инфраструктура, возможности и жертва. Злоумышленник представляет организацию, стоящую за атакой, Инфраструктура относится к системам и ресурсам, используемым злоумышленником (таким как серверы командования и контроля), Возможности обозначают используемые инструменты или вредоносное ПО, а Жертва является целью атаки. Модель подчеркивает взаимосвязи между этими компонентами, помогая аналитикам выявлять закономерности, отслеживать поведение противника и понимать более широкий контекст киберугроз. Визуализируя и связывая эти элементы, модель Diamond помогает в разработке более эффективных стратегий обнаружения, смягчения последствий и реагирования.
+            ">
+            <i class="fa-solid fa-ghost bg-success px-3"></i>
+          </span>
+          <h6 class="text-uppercase my-3 ps-4">Алмазная модель</h6>
+        </header>
+      </article>
+    </section>
+  </main>
+
+  <!-- Модальное окно Bootstrap для вывода текста -->
+  <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- Заголовок с добавленным стикером -->
+          <h5 class="modal-title" id="infoModalLabel">Подробнее <span style="font-size:1.2em;">👇🏻</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Содержимое модального окна заполняется динамически -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>© 2025 ITmap.</p>
+    <p>Все права защищены.</p>
+    <p>Email: <a href="mailto:info@itmap.ru">info@itmap.ru</a> | Телефон: +7 123 456-78-90</p>
+  </footer>
+  <!-- Скрипт для заполнения модального окна текстом из data-modal-content с форматированием -->
+  <script>
+    const infoModal = document.getElementById('infoModal');
+    infoModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const modalContent = button.getAttribute('data-modal-content');
+      const modalBody = infoModal.querySelector('.modal-body');
+      // Оборачиваем полный текст в абзац и добавляем стикер в правом нижнем углу
+      modalBody.innerHTML = `<p>${modalContent}</p><p style="text-align: right;"></p>`;
+    });
+    document.querySelectorAll('.side-fixed').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.remove('rotating');
+        setTimeout(() => img.classList.add('rotating'), 10);
+      });
+    });
+
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

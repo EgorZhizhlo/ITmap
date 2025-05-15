@@ -1,0 +1,425 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url("/static/images/background.webp");
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Навбар */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: #002b5f;
+      border-bottom: 1px solid #001c42;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: #fff !important;
+    }
+
+    .navbar-brand:hover {
+      color: #e0e0e0 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff !important;
+    }
+
+    .navbar-nav .nav-link.btn {
+      margin-left: 10px;
+      color: #fff !important;
+      border-color: #fff;
+    }
+
+    .navbar-nav .nav-link.btn:hover {
+      background-color: #001c42;
+      color: #fff !important;
+      border-color: #001c42;
+    }
+
+    /* Основной контейнер */
+    .main-content {
+      margin-top: 70px;
+      max-width: 2000px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section {
+      background-image: url("/static/images/background.webp");
+      color: #333;
+      padding: 60px 20px;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      text-align: center;
+      position: relative;
+      border-radius: 20px;
+    }
+
+    .roadmap-hero {
+      display: inline-block;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .roadmap-hero img.main-photo {
+      max-width: 50%;
+      height: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Фиксированные изображения слева и справа */
+    .side-fixed {
+      position: fixed;
+      top: 30%;
+      width: 200px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .side-fixed.visible {
+      opacity: 1;
+    }
+
+    .side-fixed.left {
+      left: 5%;
+    }
+
+    .side-fixed.right {
+      right: 5%;
+    }
+
+    /* Анимация вращения */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .side-fixed.rotating {
+      animation: spin 1s linear;
+    }
+
+    /* Анимированные стрелки */
+    .arrow {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+      animation: arrow-bounce 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes arrow-bounce {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    .arrow-top-left {
+      top: 0;
+      left: 0;
+      background-image: url("arrow-top-left.png");
+    }
+
+    .arrow-top-right {
+      top: 0;
+      right: 0;
+      background-image: url("arrow-top-right.png");
+    }
+
+    .arrow-bottom-left {
+      bottom: 0;
+      left: 0;
+      background-image: url("arrow-bottom-left.png");
+    }
+
+    .arrow-bottom-right {
+      bottom: 0;
+      right: 0;
+      background-image: url("arrow-bottom-right.png");
+    }
+
+    /* Заголовок и описание */
+    .site-title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .site-description {
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .hero-animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Секции roles и skills */
+    .roles-section {
+      background-color: #ffffff;
+      font-weight: bold;
+      padding: 60px 20px;
+    }
+
+    .skills-section {
+      background-color: #f4f9ff;
+      font-weight: bold;
+      padding: 60px 20px;
+    }
+
+    /* Заголовки секций */
+    .section-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-bottom: 1px solid #b2daff;
+      padding: 10px 0;
+      margin: 40px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .section-header:hover {
+      background-color: #d9efff;
+    }
+
+    .section-header h3 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.7rem;
+      color: #007bce;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+
+    .left-arrow,
+    .right-arrow {
+      height: 40px;
+      transition: transform 0.3s;
+    }
+
+    .left-arrow {
+      margin-right: 8px;
+    }
+
+    .right-arrow {
+      margin-left: 8px;
+    }
+
+    .left-arrow:hover,
+    .right-arrow:hover {
+      transform: translateY(3px);
+    }
+
+    /* Карточки roadmap */
+    .roadmap-card {
+      background-color: #ffffff;
+      border: 1px solid #d0eaff;
+      border-radius: 8px;
+      padding: 24px 30px;
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      max-width: 250px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .roadmap-card:hover {
+      background-color: #f5fbff;
+      box-shadow: 0 0 8px rgba(0, 123, 206, 0.4);
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.05);
+      }
+    }
+
+    .favorite-icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s;
+    }
+
+    .favorite-icon.active {
+      color: #ffa700;
+    }
+
+    /* Разделитель */
+    hr.section-divider {
+      border-color: #b2daff;
+      margin: 40px 0;
+    }
+
+    /* Лестница */
+    .staircase-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      margin-top: 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .stair-step {
+      width: 80px;
+      height: 20px;
+      background-color: #0d6efd;
+      margin-right: 10px;
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .stair-step:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .stair-step:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .stair-step:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .stair-step:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    .stair-step:nth-child(5) {
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .trophy-step {
+      background-color: transparent;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInUp 0.8s forwards;
+      cursor: default;
+      text-shadow: 0 0 8px #a0cfff;
+    }
+
+    /* Подвал */
+    footer {
+      background-color: #002b5f;
+      padding: 10px;
+      text-align: center;
+      border-top: 1px solid #001c42;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        margin-top: 80px;
+      }
+
+      .site-title {
+        font-size: 1.5rem;
+      }
+
+      .roadmap-hero img.main-photo {
+        max-width: 60%;
+      }
+
+      .arrow {
+        width: 60px;
+        height: 60px;
+      }
+
+      .left-arrow,
+      .right-arrow {
+        height: 32px;
+      }
+
+      .roadmap-card {
+        max-width: 100% !important;
+        font-size: 16px;
+        padding: 20px;
+      }
+    }

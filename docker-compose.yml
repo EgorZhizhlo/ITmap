@@ -8,4 +8,4 @@ services:
       - ./templates:/app/templates
     environment:
       - PYTHONUNBUFFERED=1
-    restart: 
+    restart: always
